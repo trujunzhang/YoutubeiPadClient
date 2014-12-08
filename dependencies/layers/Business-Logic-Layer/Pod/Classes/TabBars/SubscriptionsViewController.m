@@ -77,7 +77,10 @@
    _gridViewController.numbersPerLineArray = [NSArray arrayWithObjects:@"3", @"4", nil];
 
    // 2
-   _gridViewController.navigationItem.leftBarButtonItem = self.revealButtonItem;
+   _gridViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mt_side_tab_button"]
+                                                                                           style:UIBarButtonItemStyleBordered
+                                                                                          target:self
+                                                                                          action:@selector(leftBarButtonItemAction:)];
 
    // 3
    self.navigationController.viewControllers = [NSArray arrayWithObject:_gridViewController];
@@ -93,12 +96,24 @@
    YoutubeChannelPageViewController * controller =
     [[YoutubeChannelPageViewController alloc] initWithChannelId:channelId];
 
-   controller.navigationItem.leftBarButtonItem = self.revealButtonItem;
+   controller.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mt_side_tab_button"]
+                                                                                  style:UIBarButtonItemStyleBordered
+                                                                                 target:self
+                                                                                 action:@selector(leftBarButtonItemAction:)];
    controller.title = title;
    controller.delegate = self;
 
    // 2
    self.navigationController.viewControllers = [NSArray arrayWithObject:controller];
+}
+
+
+#pragma mark -
+#pragma mark - Provided acction methods
+
+
+- (void)leftBarButtonItemAction:(id)sender {
+   [[LeftRevealHelper sharedLeftRevealHelper] toggleReveal];
 }
 
 

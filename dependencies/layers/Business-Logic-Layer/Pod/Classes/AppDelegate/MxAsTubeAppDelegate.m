@@ -19,14 +19,16 @@
 #import "CacheImageConstant.h"
 
 
-@interface MxAsTubeAppDelegate ()<UIApplicationDelegate, UITabBarControllerDelegate, SWRevealViewControllerDelegate, GYoutubeHelperDelegate, LeftMenuViewBaseDelegate>
+@interface MxAsTubeAppDelegate ()<UIApplicationDelegate, UITabBarControllerDelegate, SWRevealViewControllerDelegate, GYoutubeHelperDelegate, LeftMenuViewBaseDelegate> {
+   SubscriptionsViewController * _subscriptionsViewController; // the first right tab bar item
+}
 
 @property(nonatomic, strong) SWRevealViewController * revealController;
 
 @property(nonatomic, strong) LeftMenuViewController * leftViewController; // left
 @property(nonatomic, strong) UITabBarController * tabBarController; // right
 
-@property(nonatomic, strong) SubscriptionsViewController * subscriptionsViewController; // the first right tab bar item
+
 
 @end
 
@@ -49,11 +51,10 @@
    }
 
    //2. the first right tab bar item
-   self.subscriptionsViewController = ((UINavigationController *) self.tabBarController.viewControllers[0]).viewControllers[0];
-   self.subscriptionsViewController.revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mt_side_tab_button"]
-                                                                                        style:UIBarButtonItemStyleBordered
-                                                                                       target:self
-                                                                                       action:@selector(leftBarButtonItemAction:)];
+   _subscriptionsViewController = ((UINavigationController *) self.tabBarController.viewControllers[0]).viewControllers[0];
+
+   NSString * debug = @"debug";
+
    //3
    self.leftViewController = [[LeftMenuViewController alloc] init];
    self.leftViewController.delegate = self;
@@ -121,15 +122,6 @@
 
 
 #pragma mark -
-#pragma mark - Provided acction methods
-
-
-- (void)leftBarButtonItemAction:(id)sender {
-   [[LeftRevealHelper sharedLeftRevealHelper] toggleReveal];
-}
-
-
-#pragma mark -
 #pragma mark GYoutubeHelperDelegate
 
 
@@ -148,13 +140,13 @@
 
 
 - (void)startToggleLeftMenuWithTitle:(NSString *)title withType:(YTPlaylistItemsType)playlistItemsType {
-   [self.subscriptionsViewController startToggleLeftMenuWithTitle:title withType:playlistItemsType];
+   [_subscriptionsViewController startToggleLeftMenuWithTitle:title withType:playlistItemsType];
 }
 
 
 - (void)endToggleLeftMenuEventForChannelPageWithChannelId:(NSString *)channelId withTitle:(NSString *)title {
    [[LeftRevealHelper sharedLeftRevealHelper] closeLeftMenuAndNoRearOpen];
-   [self.subscriptionsViewController endToggleLeftMenuEventForChannelPageWithChannelId:channelId withTitle:title];
+   [_subscriptionsViewController endToggleLeftMenuEventForChannelPageWithChannelId:channelId withTitle:title];
 }
 
 @end
