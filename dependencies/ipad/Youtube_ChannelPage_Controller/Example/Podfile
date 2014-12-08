@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'Youtube_ChannelPage_Controller', :exclusive => true do
+  pod "Youtube_ChannelPage_Controller", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "Youtube_ChannelPage_Controller", :path => "../"
+
+  
+end
