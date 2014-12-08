@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  MxAsTubeAppDelegate.h
 //  mxAsTubeiPad
 //
 //  Created by djzhang on 12/8/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface MxAsTubeAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

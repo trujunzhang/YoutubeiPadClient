@@ -1,12 +1,12 @@
 //
-//  AppDelegate.m
+//  MxAsTubeAppDelegate.m
 //  TubeIPadApp
 //
 //  Created by djzhang on 10/23/14.
 //  Copyright (c) 2014 djzhang. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "MxAsTubeAppDelegate.h"
 
 #import <SWRevealViewController/SWRevealViewController.h>
 
@@ -19,7 +19,7 @@
 #import "CacheImageConstant.h"
 
 
-@interface AppDelegate ()<UIApplicationDelegate, UITabBarControllerDelegate, SWRevealViewControllerDelegate, GYoutubeHelperDelegate, LeftMenuViewBaseDelegate>
+@interface MxAsTubeAppDelegate ()<UIApplicationDelegate, UITabBarControllerDelegate, SWRevealViewControllerDelegate, GYoutubeHelperDelegate, LeftMenuViewBaseDelegate>
 
 @property(nonatomic, strong) SWRevealViewController * revealController;
 
@@ -31,7 +31,7 @@
 @end
 
 
-@implementation AppDelegate
+@implementation MxAsTubeAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
    [YTCacheImplement removeAllObjects];
