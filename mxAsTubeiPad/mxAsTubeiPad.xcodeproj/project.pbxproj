@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		491679ECDCA3060ADF6E68BE /* libPods-mxAsTubeiPad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C36EF976D876D703E577C37E /* libPods-mxAsTubeiPad.a */; };
-		5E0071181A35539400836D99 /* SubscriptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E0071171A35539400836D99 /* SubscriptionsViewController.m */; };
-		5E00711B1A35558F00836D99 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E00711A1A35558F00836D99 /* SearchViewController.m */; };
-		5E00711E1A3555BE00836D99 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E00711D1A3555BE00836D99 /* HistoryViewController.m */; };
 		5EBEB8D91A3552B400BCC861 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBEB8D81A3552B400BCC861 /* main.m */; };
 		5EBEB8DC1A3552B400BCC861 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EBEB8DB1A3552B400BCC861 /* AppDelegate.m */; };
 		5EBEB8E21A3552B400BCC861 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EBEB8E01A3552B400BCC861 /* Main.storyboard */; };
@@ -31,12 +28,6 @@
 
 /* Begin PBXFileReference section */
 		0F2FA18E6D4C852DAA7B35B0 /* Pods-mxAsTubeiPad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mxAsTubeiPad.release.xcconfig"; path = "Pods/Target Support Files/Pods-mxAsTubeiPad/Pods-mxAsTubeiPad.release.xcconfig"; sourceTree = "<group>"; };
-		5E0071161A35539400836D99 /* SubscriptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubscriptionsViewController.h; path = TabBars/SubscriptionsViewController.h; sourceTree = "<group>"; };
-		5E0071171A35539400836D99 /* SubscriptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubscriptionsViewController.m; path = TabBars/SubscriptionsViewController.m; sourceTree = "<group>"; };
-		5E0071191A35558F00836D99 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchViewController.h; path = TabBars/SearchViewController.h; sourceTree = "<group>"; };
-		5E00711A1A35558F00836D99 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = TabBars/SearchViewController.m; sourceTree = "<group>"; };
-		5E00711C1A3555BE00836D99 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryViewController.h; path = TabBars/HistoryViewController.h; sourceTree = "<group>"; };
-		5E00711D1A3555BE00836D99 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryViewController.m; path = TabBars/HistoryViewController.m; sourceTree = "<group>"; };
 		5EBEB8D31A3552B400BCC861 /* mxAsTubeiPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mxAsTubeiPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EBEB8D71A3552B400BCC861 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5EBEB8D81A3552B400BCC861 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -88,19 +79,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		5E0071151A35534D00836D99 /* TabBars */ = {
-			isa = PBXGroup;
-			children = (
-				5E0071161A35539400836D99 /* SubscriptionsViewController.h */,
-				5E0071171A35539400836D99 /* SubscriptionsViewController.m */,
-				5E0071191A35558F00836D99 /* SearchViewController.h */,
-				5E00711A1A35558F00836D99 /* SearchViewController.m */,
-				5E00711C1A3555BE00836D99 /* HistoryViewController.h */,
-				5E00711D1A3555BE00836D99 /* HistoryViewController.m */,
-			);
-			name = TabBars;
-			sourceTree = "<group>";
-		};
 		5EBEB8CA1A3552B400BCC861 = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +102,6 @@
 		5EBEB8D51A3552B400BCC861 /* mxAsTubeiPad */ = {
 			isa = PBXGroup;
 			children = (
-				5E0071151A35534D00836D99 /* TabBars */,
 				5EBEB8DA1A3552B400BCC861 /* AppDelegate.h */,
 				5EBEB8DB1A3552B400BCC861 /* AppDelegate.m */,
 				5EBEB8E01A3552B400BCC861 /* Main.storyboard */,
@@ -299,9 +276,6 @@
 			files = (
 				5EBEB8DC1A3552B400BCC861 /* AppDelegate.m in Sources */,
 				5EBEB8D91A3552B400BCC861 /* main.m in Sources */,
-				5E00711B1A35558F00836D99 /* SearchViewController.m in Sources */,
-				5E00711E1A3555BE00836D99 /* HistoryViewController.m in Sources */,
-				5E0071181A35539400836D99 /* SubscriptionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

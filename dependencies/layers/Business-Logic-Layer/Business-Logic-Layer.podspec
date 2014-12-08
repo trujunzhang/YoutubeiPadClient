@@ -31,5 +31,9 @@ Pod::Spec.new do |s|
     sub.source_files = 'Pod/Classes/CustomViews/*.{h,m}'
   end
 
+  s.subspec 'TabBars' do |sub|
+    sub.source_files = 'Pod/Classes/TabBars/*.{h,m}'
+  end  
+
 end
 
