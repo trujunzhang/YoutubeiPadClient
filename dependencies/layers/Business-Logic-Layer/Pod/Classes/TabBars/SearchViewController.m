@@ -14,6 +14,7 @@
 #import "YoutubePopUpTableViewController.h"
 #import "GYoutubeHelper.h"
 #import "CollectionViewCellConstant.h"
+#import "MxTabBarManager.h"
 
 
 @interface SearchViewController ()<GridViewCellDelegate, UISearchBarDelegate, YoutubeCollectionNextPageDelegate, UIPopoverControllerDelegate, YoutubePopUpTableViewDelegate> {
@@ -126,7 +127,10 @@
    YTVideoDetailViewController * controller = [[YTVideoDetailViewController alloc] initWithDelegate:self
                                                                                               video:video];
 
-   [self.navigationController pushViewController:controller animated:YES];
+   UINavigationController * navigationController = self.navigationController;
+//   UINavigationController * navigationController123=[[MxTabBarManager sharedTabBarManager] currentNavigationController];
+
+   [navigationController pushViewController:controller animated:YES];
 }
 
 
