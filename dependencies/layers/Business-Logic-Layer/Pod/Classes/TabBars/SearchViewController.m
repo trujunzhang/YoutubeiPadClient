@@ -45,7 +45,7 @@
 }
 
 
-- (void)makeNewCollectionViewForSearchBar {
+- (YTCollectionViewController *)makeNewCollectionViewForSearchBar {
    // 1
    if (_collectionViewController) {
       [_collectionViewController.view removeFromSuperview];
@@ -55,23 +55,24 @@
    }
 
    // 2
-   _collectionViewController = [[YTCollectionViewController alloc] initWithNextPageDelegate:self
-                                                                                  withTitle:nil];
-   _collectionViewController.numbersPerLineArray = [NSArray arrayWithObjects:@"3", @"4", nil];
+   YTCollectionViewController * controller = [[YTCollectionViewController alloc] initWithNextPageDelegate:self
+                                                                                                withTitle:nil];
+   controller.numbersPerLineArray = [NSArray arrayWithObjects:@"3", @"4", nil];
+
+   controller.view.frame = self.view.bounds;// used
+   controller.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+
+   return controller;
 }
 
 
-- (void)showNewCollectionViewForSearchBar:(NSString *)text withItemType:(YTSegmentItemType)itemType {
+- (void)replaceViewController:(YoutubeAsGridCHTLayoutViewController *)controller withSearchText:(NSString *)text withItemType:(YTSegmentItemType)itemType {
+   [controller search:text withItemType:itemType];
 
-   [_collectionViewController search:text withItemType:itemType];
+   [self addChildViewController:controller];
+   [self.view addSubview:controller.view];
 
-   [self addChildViewController:_collectionViewController];
-   [self.view addSubview:_collectionViewController.view];
-
-   _collectionViewController.view.frame = self.view.bounds;// used
-   _collectionViewController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-
-//   self.navigationController.viewControllers = @[ _collectionViewController ];
+   _collectionViewController = controller;
 }
 
 
@@ -151,9 +152,9 @@
    if (self.searchBar.text.length == 0)
       return;
 
-   YTSegmentItemType itemType = [GYoutubeRequestInfo getItemTypeByIndex:self.segment_title.selectedSegmentIndex];
-   [self makeNewCollectionViewForSearchBar];
-   [self showNewCollectionViewForSearchBar:self.searchBar.text withItemType:itemType];
+   [self replaceViewController:[self makeNewCollectionViewForSearchBar]
+                withSearchText:self.searchBar.text
+                  withItemType:[GYoutubeRequestInfo getItemTypeByIndex:self.segment_title.selectedSegmentIndex]];
 }
 
 
