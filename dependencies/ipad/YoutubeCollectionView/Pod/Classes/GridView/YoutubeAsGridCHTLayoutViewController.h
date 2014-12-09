@@ -16,7 +16,6 @@
 
 @interface YoutubeAsGridCHTLayoutViewController : YoutubeCollectionViewBase
 
-@property(nonatomic, assign) id<GridViewCellDelegate> delegate;
 @property(nonatomic, strong) NSArray * numbersPerLineArray;
 @property(nonatomic, strong) CHTCollectionViewWaterfallLayout * layout;
 @end

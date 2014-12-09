@@ -21,7 +21,5 @@
 
 @property(nonatomic, strong) YTYouTubeVideoCache * cardInfo;
 
-@property(nonatomic, strong) id<GridViewCellDelegate> delegate;
-
-- (instancetype)initWithCardInfo:(YTYouTubeVideoCache *)cardInfo cellSize:(CGSize)cellSize delegate:(id<GridViewCellDelegate>)delegate isBacked:(BOOL)isBacked;
+- (instancetype)initWithCardInfo:(YTYouTubeVideoCache *)cardInfo cellSize:(CGSize)cellSize isBacked:(BOOL)isBacked;
 @end

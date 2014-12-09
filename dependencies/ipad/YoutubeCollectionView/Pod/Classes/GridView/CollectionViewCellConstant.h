@@ -6,11 +6,3 @@
 //#define  CollectionVideoReuseCell YTGridViewVideoCell
 
 
-
-@protocol GridViewCellDelegate<NSObject>
-
-@optional
-
-- (void)gridViewCellTap:(id)video;
-
-@end

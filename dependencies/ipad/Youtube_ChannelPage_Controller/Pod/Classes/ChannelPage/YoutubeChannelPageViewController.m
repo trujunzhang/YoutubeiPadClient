@@ -73,7 +73,6 @@
    for (NSString * title in [GYoutubeRequestInfo getChannelPageSegmentTitlesArray]) {
       YTCollectionViewController * controller = [[YTCollectionViewController alloc] init];
 
-      controller.delegate = self.delegate;
       controller.nextPageDelegate = self;
       controller.title = title;
       controller.numbersPerLineArray = [NSArray arrayWithObjects:@"3", @"4", nil];

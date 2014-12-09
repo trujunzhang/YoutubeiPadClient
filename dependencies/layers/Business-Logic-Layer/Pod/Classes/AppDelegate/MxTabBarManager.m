@@ -33,7 +33,7 @@
 }
 
 - (YTVideoDetailViewController *)makeVideoDetailViewController:(id)video {
-   return [[YTVideoDetailViewController alloc] initWithDelegate:self video:video];
+   return [[YTVideoDetailViewController alloc] initWithVideo:video];
 }
 
 

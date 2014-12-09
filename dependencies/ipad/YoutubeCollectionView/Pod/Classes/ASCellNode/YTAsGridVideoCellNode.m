@@ -39,7 +39,6 @@
 
    _asyncGridViewVideoNode = [[YTAsyncGridViewVideoNode alloc] initWithCardInfo:self.video
                                                                        cellSize:_kittenSize
-                                                                       delegate:self.delegate
                                                                        isBacked:NO];
 
    [self addSubnode:_asyncGridViewVideoNode];

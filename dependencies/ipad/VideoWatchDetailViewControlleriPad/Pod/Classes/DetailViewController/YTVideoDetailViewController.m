@@ -25,10 +25,9 @@
 #pragma mark - UIView cycle
 
 
-- (instancetype)initWithDelegate:(id<GridViewCellDelegate>)delegate video:(YTYouTubeVideoCache *)video {
+- (instancetype)initWithVideo:(YTYouTubeVideoCache *)video {
    self = [super init];
    if (self) {
-      self.delegate = delegate;
       self.video = video;
    }
 
@@ -71,7 +70,6 @@
    self.secondViewController.title = @"More From";
 
    self.thirdViewController = [[YTCollectionViewController alloc] init];
-   self.thirdViewController.delegate = self.delegate;
    self.thirdViewController.numbersPerLineArray = [NSArray arrayWithObjects:@"3", @"2", nil];
    self.thirdViewController.title = @"Suggestions";
 

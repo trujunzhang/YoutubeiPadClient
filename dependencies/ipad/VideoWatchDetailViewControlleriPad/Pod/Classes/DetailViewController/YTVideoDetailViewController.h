@@ -24,7 +24,6 @@
 @interface YTVideoDetailViewController : UIViewController
 @property(nonatomic, strong) UIViewController * selectedController;
 
-@property(nonatomic, assign) id<GridViewCellDelegate> delegate;
 @property(nonatomic, strong) YTYouTubeVideoCache * video;
 
 @property(nonatomic, strong) YTAsVideoDetailViewController * videoDetailController;
@@ -35,7 +34,7 @@
 @property(nonatomic, strong) YTCollectionViewController * thirdViewController;
 
 @property(nonatomic, strong) YKYouTubeVideo * youTubeVideo;
-- (instancetype)initWithDelegate:(id<GridViewCellDelegate>)delegate video:(YTYouTubeVideoCache *)video;
+- (instancetype)initWithVideo:(YTYouTubeVideoCache *)video;
 
 @end
 

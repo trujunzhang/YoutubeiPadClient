@@ -54,7 +54,7 @@
 - (void)gridViewCellTap:(id)video {
    [[LeftRevealHelper sharedLeftRevealHelper] closeLeftMenuAndNoRearOpen];
 
-   YTVideoDetailViewController * controller = [[YTVideoDetailViewController alloc] initWithDelegate:self video:video];
+   YTVideoDetailViewController * controller = [[YTVideoDetailViewController alloc] initWithVideo:video];
 
    UINavigationItem * item = self.navigationItem;
    [item setBackBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"back"
@@ -75,7 +75,6 @@
    // 1
    _gridViewController = [[YTCollectionViewController alloc] init];
    _gridViewController.title = title;
-   _gridViewController.delegate = self;
    _gridViewController.nextPageDelegate = self;
    _gridViewController.numbersPerLineArray = [NSArray arrayWithObjects:@"3", @"4", nil];
 

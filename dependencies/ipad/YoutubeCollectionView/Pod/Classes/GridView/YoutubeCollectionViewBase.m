@@ -137,9 +137,7 @@
          [gridViewVideoCell bind:video
                 placeholderImage:nil
                         cellSize:[self cellSize]
-                        delegate:self.delegate
-           nodeConstructionQueue:self.nodeConstructionQueue
-         ];
+           nodeConstructionQueue:self.nodeConstructionQueue];
       }
          break;
       case YTSegmentItemPlaylist: {
@@ -183,8 +181,7 @@
 
        // test
        if (debugCollectionViewToDetail) {
-          [self.navigationController pushViewController:[[YTVideoDetailViewController alloc] initWithDelegate:self
-                                                                                                          video:array[0]]
+          [self.navigationController pushViewController:[[YTVideoDetailViewController alloc] initWithVideo:array[0]]
                                                animated:YES];
        }
 

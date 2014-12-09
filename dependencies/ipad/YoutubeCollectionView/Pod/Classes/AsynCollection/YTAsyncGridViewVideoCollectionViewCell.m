@@ -67,22 +67,21 @@
 }
 
 
-- (void)bind:(YTYouTubeVideoCache *)videoInfo placeholderImage:(UIImage *)placeholder cellSize:(CGSize)cellSize delegate:(id<GridViewCellDelegate>)delegate nodeConstructionQueue:(NSOperationQueue *)nodeConstructionQueue {
+- (void)bind:(YTYouTubeVideoCache *)videoInfo placeholderImage:(UIImage *)placeholder cellSize:(CGSize)cellSize nodeConstructionQueue:(NSOperationQueue *)nodeConstructionQueue {
    self.featureImageSizeOptional = cellSize;
    NSOperation * oldNodeConstructionOperation = _nodeConstructionOperation;
    if (oldNodeConstructionOperation)
       [oldNodeConstructionOperation cancel];
 
 
-   NSOperation * newNodeConstructionOperation = [self nodeConstructionOperationWithCardInfo:videoInfo
-                                                                                   delegate:delegate];
+   NSOperation * newNodeConstructionOperation = [self nodeConstructionOperationWithCardInfo:videoInfo];
 
    _nodeConstructionOperation = newNodeConstructionOperation;
    [nodeConstructionQueue addOperation:newNodeConstructionOperation];
 }
 
 
-- (NSOperation *)nodeConstructionOperationWithCardInfo:(YTYouTubeVideoCache *)cardInfo delegate:(id<GridViewCellDelegate>)delegate {
+- (NSOperation *)nodeConstructionOperationWithCardInfo:(YTYouTubeVideoCache *)cardInfo {
    NSBlockOperation * nodeConstructionOperation = [[NSBlockOperation alloc] init];
 
    __weak __typeof__(self) weakSelf = self;
@@ -97,7 +96,6 @@
        {
           YTAsyncGridViewVideoNode * containerNode = [[YTAsyncGridViewVideoNode alloc] initWithCardInfo:cardInfo
                                                                                                cellSize:self.featureImageSizeOptional
-                                                                                               delegate:delegate
                                                                                                isBacked:YES];
           if (nodeConstructionOperation.cancelled)
              return;

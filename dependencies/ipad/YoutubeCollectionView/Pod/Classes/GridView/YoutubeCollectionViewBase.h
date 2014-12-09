@@ -27,8 +27,6 @@
 
 @interface YoutubeCollectionViewBase : UIViewController
 
-@property(nonatomic, assign) id<GridViewCellDelegate> delegate;
-
 @property(nonatomic, strong) GYoutubeRequestInfo * youtubeRequestInfo;
 
 @property(nonatomic, strong) NSArray * numbersPerLineArray;

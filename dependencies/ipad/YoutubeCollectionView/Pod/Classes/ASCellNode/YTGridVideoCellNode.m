@@ -187,8 +187,8 @@
 
 
 - (void)buttonTapped:(id)buttonTapped {
-   if (self.delegate)
-      [self.delegate gridViewCellTap:self.video];
+//   if (self.delegate)
+//      [self.delegate gridViewCellTap:self.video];// TODO [test] djzhang gridViewCellTap
 }
 
 @end

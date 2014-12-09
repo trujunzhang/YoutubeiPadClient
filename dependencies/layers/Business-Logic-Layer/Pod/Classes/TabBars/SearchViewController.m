@@ -65,7 +65,6 @@
    // 2
    _collectionViewController = [[YTCollectionViewController alloc] init];
 
-   _collectionViewController.delegate = self;
    _collectionViewController.nextPageDelegate = self;
    _collectionViewController.numbersPerLineArray = [NSArray arrayWithObjects:@"3", @"4", nil];
 }
@@ -124,8 +123,7 @@
 
 
 - (void)gridViewCellTap:(id)video {
-   YTVideoDetailViewController * controller = [[YTVideoDetailViewController alloc] initWithDelegate:self
-                                                                                              video:video];
+   YTVideoDetailViewController * controller = [[YTVideoDetailViewController alloc] initWithVideo:video];
 
    UINavigationController * navigationController = self.navigationController;
    UINavigationController * navigationController123=[[MxTabBarManager sharedTabBarManager] currentNavigationController];

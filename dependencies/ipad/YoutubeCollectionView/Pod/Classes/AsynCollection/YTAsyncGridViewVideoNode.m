@@ -43,12 +43,11 @@
 
 @implementation YTAsyncGridViewVideoNode
 
-- (instancetype)initWithCardInfo:(YTYouTubeVideoCache *)cardInfo cellSize:(CGSize)cellSize delegate:(id<GridViewCellDelegate>)delegate isBacked:(BOOL)isBacked {
+- (instancetype)initWithCardInfo:(YTYouTubeVideoCache *)cardInfo cellSize:(CGSize)cellSize isBacked:(BOOL)isBacked {
    self = [super initWithLayerClass:[AnimatedContentsDisplayLayer class]];
    if (self) {
       self.nodeCellSize = cellSize;
       self.cardInfo = cardInfo;
-      self.delegate = delegate;
 
       [self makeContainerNode];
       [self layoutSubNodes];
@@ -149,7 +148,7 @@
 
 
 - (void)channelThumbnailsTapped:(id)buttonTapped {
-   [self.delegate gridViewCellTap:self.cardInfo];
+//   [self.delegate gridViewCellTap:self.cardInfo];  // TODO [test] djzhang gridViewCellTap
 }
 
 

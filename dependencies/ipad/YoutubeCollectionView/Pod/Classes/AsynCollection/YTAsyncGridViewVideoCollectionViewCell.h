@@ -22,5 +22,5 @@
 @property(nonatomic, strong) ASDisplayNode * containerNode;
 @property(nonatomic, strong) NSOperation * nodeConstructionOperation;
 
-- (void)bind:(YTYouTubeVideoCache *)cache placeholderImage:(UIImage *)placeholder cellSize:(CGSize)cellSize delegate:(id<GridViewCellDelegate>)delegate nodeConstructionQueue:(NSOperationQueue *)nodeConstructionQueue;
+- (void)bind:(YTYouTubeVideoCache *)cache placeholderImage:(UIImage *)placeholder cellSize:(CGSize)cellSize nodeConstructionQueue:(NSOperationQueue *)nodeConstructionQueue;
 @end
