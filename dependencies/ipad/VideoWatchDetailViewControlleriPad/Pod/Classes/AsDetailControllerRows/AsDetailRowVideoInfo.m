@@ -81,9 +81,11 @@ static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
 - (void)layout {
    // called on the main thread.  we'll use the stashed size from above, instead of blocking on text sizing
    CGSize textNodeSize = _textNode.calculatedSize;
-   _textNode.frame = CGRectMake(roundf((self.calculatedSize.width - textNodeSize.width) / 2.0f),
+   _textNode.frame = CGRectMake(
+    12.0f,
     kTextPadding,
-    textNodeSize.width,
+    //textNodeSize.width,
+    self.calculatedSize.width-12.0f*2,
     textNodeSize.height);
 }
 
