@@ -53,7 +53,7 @@
    //2. the first right tab bar item
    _subscriptionsViewController = ((UINavigationController *) self.tabBarController.viewControllers[0]).viewControllers[0];
 
-   NSString * debug = @"debug";
+//   NSString * debug = @"debug";
 
    //3
    self.leftViewController = [[LeftMenuViewController alloc] init];

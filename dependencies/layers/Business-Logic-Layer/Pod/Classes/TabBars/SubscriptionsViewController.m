@@ -54,13 +54,16 @@
 - (void)gridViewCellTap:(id)video {
    [[LeftRevealHelper sharedLeftRevealHelper] closeLeftMenuAndNoRearOpen];
 
-   YTVideoDetailViewController * controller = [[YTVideoDetailViewController alloc] initWithDelegate:self
-                                                                                              video:video];
-   [self.navigationItem setBackBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"back"
-                                                                              style:UIBarButtonItemStyleBordered
-                                                                             target:nil
-                                                                             action:nil]];
-   [self.navigationController pushViewController:controller animated:YES];
+   YTVideoDetailViewController * controller = [[YTVideoDetailViewController alloc] initWithDelegate:self video:video];
+
+   UINavigationItem * item = self.navigationItem;
+   [item setBackBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"back"
+                                                               style:UIBarButtonItemStyleBordered
+                                                              target:nil
+                                                              action:nil]];
+
+   UINavigationController * navigationController = self.navigationController;
+   [navigationController pushViewController:controller animated:YES];
 }
 
 
@@ -93,8 +96,7 @@
 
 - (void)endToggleLeftMenuEventForChannelPageWithChannelId:(NSString *)channelId withTitle:(NSString *)title {
    // 1
-   YoutubeChannelPageViewController * controller =
-    [[YoutubeChannelPageViewController alloc] initWithChannelId:channelId];
+   YoutubeChannelPageViewController * controller = [[YoutubeChannelPageViewController alloc] initWithChannelId:channelId];
 
    controller.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mt_side_tab_button"]
                                                                                   style:UIBarButtonItemStyleBordered
