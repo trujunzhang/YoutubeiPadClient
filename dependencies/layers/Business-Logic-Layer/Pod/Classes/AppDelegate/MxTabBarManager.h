@@ -1,4 +1,5 @@
 #import <UIKit/UIKit.h>
+@class YTVideoDetailViewController;
 
 
 @interface MxTabBarManager : NSObject
@@ -8,4 +9,5 @@
 - (void)registerTabBarController:(UITabBarController *)tabBarController;
 
 - (UINavigationController *)currentNavigationController;
+- (YTVideoDetailViewController *)makeVideoDetailViewController:(id)video;
 @end

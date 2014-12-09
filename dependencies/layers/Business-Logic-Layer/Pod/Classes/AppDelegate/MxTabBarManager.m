@@ -1,4 +1,5 @@
 #import "MxTabBarManager.h"
+#import "YTVideoDetailViewController.h"
 
 
 @interface MxTabBarManager () {
@@ -30,4 +31,10 @@
 - (UINavigationController *)currentNavigationController {
    return _tabBarController.selectedViewController;
 }
+
+- (YTVideoDetailViewController *)makeVideoDetailViewController:(id)video {
+   return [[YTVideoDetailViewController alloc] initWithDelegate:self video:video];
+}
+
+
 @end

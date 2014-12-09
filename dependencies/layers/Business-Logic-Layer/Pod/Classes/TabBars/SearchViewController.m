@@ -128,7 +128,7 @@
                                                                                               video:video];
 
    UINavigationController * navigationController = self.navigationController;
-//   UINavigationController * navigationController123=[[MxTabBarManager sharedTabBarManager] currentNavigationController];
+   UINavigationController * navigationController123=[[MxTabBarManager sharedTabBarManager] currentNavigationController];
 
    [navigationController pushViewController:controller animated:YES];
 }
