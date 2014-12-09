@@ -15,6 +15,13 @@
 LeftRevealHelper * instance;
 
 
+@interface LeftRevealHelper () {
+   SWRevealViewController * _revealController;
+
+}
+@end
+
+
 @implementation LeftRevealHelper
 
 + (LeftRevealHelper *)sharedLeftRevealHelper {
@@ -29,9 +36,9 @@ LeftRevealHelper * instance;
 #pragma mark -
 
 
-- (void)setupHelper:(SWRevealViewController *)controller {
+- (void)registerRevealController:(SWRevealViewController *)controller {
    // 1
-   self.revealController = controller;
+   _revealController = controller;
 
    // 2
    if (hasShowLeftMenu) {
@@ -56,7 +63,7 @@ LeftRevealHelper * instance;
 
 
 - (void)closeLeftMenu {
-   [self.revealController setFrontViewPosition:FrontViewPositionLeft animated:YES];
+   [_revealController setFrontViewPosition:FrontViewPositionLeft animated:YES];
 }
 
 
@@ -67,7 +74,7 @@ LeftRevealHelper * instance;
 
 
 - (void)openLeftMenu {
-   [self.revealController setFrontViewPosition:FrontViewPositionRight animated:YES];
+   [_revealController setFrontViewPosition:FrontViewPositionRight animated:YES];
 }
 
 

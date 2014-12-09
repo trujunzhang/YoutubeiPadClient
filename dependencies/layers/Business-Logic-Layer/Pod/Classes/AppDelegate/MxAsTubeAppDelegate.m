@@ -21,13 +21,12 @@
 
 @interface MxAsTubeAppDelegate ()<UIApplicationDelegate, UITabBarControllerDelegate, SWRevealViewControllerDelegate, GYoutubeHelperDelegate, LeftMenuViewBaseDelegate> {
    SubscriptionsViewController * _subscriptionsViewController; // the first right tab bar item
+
+   LeftMenuViewController * _leftViewController; // left
+   UITabBarController * _tabBarController; // right
 }
 
 @property(nonatomic, strong) SWRevealViewController * revealController;
-
-@property(nonatomic, strong) LeftMenuViewController * leftViewController; // left
-@property(nonatomic, strong) UITabBarController * tabBarController; // right
-
 
 
 @end
@@ -40,31 +39,31 @@
    [GYoutubeHelper getInstance].delegate = self;
 
    //1
-   self.tabBarController = (UITabBarController *) self.window.rootViewController;
-   self.tabBarController.view.backgroundColor = [UIColor whiteColor];
-   self.tabBarController.delegate = self;
-   self.tabBarController.tabBar.tintColor = [UIColor redColor];
-   self.tabBarController.selectedIndex = 0;// default is Subscription View Controller.
+   _tabBarController = (UITabBarController *) self.window.rootViewController;
+   _tabBarController.view.backgroundColor = [UIColor whiteColor];
+   _tabBarController.delegate = self;
+   _tabBarController.tabBar.tintColor = [UIColor redColor];
+   _tabBarController.selectedIndex = 0;// default is Subscription View Controller.
 
    if (!hasShowLeftMenu) {
-      self.tabBarController.selectedIndex = 1; //test
+      _tabBarController.selectedIndex = 1; //test
    }
 
    //2. the first right tab bar item
-   _subscriptionsViewController = ((UINavigationController *) self.tabBarController.viewControllers[0]).viewControllers[0];
+   _subscriptionsViewController = ((UINavigationController *) _tabBarController.viewControllers[0]).viewControllers[0];
 
 //   NSString * debug = @"debug";
 
    //3
-   self.leftViewController = [[LeftMenuViewController alloc] init];
-   self.leftViewController.delegate = self;
+   _leftViewController = [[LeftMenuViewController alloc] init];
+   _leftViewController.delegate = self;
 
    //6
-   self.revealController = [[SWRevealViewController alloc] initWithRearViewController:self.leftViewController
-                                                                  frontViewController:self.tabBarController];
+   self.revealController = [[SWRevealViewController alloc] initWithRearViewController:_leftViewController
+                                                                  frontViewController:_tabBarController];
    self.revealController.delegate = self;
 
-   [[LeftRevealHelper sharedLeftRevealHelper] setupHelper:self.revealController];
+   [[LeftRevealHelper sharedLeftRevealHelper] registerRevealController:self.revealController];
 
    //7
    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -126,12 +125,12 @@
 
 
 - (void)FetchYoutubeSubscriptionListCompletion:(GYoutubeAuthUser *)user {
-   [self.leftViewController refreshChannelSubscriptionList:user];
+   [_leftViewController refreshChannelSubscriptionList:user];
 }
 
 
 - (void)FetchYoutubeChannelCompletion:(YoutubeAuthInfo *)info {
-   [self.leftViewController refreshChannelInfo:info];
+   [_leftViewController refreshChannelInfo:info];
 }
 
 

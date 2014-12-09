@@ -15,7 +15,7 @@
 @property(nonatomic) NSUInteger lastTabBarSelectedIndex;
 @property(nonatomic) BOOL isLastTabBarSelectedInRoot;
 
-@property(nonatomic, strong) SWRevealViewController * revealController;
+
 
 + (LeftRevealHelper *)sharedLeftRevealHelper;
 
@@ -24,7 +24,7 @@
 - (void)closeLeftMenuAndNoRearOpen;
 - (void)openLeftMenu;
 
-- (void)setupHelper:(SWRevealViewController *)controller;
+- (void)registerRevealController:(SWRevealViewController *)controller;
 
 - (void)beginTabBarToggleWithSelectedIndex:(NSUInteger)selectedIndex withViewCount:(NSUInteger)count;
 - (void)endTabBarToggleWithSelectedIndex:(NSUInteger)selectedIndex;
