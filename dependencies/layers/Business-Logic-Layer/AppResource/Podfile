@@ -3,7 +3,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, 7.0
 
 target 'mxAsTubeiPad', :exclusive => true do
-  # pod 'Reveal-iOS-SDK'
+  pod 'Reveal-iOS-SDK'
 
   # ________________open projects___________________
   pod "GGTabBar", :path => "../dependencies/lib/GGTabBar"
