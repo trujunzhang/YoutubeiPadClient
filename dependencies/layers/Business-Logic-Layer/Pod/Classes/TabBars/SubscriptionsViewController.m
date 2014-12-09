@@ -15,7 +15,7 @@
 #import "CollectionViewCellConstant.h"
 
 
-@interface SubscriptionsViewController ()<GridViewCellDelegate, YoutubeCollectionNextPageDelegate> {
+@interface SubscriptionsViewController ()< YoutubeCollectionNextPageDelegate> {
    YTCollectionViewController * _gridViewController;
    YTPlaylistItemsType _playlistItemsType;
 }
@@ -102,7 +102,6 @@
                                                                                  target:self
                                                                                  action:@selector(leftBarButtonItemAction:)];
    controller.title = title;
-   controller.delegate = self;
 
    // 2
    self.navigationController.viewControllers = [NSArray arrayWithObject:controller];

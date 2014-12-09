@@ -14,7 +14,6 @@
 
 @interface YoutubeGridLayoutViewController : YoutubeCollectionViewBase
 
-@property(nonatomic, assign) id<GridViewCellDelegate> delegate;
 @property(nonatomic, strong) NSArray * numbersPerLineArray;
 @property(nonatomic, strong) KRLCollectionViewGridLayout * layout;
 @end

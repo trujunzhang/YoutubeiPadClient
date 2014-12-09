@@ -29,13 +29,12 @@
 @implementation YTAsGridVideoCellNode
 
 
-- (instancetype)initWithCellNodeOfSize:(CGSize)size withVideo:(YTYouTubeVideoCache *)video placeholderImage:(UIImage *)placeholder delegate:(id<GridViewCellDelegate>)delegate { //242,242
+- (instancetype)initWithCellNodeOfSize:(CGSize)size withVideo:(YTYouTubeVideoCache *)video placeholderImage:(UIImage *)placeholder { //242,242
    if (!(self = [super init]))
       return nil;
 
    _kittenSize = size;
    self.video = video;
-   self.delegate = delegate;
 
    _asyncGridViewVideoNode = [[YTAsyncGridViewVideoNode alloc] initWithCardInfo:self.video
                                                                        cellSize:_kittenSize

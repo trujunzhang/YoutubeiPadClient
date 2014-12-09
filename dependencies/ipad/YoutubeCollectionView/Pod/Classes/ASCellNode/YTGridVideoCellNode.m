@@ -47,7 +47,6 @@
 
    _kittenSize = size;
    self.video = video;
-   self.delegate = delegate;
 
    [self makeUI];
    [self effectFirstForChannelClover];

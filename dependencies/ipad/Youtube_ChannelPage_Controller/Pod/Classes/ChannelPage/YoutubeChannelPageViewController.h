@@ -11,8 +11,6 @@
 
 @interface YoutubeChannelPageViewController : UIViewController
 
-@property(nonatomic, assign) id<GridViewCellDelegate> delegate;
-
 - (instancetype)initWithChannelId:(NSString *)channelId;
 
 @end

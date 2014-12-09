@@ -17,7 +17,7 @@
 #import "MxTabBarManager.h"
 
 
-@interface SearchViewController ()<GridViewCellDelegate, UISearchBarDelegate, YoutubeCollectionNextPageDelegate, UIPopoverControllerDelegate, YoutubePopUpTableViewDelegate> {
+@interface SearchViewController ()< UISearchBarDelegate, YoutubeCollectionNextPageDelegate, UIPopoverControllerDelegate, YoutubePopUpTableViewDelegate> {
    YTCollectionViewController * _collectionViewController;
    YTCollectionViewController * _lastCollectionViewController;
 }

@@ -144,8 +144,7 @@
          YTYouTubePlayList * video = [[self getYoutubeRequestInfo].videoList objectAtIndex:indexPath.row];
          YTGridViewPlaylistCell * gridViewVideoCell = (YTGridViewPlaylistCell *) viewCell;
          [gridViewVideoCell bind:video
-                placeholderImage:nil
-                        delegate:self.delegate];
+                placeholderImage:nil];
       }
          break;
    }
