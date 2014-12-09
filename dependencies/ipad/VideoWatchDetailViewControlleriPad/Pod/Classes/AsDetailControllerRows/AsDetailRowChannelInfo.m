@@ -11,6 +11,7 @@
 #import "YoutubeParser.h"
 #import "ASCacheNetworkImageNode.h"
 #import "YTAsChannelThumbnailsImageNode.h"
+#import "FrameCalculator.h"
 #import <AsyncDisplayKit/ASDisplayNode+Subclasses.h>
 #import <AsyncDisplayKit/ASHighlightOverlayLayer.h>
 #import <google-api-services-youtube/GYoutubeHelper.h>
@@ -22,11 +23,12 @@ static CGFloat kTextPadding = 10.0f;
 @interface AsDetailRowChannelInfo () {
    ASTextNode * _textNode;
    ASDisplayNode * _divider;
+   ASImageNode * _channelImageNode;
 }
 
 @property(nonatomic, strong) YoutubeVideoCache * cardInfo;
 
-@property(nonatomic, strong) ASImageNode * videoChannelThumbnailsNode;
+
 @end
 
 
@@ -41,14 +43,13 @@ static CGFloat kTextPadding = 10.0f;
 
    self.backgroundColor = [UIColor whiteColor];
 
-   [self setupContainerNode];
-   [self addSubnode:self.videoChannelThumbnailsNode];
+   _channelImageNode = [YTAsChannelThumbnailsImageNode nodeWithChannelId:[YoutubeParser getChannelIdByVideo:self.cardInfo]];
+   [self addSubnode:_channelImageNode];
 
    // create a text node
    _textNode = [[ASTextNode alloc] init];
 
    // generate an attributed string using the custom link attribute specified above
-//   NSString * blurb = @"kittens courtesy placekitten.com kittens courtesy placekitten.com kittens courtesy placekitten.com \U0001F638";
    NSString * blurb = videoCache.snippet.channelTitle;
    NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:blurb];
    [string addAttribute:NSFontAttributeName
@@ -73,42 +74,6 @@ static CGFloat kTextPadding = 10.0f;
 }
 
 
-- (void)setupContainerNode {
-   NSString * videoTitleValue = self.cardInfo.snippet.title;
-   NSString * channelTitleValue = self.cardInfo.snippet.channelTitle;
-   // 1
-//   ASCacheNetworkImageNode * videoChannelThumbnailsNode = [[ASCacheNetworkImageNode alloc] initForImageCache];
-   YTAsChannelThumbnailsImageNode * videoChannelThumbnailsNode = [YTAsChannelThumbnailsImageNode nodeWithChannelId:[YoutubeParser getChannelIdByVideo:self.cardInfo]];
-
-   // configure the button
-//   videoCoverThumbnailsNode.userInteractionEnabled = YES; // opt into touch handling
-//   [videoCoverThumbnailsNode addTarget:self
-//                                  action:@selector(channelThumbnailsTapped:)
-//                        forControlEvents:ASControlNodeEventTouchUpInside];
-
-
-//   [self showChannelThumbnail:[YoutubeParser getChannelIdByVideo:self.cardInfo]];
-
-   self.videoChannelThumbnailsNode = videoChannelThumbnailsNode;
-}
-
-
-//- (void)showChannelThumbnail:(NSString *)channelId {
-//   if (self.cardInfo.channelThumbnailUrl) {
-//      [self.videoChannelThumbnailsNode startFetchImageWithString:self.cardInfo.channelThumbnailUrl];
-//      return;
-//   }
-//
-//   YoutubeResponseBlock completionBlock = ^(NSArray * array, NSObject * respObject) {
-//       self.cardInfo.channelThumbnailUrl = respObject;
-//       [self.videoChannelThumbnailsNode startFetchImageWithString:self.cardInfo.channelThumbnailUrl];
-//   };
-//   [[GYoutubeHelper getInstance] fetchChannelThumbnailsWithChannelId:channelId
-//                                                          completion:completionBlock
-//                                                        errorHandler:nil];
-//}
-
-
 - (void)didLoad {
    // enable highlighting now that self.layer has loaded -- see ASHighlightOverlayLayer.h
    self.layer.as_allowsHighlightDrawing = YES;
@@ -126,12 +91,12 @@ static CGFloat kTextPadding = 10.0f;
 
 
 - (void)layout {
-   _videoChannelThumbnailsNode.frame = CGRectMake(2, 2, 40, 40);
+
+   _channelImageNode.frame = CGRectMake(5, 5, 28, 28);
 
    // called on the main thread.  we'll use the stashed size from above, instead of blocking on text sizing
    CGSize textNodeSize = _textNode.calculatedSize;
-   _textNode.frame = CGRectMake(
-    50, kTextPadding, textNodeSize.width, textNodeSize.height);
+   _textNode.frame = CGRectMake(50, kTextPadding, textNodeSize.width, textNodeSize.height);
 
    CGFloat pixelHeight = 1.0f / [[UIScreen mainScreen] scale];
    _divider.frame = CGRectMake(0.0f, 0.0f, self.calculatedSize.width, pixelHeight);

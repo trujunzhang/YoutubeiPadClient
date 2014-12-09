@@ -34,7 +34,7 @@
 
 @property(nonatomic, strong) ASTextNode * videoTitleTextNode;
 
-@property(nonatomic, strong) ASImageNode * videoChannelThumbnailsNode;
+@property(nonatomic, strong) ASImageNode * _channelImageNode;
 @property(nonatomic, strong) ASTextNode * channelTitleTextNode;
 
 @property(nonatomic, strong) ASDisplayNode * divider;
@@ -75,7 +75,7 @@
    self.divider.layerBacked = true;
 
    // line03
-   self.videoChannelThumbnailsNode.layerBacked = true;
+   self._channelImageNode.layerBacked = true;
    self.channelTitleTextNode.layerBacked = true;
 }
 
@@ -240,18 +240,18 @@
 - (void)showChannelThumbnail:(NSString *)channelId {
    YTAsChannelThumbnailsImageNode * videoChannelThumbnailsNode = [YTAsChannelThumbnailsImageNode nodeWithChannelId:channelId];
 
-   self.videoChannelThumbnailsNode = videoChannelThumbnailsNode;
-   [self addSubnode:self.videoChannelThumbnailsNode];
+   self._channelImageNode = videoChannelThumbnailsNode;
+   [self addSubnode:self._channelImageNode];
 }
 
 
 - (void)layoutThirdForChannelInfo {
-   self.videoChannelThumbnailsNode.frame = [FrameCalculator frameForChannelThumbnail:self.bounds
+   self._channelImageNode.frame = [FrameCalculator frameForChannelThumbnail:self.bounds
                                                                       thirdRowHeight:THIRD_ROW_HEIGHT];
 
    self.channelTitleTextNode.frame = [FrameCalculator frameForChannelTitleText:self.bounds
                                                                 thirdRowHeight:THIRD_ROW_HEIGHT
-                                                                 leftNodeFrame:self.videoChannelThumbnailsNode.frame];
+                                                                 leftNodeFrame:self._channelImageNode.frame];
 }
 
 
