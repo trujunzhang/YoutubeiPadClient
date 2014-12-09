@@ -151,7 +151,8 @@
 
       if ([self getYoutubeRequestInfo].hasLoadingMore) {
          [footerView startAnimation];
-         [self.nextPageDelegate executeNextPageTask];
+         if (self.nextPageDelegate)
+            [self.nextPageDelegate executeNextPageTask];
       } else {
          footerView.hidden = YES;
          [footerView stopAnimation];
