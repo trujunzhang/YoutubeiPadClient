@@ -3,6 +3,9 @@
 
 @interface MxTabBarManager : NSObject
 
-+ (MxTabBarManager *)sharedCache;
++ (MxTabBarManager *)sharedTabBarManager;
 
+- (void)registerTabBarController:(UITabBarController *)tabBarController;
+
+- (UINavigationController *)currentNavigationController;
 @end

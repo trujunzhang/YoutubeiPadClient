@@ -1,7 +1,9 @@
 #import "MxTabBarManager.h"
 
 
-@interface MxTabBarManager ()
+@interface MxTabBarManager () {
+   UITabBarController * _tabBarController;
+}
 
 
 @end
@@ -9,7 +11,7 @@
 
 @implementation MxTabBarManager
 
-+ (MxTabBarManager *)sharedCache {
++ (MxTabBarManager *)sharedTabBarManager {
    static MxTabBarManager * cache;
    static dispatch_once_t onceToken;
    dispatch_once(&onceToken, ^{
@@ -20,4 +22,12 @@
 }
 
 
+- (void)registerTabBarController:(UITabBarController *)tabBarController {
+   _tabBarController = tabBarController;
+}
+
+
+- (UINavigationController *)currentNavigationController {
+   return _tabBarController.selectedViewController;
+}
 @end

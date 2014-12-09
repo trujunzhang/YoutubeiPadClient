@@ -17,6 +17,7 @@
 #import "LeftRevealHelper.h"
 #import "GYoutubeHelper.h"
 #import "CacheImageConstant.h"
+#import "MxTabBarManager.h"
 
 
 @interface MxAsTubeAppDelegate ()<UIApplicationDelegate, UITabBarControllerDelegate, SWRevealViewControllerDelegate, GYoutubeHelperDelegate, LeftMenuViewBaseDelegate> {
@@ -64,6 +65,9 @@
    self.revealController.delegate = self;
 
    [[LeftRevealHelper sharedLeftRevealHelper] registerRevealController:self.revealController];
+   [[MxTabBarManager sharedTabBarManager] registerTabBarController:_tabBarController];
+
+//   UINavigationController * navigationController=[[MxTabBarManager sharedTabBarManager] currentNavigationController];
 
    //7
    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
