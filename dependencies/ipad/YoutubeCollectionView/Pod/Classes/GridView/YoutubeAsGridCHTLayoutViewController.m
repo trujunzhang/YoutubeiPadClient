@@ -94,6 +94,7 @@
 
 - (void)viewDidLayoutSubviews {
    [super viewDidLayoutSubviews];
+
    CGRect rect = self.view.bounds;
    self.collectionView.frame = rect;
 
