@@ -13,7 +13,7 @@
 #import "YTVideoDetailViewController.h"
 #import "YoutubePopUpTableViewController.h"
 #import "GYoutubeHelper.h"
-#import "CollectionViewCellConstant.h"
+
 #import "MxTabBarManager.h"
 
 

@@ -13,7 +13,7 @@
 #import "FrameCalculator.h"
 #import "Foundation.h"
 #import "AsyncDisplayKitStatic.h"
-#import "CollectionViewCellConstant.h"
+
 #import "UIColor+iOS8Colors.h"
 #import "MxTabBarManager.h"
 

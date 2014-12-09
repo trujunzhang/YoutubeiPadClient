@@ -19,7 +19,7 @@
 
 #import "AsyncDisplayKitStatic.h"
 #import "YTAsChannelThumbnailsImageNode.h"
-#import "CollectionViewCellConstant.h"
+
 #import "YoutubeCollectionViewBase.h"
 #import "MxTabBarManager.h"
 

@@ -11,7 +11,7 @@
 #import "CHTCollectionViewWaterfallLayout.h"
 #import "YTGridVideoCellNode.h"
 #import "YoutubeFooterView.h"
-#import "CollectionViewCellConstant.h"
+
 
 #define ASGRIDROWCELL YTGridVideoCellNode
 //#define ASGRIDROWCELL YTAsGridVideoCellNode

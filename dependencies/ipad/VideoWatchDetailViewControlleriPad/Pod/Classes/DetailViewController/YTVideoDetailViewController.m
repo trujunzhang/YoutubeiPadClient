@@ -5,7 +5,7 @@
 #import "YTAsVideoDetailViewController.h"
 #import "GGTabBarController.h"
 #import "GGLayoutStringTabBar.h"
-#import "CollectionViewCellConstant.h"
+
 
 
 @interface YTVideoDetailViewController ()<YoutubeCollectionNextPageDelegate, GGTabBarControllerDelegate> {

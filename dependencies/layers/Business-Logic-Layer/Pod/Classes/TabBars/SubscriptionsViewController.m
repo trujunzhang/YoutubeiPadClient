@@ -12,7 +12,7 @@
 #import "YTVideoDetailViewController.h"
 #import "LeftRevealHelper.h"
 #import "YoutubeChannelPageViewController.h"
-#import "CollectionViewCellConstant.h"
+
 #import "MxTabBarManager.h"
 #import "LeftMenuViewBase.h"
 
