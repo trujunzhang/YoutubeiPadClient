@@ -7,7 +7,6 @@
 #import "GGLayoutStringTabBar.h"
 
 
-
 @interface YTVideoDetailViewController ()<YoutubeCollectionNextPageDelegate, GGTabBarControllerDelegate> {
    NSArray * _lastControllerArray;
 }
@@ -69,12 +68,11 @@
    self.secondViewController = [[UIViewController alloc] init];
    self.secondViewController.title = @"More From";
 
-   self.thirdViewController = [[YTCollectionViewController alloc] init];
+   self.thirdViewController = [[YTCollectionViewController alloc] initWithNextPageDelegate:self
+                                                                                 withTitle:@"Suggestions"];
    self.thirdViewController.numbersPerLineArray = [NSArray arrayWithObjects:@"3", @"2", nil];
-   self.thirdViewController.title = @"Suggestions";
 
    [self.thirdViewController fetchSuggestionListByVideoId:[YoutubeParser getWatchVideoId:self.video]];
-   self.thirdViewController.nextPageDelegate = self;
 
    // 2
    self.videoDetailController = [[YTAsVideoDetailViewController alloc] initWithVideo:self.video];

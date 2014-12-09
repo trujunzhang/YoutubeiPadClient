@@ -72,10 +72,8 @@
    // 1
    NSMutableArray * tabBarControllers = [[NSMutableArray alloc] init];
    for (NSString * title in [GYoutubeRequestInfo getChannelPageSegmentTitlesArray]) {
-      YTCollectionViewController * controller = [[YTCollectionViewController alloc] init];
-
-      controller.nextPageDelegate = self;
-      controller.title = title;
+      YTCollectionViewController * controller = [[YTCollectionViewController alloc] initWithNextPageDelegate:self
+                                                                                                   withTitle:title];
       controller.numbersPerLineArray = [NSArray arrayWithObjects:@"3", @"4", nil];
 
       [tabBarControllers addObject:controller];

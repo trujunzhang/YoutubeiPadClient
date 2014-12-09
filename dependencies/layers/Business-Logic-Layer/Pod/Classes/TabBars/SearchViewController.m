@@ -55,9 +55,8 @@
    }
 
    // 2
-   _collectionViewController = [[YTCollectionViewController alloc] init];
-
-   _collectionViewController.nextPageDelegate = self;
+   _collectionViewController = [[YTCollectionViewController alloc] initWithNextPageDelegate:self
+                                                                                  withTitle:nil];
    _collectionViewController.numbersPerLineArray = [NSArray arrayWithObjects:@"3", @"4", nil];
 }
 
@@ -170,7 +169,6 @@
 - (void)executeNextPageTask {
    [_collectionViewController searchByPageToken];
 }
-
 
 
 #pragma mark -
