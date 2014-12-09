@@ -17,7 +17,7 @@
 #import <google-api-services-youtube/GYoutubeHelper.h>
 
 
-static CGFloat kTextPadding = 10.0f;
+static CGFloat KDetailRowHeight = 50.0f;
 
 
 @interface AsDetailRowChannelInfo () {
@@ -41,8 +41,6 @@ static CGFloat kTextPadding = 10.0f;
 
    self.cardInfo = videoCache;
 
-   self.backgroundColor = [UIColor whiteColor];
-
    _channelImageNode = [YTAsChannelThumbnailsImageNode nodeWithChannelId:[YoutubeParser getChannelIdByVideo:self.cardInfo]];
    [self addSubnode:_channelImageNode];
 
@@ -55,11 +53,6 @@ static CGFloat kTextPadding = 10.0f;
    [string addAttribute:NSFontAttributeName
                   value:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]
                   range:NSMakeRange(0, blurb.length)];
-   [string addAttributes:@{
-     NSForegroundColorAttributeName : [UIColor grayColor],
-     NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternDot),
-    }
-                   range:[blurb rangeOfString:@"placekitten.com"]];
    _textNode.attributedString = string;
 
    // add it as a subnode, and we're done
@@ -84,22 +77,21 @@ static CGFloat kTextPadding = 10.0f;
 
 - (CGSize)calculateSizeThatFits:(CGSize)constrainedSize {
    // called on a background thread.  custom nodes must call -measure: on their subnodes in -calculateSizeThatFits:
-   CGSize measuredSize = [_textNode measure:CGSizeMake(constrainedSize.width - 2 * kTextPadding,
-    constrainedSize.height - 2 * kTextPadding)];
-   return CGSizeMake(constrainedSize.width, measuredSize.height + 2 * kTextPadding);
+
+   CGSize size = CGSizeMake(constrainedSize.width, KDetailRowHeight);
+   return size;
 }
 
 
 - (void)layout {
 
-   _channelImageNode.frame = CGRectMake(5, 5, 28, 28);
+   _channelImageNode.frame = CGRectMake(12, 10, 44, 34);
 
    // called on the main thread.  we'll use the stashed size from above, instead of blocking on text sizing
-   CGSize textNodeSize = _textNode.calculatedSize;
-   _textNode.frame = CGRectMake(50, kTextPadding, textNodeSize.width, textNodeSize.height);
+   _textNode.frame = CGRectMake(68, 12, 200, 18);
 
    CGFloat pixelHeight = 1.0f / [[UIScreen mainScreen] scale];
-   _divider.frame = CGRectMake(0.0f, 0.0f, self.calculatedSize.width, pixelHeight);
+   _divider.frame = CGRectMake(0.0f, KDetailRowHeight - pixelHeight, self.calculatedSize.width, pixelHeight);
 }
 
 
