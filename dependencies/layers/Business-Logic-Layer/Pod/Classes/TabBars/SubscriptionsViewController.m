@@ -47,9 +47,7 @@
 
 - (void)startToggleLeftMenuWithTitle:(NSString *)title withType:(YTPlaylistItemsType)playlistItemsType {
    // 1
-   YTCollectionViewController * gridViewController = [[YTCollectionViewController alloc] init];
-   gridViewController.title = title;
-   gridViewController.nextPageDelegate = self;
+   YTCollectionViewController * gridViewController = [[YTCollectionViewController alloc] initWithNextPageDelegate:self withTitle:title];
    gridViewController.numbersPerLineArray = [NSArray arrayWithObjects:@"3", @"4", nil];
 
    // 2

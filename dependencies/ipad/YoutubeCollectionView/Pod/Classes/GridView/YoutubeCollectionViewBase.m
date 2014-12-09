@@ -15,7 +15,6 @@
 #import "HexColor.h"
 
 
-
 @interface YoutubeCollectionViewBase () {
    BOOL isFirstRequest;
 }
@@ -29,6 +28,18 @@
 
 
 @implementation YoutubeCollectionViewBase
+
+- (instancetype)initWithNextPageDelegate:(id<YoutubeCollectionNextPageDelegate>)nextPageDelegate withTitle:(NSString *)title {
+   self = [super init];
+   if (self) {
+      self.nextPageDelegate = nextPageDelegate;
+      self.title = title;
+   }
+
+   return self;
+}
+
+
 
 
 - (GYoutubeRequestInfo *)getYoutubeRequestInfo {
