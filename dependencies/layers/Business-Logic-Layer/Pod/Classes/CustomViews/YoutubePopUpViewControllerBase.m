@@ -11,10 +11,10 @@
 
 
 @interface YoutubePopUpViewControllerBase ()<UIPopoverControllerDelegate, YoutubePopUpTableViewDelegate> {
-
+   YoutubePopUpTableViewController * _popUpTableViewController;
+   UIPopoverController * _popover;
 }
-@property(nonatomic, strong) YoutubePopUpTableViewController * popUpTableViewController;
-@property(nonatomic, strong) UIPopoverController * popover;
+
 
 @end
 
@@ -25,8 +25,8 @@
 - (void)viewDidLoad {
    [super viewDidLoad];
 
-   self.popUpTableViewController = [[YoutubePopUpTableViewController alloc] init];
-   self.popUpTableViewController.popupDelegate = self;
+   _popUpTableViewController = [[YoutubePopUpTableViewController alloc] init];
+   _popUpTableViewController.popupDelegate = self;
 }
 
 
@@ -35,24 +35,24 @@
 
 
 - (void)hidePopup {
-   if (self.popover) {
-      [self.popover dismissPopoverAnimated:YES];
-      self.popover = nil;
+   if (_popover) {
+      [_popover dismissPopoverAnimated:YES];
+      _popover = nil;
    }
 
 }
 
 
 - (void)showPopupDialog:(UIBarButtonItem *)item {
-   if (self.popover)
+   if (_popover)
       return;
 
-   self.popover = [[UIPopoverController alloc] initWithContentViewController:self.popUpTableViewController];
-   self.popover.delegate = self;
+   _popover = [[UIPopoverController alloc] initWithContentViewController:_popUpTableViewController];
+   _popover.delegate = self;
 
-   [self.popover presentPopoverFromBarButtonItem:item
-                        permittedArrowDirections:UIPopoverArrowDirectionAny
-                                        animated:YES];
+   [_popover presentPopoverFromBarButtonItem:item
+                    permittedArrowDirections:UIPopoverArrowDirectionAny
+                                    animated:YES];
 }
 
 
@@ -61,12 +61,12 @@
 
 
 - (void)cleanUpContent {
-   [self.popUpTableViewController empty];
+   [_popUpTableViewController empty];
 }
 
 
 - (void)reloadContent:(NSArray *)array {
-   [self.popUpTableViewController resetTableSource:array];
+   [_popUpTableViewController resetTableSource:array];
 }
 
 
@@ -74,7 +74,7 @@
 
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
-   self.popover = nil;
+   _popover = nil;
 }
 
 
