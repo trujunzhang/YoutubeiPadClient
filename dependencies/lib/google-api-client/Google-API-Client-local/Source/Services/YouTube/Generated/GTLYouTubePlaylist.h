@@ -65,7 +65,7 @@
 
 @interface GTLYouTubePlaylist : GTLObject
 
-// The contentDetails object contains information like video count.
+// The contentDetails object contains information like detailVideo count.
 @property (retain) GTLYouTubePlaylistContentDetails *contentDetails;
 
 // Etag of this resource.

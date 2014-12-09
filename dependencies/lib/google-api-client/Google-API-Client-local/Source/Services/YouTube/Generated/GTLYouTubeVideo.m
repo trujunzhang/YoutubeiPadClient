@@ -67,7 +67,7 @@
 }
 
 + (void)load {
-  [self registerObjectClassForKind:@"youtube#video"];
+  [self registerObjectClassForKind:@"youtube#detailVideo"];
 }
 
 @end

@@ -59,7 +59,7 @@
 
 // The broadcast's description. As with the title, you can set this field by
 // modifying the broadcast resource or by setting the description field of the
-// corresponding video resource.
+// corresponding detailVideo resource.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
@@ -81,8 +81,8 @@
 @property (retain) GTLYouTubeThumbnailDetails *thumbnails;
 
 // The broadcast's title. Note that the broadcast represents exactly one YouTube
-// video. You can set this field by modifying the broadcast resource or by
-// setting the title field of the corresponding video resource.
+// detailVideo. You can set this field by modifying the broadcast resource or by
+// setting the title field of the corresponding detailVideo resource.
 @property (copy) NSString *title;
 
 @end

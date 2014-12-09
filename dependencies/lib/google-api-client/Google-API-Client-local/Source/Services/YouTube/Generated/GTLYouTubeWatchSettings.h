@@ -43,14 +43,14 @@
 
 @interface GTLYouTubeWatchSettings : GTLObject
 
-// The text color for the video watch page's branded area.
+// The text color for the detailVideo watch page's branded area.
 @property (copy) NSString *backgroundColor;
 
-// An ID that uniquely identifies a playlist that displays next to the video
+// An ID that uniquely identifies a playlist that displays next to the detailVideo
 // player.
 @property (copy) NSString *featuredPlaylistId;
 
-// The background color for the video watch page's branded area.
+// The background color for the detailVideo watch page's branded area.
 @property (copy) NSString *textColor;
 
 @end

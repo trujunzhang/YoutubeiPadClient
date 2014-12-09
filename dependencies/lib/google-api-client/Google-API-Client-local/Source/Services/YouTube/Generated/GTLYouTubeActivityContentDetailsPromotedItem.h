@@ -78,7 +78,7 @@
 // indicate that the user was shown this promoted item.
 @property (retain) NSArray *impressionUrl;  // of NSString
 
-// The ID that YouTube uses to uniquely identify the promoted video.
+// The ID that YouTube uses to uniquely identify the promoted detailVideo.
 @property (copy) NSString *videoId;
 
 @end

@@ -41,22 +41,22 @@
 
 @interface GTLYouTubePlaylistItemContentDetails : GTLObject
 
-// The time, measured in seconds from the start of the video, when the video
-// should stop playing. (The playlist owner can specify the times when the video
-// should start and stop playing when the video is played in the context of the
-// playlist.) By default, assume that the video.endTime is the end of the video.
+// The time, measured in seconds from the start of the detailVideo, when the detailVideo
+// should stop playing. (The playlist owner can specify the times when the detailVideo
+// should start and stop playing when the detailVideo is played in the context of the
+// playlist.) By default, assume that the detailVideo.endTime is the end of the detailVideo.
 @property (copy) NSString *endAt;
 
 // A user-generated note for this item.
 @property (copy) NSString *note;
 
-// The time, measured in seconds from the start of the video, when the video
+// The time, measured in seconds from the start of the detailVideo, when the detailVideo
 // should start playing. (The playlist owner can specify the times when the
-// video should start and stop playing when the video is played in the context
+// detailVideo should start and stop playing when the detailVideo is played in the context
 // of the playlist.) The default value is 0.
 @property (copy) NSString *startAt;
 
-// The ID that YouTube uses to uniquely identify a video. To retrieve the video
+// The ID that YouTube uses to uniquely identify a detailVideo. To retrieve the detailVideo
 // resource, set the id query parameter to this value in your API request.
 @property (copy) NSString *videoId;
 

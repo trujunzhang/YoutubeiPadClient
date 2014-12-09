@@ -58,7 +58,7 @@
 @property (retain) NSNumber *enableContentEncryption;  // boolValue
 
 // This setting determines whether viewers can access DVR controls while
-// watching the video. DVR controls enable the viewer to control the video
+// watching the detailVideo. DVR controls enable the viewer to control the detailVideo
 // playback experience by pausing, rewinding, or fast forwarding content. The
 // default value for this property is true.
 // Important: You must set the value to true and also set the enableArchive
@@ -66,9 +66,9 @@
 // after the broadcast ends.
 @property (retain) NSNumber *enableDvr;  // boolValue
 
-// This setting indicates whether the broadcast video can be played in an
-// embedded player. If you choose to archive the video (using the enableArchive
-// property), this setting will also apply to the archived video.
+// This setting indicates whether the broadcast detailVideo can be played in an
+// embedded player. If you choose to archive the detailVideo (using the enableArchive
+// property), this setting will also apply to the archived detailVideo.
 @property (retain) NSNumber *enableEmbed;  // boolValue
 
 // The monitorStream object contains information about the monitor stream, which
@@ -82,7 +82,7 @@
 // want the playback to be available immediately after the broadcast ends. If
 // you set this property's value to true but do not also set the enableDvr
 // property to true, there may be a delay of around one day before the archived
-// video will be available for playback.
+// detailVideo will be available for playback.
 @property (retain) NSNumber *recordFromStart;  // boolValue
 
 // This setting indicates whether the broadcast should automatically begin with

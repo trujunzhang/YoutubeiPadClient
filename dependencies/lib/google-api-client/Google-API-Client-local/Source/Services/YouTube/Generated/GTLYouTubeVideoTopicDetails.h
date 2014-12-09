@@ -39,18 +39,18 @@
 //   GTLYouTubeVideoTopicDetails
 //
 
-// Freebase topic information related to the video.
+// Freebase topic information related to the detailVideo.
 
 @interface GTLYouTubeVideoTopicDetails : GTLObject
 
 // Similar to topic_id, except that these topics are merely relevant to the
-// video. These are topics that may be mentioned in, or appear in the video. You
+// detailVideo. These are topics that may be mentioned in, or appear in the detailVideo. You
 // can retrieve information about each topic using Freebase Topic API.
 @property (retain) NSArray *relevantTopicIds;  // of NSString
 
-// A list of Freebase topic IDs that are centrally associated with the video.
-// These are topics that are centrally featured in the video, and it can be said
-// that the video is mainly about each of these. You can retrieve information
+// A list of Freebase topic IDs that are centrally associated with the detailVideo.
+// These are topics that are centrally featured in the detailVideo, and it can be said
+// that the detailVideo is mainly about each of these. You can retrieve information
 // about each topic using the Freebase Topic API.
 @property (retain) NSArray *topicIds;  // of NSString
 

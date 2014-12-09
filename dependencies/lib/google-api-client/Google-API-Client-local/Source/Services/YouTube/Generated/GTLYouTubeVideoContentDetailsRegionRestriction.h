@@ -39,20 +39,20 @@
 //   GTLYouTubeVideoContentDetailsRegionRestriction
 //
 
-// DEPRECATED Region restriction of the video.
+// DEPRECATED Region restriction of the detailVideo.
 
 @interface GTLYouTubeVideoContentDetailsRegionRestriction : GTLObject
 
-// A list of region codes that identify countries where the video is viewable.
+// A list of region codes that identify countries where the detailVideo is viewable.
 // If this property is present and a country is not listed in its value, then
-// the video is blocked from appearing in that country. If this property is
-// present and contains an empty list, the video is blocked in all countries.
+// the detailVideo is blocked from appearing in that country. If this property is
+// present and contains an empty list, the detailVideo is blocked in all countries.
 @property (retain) NSArray *allowed;  // of NSString
 
-// A list of region codes that identify countries where the video is blocked. If
+// A list of region codes that identify countries where the detailVideo is blocked. If
 // this property is present and a country is not listed in its value, then the
-// video is viewable in that country. If this property is present and contains
-// an empty list, the video is viewable in all countries.
+// detailVideo is viewable in that country. If this property is present and contains
+// an empty list, the detailVideo is viewable in all countries.
 @property (retain) NSArray *blocked;  // of NSString
 
 @end

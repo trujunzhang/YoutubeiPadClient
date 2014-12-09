@@ -138,7 +138,7 @@ static GYoutubeHelper * instance = nil;
    NSMutableArray * videoIds = [[NSMutableArray alloc] init];
 
    if (searchResultList) {
-      // Merge video IDs
+      // Merge detailVideo IDs
       for (YTYouTubePlaylistItem * searchResult in searchResultList) {
          [videoIds addObject:searchResult.contentDetails.videoId];
       }

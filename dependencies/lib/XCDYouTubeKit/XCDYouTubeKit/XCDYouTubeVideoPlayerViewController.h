@@ -18,7 +18,7 @@
 MP_EXTERN NSString *const XCDMoviePlayerPlaybackDidFinishErrorUserInfoKey;
 
 /**
- *  Posted when the video player has received the video information. The `object` of the notification is the `XCDYouTubeVideoPlayerViewController` instance. The `userInfo` dictionary contains the `XCDYouTubeVideo` object.
+ *  Posted when the detailVideo player has received the detailVideo information. The `object` of the notification is the `XCDYouTubeVideoPlayerViewController` instance. The `userInfo` dictionary contains the `XCDYouTubeVideo` object.
  */
 MP_EXTERN NSString *const XCDYouTubeVideoPlayerViewControllerDidReceiveVideoNotification;
 /**
@@ -29,9 +29,9 @@ MP_EXTERN NSString *const XCDYouTubeVideoUserInfoKey;
 /**
  *  A subclass of `MPMoviePlayerViewController` for playing YouTube videos.
  *
- *  Use UIViewController’s `presentMoviePlayerViewControllerAnimated:` method to play a YouTube video fullscreen.
+ *  Use UIViewController’s `presentMoviePlayerViewControllerAnimated:` method to play a YouTube detailVideo fullscreen.
  *
- *  Use the `presentInView:` method to play a YouTube video inline.
+ *  Use the `presentInView:` method to play a YouTube detailVideo inline.
  */
 @interface XCDYouTubeVideoPlayerViewController : MPMoviePlayerViewController
 
@@ -42,11 +42,11 @@ MP_EXTERN NSString *const XCDYouTubeVideoUserInfoKey;
  */
 
 /**
- *  Initializes a YouTube video player view controller
+ *  Initializes a YouTube detailVideo player view controller
  *
- *  @param videoIdentifier A 11 characters YouTube video identifier. If the video identifier is invalid (including nil) the `MPMoviePlayerPlaybackDidFinishNotification` will be posted with a `MPMovieFinishReasonPlaybackError` reason.
+ *  @param videoIdentifier A 11 characters YouTube detailVideo identifier. If the detailVideo identifier is invalid (including nil) the `MPMoviePlayerPlaybackDidFinishNotification` will be posted with a `MPMovieFinishReasonPlaybackError` reason.
  *
- *  @return An initialized YouTube video player view controller with the specified video identifier.
+ *  @return An initialized YouTube detailVideo player view controller with the specified detailVideo identifier.
  *
  *  @discussion You pass a nil videoIdentifier and set the `videoIdentifier` property later.
  */
@@ -54,23 +54,23 @@ MP_EXTERN NSString *const XCDYouTubeVideoUserInfoKey;
 
 /**
  *  ------------------------------------
- *  @name Accessing the video identifier
+ *  @name Accessing the detailVideo identifier
  *  ------------------------------------
  */
 
 /**
- *  The 11 characters YouTube video identifier.
+ *  The 11 characters YouTube detailVideo identifier.
  */
 @property (nonatomic, copy) NSString *videoIdentifier;
 
 /**
  *  ------------------------------------------
- *  @name Defining the preferred video quality
+ *  @name Defining the preferred detailVideo quality
  *  ------------------------------------------
  */
 
 /**
- *  The preferred order for the quality of the video to play. Plays the first match when multiple video streams are available.
+ *  The preferred order for the quality of the detailVideo to play. Plays the first match when multiple detailVideo streams are available.
  *
  *  Defaults to @[ XCDYouTubeVideoQualityHTTPLiveStreaming, @(XCDYouTubeVideoQualityHD720), @(XCDYouTubeVideoQualityMedium360), @(XCDYouTubeVideoQualitySmall240) ]
  *
@@ -82,16 +82,16 @@ MP_EXTERN NSString *const XCDYouTubeVideoUserInfoKey;
 
 /**
  *  ------------------------
- *  @name Presenting a video
+ *  @name Presenting a detailVideo
  *  ------------------------
  */
 
 /**
- *  Present the video inside a view.
+ *  Present the detailVideo inside a view.
  *
- *  @param view The view inside which you want to present the video.
+ *  @param view The view inside which you want to present the detailVideo.
  *
- *  @discussion The video view is added as a subview of the specified view. The video does not start playing immediately, you have to call `[videoPlayerViewController.moviePlayer play]` for playback to start. See `MPMoviePlayerController` documentation for more information.
+ *  @discussion The detailVideo view is added as a subview of the specified view. The detailVideo does not start playing immediately, you have to call `[videoPlayerViewController.moviePlayer play]` for playback to start. See `MPMoviePlayerController` documentation for more information.
  *
  *  Ownership of the XCDYouTubeVideoPlayerViewController instance is transferred to the view.
  */

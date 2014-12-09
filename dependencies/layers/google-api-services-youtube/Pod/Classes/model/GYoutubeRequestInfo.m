@@ -47,7 +47,7 @@
 
    NSDictionary * parameters = @{
     @"part" : @"id,snippet",
-    @"type" : @"video",
+    @"type" : @"detailVideo",
     @"relatedToVideoId" : videoId,
     @"fields" : @"items(id/videoId),nextPageToken",
    };
@@ -217,7 +217,7 @@
 
 + (NSArray *)getQueryTypeArray {
    NSArray * array = [NSArray arrayWithObjects:
-    @"video",
+    @"detailVideo",
     @"channel",
     @"playlist",
      nil];

@@ -43,7 +43,7 @@
 //   GTLYouTubePlaylistItem
 //
 
-// A playlistItem resource identifies another resource, such as a video, that is
+// A playlistItem resource identifies another resource, such as a detailVideo, that is
 // included in a playlist. In addition, the playlistItem resource contains
 // details about the included resource that pertain specifically to how that
 // resource is used in that playlist.
@@ -60,13 +60,13 @@
 // resource for a given channel. You can then use the playlistItems.list method
 // to retrieve any of those lists. You can also add or remove items from those
 // lists by calling the playlistItems.insert and playlistItems.delete methods.
-// For example, if a user gives a positive rating to a video, you would insert
-// that video into the liked videos playlist for that user's channel.
+// For example, if a user gives a positive rating to a detailVideo, you would insert
+// that detailVideo into the liked videos playlist for that user's channel.
 
 @interface GTLYouTubePlaylistItem : GTLObject
 
 // The contentDetails object is included in the resource if the included item is
-// a YouTube video. The object contains additional information about the video.
+// a YouTube detailVideo. The object contains additional information about the detailVideo.
 @property (retain) GTLYouTubePlaylistItemContentDetails *contentDetails;
 
 // Etag of this resource.

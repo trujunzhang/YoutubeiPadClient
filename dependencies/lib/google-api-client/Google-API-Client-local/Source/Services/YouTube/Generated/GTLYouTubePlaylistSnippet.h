@@ -49,7 +49,7 @@
 // playlist.
 @property (copy) NSString *channelId;
 
-// The channel title of the channel that the video belongs to.
+// The channel title of the channel that the detailVideo belongs to.
 @property (copy) NSString *channelTitle;
 
 // The playlist's description.

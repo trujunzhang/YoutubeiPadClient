@@ -190,7 +190,7 @@
 
    [[MxTabBarManager sharedTabBarManager] pushWithVideo:self.video];
 
-//      [self.delegate gridViewCellTap:self.video];// TODO [test] djzhang gridViewCellTap
+//      [self.delegate gridViewCellTap:self.detailVideo];// TODO [test] djzhang gridViewCellTap
 }
 
 @end

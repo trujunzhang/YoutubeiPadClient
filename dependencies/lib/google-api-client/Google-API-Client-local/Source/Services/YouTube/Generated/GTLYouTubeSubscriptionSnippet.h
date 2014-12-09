@@ -65,7 +65,7 @@
 // to.
 @property (retain) GTLYouTubeResourceId *resourceId;
 
-// A map of thumbnail images associated with the video. For each object in the
+// A map of thumbnail images associated with the detailVideo. For each object in the
 // map, the key is the name of the thumbnail image, and the value is an object
 // that contains other information about the thumbnail.
 @property (retain) GTLYouTubeThumbnailDetails *thumbnails;

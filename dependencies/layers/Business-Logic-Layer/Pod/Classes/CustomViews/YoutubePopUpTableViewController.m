@@ -70,14 +70,6 @@
    return node;
 }
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//   UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"popcell" forIndexPath:indexPath];
-//
-//   cell.textLabel.text = self.ParsingArray[indexPath.row];
-//
-//   return cell;
-//}
-
 
 #pragma mark -
 #pragma mark UITableViewDelegate

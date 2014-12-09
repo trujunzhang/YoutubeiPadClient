@@ -39,15 +39,15 @@
 //   GTLYouTubeVideoCategorySnippet
 //
 
-// Basic details about a video category, such as its localized title.
+// Basic details about a detailVideo category, such as its localized title.
 
 @interface GTLYouTubeVideoCategorySnippet : GTLObject
 @property (retain) NSNumber *assignable;  // boolValue
 
-// The YouTube channel that created the video category.
+// The YouTube channel that created the detailVideo category.
 @property (copy) NSString *channelId;
 
-// The video category's title.
+// The detailVideo category's title.
 @property (copy) NSString *title;
 
 @end

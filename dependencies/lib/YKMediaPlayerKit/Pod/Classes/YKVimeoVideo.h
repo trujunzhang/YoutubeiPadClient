@@ -12,7 +12,7 @@
 @interface YKVimeoVideo : NSObject<YKVideo>
 
 /**
-    Vimeo video url
+    Vimeo detailVideo url
  */
 @property (nonatomic, strong) NSURL *contentURL;
 
@@ -23,7 +23,7 @@
 @property (nonatomic, strong) NSDictionary *videos;
 
 /**
-    Thumbnails found for this video. 
+    Thumbnails found for this detailVideo.
     Available after parseWithCompletion is executed.
  */
 @property (nonatomic, strong) NSDictionary *thumbs;

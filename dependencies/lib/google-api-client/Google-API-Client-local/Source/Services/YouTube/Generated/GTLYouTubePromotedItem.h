@@ -59,7 +59,7 @@
 // owner.
 @property (retain) NSNumber *promotedByContentOwner;  // boolValue
 
-// The temporal position within the video where the promoted item will be
+// The temporal position within the detailVideo where the promoted item will be
 // displayed. If present, it overrides the default timing.
 @property (retain) GTLYouTubeInvideoTiming *timing;
 

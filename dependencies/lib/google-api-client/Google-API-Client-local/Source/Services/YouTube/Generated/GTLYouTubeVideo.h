@@ -55,88 +55,88 @@
 //   GTLYouTubeVideo
 //
 
-// A video resource represents a YouTube video.
+// A detailVideo resource represents a YouTube detailVideo.
 
 @interface GTLYouTubeVideo : GTLObject
 
-// Age restriction details related to a video.
+// Age restriction details related to a detailVideo.
 @property (retain) GTLYouTubeVideoAgeGating *ageGating;
 
-// The contentDetails object contains information about the video content,
-// including the length of the video and its aspect ratio.
+// The contentDetails object contains information about the detailVideo content,
+// including the length of the detailVideo and its aspect ratio.
 @property (retain) GTLYouTubeVideoContentDetails *contentDetails;
 
 // The conversionPings object encapsulates information about url pings that need
-// to be respected by the App in different video contexts.
+// to be respected by the App in different detailVideo contexts.
 @property (retain) GTLYouTubeVideoConversionPings *conversionPings;
 
 // Etag of this resource.
 @property (copy) NSString *ETag;
 
-// The fileDetails object encapsulates information about the video file that was
+// The fileDetails object encapsulates information about the detailVideo file that was
 // uploaded to YouTube, including the file's resolution, duration, audio and
-// video codecs, stream bitrates, and more. This data can only be retrieved by
-// the video owner.
+// detailVideo codecs, stream bitrates, and more. This data can only be retrieved by
+// the detailVideo owner.
 @property (retain) GTLYouTubeVideoFileDetails *fileDetails;
 
-// The ID that YouTube uses to uniquely identify the video.
+// The ID that YouTube uses to uniquely identify the detailVideo.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
 // Identifies what kind of resource this is. Value: the fixed string
-// "youtube#video".
+// "youtube#detailVideo".
 @property (copy) NSString *kind;
 
-// The liveStreamingDetails object contains metadata about a live video
-// broadcast. The object will only be present in a video resource if the video
+// The liveStreamingDetails object contains metadata about a live detailVideo
+// broadcast. The object will only be present in a detailVideo resource if the detailVideo
 // is an upcoming, live, or completed live broadcast.
 @property (retain) GTLYouTubeVideoLiveStreamingDetails *liveStreamingDetails;
 
 // The monetizationDetails object encapsulates information about the
-// monetization status of the video.
+// monetization status of the detailVideo.
 @property (retain) GTLYouTubeVideoMonetizationDetails *monetizationDetails;
 
-// The player object contains information that you would use to play the video
+// The player object contains information that you would use to play the detailVideo
 // in an embedded player.
 @property (retain) GTLYouTubeVideoPlayer *player;
 
 // The processingProgress object encapsulates information about YouTube's
-// progress in processing the uploaded video file. The properties in the object
+// progress in processing the uploaded detailVideo file. The properties in the object
 // identify the current processing status and an estimate of the time remaining
-// until YouTube finishes processing the video. This part also indicates whether
+// until YouTube finishes processing the detailVideo. This part also indicates whether
 // different types of data or content, such as file details or thumbnail images,
-// are available for the video.
-// The processingProgress object is designed to be polled so that the video
+// are available for the detailVideo.
+// The processingProgress object is designed to be polled so that the detailVideo
 // uploaded can track the progress that YouTube has made in processing the
-// uploaded video file. This data can only be retrieved by the video owner.
+// uploaded detailVideo file. This data can only be retrieved by the detailVideo owner.
 @property (retain) GTLYouTubeVideoProcessingDetails *processingDetails;
 
 // The projectDetails object contains information about the project specific
-// video metadata.
+// detailVideo metadata.
 @property (retain) GTLYouTubeVideoProjectDetails *projectDetails;
 
 // The recordingDetails object encapsulates information about the location, date
-// and address where the video was recorded.
+// and address where the detailVideo was recorded.
 @property (retain) GTLYouTubeVideoRecordingDetails *recordingDetails;
 
-// The snippet object contains basic details about the video, such as its title,
+// The snippet object contains basic details about the detailVideo, such as its title,
 // description, and category.
 @property (retain) GTLYouTubeVideoSnippet *snippet;
 
-// The statistics object contains statistics about the video.
+// The statistics object contains statistics about the detailVideo.
 @property (retain) GTLYouTubeVideoStatistics *statistics;
 
-// The status object contains information about the video's uploading,
+// The status object contains information about the detailVideo's uploading,
 // processing, and privacy statuses.
 @property (retain) GTLYouTubeVideoStatus *status;
 
 // The suggestions object encapsulates suggestions that identify opportunities
-// to improve the video quality or the metadata for the uploaded video. This
-// data can only be retrieved by the video owner.
+// to improve the detailVideo quality or the metadata for the uploaded detailVideo. This
+// data can only be retrieved by the detailVideo owner.
 @property (retain) GTLYouTubeVideoSuggestions *suggestions;
 
 // The topicDetails object encapsulates information about Freebase topics
-// associated with the video.
+// associated with the detailVideo.
 @property (retain) GTLYouTubeVideoTopicDetails *topicDetails;
 
 @end

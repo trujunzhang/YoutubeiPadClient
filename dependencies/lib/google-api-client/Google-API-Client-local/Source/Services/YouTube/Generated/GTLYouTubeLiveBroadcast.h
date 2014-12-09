@@ -44,12 +44,12 @@
 //
 
 // A liveBroadcast resource represents an event that will be streamed, via live
-// video, on YouTube.
+// detailVideo, on YouTube.
 
 @interface GTLYouTubeLiveBroadcast : GTLObject
 
-// The contentDetails object contains information about the event's video
-// content, such as whether the content can be shown in an embedded video player
+// The contentDetails object contains information about the event's detailVideo
+// content, such as whether the content can be shown in an embedded detailVideo player
 // or if it will be archived and therefore available for viewing after the event
 // has concluded.
 @property (retain) GTLYouTubeLiveBroadcastContentDetails *contentDetails;

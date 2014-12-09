@@ -43,7 +43,7 @@
 
 @interface GTLYouTubeVideoConversionPings : GTLObject
 
-// Pings that the app shall fire for a video (authenticated by biscotti cookie).
+// Pings that the app shall fire for a detailVideo (authenticated by biscotti cookie).
 // Each ping has a context, in which the app must fire the ping, and a url
 // identifying the ping.
 @property (retain) NSArray *pings;  // of GTLYouTubeVideoConversionPing

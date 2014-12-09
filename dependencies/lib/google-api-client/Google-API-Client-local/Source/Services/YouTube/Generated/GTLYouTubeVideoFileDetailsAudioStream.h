@@ -52,7 +52,7 @@
 // The audio codec that the stream uses.
 @property (copy) NSString *codec;
 
-// A value that uniquely identifies a video vendor. Typically, the value is a
+// A value that uniquely identifies a detailVideo vendor. Typically, the value is a
 // four-letter vendor code.
 @property (copy) NSString *vendor;
 

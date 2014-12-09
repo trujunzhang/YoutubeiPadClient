@@ -39,7 +39,7 @@
 //   GTLYouTubeInvideoTiming
 //
 
-// Describes a temporal position of a visual widget inside a video.
+// Describes a temporal position of a visual widget inside a detailVideo.
 
 @interface GTLYouTubeInvideoTiming : GTLObject
 
@@ -49,13 +49,13 @@
 
 // Defines the time at which the promotion will appear. Depending on the value
 // of type the value of the offsetMs field will represent a time offset from the
-// start or from the end of the video, expressed in milliseconds.
+// start or from the end of the detailVideo, expressed in milliseconds.
 @property (retain) NSNumber *offsetMs;  // unsignedLongLongValue
 
 // Describes a timing type. If the value is offsetFromStart, then the offsetMs
-// field represents an offset from the start of the video. If the value is
+// field represents an offset from the start of the detailVideo. If the value is
 // offsetFromEnd, then the offsetMs field represents an offset from the end of
-// the video.
+// the detailVideo.
 @property (copy) NSString *type;
 
 @end

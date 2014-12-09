@@ -41,7 +41,7 @@
 //   GTLYouTubeActivityContentDetailsFavorite
 //
 
-// Information about a video that was marked as a favorite video.
+// Information about a detailVideo that was marked as a favorite detailVideo.
 
 @interface GTLYouTubeActivityContentDetailsFavorite : GTLObject
 

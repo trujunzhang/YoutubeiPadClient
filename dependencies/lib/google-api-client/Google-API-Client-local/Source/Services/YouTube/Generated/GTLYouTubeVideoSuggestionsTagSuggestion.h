@@ -43,14 +43,14 @@
 
 @interface GTLYouTubeVideoSuggestionsTagSuggestion : GTLObject
 
-// A set of video categories for which the tag is relevant. You can use this
-// information to display appropriate tag suggestions based on the video
-// category that the video uploader associates with the video. By default, tag
+// A set of detailVideo categories for which the tag is relevant. You can use this
+// information to display appropriate tag suggestions based on the detailVideo
+// category that the detailVideo uploader associates with the detailVideo. By default, tag
 // suggestions are relevant for all categories if there are no restricts defined
 // for the keyword.
 @property (retain) NSArray *categoryRestricts;  // of NSString
 
-// The keyword tag suggested for the video.
+// The keyword tag suggested for the detailVideo.
 @property (copy) NSString *tag;
 
 @end

@@ -59,13 +59,13 @@
 
 // The group ID associated with the activity. A group ID identifies user events
 // that are associated with the same user and resource. For example, if a user
-// rates a video and marks the same video as a favorite, the entries for those
+// rates a detailVideo and marks the same detailVideo as a favorite, the entries for those
 // events would have the same group ID in the user's activity feed. In your user
 // interface, you can avoid repetition by grouping events with the same groupId
 // value.
 @property (copy) NSString *groupId;
 
-// The date and time that the video was uploaded. The value is specified in ISO
+// The date and time that the detailVideo was uploaded. The value is specified in ISO
 // 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
 @property (retain) GTLDateTime *publishedAt;
 

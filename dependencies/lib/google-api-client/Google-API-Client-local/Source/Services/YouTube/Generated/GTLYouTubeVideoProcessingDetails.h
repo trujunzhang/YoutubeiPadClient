@@ -46,45 +46,45 @@
 
 @interface GTLYouTubeVideoProcessingDetails : GTLObject
 
-// This value indicates whether video editing suggestions, which might improve
-// video quality or the playback experience, are available for the video. You
+// This value indicates whether detailVideo editing suggestions, which might improve
+// detailVideo quality or the playback experience, are available for the detailVideo. You
 // can retrieve these suggestions by requesting the suggestions part in your
 // videos.list() request.
 @property (copy) NSString *editorSuggestionsAvailability;
 
 // This value indicates whether file details are available for the uploaded
-// video. You can retrieve a video's file details by requesting the fileDetails
+// detailVideo. You can retrieve a detailVideo's file details by requesting the fileDetails
 // part in your videos.list() request.
 @property (copy) NSString *fileDetailsAvailability;
 
-// The reason that YouTube failed to process the video. This property will only
+// The reason that YouTube failed to process the detailVideo. This property will only
 // have a value if the processingStatus property's value is failed.
 @property (copy) NSString *processingFailureReason;
 
-// This value indicates whether the video processing engine has generated
-// suggestions that might improve YouTube's ability to process the the video,
-// warnings that explain video processing problems, or errors that cause video
+// This value indicates whether the detailVideo processing engine has generated
+// suggestions that might improve YouTube's ability to process the the detailVideo,
+// warnings that explain detailVideo processing problems, or errors that cause detailVideo
 // processing problems. You can retrieve these suggestions by requesting the
 // suggestions part in your videos.list() request.
 @property (copy) NSString *processingIssuesAvailability;
 
 // The processingProgress object contains information about the progress YouTube
-// has made in processing the video. The values are really only relevant if the
-// video's processing status is processing.
+// has made in processing the detailVideo. The values are really only relevant if the
+// detailVideo's processing status is processing.
 @property (retain) GTLYouTubeVideoProcessingDetailsProcessingProgress *processingProgress;
 
-// The video's processing status. This value indicates whether YouTube was able
-// to process the video or if the video is still being processed.
+// The detailVideo's processing status. This value indicates whether YouTube was able
+// to process the detailVideo or if the detailVideo is still being processed.
 @property (copy) NSString *processingStatus;
 
 // This value indicates whether keyword (tag) suggestions are available for the
-// video. Tags can be added to a video's metadata to make it easier for other
-// users to find the video. You can retrieve these suggestions by requesting the
+// detailVideo. Tags can be added to a detailVideo's metadata to make it easier for other
+// users to find the detailVideo. You can retrieve these suggestions by requesting the
 // suggestions part in your videos.list() request.
 @property (copy) NSString *tagSuggestionsAvailability;
 
 // This value indicates whether thumbnail images have been generated for the
-// video.
+// detailVideo.
 @property (copy) NSString *thumbnailsAvailability;
 
 @end

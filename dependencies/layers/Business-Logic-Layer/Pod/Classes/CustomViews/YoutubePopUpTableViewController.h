@@ -19,7 +19,9 @@
 
 
 @interface YoutubePopUpTableViewController : UIViewController
-@property(nonatomic, assign) id<YoutubePopUpTableViewDelegate> popupDelegate;
+
+@property(nonatomic, strong) id<YoutubePopUpTableViewDelegate> popupDelegate;
+
 - (void)resetTableSource:(NSMutableArray *)array;
 - (void)empty;
 @end

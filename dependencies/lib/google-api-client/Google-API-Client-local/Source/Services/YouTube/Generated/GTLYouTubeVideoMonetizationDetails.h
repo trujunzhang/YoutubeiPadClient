@@ -45,7 +45,7 @@
 
 @interface GTLYouTubeVideoMonetizationDetails : GTLObject
 
-// The value of access indicates whether the video can be monetized or not.
+// The value of access indicates whether the detailVideo can be monetized or not.
 @property (retain) GTLYouTubeAccessPolicy *access;
 
 @end

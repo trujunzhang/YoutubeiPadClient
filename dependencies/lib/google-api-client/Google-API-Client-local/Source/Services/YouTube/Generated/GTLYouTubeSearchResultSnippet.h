@@ -58,7 +58,7 @@
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
-// It indicates if the resource (video or channel) has upcoming/active live
+// It indicates if the resource (detailVideo or channel) has upcoming/active live
 // broadcast content. Or it's "none" if there is not any upcoming/active live
 // broadcasts.
 @property (copy) NSString *liveBroadcastContent;

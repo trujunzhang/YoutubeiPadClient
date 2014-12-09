@@ -45,7 +45,7 @@
 
 @interface GTLYouTubeImageSettings : GTLObject
 
-// The URL for the background image shown on the video watch page. The image
+// The URL for the background image shown on the detailVideo watch page. The image
 // should be 1200px by 615px, with a maximum file size of 128k.
 @property (retain) GTLYouTubeLocalizedProperty *backgroundImageUrl;
 
@@ -98,22 +98,22 @@
 // The image map script for the large banner image.
 @property (retain) GTLYouTubeLocalizedProperty *largeBrandedBannerImageImapScript;
 
-// The URL for the 854px by 70px image that appears below the video player in
-// the expanded video view of the video watch page.
+// The URL for the 854px by 70px image that appears below the detailVideo player in
+// the expanded detailVideo view of the detailVideo watch page.
 @property (retain) GTLYouTubeLocalizedProperty *largeBrandedBannerImageUrl;
 
 // The image map script for the small banner image.
 @property (retain) GTLYouTubeLocalizedProperty *smallBrandedBannerImageImapScript;
 
-// The URL for the 640px by 70px banner image that appears below the video
-// player in the default view of the video watch page.
+// The URL for the 640px by 70px banner image that appears below the detailVideo
+// player in the default view of the detailVideo watch page.
 @property (retain) GTLYouTubeLocalizedProperty *smallBrandedBannerImageUrl;
 
 // The URL for a 1px by 1px tracking pixel that can be used to collect
-// statistics for views of the channel or video pages.
+// statistics for views of the channel or detailVideo pages.
 @property (copy) NSString *trackingImageUrl;
 
-// The URL for the image that appears above the top-left corner of the video
+// The URL for the image that appears above the top-left corner of the detailVideo
 // player. This is a 25-pixel-high image with a flexible width that cannot
 // exceed 170 pixels.
 @property (copy) NSString *watchIconImageUrl;

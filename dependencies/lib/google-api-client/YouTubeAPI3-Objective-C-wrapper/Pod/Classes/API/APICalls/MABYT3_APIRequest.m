@@ -1017,7 +1017,7 @@
 - (void)INSERTVideo:(NSString *)videoId inPlayList:(NSString *)playlistID atPosition:(NSInteger)pos andHandler:(void (^)(NSError *, BOOL))handler {
 
    NSMutableURLRequest * request = [[NSMutableURLRequest alloc] init];
-   NSString * post = [NSString stringWithFormat:@"{\"snippet\": {\"playlistId\": \"%@\",\"resourceId\": {\"videoId\": \"%@\",\"kind\": \"youtube#video\"},\"position\": %@}}",
+   NSString * post = [NSString stringWithFormat:@"{\"snippet\": {\"playlistId\": \"%@\",\"resourceId\": {\"videoId\": \"%@\",\"kind\": \"youtube#detailVideo\"},\"position\": %@}}",
                                                 playlistID,
                                                 videoId,
                                                 [@(pos) stringValue]];
@@ -1225,7 +1225,7 @@
 - (void)UPDATEPlayListItem:(NSString *)itemId withVideo:(NSString *)videoId inPlayList:(NSString *)playlistID atPosition:(NSInteger)pos andHandler:(void (^)(NSError *, BOOL))handler {
 
    NSMutableURLRequest * request = [[NSMutableURLRequest alloc] init];
-   NSString * post = [NSString stringWithFormat:@"{\"id\": \"%@\",\"snippet\": {\"playlistId\": \"%@\",\"resourceId\": {\"kind\": \"youtube#video\",\"videoId\": \"%@\"},\"position\": %@}}",
+   NSString * post = [NSString stringWithFormat:@"{\"id\": \"%@\",\"snippet\": {\"playlistId\": \"%@\",\"resourceId\": {\"kind\": \"youtube#detailVideo\",\"videoId\": \"%@\"},\"position\": %@}}",
                                                 itemId,
                                                 playlistID,
                                                 videoId,

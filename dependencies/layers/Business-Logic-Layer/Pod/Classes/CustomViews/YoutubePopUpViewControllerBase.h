@@ -13,8 +13,10 @@
 
 @interface YoutubePopUpViewControllerBase : UIViewController
 
-- (void)hidePopup;
+
 - (void)showPopupDialog:(UIBarButtonItem *)item;
+- (void)hidePopup;
+
 - (void)cleanUpContent;
 - (void)reloadContent:(NSArray *)array;
 @end

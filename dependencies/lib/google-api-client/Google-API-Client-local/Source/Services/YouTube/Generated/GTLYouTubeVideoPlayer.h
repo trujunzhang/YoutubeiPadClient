@@ -39,11 +39,11 @@
 //   GTLYouTubeVideoPlayer
 //
 
-// Player to be used for a video playback.
+// Player to be used for a detailVideo playback.
 
 @interface GTLYouTubeVideoPlayer : GTLObject
 
-// An <iframe> tag that embeds a player that will play the video.
+// An <iframe> tag that embeds a player that will play the detailVideo.
 @property (copy) NSString *embedHtml;
 
 @end

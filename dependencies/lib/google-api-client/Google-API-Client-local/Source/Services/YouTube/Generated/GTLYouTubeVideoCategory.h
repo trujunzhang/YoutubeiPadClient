@@ -49,7 +49,7 @@
 // Etag of this resource.
 @property (copy) NSString *ETag;
 
-// The ID that YouTube uses to uniquely identify the video category.
+// The ID that YouTube uses to uniquely identify the detailVideo category.
 // identifier property maps to 'id' in JSON (to avoid Objective C's 'id').
 @property (copy) NSString *identifier;
 
@@ -57,7 +57,7 @@
 // "youtube#videoCategory".
 @property (copy) NSString *kind;
 
-// The snippet object contains basic details about the video category, including
+// The snippet object contains basic details about the detailVideo category, including
 // its title.
 @property (retain) GTLYouTubeVideoCategorySnippet *snippet;
 

@@ -41,17 +41,17 @@
 //   GTLYouTubeVideoRecordingDetails
 //
 
-// Recording information associated with the video.
+// Recording information associated with the detailVideo.
 
 @interface GTLYouTubeVideoRecordingDetails : GTLObject
 
-// The geolocation information associated with the video.
+// The geolocation information associated with the detailVideo.
 @property (retain) GTLYouTubeGeoPoint *location;
 
-// The text description of the location where the video was recorded.
+// The text description of the location where the detailVideo was recorded.
 @property (copy) NSString *locationDescription;
 
-// The date and time when the video was recorded. The value is specified in ISO
+// The date and time when the detailVideo was recorded. The value is specified in ISO
 // 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
 @property (retain) GTLDateTime *recordingDate;
 

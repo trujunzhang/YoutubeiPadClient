@@ -39,11 +39,11 @@
 //   GTLYouTubeActivityContentDetailsUpload
 //
 
-// Information about the uploaded video.
+// Information about the uploaded detailVideo.
 
 @interface GTLYouTubeActivityContentDetailsUpload : GTLObject
 
-// The ID that YouTube uses to uniquely identify the uploaded video.
+// The ID that YouTube uses to uniquely identify the uploaded detailVideo.
 @property (copy) NSString *videoId;
 
 @end

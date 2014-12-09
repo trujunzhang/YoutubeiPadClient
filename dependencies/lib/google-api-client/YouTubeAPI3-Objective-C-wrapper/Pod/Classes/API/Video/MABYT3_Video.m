@@ -16,7 +16,7 @@
     
     self = [super init];
     if (self) {
-        _kind = @"youtube#video";
+        _kind = @"youtube#detailVideo";
         _etag = @"";
         _identifier = @"";
         _snippet = [[MABYT3_VideoSnippet alloc] init];
@@ -33,7 +33,7 @@
     
     self = [super init];
     if (self) {
-        _kind = @"youtube#video";
+        _kind = @"youtube#detailVideo";
         _etag = @"";
         _identifier = @"";
         _snippet = [[MABYT3_VideoSnippet alloc] init];

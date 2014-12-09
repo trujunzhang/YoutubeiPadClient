@@ -21,9 +21,9 @@
  */
 
 /**
- *  Initializes a video operation with the specified video identifier and language identifier.
+ *  Initializes a detailVideo operation with the specified detailVideo identifier and language identifier.
  *
- *  @param videoIdentifier    A 11 characters YouTube video identifier.
+ *  @param videoIdentifier    A 11 characters YouTube detailVideo identifier.
  *  @param languageIdentifier An [ISO 639-1 two-letter language code](http://www.loc.gov/standards/iso639-2/php/code_list.php) used for error localization. If you pass a nil language identifier then English (`en`) is used.
  *
  *  @return An initialized `XCDYouTubeVideoOperation` object.
@@ -43,7 +43,7 @@
  */
 @property (atomic, readonly) NSError *error;
 /**
- *  Returns a video object if the operation succeeded or nil if it failed.
+ *  Returns a detailVideo object if the operation succeeded or nil if it failed.
  *
  *  Returns nil if the operation is not yet finished or if it was canceled.
  */

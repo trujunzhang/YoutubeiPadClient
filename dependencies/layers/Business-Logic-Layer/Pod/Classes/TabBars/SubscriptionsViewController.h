@@ -13,7 +13,6 @@
 
 @interface SubscriptionsViewController : UIViewController
 
-- (void)startToggleLeftMenuWithTitle:(NSString *)title withType:(YTPlaylistItemsType)playlistItemsType;
-- (void)endToggleLeftMenuEventForChannelPageWithChannelId:(NSString *)channelId withTitle:(NSString *)title;
+
 @end
 

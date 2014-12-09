@@ -57,8 +57,8 @@
 @property (copy) NSString *playlistId;
 
 // The ID that YouTube uses to uniquely identify the referred resource, if that
-// resource is a video. This property is only present if the resourceId.kind
-// value is youtube#video.
+// resource is a detailVideo. This property is only present if the resourceId.kind
+// value is youtube#detailVideo.
 @property (copy) NSString *videoId;
 
 @end

@@ -43,8 +43,8 @@
 
 // A guideCategory resource identifies a category that YouTube algorithmically
 // assigns based on a channel's content or other indicators, such as the
-// channel's popularity. The list is similar to video categories, with the
-// difference being that a video's uploader can assign a video category but only
+// channel's popularity. The list is similar to detailVideo categories, with the
+// difference being that a detailVideo's uploader can assign a detailVideo category but only
 // YouTube can assign a channel category.
 
 @interface GTLYouTubeGuideCategory : GTLObject

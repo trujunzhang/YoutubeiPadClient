@@ -53,8 +53,8 @@
 
 //   NSLog(@" %@", videoThumbnailsUrl);
 
-   // Confirm that the result represents a video. Otherwise, the
-   // item will not contain a video ID.
+   // Confirm that the result represents a detailVideo. Otherwise, the
+   // item will not contain a detailVideo ID.
    // 1
    ASImageNode * imageNode = [self getThumbnailsImageNode:video
                                          placeholderImage:placeholder
@@ -86,7 +86,7 @@
 }
 
 
-//- (ASImageNode *)getThumbnailsImageNode:(MABYT3_Video *)video placeholderImage:(UIImage *)image videoThumbnailsUrl:(NSString *)videoThumbnailsUrl {
+//- (ASImageNode *)getThumbnailsImageNode:(MABYT3_Video *)detailVideo placeholderImage:(UIImage *)image videoThumbnailsUrl:(NSString *)videoThumbnailsUrl {
 //   ASNetworkImageNode * _imageNode = [[ASNetworkImageNode alloc] initWithCache:nil
 //                                                                    downloader:[[ASBasicImageDownloader alloc] init]];
 //   _imageNode.backgroundColor = [UIColor purpleColor];
@@ -104,16 +104,16 @@
    imageNode.frame = self.videoThumbnailsContainer.bounds;
    imageNode.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
-//   if (video.hasImage) {
-//      imageNode.image = video.image;
+//   if (detailVideo.hasImage) {
+//      imageNode.image = detailVideo.image;
 //   } else {
 //      void (^downloadCompletion)(UIImage *) = ^(UIImage * image) {
-//          video.hasImage = YES;
-//          video.image = image;
-//          imageNode.image = video.image;
+//          detailVideo.hasImage = YES;
+//          detailVideo.image = image;
+//          imageNode.image = detailVideo.image;
 //      };
 //      [YTCacheImplement CacheWithImageView:imageNode
-//                                          key:video.identifier
+//                                          key:detailVideo.identifier
 //                                      withUrl:videoThumbnailsUrl
 //                              withPlaceholder:image
 //                                   completion:downloadCompletion
@@ -145,7 +145,7 @@
 
    [[MxTabBarManager sharedTabBarManager] pushWithVideo:self.video];
 
-//   [self.delegate gridViewCellTap:self.video];// TODO [test] djzhang gridViewCellTap
+//   [self.delegate gridViewCellTap:self.detailVideo];// TODO [test] djzhang gridViewCellTap
 }
 
 

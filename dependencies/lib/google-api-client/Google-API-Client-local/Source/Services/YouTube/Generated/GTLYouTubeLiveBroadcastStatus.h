@@ -46,9 +46,9 @@
 @property (copy) NSString *lifeCycleStatus;
 
 // The broadcast's privacy status. Note that the broadcast represents exactly
-// one YouTube video, so the privacy settings are identical to those supported
+// one YouTube detailVideo, so the privacy settings are identical to those supported
 // for videos. In addition, you can set this field by modifying the broadcast
-// resource or by setting the privacyStatus field of the corresponding video
+// resource or by setting the privacyStatus field of the corresponding detailVideo
 // resource.
 @property (copy) NSString *privacyStatus;
 

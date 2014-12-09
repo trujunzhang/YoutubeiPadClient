@@ -9,7 +9,7 @@
 #import <XCDYouTubeKit/XCDYouTubeError.h>
 
 /**
- *  The `XCDYouTubeClient` class is responsible for interacting with the YouTube API. Given a YouTube video identifier, you will get video information with the `-getVideoWithIdentifier:completionHandler:` method.
+ *  The `XCDYouTubeClient` class is responsible for interacting with the YouTube API. Given a YouTube detailVideo identifier, you will get detailVideo information with the `-getVideoWithIdentifier:completionHandler:` method.
  *
  *  On iOS, you probably don’t want to use `XCDYouTubeClient` directly but the higher level class `XCDYouTubeVideoPlayerViewController`.
  */
@@ -57,16 +57,16 @@
  */
 
 /**
- *  Starts an asynchronous operation for the specified video identifier, and calls a handler upon completion.
+ *  Starts an asynchronous operation for the specified detailVideo identifier, and calls a handler upon completion.
  *
- *  @param videoIdentifier   A 11 characters YouTube video identifier. If the video identifier is invalid (including nil) the completion handler will be called with an error with `XCDYouTubeVideoErrorDomain` domain and `XCDYouTubeErrorInvalidVideoIdentifier` code.
+ *  @param videoIdentifier   A 11 characters YouTube detailVideo identifier. If the detailVideo identifier is invalid (including nil) the completion handler will be called with an error with `XCDYouTubeVideoErrorDomain` domain and `XCDYouTubeErrorInvalidVideoIdentifier` code.
  *  @param completionHandler A block to execute when the client finishes the operation. The completion handler is executed on the main thread. If the completion handler is nil, this method throws an exception.
  *
- *  @discussion If the operation completes successfully, the video parameter of the handler block contains a `XCDYouTubeVideo` object, and the error parameter is nil. If the operation fails, the video parameter is nil and the error parameter contains information about the failure. The error's domain is always `XCDYouTubeVideoErrorDomain`.
+ *  @discussion If the operation completes successfully, the detailVideo parameter of the handler block contains a `XCDYouTubeVideo` object, and the error parameter is nil. If the operation fails, the detailVideo parameter is nil and the error parameter contains information about the failure. The error's domain is always `XCDYouTubeVideoErrorDomain`.
  *
  *  @see XCDYouTubeErrorCode
  *
- *  @return An opaque object conforming to the `XCDYouTubeOperation` protocol for canceling the asynchronous video information operation. If you call the `cancel` method before the operation is finished, the completion handler will not be called. It is recommended that you store this opaque object as a weak property.
+ *  @return An opaque object conforming to the `XCDYouTubeOperation` protocol for canceling the asynchronous detailVideo information operation. If you call the `cancel` method before the operation is finished, the completion handler will not be called. It is recommended that you store this opaque object as a weak property.
  */
 - (id<XCDYouTubeOperation>) getVideoWithIdentifier:(NSString *)videoIdentifier completionHandler:(void (^)(XCDYouTubeVideo *video, NSError *error))completionHandler __attribute__((nonnull(2)));
 

@@ -43,24 +43,24 @@
 //   GTLYouTubeVideoFileDetails
 //
 
-// Describes original video file properties, including technical details about
-// audio and video streams, but also metadata information like content length,
+// Describes original detailVideo file properties, including technical details about
+// audio and detailVideo streams, but also metadata information like content length,
 // digitization time, or geotagging information.
 
 @interface GTLYouTubeVideoFileDetails : GTLObject
 
-// A list of audio streams contained in the uploaded video file. Each item in
+// A list of audio streams contained in the uploaded detailVideo file. Each item in
 // the list contains detailed metadata about an audio stream.
 @property (retain) NSArray *audioStreams;  // of GTLYouTubeVideoFileDetailsAudioStream
 
-// The uploaded video file's combined (video and audio) bitrate in bits per
+// The uploaded detailVideo file's combined (detailVideo and audio) bitrate in bits per
 // second.
 @property (retain) NSNumber *bitrateBps;  // unsignedLongLongValue
 
-// The uploaded video file's container format.
+// The uploaded detailVideo file's container format.
 @property (copy) NSString *container;
 
-// The date and time when the uploaded video file was created. The value is
+// The date and time when the uploaded detailVideo file was created. The value is
 // specified in ISO 8601 format. Currently, the following ISO 8601 formats are
 // supported:
 // - Date only: YYYY-MM-DD
@@ -68,28 +68,28 @@
 // - Time with timezone: YYYY-MM-DDTHH:MM:SS+HH:MM
 @property (copy) NSString *creationTime;
 
-// The length of the uploaded video in milliseconds.
+// The length of the uploaded detailVideo in milliseconds.
 @property (retain) NSNumber *durationMs;  // unsignedLongLongValue
 
-// The uploaded file's name. This field is present whether a video file or
+// The uploaded file's name. This field is present whether a detailVideo file or
 // another type of file was uploaded.
 @property (copy) NSString *fileName;
 
-// The uploaded file's size in bytes. This field is present whether a video file
+// The uploaded file's size in bytes. This field is present whether a detailVideo file
 // or another type of file was uploaded.
 @property (retain) NSNumber *fileSize;  // unsignedLongLongValue
 
-// The uploaded file's type as detected by YouTube's video processing engine.
-// Currently, YouTube only processes video files, but this field is present
-// whether a video file or another type of file was uploaded.
+// The uploaded file's type as detected by YouTube's detailVideo processing engine.
+// Currently, YouTube only processes detailVideo files, but this field is present
+// whether a detailVideo file or another type of file was uploaded.
 @property (copy) NSString *fileType;
 
-// Geographic coordinates that identify the place where the uploaded video was
+// Geographic coordinates that identify the place where the uploaded detailVideo was
 // recorded. Coordinates are defined using WGS 84.
 @property (retain) GTLYouTubeGeoPoint *recordingLocation;
 
-// A list of video streams contained in the uploaded video file. Each item in
-// the list contains detailed metadata about a video stream.
+// A list of detailVideo streams contained in the uploaded detailVideo file. Each item in
+// the list contains detailed metadata about a detailVideo stream.
 @property (retain) NSArray *videoStreams;  // of GTLYouTubeVideoFileDetailsVideoStream
 
 @end

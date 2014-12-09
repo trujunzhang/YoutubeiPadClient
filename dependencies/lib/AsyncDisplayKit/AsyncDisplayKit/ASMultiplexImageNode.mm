@@ -549,7 +549,7 @@ static inline BOOL _shouldUpdateAfterChangedImageIdentifiers(id loadedIdentifier
   requestOptions.resizeMode = PHImageRequestOptionsResizeModeNone;
 
   [[PHImageManager defaultManager] requestImageForAsset:imageAsset
-                                             targetSize:CGSizeMake(2048.0, 2048.0) // Ideally we would use PHImageManagerMaximumSize and kill the options, but we get back nil when requesting images of video assets. rdar://18447788
+                                             targetSize:CGSizeMake(2048.0, 2048.0) // Ideally we would use PHImageManagerMaximumSize and kill the options, but we get back nil when requesting images of detailVideo assets. rdar://18447788
                                             contentMode:PHImageContentModeDefault
                                                 options:requestOptions
                                           resultHandler:^(UIImage *image, NSDictionary *info) {

@@ -44,7 +44,7 @@
 
 // Contains a single result table. The table is returned as an array of rows
 // that contain the values for the cells of the table. Depending on the metric
-// or dimension, the cell can contain a string (video ID, country code) or a
+// or dimension, the cell can contain a string (detailVideo ID, country code) or a
 // number (number of views or number of likes).
 
 @interface GTLYouTubeAnalyticsResultTable : GTLObject

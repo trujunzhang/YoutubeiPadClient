@@ -8,7 +8,7 @@
 
 #import "YKVimeoVideo.h"
 
-NSString *const kVideoConfigURL = @"http://player.vimeo.com/video/%@/config";
+NSString *const kVideoConfigURL = @"http://player.vimeo.com/detailVideo/%@/config";
 
 @interface YKVimeoVideo()
 @property (nonatomic, strong) NSString *videoID;
@@ -55,7 +55,7 @@ NSString *const kVideoConfigURL = @"http://player.vimeo.com/video/%@/config";
         if (callback_if_error(error)) return;
         
         self.videos = [jsonData valueForKeyPath:@"request.files.h264"];
-        self.thumbs = [jsonData valueForKeyPath:@"video.thumbs"];
+        self.thumbs = [jsonData valueForKeyPath:@"detailVideo.thumbs"];
 
         if (callback) {
             dispatch_async(dispatch_get_main_queue(), ^{

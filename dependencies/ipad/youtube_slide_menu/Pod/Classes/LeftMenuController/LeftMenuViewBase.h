@@ -39,7 +39,7 @@
 - (NSArray *)defaultCategories;
 - (NSArray *)signUserCategories;
 
-@property(nonatomic, assign) id<LeftMenuViewBaseDelegate> delegate;
+@property(nonatomic, strong) id<LeftMenuViewBaseDelegate> delegate;
 
 
 - (void)defaultRefreshForSubscriptionList;

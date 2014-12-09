@@ -22,18 +22,9 @@
 
 
 @interface YTVideoDetailViewController : UIViewController
-@property(nonatomic, strong) UIViewController * selectedController;
 
-@property(nonatomic, strong) YTYouTubeVideoCache * video;
 
-@property(nonatomic, strong) YTAsVideoDetailViewController * videoDetailController;
-@property(nonatomic, strong) GGTabBarController * videoTabBarController;
 
-@property(nonatomic, strong) UIViewController * firstViewController;
-@property(nonatomic, strong) UIViewController * secondViewController;
-@property(nonatomic, strong) YTCollectionViewController * thirdViewController;
-
-@property(nonatomic, strong) YKYouTubeVideo * youTubeVideo;
 - (instancetype)initWithVideo:(YTYouTubeVideoCache *)video;
 
 @end

@@ -44,17 +44,17 @@
 
 // An activity resource contains information about an action that a particular
 // channel, or user, has taken on YouTube.The actions reported in activity feeds
-// include rating a video, sharing a video, marking a video as a favorite,
-// commenting on a video, uploading a video, and so forth. Each activity
+// include rating a detailVideo, sharing a detailVideo, marking a detailVideo as a favorite,
+// commenting on a detailVideo, uploading a detailVideo, and so forth. Each activity
 // resource identifies the type of action, the channel associated with the
-// action, and the resource(s) associated with the action, such as the video
+// action, and the resource(s) associated with the action, such as the detailVideo
 // that was rated or uploaded.
 
 @interface GTLYouTubeActivity : GTLObject
 
 // The contentDetails object contains information about the content associated
 // with the activity. For example, if the snippet.type value is videoRated, then
-// the contentDetails object's content identifies the rated video.
+// the contentDetails object's content identifies the rated detailVideo.
 @property (retain) GTLYouTubeActivityContentDetails *contentDetails;
 
 // Etag of this resource.

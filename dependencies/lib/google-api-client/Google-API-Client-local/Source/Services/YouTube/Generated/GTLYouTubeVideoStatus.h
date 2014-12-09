@@ -39,39 +39,39 @@
 //   GTLYouTubeVideoStatus
 //
 
-// Basic details about a video category, such as its localized title.
+// Basic details about a detailVideo category, such as its localized title.
 
 @interface GTLYouTubeVideoStatus : GTLObject
 
-// This value indicates if the video can be embedded on another website.
+// This value indicates if the detailVideo can be embedded on another website.
 @property (retain) NSNumber *embeddable;  // boolValue
 
-// This value explains why a video failed to upload. This property is only
+// This value explains why a detailVideo failed to upload. This property is only
 // present if the uploadStatus property indicates that the upload failed.
 @property (copy) NSString *failureReason;
 
-// The video's license.
+// The detailVideo's license.
 @property (copy) NSString *license;
 
-// The video's privacy status.
+// The detailVideo's privacy status.
 @property (copy) NSString *privacyStatus;
 
-// This value indicates if the extended video statistics on the watch page can
+// This value indicates if the extended detailVideo statistics on the watch page can
 // be viewed by everyone. Note that the view count, likes, etc will still be
 // visible if this is disabled.
 @property (retain) NSNumber *publicStatsViewable;  // boolValue
 
-// The date and time when the video is scheduled to publish. It can be set only
-// if the privacy status of the video is private. The value is specified in ISO
+// The date and time when the detailVideo is scheduled to publish. It can be set only
+// if the privacy status of the detailVideo is private. The value is specified in ISO
 // 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
 @property (retain) GTLDateTime *publishAt;
 
-// This value explains why YouTube rejected an uploaded video. This property is
+// This value explains why YouTube rejected an uploaded detailVideo. This property is
 // only present if the uploadStatus property indicates that the upload was
 // rejected.
 @property (copy) NSString *rejectionReason;
 
-// The status of the uploaded video.
+// The status of the uploaded detailVideo.
 @property (copy) NSString *uploadStatus;
 
 @end

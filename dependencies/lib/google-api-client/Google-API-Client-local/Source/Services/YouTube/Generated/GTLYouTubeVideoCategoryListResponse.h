@@ -54,8 +54,8 @@
 // Serialized EventId of the request which produced this response.
 @property (copy) NSString *eventId;
 
-// A list of video categories that can be associated with YouTube videos. In
-// this map, the video category ID is the map key, and its value is the
+// A list of detailVideo categories that can be associated with YouTube videos. In
+// this map, the detailVideo category ID is the map key, and its value is the
 // corresponding videoCategory resource.
 @property (retain) NSArray *items;  // of GTLYouTubeVideoCategory
 

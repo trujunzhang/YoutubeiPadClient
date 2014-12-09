@@ -41,35 +41,35 @@
 //   GTLYouTubeVideoSuggestions
 //
 
-// Specifies suggestions on how to improve video content, including encoding
+// Specifies suggestions on how to improve detailVideo content, including encoding
 // hints, tag suggestions, and editor suggestions.
 
 @interface GTLYouTubeVideoSuggestions : GTLObject
 
-// A list of video editing operations that might improve the video quality or
-// playback experience of the uploaded video.
+// A list of detailVideo editing operations that might improve the detailVideo quality or
+// playback experience of the uploaded detailVideo.
 @property (retain) NSArray *editorSuggestions;  // of NSString
 
 // A list of errors that will prevent YouTube from successfully processing the
-// uploaded video video. These errors indicate that, regardless of the video's
+// uploaded detailVideo detailVideo. These errors indicate that, regardless of the detailVideo's
 // current processing status, eventually, that status will almost certainly be
 // failed.
 @property (retain) NSArray *processingErrors;  // of NSString
 
 // A list of suggestions that may improve YouTube's ability to process the
-// video.
+// detailVideo.
 @property (retain) NSArray *processingHints;  // of NSString
 
 // A list of reasons why YouTube may have difficulty transcoding the uploaded
-// video or that might result in an erroneous transcoding. These warnings are
-// generated before YouTube actually processes the uploaded video file. In
-// addition, they identify issues that are unlikely to cause the video
-// processing to fail but that might cause problems such as sync issues, video
+// detailVideo or that might result in an erroneous transcoding. These warnings are
+// generated before YouTube actually processes the uploaded detailVideo file. In
+// addition, they identify issues that are unlikely to cause the detailVideo
+// processing to fail but that might cause problems such as sync issues, detailVideo
 // artifacts, or a missing audio track.
 @property (retain) NSArray *processingWarnings;  // of NSString
 
-// A list of keyword tags that could be added to the video's metadata to
-// increase the likelihood that users will locate your video when searching or
+// A list of keyword tags that could be added to the detailVideo's metadata to
+// increase the likelihood that users will locate your detailVideo when searching or
 // browsing on YouTube.
 @property (retain) NSArray *tagSuggestions;  // of GTLYouTubeVideoSuggestionsTagSuggestion
 

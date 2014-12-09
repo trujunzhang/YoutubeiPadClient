@@ -43,7 +43,7 @@
 
 @interface GTLYouTubeVideoProjectDetails : GTLObject
 
-// A list of project tags associated with the video during the upload.
+// A list of project tags associated with the detailVideo during the upload.
 @property (retain) NSArray *tags;  // of NSString
 
 @end

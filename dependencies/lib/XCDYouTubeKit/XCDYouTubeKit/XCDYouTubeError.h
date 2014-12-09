@@ -14,7 +14,7 @@ extern NSString *const XCDYouTubeVideoErrorDomain;
  */
 typedef NS_ENUM(NSInteger, XCDYouTubeErrorCode) {
 	/**
-	 *  Returned if no suitable video stream is available.
+	 *  Returned if no suitable detailVideo stream is available.
 	 */
 	XCDYouTubeErrorNoStreamAvailable      = -2,
 	
@@ -24,17 +24,17 @@ typedef NS_ENUM(NSInteger, XCDYouTubeErrorCode) {
 	XCDYouTubeErrorNetwork                = -1,
 	
 	/**
-	 *  Returned when the given video identifier string is invalid.
+	 *  Returned when the given detailVideo identifier string is invalid.
 	 */
 	XCDYouTubeErrorInvalidVideoIdentifier = 2,
 	
 	/**
-	 *  Returned when the video has been removed as a violation of YouTube's policy or if the video does not exist.
+	 *  Returned when the detailVideo has been removed as a violation of YouTube's policy or if the detailVideo does not exist.
 	 */
 	XCDYouTubeErrorRemovedVideo           = 100,
 	
 	/**
-	 *  Returned when the video is not playable because of legal reasons or the this is a private video.
+	 *  Returned when the detailVideo is not playable because of legal reasons or the this is a private detailVideo.
 	 */
 	XCDYouTubeErrorRestrictedPlayback     = 150
 };

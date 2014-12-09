@@ -51,9 +51,9 @@
 // Describes the type of the promoted item.
 @property (copy) NSString *type;
 
-// If the promoted item represents a video, this field represents the unique
+// If the promoted item represents a detailVideo, this field represents the unique
 // YouTube ID identifying it. This field will be present only if type has the
-// value video.
+// value detailVideo.
 @property (copy) NSString *videoId;
 
 // If the promoted item represents a website, this field represents the url

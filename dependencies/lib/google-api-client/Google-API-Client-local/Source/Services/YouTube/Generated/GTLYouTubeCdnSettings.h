@@ -45,14 +45,14 @@
 
 @interface GTLYouTubeCdnSettings : GTLObject
 
-// The format of the video stream that you are sending to Youtube.
+// The format of the detailVideo stream that you are sending to Youtube.
 @property (copy) NSString *format;
 
 // The ingestionInfo object contains information that YouTube provides that you
 // need to transmit your RTMP or HTTP stream to YouTube.
 @property (retain) GTLYouTubeIngestionInfo *ingestionInfo;
 
-// The method or protocol used to transmit the video stream.
+// The method or protocol used to transmit the detailVideo stream.
 @property (copy) NSString *ingestionType;
 
 @end

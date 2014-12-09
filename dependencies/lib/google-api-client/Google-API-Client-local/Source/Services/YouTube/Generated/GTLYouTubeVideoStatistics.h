@@ -39,26 +39,26 @@
 //   GTLYouTubeVideoStatistics
 //
 
-// Statistics about the video, such as the number of times the video was viewed
+// Statistics about the detailVideo, such as the number of times the detailVideo was viewed
 // or liked.
 
 @interface GTLYouTubeVideoStatistics : GTLObject
 
-// The number of comments for the video.
+// The number of comments for the detailVideo.
 @property (retain) NSNumber *commentCount;  // unsignedLongLongValue
 
-// The number of users who have indicated that they disliked the video by giving
+// The number of users who have indicated that they disliked the detailVideo by giving
 // it a negative rating.
 @property (retain) NSNumber *dislikeCount;  // unsignedLongLongValue
 
-// The number of users who currently have the video marked as a favorite video.
+// The number of users who currently have the detailVideo marked as a favorite detailVideo.
 @property (retain) NSNumber *favoriteCount;  // unsignedLongLongValue
 
-// The number of users who have indicated that they liked the video by giving it
+// The number of users who have indicated that they liked the detailVideo by giving it
 // a positive rating.
 @property (retain) NSNumber *likeCount;  // unsignedLongLongValue
 
-// The number of times the video has been viewed.
+// The number of times the detailVideo has been viewed.
 @property (retain) NSNumber *viewCount;  // unsignedLongLongValue
 
 @end

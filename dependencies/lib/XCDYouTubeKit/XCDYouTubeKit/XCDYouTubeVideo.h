@@ -43,26 +43,26 @@ typedef NS_ENUM(NSUInteger, XCDYouTubeVideoQuality) {
 extern NSString *const XCDYouTubeVideoQualityHTTPLiveStreaming;
 
 /**
- *  Represents a YouTube video. Use the `-[XCDYouTubeClient getVideoWithIdentifier:completionHandler:]` method to obtain a `XCDYouTubeVideo` object.
+ *  Represents a YouTube detailVideo. Use the `-[XCDYouTubeClient getVideoWithIdentifier:completionHandler:]` method to obtain a `XCDYouTubeVideo` object.
  */
 @interface XCDYouTubeVideo : NSObject <NSCopying>
 
 /**
  *  --------------------------------
- *  @name Accessing video properties
+ *  @name Accessing detailVideo properties
  *  --------------------------------
  */
 
 /**
- *  The 11 characters YouTube video identifier.
+ *  The 11 characters YouTube detailVideo identifier.
  */
 @property (nonatomic, readonly) NSString *identifier;
 /**
- *  The title of the video.
+ *  The title of the detailVideo.
  */
 @property (nonatomic, readonly) NSString *title;
 /**
- *  The duration of the video in seconds.
+ *  The duration of the detailVideo in seconds.
  */
 @property (nonatomic, readonly) NSTimeInterval duration;
 
@@ -80,9 +80,9 @@ extern NSString *const XCDYouTubeVideoQualityHTTPLiveStreaming;
 @property (nonatomic, readonly) NSURL *largeThumbnailURL;
 
 /**
- *  A dictionary of video stream URLs.
+ *  A dictionary of detailVideo stream URLs.
  *
- *  The keys are the YouTube [itag](https://en.wikipedia.org/wiki/YouTube#Quality_and_codecs) values as `NSNumber` objects. The values are the video URLs as `NSURL` objects. There is also the special `XCDYouTubeVideoQualityHTTPLiveStreaming` key for live videos.
+ *  The keys are the YouTube [itag](https://en.wikipedia.org/wiki/YouTube#Quality_and_codecs) values as `NSNumber` objects. The values are the detailVideo URLs as `NSURL` objects. There is also the special `XCDYouTubeVideoQualityHTTPLiveStreaming` key for live videos.
  *
  *  You must not store the URLs for later use since they have a limited lifetime.
  *

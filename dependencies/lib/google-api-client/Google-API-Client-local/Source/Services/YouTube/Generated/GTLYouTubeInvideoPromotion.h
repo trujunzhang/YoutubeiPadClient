@@ -51,14 +51,14 @@
 
 @interface GTLYouTubeInvideoPromotion : GTLCollectionObject
 
-// The default temporal position within the video where the promoted item will
+// The default temporal position within the detailVideo where the promoted item will
 // be displayed. Can be overriden by more specific timing in the item.
 @property (retain) GTLYouTubeInvideoTiming *defaultTiming;
 
 // List of promoted items in decreasing priority.
 @property (retain) NSArray *items;  // of GTLYouTubePromotedItem
 
-// The spatial position within the video where the promoted item will be
+// The spatial position within the detailVideo where the promoted item will be
 // displayed.
 @property (retain) GTLYouTubeInvideoPosition *position;
 

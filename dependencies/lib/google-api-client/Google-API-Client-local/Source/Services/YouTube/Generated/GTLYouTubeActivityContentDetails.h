@@ -51,7 +51,7 @@
 //   GTLYouTubeActivityContentDetails
 //
 
-// Details about the content of an activity: the video that was shared, the
+// Details about the content of an activity: the detailVideo that was shared, the
 // channel that was subscribed to, etc.
 
 @interface GTLYouTubeActivityContentDetails : GTLObject
@@ -68,8 +68,8 @@
 // comment. This property is only present if the snippet.type is comment.
 @property (retain) GTLYouTubeActivityContentDetailsComment *comment;
 
-// The favorite object contains information about a video that was marked as a
-// favorite video. This property is only present if the snippet.type is
+// The favorite object contains information about a detailVideo that was marked as a
+// favorite detailVideo. This property is only present if the snippet.type is
 // favorite.
 @property (retain) GTLYouTubeActivityContentDetailsFavorite *favorite;
 
@@ -99,7 +99,7 @@
 // subscription.
 @property (retain) GTLYouTubeActivityContentDetailsSubscription *subscription;
 
-// The upload object contains information about the uploaded video. This
+// The upload object contains information about the uploaded detailVideo. This
 // property is only present if the snippet.type is upload.
 @property (retain) GTLYouTubeActivityContentDetailsUpload *upload;
 

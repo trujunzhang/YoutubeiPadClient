@@ -127,8 +127,8 @@
 //     defines those dimensions. If a request uses multiple filters, join them
 //     together with a semicolon (;), and the returned result table will satisfy
 //     both filters. For example, a filters parameter value of
-//     video==dMH0bHeiRNg;country==IT restricts the result set to include data
-//     for the given video in Italy.
+//     detailVideo==dMH0bHeiRNg;country==IT restricts the result set to include data
+//     for the given detailVideo in Italy.
 //   maxResults: The maximum number of rows to include in the response.
 //   sort: A comma-separated list of dimensions or metrics that determine the
 //     sort order for YouTube Analytics data. By default the sort order is

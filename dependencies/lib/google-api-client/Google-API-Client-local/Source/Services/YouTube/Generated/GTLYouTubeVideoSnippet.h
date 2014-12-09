@@ -41,43 +41,43 @@
 //   GTLYouTubeVideoSnippet
 //
 
-// Basic details about a video, including title, description, uploader,
+// Basic details about a detailVideo, including title, description, uploader,
 // thumbnails and category.
 
 @interface GTLYouTubeVideoSnippet : GTLObject
 
-// The YouTube video category associated with the video.
+// The YouTube detailVideo category associated with the detailVideo.
 @property (copy) NSString *categoryId;
 
-// The ID that YouTube uses to uniquely identify the channel that the video was
+// The ID that YouTube uses to uniquely identify the channel that the detailVideo was
 // uploaded to.
 @property (copy) NSString *channelId;
 
-// Channel title for the channel that the video belongs to.
+// Channel title for the channel that the detailVideo belongs to.
 @property (copy) NSString *channelTitle;
 
-// The video's description.
+// The detailVideo's description.
 // Remapped to 'descriptionProperty' to avoid NSObject's 'description'.
 @property (copy) NSString *descriptionProperty;
 
-// Indicates if the video is an upcoming/active live broadcast. Or it's "none"
-// if the video is not an upcoming/active live broadcast.
+// Indicates if the detailVideo is an upcoming/active live broadcast. Or it's "none"
+// if the detailVideo is not an upcoming/active live broadcast.
 @property (copy) NSString *liveBroadcastContent;
 
-// The date and time that the video was uploaded. The value is specified in ISO
+// The date and time that the detailVideo was uploaded. The value is specified in ISO
 // 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.
 @property (retain) GTLDateTime *publishedAt;
 
-// A list of keyword tags associated with the video. Tags may contain spaces.
-// This field is only visible to the video's uploader.
+// A list of keyword tags associated with the detailVideo. Tags may contain spaces.
+// This field is only visible to the detailVideo's uploader.
 @property (retain) NSArray *tags;  // of NSString
 
-// A map of thumbnail images associated with the video. For each object in the
+// A map of thumbnail images associated with the detailVideo. For each object in the
 // map, the key is the name of the thumbnail image, and the value is an object
 // that contains other information about the thumbnail.
 @property (retain) GTLYouTubeThumbnailDetails *thumbnails;
 
-// The video's title.
+// The detailVideo's title.
 @property (copy) NSString *title;
 
 @end

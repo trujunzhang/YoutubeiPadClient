@@ -9,12 +9,23 @@
 
 @interface YTVideoDetailViewController ()<YoutubeCollectionNextPageDelegate, GGTabBarControllerDelegate> {
    NSArray * _lastControllerArray;
+   YTYouTubeVideoCache * _detailVideo;
 }
 
 @property(strong, nonatomic) IBOutlet UIView * videoPlayViewContainer;
 @property(strong, nonatomic) IBOutlet UIView * detailViewContainer;
 @property(strong, nonatomic) IBOutlet UIView * tabBarViewContainer;
 
+
+@property(nonatomic, strong) UIViewController * selectedController;
+
+@property(nonatomic, strong) YTAsVideoDetailViewController * videoDetailController;
+@property(nonatomic, strong) GGTabBarController * videoTabBarController;
+
+@property(nonatomic, strong) UIViewController * firstViewController;
+@property(nonatomic, strong) UIViewController * secondViewController;
+@property(nonatomic, strong) YTCollectionViewController * thirdViewController;
+@property(nonatomic, strong) YKYouTubeVideo * youTubeVideo;
 @end
 
 
@@ -27,7 +38,7 @@
 - (instancetype)initWithVideo:(YTYouTubeVideoCache *)video {
    self = [super init];
    if (self) {
-      self.video = video;
+      _detailVideo = video;
    }
 
    return self;
@@ -43,7 +54,7 @@
    [self initViewControllers];
    [self setupPlayer:self.videoPlayViewContainer];
 
-   self.title = [YoutubeParser getVideoSnippetTitle:self.video];
+   self.title = [YoutubeParser getVideoSnippetTitle:_detailVideo];
 
 //   [self executeRefreshTask];// test
 }
@@ -72,10 +83,10 @@
                                                                                  withTitle:@"Suggestions"];
    self.thirdViewController.numbersPerLineArray = [NSArray arrayWithObjects:@"3", @"2", nil];
 
-   [self.thirdViewController fetchSuggestionListByVideoId:[YoutubeParser getWatchVideoId:self.video]];
+   [self.thirdViewController fetchSuggestionListByVideoId:[YoutubeParser getWatchVideoId:_detailVideo]];
 
    // 2
-   self.videoDetailController = [[YTAsVideoDetailViewController alloc] initWithVideo:self.video];
+   self.videoDetailController = [[YTAsVideoDetailViewController alloc] initWithVideo:_detailVideo];
 }
 
 
@@ -154,17 +165,17 @@
 
 
 - (void)fitView:(UIView *)toPresentView intoView:(UIView *)containerView {
-   NSDictionary * viewsDictioanry = @{ @"detailView_Container" : toPresentView };
+   NSDictionary * viewsDictionary = @{ @"detailView_Container" : toPresentView };
 
    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[detailView_Container]|"
                                                                          options:0
                                                                          metrics:nil
-                                                                           views:viewsDictioanry]];
+                                                                           views:viewsDictionary]];
 
    [containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[detailView_Container]|"
                                                                          options:0
                                                                          metrics:nil
-                                                                           views:viewsDictioanry]];
+                                                                           views:viewsDictionary]];
 }
 
 
@@ -179,7 +190,7 @@
 
 - (void)setupPlayer:(UIView *)pView {
    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-   self.youTubeVideo = [[YKYouTubeVideo alloc] initWithVideoId:[YoutubeParser getWatchVideoId:self.video]];
+   self.youTubeVideo = [[YKYouTubeVideo alloc] initWithVideoId:[YoutubeParser getWatchVideoId:_detailVideo]];
 
    //Fetch thumbnail
    [self.youTubeVideo parseWithCompletion:^(NSError * error) {
@@ -312,7 +323,7 @@
 
 
 - (void)executeRefreshTask {
-   [self.thirdViewController fetchSuggestionListByVideoId:[YoutubeParser getWatchVideoId:self.video]];
+   [self.thirdViewController fetchSuggestionListByVideoId:[YoutubeParser getWatchVideoId:_detailVideo]];
 }
 
 

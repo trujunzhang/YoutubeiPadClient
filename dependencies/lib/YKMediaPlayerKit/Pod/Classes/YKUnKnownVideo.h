@@ -12,7 +12,7 @@
 @interface YKUnKnownVideo : NSObject <YKVideo>
 
 /**
- UnKnown video url
+ UnKnown detailVideo url
  */
 @property (nonatomic, strong) NSURL *contentURL;
 
