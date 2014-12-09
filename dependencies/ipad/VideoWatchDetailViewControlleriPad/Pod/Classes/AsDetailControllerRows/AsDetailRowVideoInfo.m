@@ -12,7 +12,7 @@
 #import <AsyncDisplayKit/ASHighlightOverlayLayer.h>
 
 
-static CGFloat kTextPadding = 10.0f;
+static CGFloat kTextPadding = 40.0f;
 static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
 
 
@@ -41,18 +41,11 @@ static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
    _textNode.linkAttributeNames = @[ kLinkAttributeName ];
 
    // generate an attributed string using the custom link attribute specified above
-//   NSString * blurb = @"kittens courtesy placekitten.com kittens courtesy placekitten.com kittens courtesy placekitten.com \U0001F638";
    NSString * blurb = videoCache.snippet.descriptionString;
    NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:blurb];
    [string addAttribute:NSFontAttributeName
                   value:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]
                   range:NSMakeRange(0, blurb.length)];
-   [string addAttributes:@{
-     kLinkAttributeName : [NSURL URLWithString:@"http://placekitten.com/"],
-     NSForegroundColorAttributeName : [UIColor grayColor],
-     NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternDot),
-    }
-                   range:[blurb rangeOfString:@"placekitten.com"]];
    _textNode.attributedString = string;
 
    // add it as a subnode, and we're done
@@ -72,8 +65,8 @@ static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
 
 - (CGSize)calculateSizeThatFits:(CGSize)constrainedSize {
    // called on a background thread.  custom nodes must call -measure: on their subnodes in -calculateSizeThatFits:
-   CGSize measuredSize = [_textNode measure:CGSizeMake(constrainedSize.width - 2 * kTextPadding,
-    constrainedSize.height - 2 * kTextPadding)];
+   CGSize measuredSize = [_textNode measure:CGSizeMake(constrainedSize.width - 2 * kTextPadding, constrainedSize.height - 2 * kTextPadding)];
+
    return CGSizeMake(constrainedSize.width, measuredSize.height + 2 * kTextPadding);
 }
 
@@ -81,12 +74,7 @@ static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
 - (void)layout {
    // called on the main thread.  we'll use the stashed size from above, instead of blocking on text sizing
    CGSize textNodeSize = _textNode.calculatedSize;
-   _textNode.frame = CGRectMake(
-    12.0f,
-    kTextPadding,
-    //textNodeSize.width,
-    self.calculatedSize.width-12.0f*2,
-    textNodeSize.height);
+   _textNode.frame = CGRectMake(kTextPadding, kTextPadding, self.calculatedSize.width - kTextPadding * 2, textNodeSize.height);
 }
 
 
