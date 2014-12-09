@@ -79,7 +79,16 @@
 }
 
 
+- (void)cleanupContainer:(UIView *)parentView {
+   NSArray * array = [parentView subviews];
+   for (UIView * childView in array) {
+      [childView removeFromSuperview];
+   }
+}
+
+
 - (void)makeTabBarController:(UIView *)parentView withControllerArray:(NSArray *)controllerArray {
+   [self cleanupContainer:parentView];
    // 2
    GGTabBar * topTabBar = [[GGLayoutStringTabBar alloc] initWithFrame:CGRectZero
                                                       viewControllers:controllerArray
@@ -91,7 +100,8 @@
    GGTabBarController * tabBarController = [[GGTabBarController alloc] initWithTabBarView:topTabBar];
    tabBarController.delegate = self;
 
-   tabBarController.view.frame = parentView.bounds;// used
+   CGRect rect = parentView.bounds;
+   tabBarController.view.frame = rect;// used
 //   tabBarController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 
    // 3
@@ -118,6 +128,8 @@
        self.secondViewController,
        self.thirdViewController, ];
    }
+
+   [self.thirdViewController.view setNeedsLayout];
 
    return nil;
 }

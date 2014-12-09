@@ -94,7 +94,8 @@
 
 - (void)viewDidLayoutSubviews {
    [super viewDidLayoutSubviews];
-   self.collectionView.frame = self.view.bounds;
+   CGRect rect = self.view.bounds;
+   self.collectionView.frame = rect;
 
    [self updateLayout:[UIApplication sharedApplication].statusBarOrientation];
 }
