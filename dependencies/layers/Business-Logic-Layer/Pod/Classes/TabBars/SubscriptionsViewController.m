@@ -44,20 +44,20 @@
 #pragma mark  GridViewCellDelegate
 
 
-- (void)gridViewCellTap:(id)video {
-   [[LeftRevealHelper sharedLeftRevealHelper] closeLeftMenuAndNoRearOpen];
-
-   YTVideoDetailViewController * controller = [[YTVideoDetailViewController alloc] initWithVideo:video];
-
-   UINavigationItem * item = self.navigationItem;
-   [item setBackBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"back"
-                                                               style:UIBarButtonItemStyleBordered
-                                                              target:nil
-                                                              action:nil]];
-
-   UINavigationController * navigationController = self.navigationController;
-   [navigationController pushViewController:controller animated:YES];
-}
+//- (void)gridViewCellTap:(id)video {
+//   [[LeftRevealHelper sharedLeftRevealHelper] closeLeftMenuAndNoRearOpen];
+//
+//   YTVideoDetailViewController * controller = [[YTVideoDetailViewController alloc] initWithVideo:video];
+//
+//   UINavigationItem * item = self.navigationItem;
+//   [item setBackBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"back"
+//                                                               style:UIBarButtonItemStyleBordered
+//                                                              target:nil
+//                                                              action:nil]];
+//
+//   UINavigationController * navigationController = self.navigationController;
+//   [navigationController pushViewController:controller animated:YES];
+//}
 
 
 #pragma mark -

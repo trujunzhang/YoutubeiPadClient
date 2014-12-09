@@ -122,14 +122,14 @@
 #pragma mark - GridViewCellDelegate
 
 
-- (void)gridViewCellTap:(id)video {
-   YTVideoDetailViewController * controller = [[YTVideoDetailViewController alloc] initWithVideo:video];
-
-   UINavigationController * navigationController = self.navigationController;
-   UINavigationController * navigationController123=[[MxTabBarManager sharedTabBarManager] currentNavigationController];
-
-   [navigationController pushViewController:controller animated:YES];
-}
+//- (void)gridViewCellTap:(id)video {
+//   YTVideoDetailViewController * controller = [[YTVideoDetailViewController alloc] initWithVideo:video];
+//
+//   UINavigationController * navigationController = self.navigationController;
+//   UINavigationController * navigationController123=[[MxTabBarManager sharedTabBarManager] currentNavigationController];
+//
+//   [navigationController pushViewController:controller animated:YES];
+//}
 
 
 #pragma mark -

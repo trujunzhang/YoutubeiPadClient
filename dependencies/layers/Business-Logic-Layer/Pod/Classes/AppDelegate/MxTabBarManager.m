@@ -45,6 +45,8 @@
 
 
 - (void)pushAndResetControllers:(NSArray *)controllers {
+   [[LeftRevealHelper sharedLeftRevealHelper] closeLeftMenuAndNoRearOpen];
+
    UINavigationController * navigationController = [self currentNavigationController];
 
    navigationController.viewControllers = controllers;
