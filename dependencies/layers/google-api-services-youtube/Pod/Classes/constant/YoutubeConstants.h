@@ -70,8 +70,8 @@
 #endif
 
 
-#define hasShowLeftMenu NO
-//#define hasShowLeftMenu YES
+//#define hasShowLeftMenu NO
+#define hasShowLeftMenu YES
 
 
 #define SUBSCRIPTION_LIST_MAX 2
@@ -79,8 +79,8 @@
 #define debugLeftMenuTapSubscription NO
 //#define debugLeftMenuTapSubscription YES
 
-//#define debugCollectionViewToDetail  NO
-#define debugCollectionViewToDetail  YES
+#define debugCollectionViewToDetail  NO
+//#define debugCollectionViewToDetail  YES
 
 
 // module

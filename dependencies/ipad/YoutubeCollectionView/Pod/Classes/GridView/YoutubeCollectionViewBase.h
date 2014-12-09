@@ -36,7 +36,6 @@
 
 @property(nonatomic, strong) NSArray * numbersPerLineArray;
 
-@property(nonatomic, assign) id<YoutubeCollectionNextPageDelegate> nextPageDelegate;
 
 - (GYoutubeRequestInfo *)getYoutubeRequestInfo;
 - (void)setUICollectionView:(UICollectionView *)collectionView;
@@ -63,6 +62,8 @@
 - (CGSize)cellSize;
 - (UIEdgeInsets)getUIEdgeInsetsForLayout;
 @property(nonatomic, strong) NSOperationQueue * nodeConstructionQueue;
+@property(nonatomic, strong) id<YoutubeCollectionNextPageDelegate> nextPageDelegate;
+
 - (instancetype)initWithNextPageDelegate:(id<YoutubeCollectionNextPageDelegate>)nextPageDelegate withTitle:(NSString *)title;
 
 - (void)reloadTableView:(NSArray *)array withLastRowCount:(NSUInteger)lastRowCount;

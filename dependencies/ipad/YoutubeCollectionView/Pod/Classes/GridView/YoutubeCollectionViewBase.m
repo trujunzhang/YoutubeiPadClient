@@ -8,7 +8,6 @@
 
 
 #import "YTVideoDetailViewController.h"
-#import "YoutubeCollectionViewBase.h"
 #import "GYoutubeHelper.h"
 #import "YTAsyncGridViewVideoCollectionViewCell.h"
 #import "YTGridViewPlaylistCell.h"
@@ -40,8 +39,6 @@
 }
 
 
-
-
 - (GYoutubeRequestInfo *)getYoutubeRequestInfo {
    if (self.youtubeRequestInfo == nil) {
       self.youtubeRequestInfo = [[GYoutubeRequestInfo alloc] init];
@@ -69,14 +66,14 @@
 
 
    if (isFirstRequest == NO) {
-      [self tableWillAppear];
       isFirstRequest = YES;
+      [self tableWillAppear];
    }
 }
 
 
 - (void)dealloc {
-
+   self.youtubeRequestInfo = nil;
 }
 
 

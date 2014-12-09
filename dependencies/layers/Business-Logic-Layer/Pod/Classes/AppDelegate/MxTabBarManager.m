@@ -54,6 +54,7 @@
 
    UINavigationController * navigationController = [self currentNavigationController];
 
+   navigationController.viewControllers= nil;
    navigationController.viewControllers = controllers;
 }
 
