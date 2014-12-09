@@ -10,6 +10,7 @@
 #import "YTGridViewVideoCell.h"
 #import "UIView+WhenTappedBlocks.h"
 #import "YoutubeParser.h"
+#import "MxTabBarManager.h"
 
 
 @interface YTGridViewVideoCell ()
@@ -141,6 +142,8 @@
 
 - (void)tapDetected {
    NSLog(@"single Tap on imageview");
+
+   [[MxTabBarManager sharedTabBarManager] pushWithVideo:self.video];
 
 //   [self.delegate gridViewCellTap:self.video];// TODO [test] djzhang gridViewCellTap
 }

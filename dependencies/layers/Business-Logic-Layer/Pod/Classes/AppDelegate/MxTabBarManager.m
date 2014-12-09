@@ -32,9 +32,17 @@
    return _tabBarController.selectedViewController;
 }
 
+
 - (YTVideoDetailViewController *)makeVideoDetailViewController:(id)video {
    return [[YTVideoDetailViewController alloc] initWithVideo:video];
 }
 
 
+- (void)pushWithVideo:(id)video {
+   YTVideoDetailViewController * controller = [self makeVideoDetailViewController:video];
+
+   UINavigationController * navigationController = [self currentNavigationController];
+
+   [navigationController pushViewController:controller animated:YES];
+}
 @end

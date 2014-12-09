@@ -21,6 +21,7 @@
 #import "YTAsChannelThumbnailsImageNode.h"
 #import "CollectionViewCellConstant.h"
 #import "YoutubeCollectionViewBase.h"
+#import "MxTabBarManager.h"
 
 
 @interface YTAsyncGridViewVideoNode () {
@@ -148,6 +149,8 @@
 
 
 - (void)channelThumbnailsTapped:(id)buttonTapped {
+   [[MxTabBarManager sharedTabBarManager] pushWithVideo:self.cardInfo];
+
 //   [self.delegate gridViewCellTap:self.cardInfo];  // TODO [test] djzhang gridViewCellTap
 }
 

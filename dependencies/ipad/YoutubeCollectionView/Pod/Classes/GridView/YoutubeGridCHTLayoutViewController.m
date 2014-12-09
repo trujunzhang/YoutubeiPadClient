@@ -12,6 +12,8 @@
 #import "YoutubeFooterView.h"
 #import "YTAsyncGridViewVideoCollectionViewCell.h"
 #import "YTGridViewVideoCell.h"
+#import "MxTabBarManager.h"
+
 
 @interface YoutubeGridCHTLayoutViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, CHTCollectionViewDelegateWaterfallLayout>
 @property(strong, nonatomic) UICollectionView * collectionView;
@@ -144,6 +146,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
    YTYouTubeVideoCache * video = [[self getYoutubeRequestInfo].videoList objectAtIndex:indexPath.row];
+
+   [[MxTabBarManager sharedTabBarManager] pushWithVideo:video];
+
 //   [self.delegate gridViewCellTap:video];// TODO [test] djzhang gridViewCellTap
 }
 

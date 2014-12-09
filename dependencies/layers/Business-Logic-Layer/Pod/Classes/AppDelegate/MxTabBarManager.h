@@ -10,4 +10,6 @@
 
 - (UINavigationController *)currentNavigationController;
 - (YTVideoDetailViewController *)makeVideoDetailViewController:(id)video;
+
+- (void)pushWithVideo:(id)video;
 @end

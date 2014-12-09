@@ -15,6 +15,7 @@
 #import "AsyncDisplayKitStatic.h"
 #import "CollectionViewCellConstant.h"
 #import "UIColor+iOS8Colors.h"
+#import "MxTabBarManager.h"
 
 
 @interface YTGridVideoCellNode () {
@@ -186,7 +187,9 @@
 
 
 - (void)buttonTapped:(id)buttonTapped {
-//   if (self.delegate)
+
+   [[MxTabBarManager sharedTabBarManager] pushWithVideo:self.video];
+
 //      [self.delegate gridViewCellTap:self.video];// TODO [test] djzhang gridViewCellTap
 }
 
