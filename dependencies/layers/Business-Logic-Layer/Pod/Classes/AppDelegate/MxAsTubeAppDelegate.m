@@ -20,11 +20,8 @@
 #import "MxTabBarManager.h"
 
 
-@interface MxAsTubeAppDelegate ()<UIApplicationDelegate, UITabBarControllerDelegate, SWRevealViewControllerDelegate, GYoutubeHelperDelegate, LeftMenuViewBaseDelegate> {
+@interface MxAsTubeAppDelegate ()<UIApplicationDelegate, UITabBarControllerDelegate, SWRevealViewControllerDelegate, LeftMenuViewBaseDelegate> {
    SubscriptionsViewController * _subscriptionsViewController; // the first right tab bar item
-
-   LeftMenuViewController * _leftViewController; // left
-   UITabBarController * _tabBarController; // right
 }
 
 @property(nonatomic, strong) SWRevealViewController * revealController;
@@ -37,35 +34,35 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
    [YTCacheImplement removeAllObjects];
-   [GYoutubeHelper getInstance].delegate = self;
 
    //1
-   _tabBarController = (UITabBarController *) self.window.rootViewController;
-   _tabBarController.view.backgroundColor = [UIColor whiteColor];
-   _tabBarController.delegate = self;
-   _tabBarController.tabBar.tintColor = [UIColor redColor];
-   _tabBarController.selectedIndex = 0;// default is Subscription View Controller.
+   UITabBarController * tabBarController = (UITabBarController *) self.window.rootViewController;
+   tabBarController.view.backgroundColor = [UIColor whiteColor];
+   tabBarController.delegate = self;
+   tabBarController.tabBar.tintColor = [UIColor redColor];
+   tabBarController.selectedIndex = 0;// default is Subscription View Controller.
 
    if (!hasShowLeftMenu) {
-      _tabBarController.selectedIndex = 1; //test
+      tabBarController.selectedIndex = 1; //test
    }
 
    //2. the first right tab bar item
-   _subscriptionsViewController = ((UINavigationController *) _tabBarController.viewControllers[0]).viewControllers[0];
+   _subscriptionsViewController = ((UINavigationController *) tabBarController.viewControllers[0]).viewControllers[0];
 
 //   NSString * debug = @"debug";
 
    //3
-   _leftViewController = [[LeftMenuViewController alloc] init];
-   _leftViewController.delegate = self;
+   LeftMenuViewController * leftViewController = [[LeftMenuViewController alloc] init];
+   leftViewController.delegate = self;
 
    //6
-   self.revealController = [[SWRevealViewController alloc] initWithRearViewController:_leftViewController
-                                                                  frontViewController:_tabBarController];
+   self.revealController = [[SWRevealViewController alloc] initWithRearViewController:leftViewController
+                                                                  frontViewController:tabBarController];
    self.revealController.delegate = self;
 
    [[LeftRevealHelper sharedLeftRevealHelper] registerRevealController:self.revealController];
-   [[MxTabBarManager sharedTabBarManager] registerTabBarController:_tabBarController];
+   [[MxTabBarManager sharedTabBarManager] registerTabBarController:tabBarController
+                                            withLeftViewController:leftViewController];
 
 //   UINavigationController * navigationController=[[MxTabBarManager sharedTabBarManager] currentNavigationController];
 
@@ -121,20 +118,6 @@
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
    [[LeftRevealHelper sharedLeftRevealHelper] endTabBarToggleWithSelectedIndex:tabBarController.selectedIndex];
-}
-
-
-#pragma mark -
-#pragma mark GYoutubeHelperDelegate
-
-
-- (void)FetchYoutubeSubscriptionListCompletion:(GYoutubeAuthUser *)user {
-   [_leftViewController refreshChannelSubscriptionList:user];
-}
-
-
-- (void)FetchYoutubeChannelCompletion:(YoutubeAuthInfo *)info {
-   [_leftViewController refreshChannelInfo:info];
 }
 
 

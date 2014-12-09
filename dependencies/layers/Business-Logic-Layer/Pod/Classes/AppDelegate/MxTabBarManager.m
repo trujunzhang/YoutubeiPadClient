@@ -1,9 +1,12 @@
+#import <google-api-services-youtube/GYoutubeHelper.h>
 #import "MxTabBarManager.h"
 #import "YTVideoDetailViewController.h"
+#import "LeftMenuViewController.h"
 
 
-@interface MxTabBarManager () {
+@interface MxTabBarManager ()<GYoutubeHelperDelegate> {
    UITabBarController * _tabBarController;
+   LeftMenuViewController * _leftViewController; // left
 }
 
 
@@ -17,14 +20,16 @@
    static dispatch_once_t onceToken;
    dispatch_once(&onceToken, ^{
        cache = [[MxTabBarManager alloc] init];
+       [GYoutubeHelper getInstance].delegate = cache;
    });
 
    return cache;
 }
 
 
-- (void)registerTabBarController:(UITabBarController *)tabBarController {
+- (void)registerTabBarController:(UITabBarController *)tabBarController withLeftViewController:(LeftMenuViewController *)leftViewController {
    _tabBarController = tabBarController;
+   _leftViewController = leftViewController;
 }
 
 
@@ -45,4 +50,19 @@
 
    [navigationController pushViewController:controller animated:YES];
 }
+
+
+#pragma mark -
+#pragma mark GYoutubeHelperDelegate
+
+
+- (void)FetchYoutubeSubscriptionListCompletion:(GYoutubeAuthUser *)user {
+   [_leftViewController refreshChannelSubscriptionList:user];
+}
+
+
+- (void)FetchYoutubeChannelCompletion:(YoutubeAuthInfo *)info {
+   [_leftViewController refreshChannelInfo:info];
+}
+
 @end
