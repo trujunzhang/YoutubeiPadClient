@@ -9,6 +9,7 @@
 
 - (void)registerTabBarController:(UITabBarController *)tabBarController withLeftViewController:(LeftMenuViewController *)leftViewController;
 
+- (void)setLeftMenuControllerDelegate:(id)delegate;
 - (UINavigationController *)currentNavigationController;
 - (YTVideoDetailViewController *)makeVideoDetailViewController:(id)video;
 

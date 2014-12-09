@@ -14,13 +14,13 @@
 #import "YoutubeChannelPageViewController.h"
 #import "CollectionViewCellConstant.h"
 #import "MxTabBarManager.h"
+#import "LeftMenuViewBase.h"
 
 
-@interface SubscriptionsViewController ()<YoutubeCollectionNextPageDelegate> {
+@interface SubscriptionsViewController ()<YoutubeCollectionNextPageDelegate, LeftMenuViewBaseDelegate> {
    YTCollectionViewController * _gridViewController;
    YTPlaylistItemsType _playlistItemsType;
 }
-
 
 @end
 
@@ -31,6 +31,7 @@
    [super viewDidLoad];
 
    // Do any additional setup after loading the view, typically from a nib.
+   [[MxTabBarManager sharedTabBarManager] setLeftMenuControllerDelegate:self];
 }
 
 
@@ -41,27 +42,7 @@
 
 
 #pragma mark -
-#pragma mark  GridViewCellDelegate
-
-
-//- (void)gridViewCellTap:(id)video {
-//   [[LeftRevealHelper sharedLeftRevealHelper] closeLeftMenuAndNoRearOpen];
-//
-//   YTVideoDetailViewController * controller = [[YTVideoDetailViewController alloc] initWithVideo:video];
-//
-//   UINavigationItem * item = self.navigationItem;
-//   [item setBackBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"back"
-//                                                               style:UIBarButtonItemStyleBordered
-//                                                              target:nil
-//                                                              action:nil]];
-//
-//   UINavigationController * navigationController = self.navigationController;
-//   [navigationController pushViewController:controller animated:YES];
-//}
-
-
-#pragma mark -
-#pragma mark Left menu events
+#pragma mark LeftMenuViewBaseDelegate
 
 
 - (void)startToggleLeftMenuWithTitle:(NSString *)title withType:(YTPlaylistItemsType)playlistItemsType {

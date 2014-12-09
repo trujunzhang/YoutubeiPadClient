@@ -34,6 +34,11 @@
 }
 
 
+- (void)setLeftMenuControllerDelegate:(id)delegate {
+   _leftViewController.delegate = delegate;
+}
+
+
 - (UINavigationController *)currentNavigationController {
    return _tabBarController.selectedViewController;
 }

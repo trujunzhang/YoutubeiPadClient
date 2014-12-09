@@ -20,7 +20,7 @@
 #import "MxTabBarManager.h"
 
 
-@interface MxAsTubeAppDelegate ()<UIApplicationDelegate, UITabBarControllerDelegate, SWRevealViewControllerDelegate, LeftMenuViewBaseDelegate> {
+@interface MxAsTubeAppDelegate ()<UIApplicationDelegate, UITabBarControllerDelegate, SWRevealViewControllerDelegate> {
    SubscriptionsViewController * _subscriptionsViewController; // the first right tab bar item
 }
 
@@ -53,7 +53,7 @@
 
    //3
    LeftMenuViewController * leftViewController = [[LeftMenuViewController alloc] init];
-   leftViewController.delegate = self;
+//   leftViewController.delegate = self;
 
    //6
    self.revealController = [[SWRevealViewController alloc] initWithRearViewController:leftViewController
@@ -121,18 +121,18 @@
 }
 
 
-#pragma mark -
-#pragma mark LeftMenuViewBaseDelegate
-
-
-- (void)startToggleLeftMenuWithTitle:(NSString *)title withType:(YTPlaylistItemsType)playlistItemsType {
-   [_subscriptionsViewController startToggleLeftMenuWithTitle:title withType:playlistItemsType];
-}
-
-
-- (void)endToggleLeftMenuEventForChannelPageWithChannelId:(NSString *)channelId withTitle:(NSString *)title {
-   [[LeftRevealHelper sharedLeftRevealHelper] closeLeftMenuAndNoRearOpen];
-   [_subscriptionsViewController endToggleLeftMenuEventForChannelPageWithChannelId:channelId withTitle:title];
-}
+//#pragma mark -
+//#pragma mark LeftMenuViewBaseDelegate
+//
+//
+//- (void)startToggleLeftMenuWithTitle:(NSString *)title withType:(YTPlaylistItemsType)playlistItemsType {
+//   [_subscriptionsViewController startToggleLeftMenuWithTitle:title withType:playlistItemsType];
+//}
+//
+//
+//- (void)endToggleLeftMenuEventForChannelPageWithChannelId:(NSString *)channelId withTitle:(NSString *)title {
+//   [[LeftRevealHelper sharedLeftRevealHelper] closeLeftMenuAndNoRearOpen];
+//   [_subscriptionsViewController endToggleLeftMenuEventForChannelPageWithChannelId:channelId withTitle:title];
+//}
 
 @end
