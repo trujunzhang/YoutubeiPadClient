@@ -78,30 +78,27 @@
                                                                                          action:@selector(leftBarButtonItemAction:)];
 
    // 3
-   self.navigationController.viewControllers = [NSArray arrayWithObject:gridViewController];
+   [[MxTabBarManager sharedTabBarManager] pushAndResetControllers:@[ gridViewController ]];
 
    // 4
-   [gridViewController fetchPlayListByType:playlistItemsType];
-
-   // 5
    _playlistItemsType = playlistItemsType;
    _gridViewController = gridViewController;
+   [_gridViewController fetchPlayListByType:playlistItemsType];
 }
 
 
 - (void)endToggleLeftMenuEventForChannelPageWithChannelId:(NSString *)channelId withTitle:(NSString *)title {
    // 1
-   YoutubeChannelPageViewController * controller = [[YoutubeChannelPageViewController alloc] initWithChannelId:channelId withTitle:title];
+   YoutubeChannelPageViewController * controller = [[YoutubeChannelPageViewController alloc] initWithChannelId:channelId
+                                                                                                     withTitle:title];
 
    controller.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mt_side_tab_button"]
                                                                                   style:UIBarButtonItemStyleBordered
                                                                                  target:self
                                                                                  action:@selector(leftBarButtonItemAction:)];
 
-   [[MxTabBarManager sharedTabBarManager] pushAndResetControllers:[NSArray arrayWithObject:controller]];
+   [[MxTabBarManager sharedTabBarManager] pushAndResetControllers:@[ controller ]];
 
-   // 2
-//   self.navigationController.viewControllers = ;
 }
 
 
