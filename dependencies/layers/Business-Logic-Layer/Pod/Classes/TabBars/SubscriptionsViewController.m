@@ -79,7 +79,6 @@
                                                                                  action:@selector(leftBarButtonItemAction:)];
 
    [[MxTabBarManager sharedTabBarManager] pushAndResetControllers:@[ controller ]];
-
 }
 
 
