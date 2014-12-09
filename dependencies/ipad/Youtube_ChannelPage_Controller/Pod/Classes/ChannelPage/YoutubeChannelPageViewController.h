@@ -11,6 +11,6 @@
 
 @interface YoutubeChannelPageViewController : UIViewController
 
-- (instancetype)initWithChannelId:(NSString *)channelId;
+- (instancetype)initWithChannelId:(NSString *)channelId withTitle:(NSString *)title;
 
 @end

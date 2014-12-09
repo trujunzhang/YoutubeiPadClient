@@ -44,6 +44,13 @@
 }
 
 
+- (void)pushAndResetControllers:(NSArray *)controllers {
+   UINavigationController * navigationController = [self currentNavigationController];
+
+   navigationController.viewControllers = controllers;
+}
+
+
 - (void)pushWithVideo:(id)video {
    [[LeftRevealHelper sharedLeftRevealHelper] closeLeftMenuAndNoRearOpen];
 

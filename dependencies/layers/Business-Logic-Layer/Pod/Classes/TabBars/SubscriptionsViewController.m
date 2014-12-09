@@ -13,6 +13,7 @@
 #import "LeftRevealHelper.h"
 #import "YoutubeChannelPageViewController.h"
 #import "CollectionViewCellConstant.h"
+#import "MxTabBarManager.h"
 
 
 @interface SubscriptionsViewController ()<YoutubeCollectionNextPageDelegate> {
@@ -90,16 +91,17 @@
 
 - (void)endToggleLeftMenuEventForChannelPageWithChannelId:(NSString *)channelId withTitle:(NSString *)title {
    // 1
-   YoutubeChannelPageViewController * controller = [[YoutubeChannelPageViewController alloc] initWithChannelId:channelId];
+   YoutubeChannelPageViewController * controller = [[YoutubeChannelPageViewController alloc] initWithChannelId:channelId withTitle:title];
 
    controller.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mt_side_tab_button"]
                                                                                   style:UIBarButtonItemStyleBordered
                                                                                  target:self
                                                                                  action:@selector(leftBarButtonItemAction:)];
-   controller.title = title;
+
+   [[MxTabBarManager sharedTabBarManager] pushAndResetControllers:[NSArray arrayWithObject:controller]];
 
    // 2
-   self.navigationController.viewControllers = [NSArray arrayWithObject:controller];
+//   self.navigationController.viewControllers = ;
 }
 
 

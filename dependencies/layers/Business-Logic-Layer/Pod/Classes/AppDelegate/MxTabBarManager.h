@@ -12,5 +12,6 @@
 - (UINavigationController *)currentNavigationController;
 - (YTVideoDetailViewController *)makeVideoDetailViewController:(id)video;
 
+- (void)pushAndResetControllers:(NSArray *)controllers;
 - (void)pushWithVideo:(id)video;
 @end

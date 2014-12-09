@@ -34,10 +34,11 @@
 @implementation YoutubeChannelPageViewController
 
 
-- (instancetype)initWithChannelId:(NSString *)channelId {
+- (instancetype)initWithChannelId:(NSString *)channelId withTitle:(NSString *)title {
    self = [super init];
    if (self) {
       self.channelId = channelId;
+      self.title = title;
 
       YoutubeResponseBlock completion = ^(NSArray * array, NSObject * respObject) {
           self.pageChannel = array[0];
