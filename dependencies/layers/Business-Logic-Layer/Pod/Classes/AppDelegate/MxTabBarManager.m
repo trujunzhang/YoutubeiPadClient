@@ -2,6 +2,7 @@
 #import "MxTabBarManager.h"
 #import "YTVideoDetailViewController.h"
 #import "LeftMenuViewController.h"
+#import "LeftRevealHelper.h"
 
 
 @interface MxTabBarManager ()<GYoutubeHelperDelegate> {
@@ -44,6 +45,8 @@
 
 
 - (void)pushWithVideo:(id)video {
+   [[LeftRevealHelper sharedLeftRevealHelper] closeLeftMenuAndNoRearOpen];
+
    YTVideoDetailViewController * controller = [self makeVideoDetailViewController:video];
 
    UINavigationController * navigationController = [self currentNavigationController];

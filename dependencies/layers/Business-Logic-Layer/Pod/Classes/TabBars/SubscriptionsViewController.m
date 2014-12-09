@@ -15,7 +15,7 @@
 #import "CollectionViewCellConstant.h"
 
 
-@interface SubscriptionsViewController ()< YoutubeCollectionNextPageDelegate> {
+@interface SubscriptionsViewController ()<YoutubeCollectionNextPageDelegate> {
    YTCollectionViewController * _gridViewController;
    YTPlaylistItemsType _playlistItemsType;
 }
@@ -28,22 +28,14 @@
 
 - (void)viewDidLoad {
    [super viewDidLoad];
-   // 1
+
    // Do any additional setup after loading the view, typically from a nib.
-   self.tabBarItem.title = @"Subscriptions";
-   self.view.backgroundColor = [UIColor clearColor];
 }
 
 
 - (void)didReceiveMemoryWarning {
    [super didReceiveMemoryWarning];
    // Dispose of any resources that can be recreated.
-}
-
-
-- (void)viewDidAppear:(BOOL)animated {
-   [super viewDidAppear:animated];
-
 }
 
 
@@ -73,23 +65,26 @@
 
 - (void)startToggleLeftMenuWithTitle:(NSString *)title withType:(YTPlaylistItemsType)playlistItemsType {
    // 1
-   _gridViewController = [[YTCollectionViewController alloc] init];
-   _gridViewController.title = title;
-   _gridViewController.nextPageDelegate = self;
-   _gridViewController.numbersPerLineArray = [NSArray arrayWithObjects:@"3", @"4", nil];
+   YTCollectionViewController * gridViewController = [[YTCollectionViewController alloc] init];
+   gridViewController.title = title;
+   gridViewController.nextPageDelegate = self;
+   gridViewController.numbersPerLineArray = [NSArray arrayWithObjects:@"3", @"4", nil];
 
    // 2
-   _gridViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mt_side_tab_button"]
-                                                                                           style:UIBarButtonItemStyleBordered
-                                                                                          target:self
-                                                                                          action:@selector(leftBarButtonItemAction:)];
+   gridViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"mt_side_tab_button"]
+                                                                                          style:UIBarButtonItemStyleBordered
+                                                                                         target:self
+                                                                                         action:@selector(leftBarButtonItemAction:)];
 
    // 3
-   self.navigationController.viewControllers = [NSArray arrayWithObject:_gridViewController];
+   self.navigationController.viewControllers = [NSArray arrayWithObject:gridViewController];
 
-   // 3
+   // 4
+   [gridViewController fetchPlayListByType:playlistItemsType];
+
+   // 5
    _playlistItemsType = playlistItemsType;
-   [_gridViewController fetchPlayListByType:playlistItemsType];
+   _gridViewController = gridViewController;
 }
 
 
