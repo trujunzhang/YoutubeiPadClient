@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 #import "CollectionConstant.h"
+#import "YoutubePopUpViewControllerBase.h"
 
 @class YoutubePopUpTableViewController;
 
-@interface SearchViewController : UIViewController
+@interface SearchViewController : YoutubePopUpViewControllerBase
 
 @end
 

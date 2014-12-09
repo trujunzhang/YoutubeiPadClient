@@ -17,18 +17,13 @@
 #import "MxTabBarManager.h"
 
 
-@interface SearchViewController ()< UISearchBarDelegate, YoutubeCollectionNextPageDelegate, UIPopoverControllerDelegate, YoutubePopUpTableViewDelegate> {
+@interface SearchViewController ()<UISearchBarDelegate, YoutubeCollectionNextPageDelegate> {
    YTCollectionViewController * _collectionViewController;
    YTCollectionViewController * _lastCollectionViewController;
 }
 @property(strong, nonatomic) UISegmentedControl * segment_title;
 @property(nonatomic, strong) UISearchBar * searchBar;
 @property(nonatomic, strong) UIBarButtonItem * sarchBarItem;
-
-@property(nonatomic, strong) YoutubePopUpTableViewController * searchAutoCompleteViewController;
-@property(nonatomic, strong) UIPopoverController * popover;
-
-
 @end
 
 
@@ -39,9 +34,6 @@
    [super viewDidLoad];
    // Do any additional setup after loading the view, typically from a nib.
    self.view.backgroundColor = [UIColor clearColor];
-
-   self.searchAutoCompleteViewController = [[YoutubePopUpTableViewController alloc] init];
-   self.searchAutoCompleteViewController.popupDelegate = self;
 
    [self setupNavigationRightItem];
    [self setupNavigationTitle];
@@ -119,20 +111,6 @@
 
 
 #pragma mark -
-#pragma mark - GridViewCellDelegate
-
-
-//- (void)gridViewCellTap:(id)video {
-//   YTVideoDetailViewController * controller = [[YTVideoDetailViewController alloc] initWithVideo:video];
-//
-//   UINavigationController * navigationController = self.navigationController;
-//   UINavigationController * navigationController123=[[MxTabBarManager sharedTabBarManager] currentNavigationController];
-//
-//   [navigationController pushViewController:controller animated:YES];
-//}
-
-
-#pragma mark -
 #pragma mark - UISearchBarDelegate
 
 
@@ -141,25 +119,21 @@
 
    [self.searchBar resignFirstResponder];
 
-   if (self.popover) {
-      [self.popover dismissPopoverAnimated:YES];
-      self.popover = nil;
-   }
+   [self hidePopup];
 }
 
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-   if (!self.popover)
-      [self popAutoCompletDialog];
+   [self showPopupDialog:self.sarchBarItem];
 
    if ([self.searchBar.text isEqualToString:@""]) {
-      [self.searchAutoCompleteViewController empty];
+      [self cleanUpContent];
       [[GYoutubeHelper getInstance] cancelAutoCompleteSuggestionTask];
       return;
    }
 
    YoutubeResponseBlock completion = ^(NSArray * array, NSObject * respObject) {
-       [self.searchAutoCompleteViewController resetTableSource:array];
+       [self reloadContent:array];
    };
    ErrorResponseBlock error = ^(NSError * error) {
        NSString * debug = @"debug";
@@ -197,27 +171,6 @@
    [_collectionViewController searchByPageToken];
 }
 
-
-#pragma mark -
-#pragma mark google autocomplete search suggest
-
-
-- (void)popAutoCompletDialog {
-   self.popover = [[UIPopoverController alloc] initWithContentViewController:self.searchAutoCompleteViewController];
-   self.popover.delegate = self;
-
-   [self.popover presentPopoverFromBarButtonItem:self.sarchBarItem
-                        permittedArrowDirections:UIPopoverArrowDirectionAny
-                                        animated:YES];
-}
-
-
-#pragma mark - Popover Controller Delegate
-
-
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
-   self.popover = nil;
-}
 
 
 #pragma mark -
