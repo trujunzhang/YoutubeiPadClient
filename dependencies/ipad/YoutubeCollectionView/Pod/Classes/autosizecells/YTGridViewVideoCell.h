@@ -24,6 +24,6 @@
 @property(strong, nonatomic) IBOutlet UIView * videoInfoContainer;
 
 
-- (void)bind:(YTYouTubeVideoCache *)video placeholderImage:(UIImage *)placeholder  cellSize:(CGSize)cellSize  delegate:(id<GridViewCellDelegate>)delegate nodeConstructionQueue:(NSOperationQueue *)nodeConstructionQueue;
+- (void)bind:(MABYT3_Video *)video placeholderImage:(UIImage *)placeholder cellSize:(CGSize)cellSize nodeConstructionQueue:(NSOperationQueue *)nodeConstructionQueue;
 
 @end

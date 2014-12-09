@@ -11,9 +11,9 @@
 #import "UIView+WhenTappedBlocks.h"
 #import "YoutubeParser.h"
 
+
 @interface YTGridViewVideoCell ()
 @property(nonatomic, strong) YTYouTubeVideoCache * video;
-@property(nonatomic, strong) id<GridViewCellDelegate> delegate;
 @end
 
 
@@ -43,9 +43,8 @@
 }
 
 
-- (void)bind:(YTYouTubeVideoCache *)video placeholderImage:(UIImage *)placeholder cellSize:(CGSize)cellSize delegate:(id<GridViewCellDelegate>)delegate nodeConstructionQueue:(NSOperationQueue *)nodeConstructionQueue {
+- (void)bind:(MABYT3_Video *)video placeholderImage:(UIImage *)placeholder cellSize:(CGSize)cellSize nodeConstructionQueue:(NSOperationQueue *)nodeConstructionQueue {
    self.video = video;
-   self.delegate = delegate;
 
    NSString * videoThumbnailsUrl = video.snippet.thumbnails.medium.url;
    NSString * videoTitleValue = video.snippet.title;
@@ -143,9 +142,7 @@
 - (void)tapDetected {
    NSLog(@"single Tap on imageview");
 
-   if (self.delegate) {
-      [self.delegate gridViewCellTap:self.video];
-   }
+//   [self.delegate gridViewCellTap:self.video];// TODO [test] djzhang gridViewCellTap
 }
 
 
