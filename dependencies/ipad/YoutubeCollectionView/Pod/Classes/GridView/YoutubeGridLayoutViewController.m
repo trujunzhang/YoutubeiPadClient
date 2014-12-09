@@ -183,7 +183,7 @@ int step = 0;
       YTYouTubeVideoCache * video = [[self getYoutubeRequestInfo].videoList objectAtIndex:indexPath.row];
 
       YTGridVideoCellNode * videoCellNode =
-       [[YTGridVideoCellNode alloc] initWithCellNodeOfSize:[self cellSize] withVideo:video delegate:self.delegate];
+       [[YTGridVideoCellNode alloc] initWithCellNodeOfSize:[self cellSize] withVideo:video];
 
       node = videoCellNode;
    }

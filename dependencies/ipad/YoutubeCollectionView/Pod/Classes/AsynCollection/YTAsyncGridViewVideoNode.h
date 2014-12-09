@@ -12,7 +12,7 @@
 #import "AsyncDisplayKit.h"
 #import "YoutubeConstants.h"
 
-@protocol GridViewCellDelegate;
+
 
 
 @interface YTAsyncGridViewVideoNode : ASDisplayNode

@@ -41,7 +41,7 @@
 @implementation YTGridVideoCellNode
 
 
-- (instancetype)initWithCellNodeOfSize:(CGSize)size withVideo:(YTYouTubeVideoCache *)video delegate:(id<GridViewCellDelegate>)delegate { //242,242
+- (instancetype)initWithCellNodeOfSize:(CGSize)size withVideo:(YTYouTubeVideoCache *)video { //242,242
    if (!(self = [super init]))
       return nil;
 

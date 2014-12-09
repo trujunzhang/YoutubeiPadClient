@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #include "YoutubeConstants.h"
 
-@protocol GridViewCellDelegate;
+
 
 
 @interface YTAsGridVideoCellNode : ASCellNode

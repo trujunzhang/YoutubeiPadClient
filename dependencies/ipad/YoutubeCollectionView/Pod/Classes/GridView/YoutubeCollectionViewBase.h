@@ -14,7 +14,7 @@
 
 @class GYoutubeRequestInfo;
 @class YTGridViewVideoCell;
-@protocol GridViewCellDelegate;
+
 
 
 @protocol YoutubeCollectionNextPageDelegate<NSObject>

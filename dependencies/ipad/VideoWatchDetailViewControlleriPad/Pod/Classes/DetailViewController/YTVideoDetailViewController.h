@@ -18,7 +18,7 @@
 
 @class GGTabBarController;
 @class YTAsVideoDetailViewController;
-@protocol GridViewCellDelegate;
+
 
 
 @interface YTVideoDetailViewController : UIViewController

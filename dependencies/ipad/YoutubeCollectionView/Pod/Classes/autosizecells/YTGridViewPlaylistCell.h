@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "YoutubeConstants.h"
 
-@protocol GridViewCellDelegate;
+
 
 
 @interface YTGridViewPlaylistCell : UICollectionViewCell
 
-- (void)bind:(YTYouTubePlayList *)list placeholderImage:(UIImage *)image delegate:(id<GridViewCellDelegate>)delegate;
+- (void)bind:(YTYouTubePlayList *)list placeholderImage:(UIImage *)image;
 @end

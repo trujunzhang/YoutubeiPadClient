@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #include "YoutubeConstants.h"
-@protocol GridViewCellDelegate;
+
 
 
 @interface YTGridVideoCellNode : ASCellNode
 
-- (instancetype)initWithCellNodeOfSize:(CGSize)size withVideo:(YTYouTubeVideoCache *)video delegate:(id<GridViewCellDelegate>)delegate;
+- (instancetype)initWithCellNodeOfSize:(CGSize)size withVideo:(YTYouTubeVideoCache *)video;
 @property(nonatomic, strong) YTYouTubeVideoCache * video;
 @property(nonatomic, strong) id<GridViewCellDelegate> delegate;
 @property(nonatomic) CGFloat durationLabelWidth;

@@ -19,7 +19,7 @@
 }
 
 
-- (void)bind:(YTYouTubePlayList *)list placeholderImage:(UIImage *)image delegate:(id<GridViewCellDelegate>)delegate {
+- (void)bind:(YTYouTubePlayList *)list placeholderImage:(UIImage *)image {
 
 }
 @end

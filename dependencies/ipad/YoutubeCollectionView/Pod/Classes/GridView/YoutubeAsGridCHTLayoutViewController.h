@@ -10,7 +10,7 @@
 #import "YoutubeCollectionViewBase.h"
 
 
-@protocol GridViewCellDelegate;
+
 @class CHTCollectionViewWaterfallLayout;
 
 

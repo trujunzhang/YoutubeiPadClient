@@ -11,7 +11,7 @@
 #import "AsyncDisplayKit.h"
 #import "YoutubeConstants.h"
 
-@protocol GridViewCellDelegate;
+
 
 
 @interface YTAsyncGridViewVideoCollectionViewCell : UICollectionViewCell
