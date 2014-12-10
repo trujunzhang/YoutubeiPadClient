@@ -39,7 +39,7 @@
 
 - (void)layout {
    _durationTextNode.frame =
-    [FrameCalculator frameForDurationWithCloverSize:self.cellSize
+    [FrameCalculator frameForDurationWithCloverSize:self.cellRect.size
                                   withDurationWidth:self.durationLabelWidth];
 }
 @end

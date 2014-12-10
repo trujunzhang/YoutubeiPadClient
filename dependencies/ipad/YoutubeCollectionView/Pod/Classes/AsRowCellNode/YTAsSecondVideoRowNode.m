@@ -41,7 +41,7 @@
 
 
 - (void)layout {
-   _videoTitleNode.frame = CGRectMake(0, 0, self.cellSize.width, 36);
+   _videoTitleNode.frame = CGRectMake(0, self.cellRect.origin.y, self.cellRect.size.width, 36);
 }
 
 

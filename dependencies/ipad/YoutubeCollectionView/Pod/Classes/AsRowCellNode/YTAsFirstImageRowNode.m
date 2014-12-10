@@ -21,14 +21,14 @@
 }
 
 - (void)makeRowNode {
-   _videoCoverThumbnailsNode = [ASCacheNetworkImageNode nodeWithImageUrl:[YoutubeParser getVideoSnippetThumbnails:self.video]];
+   _videoCoverThumbnailsNode = [ASCacheNetworkImageNode nodeWithImageUrl:[YoutubeParser getVideoSnippetThumbnails:self.nodeVideo]];
    _videoCoverThumbnailsNode.backgroundColor = [UIColor clearColor];
    [self addSubnode:_videoCoverThumbnailsNode];
 }
 
 
 - (void)layout {
-   _videoCoverThumbnailsNode.frame = [FrameCalculator frameForChannelThumbnails:self.cellSize
+   _videoCoverThumbnailsNode.frame = [FrameCalculator frameForChannelThumbnails:self.cellRect.size
                                                                 nodeFrameHeight:0];
 
 }
