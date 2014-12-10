@@ -21,7 +21,7 @@ target 'mxAsTubeiPad', :exclusive => true do
 
   pod "ISMemoryCache", :path => "../dependencies/lib/Cache/ISMemoryCache"
   pod "SDWebImage", :path => "../dependencies/lib/Cache/SDWebImage"
-
+  pod "EGOCache", :path => "../dependencies/lib/Cache/EGOCache"
 
   pod "YouTubeAPI3-Objective-C-wrapper", :path => "../dependencies/lib/google-api-client/YouTubeAPI3-Objective-C-wrapper"
   pod "Google-API-Client-local", :path => "../dependencies/lib/google-api-client/Google-API-Client-local"
