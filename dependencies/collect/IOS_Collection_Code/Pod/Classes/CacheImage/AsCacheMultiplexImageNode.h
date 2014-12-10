@@ -11,7 +11,7 @@
 
 @interface AsCacheMultiplexImageNode : ASMultiplexImageNode
 
-- (instancetype)initWithMultiplexImageUrlDictionary:(NSArray *)urlArray;
-+ (instancetype)nodeWithImageUrl:(NSArray *)urlArray;
+- (instancetype)initWithMultiplexImageUrlArray:(NSArray *)urlArray;
++ (instancetype)nodeWithImageUrlArray:(NSArray *)urlArray;
 
 @end

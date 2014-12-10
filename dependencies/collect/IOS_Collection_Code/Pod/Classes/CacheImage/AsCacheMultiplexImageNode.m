@@ -17,7 +17,7 @@
 
 }
 
-- (instancetype)initWithMultiplexImageUrlDictionary:(NSArray *)urlArray {
+- (instancetype)initWithMultiplexImageUrlArray:(NSArray *)urlArray {
    self = [super initWithCache:nil downloader:[[ASBasicImageDownloader alloc] init]];
    if (self) {
       _multiplexImageUrlDictionary = [self multiplexImageUrlDictionary:urlArray];
@@ -33,8 +33,8 @@
 }
 
 
-+ (instancetype)nodeWithImageUrl:(NSArray *)urlArray {
-   return [[self alloc] initWithMultiplexImageUrlDictionary:urlArray];
++ (instancetype)nodeWithImageUrlArray:(NSArray *)urlArray {
+   return [[self alloc] initWithMultiplexImageUrlArray:urlArray];
 }
 
 
