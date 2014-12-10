@@ -14,7 +14,9 @@ target 'mxAsTubeiPad', :exclusive => true do
 
   pod "AFNetworking", :path => "../dependencies/lib/AFNetworking"
   pod "KRLCollectionViewGridLayout", :path => "../dependencies/lib/KRLCollectionViewGridLayout"
-  pod "AsyncDisplayKit", :path => "../dependencies/lib/AsyncDisplayKit"
+
+  pod "AsyncDisplayKit", :path => "../dependencies/lib/facebook/AsyncDisplayKit"
+  pod "pop", :path => "../dependencies/lib/facebook/pop"
 
   pod "ISMemoryCache", :path => "../dependencies/lib/Cache/ISMemoryCache"
   pod "SDWebImage", :path => "../dependencies/lib/Cache/SDWebImage"
