@@ -6,7 +6,7 @@
 #import "AsCacheMultiplexImageNode.h"
 
 
-@interface AsCacheMultiplexImageNode ()<ASMultiplexImageNodeDataSource, ASImageCacheProtocol> {
+@interface AsCacheMultiplexImageNode ()<ASMultiplexImageNodeDataSource> {
    NSMutableDictionary * _multiplexImageUrlDictionary;
 }
 
@@ -34,7 +34,16 @@
 
 
 + (instancetype)nodeWithImageUrlArray:(NSArray *)urlArray {
-   return [[self alloc] initWithMultiplexImageUrlArray:urlArray];
+   AsCacheMultiplexImageNode * node = [[self alloc] initWithMultiplexImageUrlArray:urlArray];
+   [node start];
+
+   return node;
+}
+
+
+- (void)start {
+   self.imageIdentifiers = nil;
+   self.imageIdentifiers = @[ @"best", @"medium", @"worst" ]; // go!
 }
 
 

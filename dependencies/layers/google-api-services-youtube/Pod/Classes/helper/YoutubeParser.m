@@ -129,7 +129,7 @@
    NSString * lowUrl = channel.brandingSettings.image.bannerMobileLowImageUrl;
    NSString * mediumUrl = channel.brandingSettings.image.bannerMobileMediumHdImageUrl;
    NSString * hdUrl = channel.brandingSettings.image.bannerMobileHdImageUrl;
-   if (mediumUrl) {
+   if ([mediumUrl isEqualToString:@""] == NO) {
       return @[
        lowUrl, mediumUrl, hdUrl
       ];

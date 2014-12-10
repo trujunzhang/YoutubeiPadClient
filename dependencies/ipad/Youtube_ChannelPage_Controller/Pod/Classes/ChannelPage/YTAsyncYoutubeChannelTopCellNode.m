@@ -117,6 +117,7 @@ static const int TOP_CHANNEL_SECOND_ROW_HEIGHT = 48;
    AsCacheMultiplexImageNode * node =
     [AsCacheMultiplexImageNode nodeWithImageUrlArray:[YoutubeParser getChannelBannerImageUrlArray:self.pageChannel]];
 
+
    node.image = [UIImage imageNamed:@"channel_default_banner.jpg"];
 
    return node;
