@@ -125,6 +125,24 @@
 }
 
 
++ (NSArray *)getChannelBannerImageUrlArray:(YTYouTubeChannel *)channel {
+   NSString * lowUrl = channel.brandingSettings.image.bannerMobileLowImageUrl;
+   NSString * mediumUrl = channel.brandingSettings.image.bannerMobileMediumHdImageUrl;
+   NSString * hdUrl = channel.brandingSettings.image.bannerMobileHdImageUrl;
+   if (mediumUrl) {
+      return @[
+       lowUrl, mediumUrl, hdUrl
+      ];
+   }
+
+   return @[
+    @"",
+    @"",
+    channel.brandingSettings.image.bannerImageUrl,
+   ];
+}
+
+
 + (NSString *)getChannelSnippetThumbnail:(YTYouTubeChannel *)channel {
    YTYouTubeMABThumbmail * thumbnail = channel.snippet.thumbnails[@"default"];
    return thumbnail.url;

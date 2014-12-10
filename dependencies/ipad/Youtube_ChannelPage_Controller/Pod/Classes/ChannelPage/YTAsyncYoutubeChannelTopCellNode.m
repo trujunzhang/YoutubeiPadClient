@@ -102,15 +102,23 @@ static const int TOP_CHANNEL_SECOND_ROW_HEIGHT = 48;
 
 
 - (void)rowFirstForChannelBanner {
-   ASCacheNetworkImageNode * channelBannerThumbnailNode =
-    [[ASCacheNetworkImageNode alloc] initWithPlaceHolder:[UIImage imageNamed:@"channel_default_banner.jpg"]];
-   [channelBannerThumbnailNode startFetchImageWithString:[YoutubeParser getChannelBannerImageUrl:self.pageChannel]];
+   ASImageNode * channelBannerThumbnailNode = [self getImageNodeForChannelBanner];
 
    _channelBannerThumbnailNode = channelBannerThumbnailNode;
    [self addSubnode:_channelBannerThumbnailNode];
 
    // 2
    [self showChannelThumbnail:[YoutubeParser getChannelSnippetThumbnail:self.pageChannel]];
+}
+
+
+- (ASImageNode *)getImageNodeForChannelBanner {
+   ASCacheNetworkImageNode * channelBannerThumbnailNode =
+    [[ASCacheNetworkImageNode alloc] initWithPlaceHolder:[UIImage imageNamed:@"channel_default_banner.jpg"]];
+
+   [channelBannerThumbnailNode startFetchImageWithString:[YoutubeParser getChannelBannerImageUrl:self.pageChannel]];
+
+   return channelBannerThumbnailNode;
 }
 
 

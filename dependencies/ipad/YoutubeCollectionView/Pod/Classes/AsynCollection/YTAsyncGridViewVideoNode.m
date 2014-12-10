@@ -52,9 +52,7 @@
       [self layoutSubNodes];
 
       [self setupAllNodesEffect];
-//      if (isBacked) {
       [self setAllNodeBacked];
-//      }
    }
 
    return self;

@@ -31,6 +31,7 @@
 
 // Channel for other request
 + (NSString *)getChannelBannerImageUrl:(YTYouTubeChannel *)channel;
++ (NSArray *)getChannelBannerImageUrlArray:(YTYouTubeChannel *)channel;
 + (NSString *)getChannelSnippetThumbnail:(YTYouTubeChannel *)channel;
 
 // Subscription
