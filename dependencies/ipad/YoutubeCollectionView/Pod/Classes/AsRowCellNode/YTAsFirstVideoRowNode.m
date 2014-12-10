@@ -9,6 +9,7 @@
 
 
 @interface YTAsFirstVideoRowNode () {
+   ASImageNode * _videoCoverThumbnailsNode;
    ASTextNode * _durationTextNode;
 }
 
@@ -23,7 +24,10 @@
 
 
 - (void)makeRowNode {
-   [super makeRowNode];
+   _videoCoverThumbnailsNode = [ASCacheNetworkImageNode nodeWithImageUrl:[YoutubeParser getVideoSnippetThumbnails:self.nodeVideo]];
+   _videoCoverThumbnailsNode.backgroundColor = [UIColor clearColor];
+
+   [self addSubnode:_videoCoverThumbnailsNode];
 
    // 2
    NSString * durationString = [YoutubeParser getVideoDurationForVideoInfo:self.nodeVideo];
@@ -42,6 +46,8 @@
 
 
 - (void)layout {
+   _videoCoverThumbnailsNode.frame = self.cellRect;
+
    _durationTextNode.frame =
     [FrameCalculator frameForDurationWithCloverSize:self.cellRect.size
                                   withDurationWidth:self.durationLabelWidth];

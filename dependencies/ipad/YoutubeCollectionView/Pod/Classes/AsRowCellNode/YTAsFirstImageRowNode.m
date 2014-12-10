@@ -24,6 +24,8 @@
    _videoCoverThumbnailsNode = [ASCacheNetworkImageNode nodeWithImageUrl:[YoutubeParser getVideoSnippetThumbnails:self.nodeVideo]];
    _videoCoverThumbnailsNode.backgroundColor = [UIColor clearColor];
 
+   _videoCoverThumbnailsNode.frame = self.cellRect;
+
    [self addSubnode:_videoCoverThumbnailsNode];
 }
 
@@ -34,7 +36,7 @@
 
 
 - (void)layout {
-   _videoCoverThumbnailsNode.frame = self.cellRect;
+//   _videoCoverThumbnailsNode.frame = self.cellRect;
 //    [FrameCalculator frameForChannelThumbnails:self.cellRect.size nodeFrameHeight:0];
 
 }

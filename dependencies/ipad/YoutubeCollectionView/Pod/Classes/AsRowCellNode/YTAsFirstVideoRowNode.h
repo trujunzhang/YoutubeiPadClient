@@ -7,7 +7,7 @@
 #import "YTAsFirstImageRowNode.h"
 
 
-@interface YTAsFirstVideoRowNode : YTAsFirstImageRowNode
+@interface YTAsFirstVideoRowNode : YTAsRowNode
 
 
 @end
