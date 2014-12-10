@@ -8,10 +8,19 @@
 #import "ASControlNode+Subclasses.h"
 #import "ASDisplayNode+Subclasses.h"
 
+
+#import "YoutubeParser.h"
 #include "YoutubeConstants.h"
+
+#import "ASCacheNetworkImageNode.h"
+
 
 @interface YTAsRowNode :ASDisplayNode
 
-@property(nonatomic, strong) YTYouTubeVideoCache * video;
+@property(nonatomic) CGSize cellSize;
+@property(nonatomic, strong) YTYouTubeVideoCache * nodeVideo;
 
+-(void)makeRowNode;
+
+- (instancetype)initWithCellNodeOfSize:(CGSize)cellSize withVideo:(YTYouTubeVideoCache *)nodeVideo;
 @end
