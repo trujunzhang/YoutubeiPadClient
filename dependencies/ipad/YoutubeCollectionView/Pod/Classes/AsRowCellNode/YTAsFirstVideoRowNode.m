@@ -6,6 +6,7 @@
 #import "YTAsFirstVideoRowNode.h"
 #import "Foundation.h"
 #import "AsyncDisplayKitStatic.h"
+#import "MxTabBarManager.h"
 
 
 @interface YTAsFirstVideoRowNode () {
@@ -28,6 +29,8 @@
    _videoCoverThumbnailsNode.backgroundColor = [UIColor clearColor];
 
    [self addSubnode:_videoCoverThumbnailsNode];
+
+   [self setNodeTappedEvent];
 
    // 2
    NSString * durationString = [YoutubeParser getVideoDurationForVideoInfo:self.nodeVideo];
@@ -52,4 +55,25 @@
     [FrameCalculator frameForDurationWithCloverSize:self.cellRect.size
                                   withDurationWidth:self.durationLabelWidth];
 }
+
+#pragma mark -
+#pragma mark node tapped event
+
+
+- (void)setNodeTappedEvent {
+   // configure the button
+   _videoCoverThumbnailsNode.userInteractionEnabled = YES; // opt into touch handling
+   [_videoCoverThumbnailsNode addTarget:self
+                                 action:@selector(buttonTapped:)
+                       forControlEvents:ASControlNodeEventTouchUpInside];
+}
+
+
+- (void)buttonTapped:(id)buttonTapped {
+
+   [[MxTabBarManager sharedTabBarManager] pushWithVideo:self.nodeVideo];
+
+//      [self.delegate gridViewCellTap:self.detailVideo];// TODO [test] djzhang gridViewCellTap
+}
+
 @end

@@ -33,15 +33,15 @@
    _kittenSize = cellSize;
    _nodeVideo = nodeVideo;
 
-   CGRect cellNodeRect = CGRectMake(0, 0, cellSize.width, COLLECTION_CELL_FIRST_HEIGHT);
+   CGRect cellNodeRect = CGRectMake(0, 0, _kittenSize.width, COLLECTION_CELL_FIRST_HEIGHT);
    _asFirstVideoRowNode = [[YTAsFirstVideoRowNode alloc] initWithCellNodeRect:cellNodeRect
                                                                     withVideo:nodeVideo];
 
-   cellNodeRect = CGRectMake(0, COLLECTION_CELL_FIRST_HEIGHT, cellSize.width, COLLECTION_CELL_SECOND_HEIGHT);
+   cellNodeRect = CGRectMake(0, COLLECTION_CELL_FIRST_HEIGHT, _kittenSize.width, COLLECTION_CELL_SECOND_HEIGHT);
    _asSecondVideoRowNode = [[YTAsSecondVideoRowNode alloc] initWithCellNodeRect:cellNodeRect
                                                                       withVideo:nodeVideo];
 
-   cellNodeRect = CGRectMake(0, cellSize.height - COLLECTION_CELL_THIRD_HEIGHT, cellSize.width, COLLECTION_CELL_THIRD_HEIGHT);
+   cellNodeRect = CGRectMake(0, COLLECTION_CELL_FIRST_HEIGHT + COLLECTION_CELL_SECOND_HEIGHT, _kittenSize.width, COLLECTION_CELL_THIRD_HEIGHT);
    _asThirdVideoRowNode = [[YTAsThirdVideoRowNode alloc] initWithCellNodeRect:cellNodeRect
                                                                     withVideo:nodeVideo];
 
@@ -66,7 +66,7 @@
    cellNodeRect = CGRectMake(0, COLLECTION_CELL_FIRST_HEIGHT, _kittenSize.width, COLLECTION_CELL_SECOND_HEIGHT);
    _asSecondVideoRowNode.frame = cellNodeRect;
 
-   cellNodeRect = CGRectMake(0, _kittenSize.height - COLLECTION_CELL_THIRD_HEIGHT, _kittenSize.width, COLLECTION_CELL_THIRD_HEIGHT);
+   cellNodeRect = CGRectMake(0, COLLECTION_CELL_FIRST_HEIGHT + COLLECTION_CELL_SECOND_HEIGHT, _kittenSize.width, COLLECTION_CELL_THIRD_HEIGHT);
    _asThirdVideoRowNode.frame = cellNodeRect;
 }
 
