@@ -29,7 +29,7 @@
 @implementation YTAsGridVideoCellNode
 
 
-- (instancetype)initWithCellNodeOfSize:(CGSize)size withVideo:(YTYouTubeVideoCache *)video placeholderImage:(UIImage *)placeholder { //242,242
+- (instancetype)initWithCellNodeOfSize:(CGSize)size withVideo:(YTYouTubeVideoCache *)video { //242,242
    if (!(self = [super init]))
       return nil;
 

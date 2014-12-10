@@ -9,11 +9,17 @@
 
 #import "YoutubeAsGridCHTLayoutViewController.h"
 #import "CHTCollectionViewWaterfallLayout.h"
+
 #import "YTGridVideoCellNode.h"
+#import "YTAsGridVideoCellNode.h"
+#import "YTAsCollectionVideoCellNode.h"
+
 #import "YoutubeFooterView.h"
 
 
-#define ASGRIDROWCELL YTGridVideoCellNode
+
+//#define ASGRIDROWCELL YTGridVideoCellNode
+#define ASGRIDROWCELL YTAsCollectionVideoCellNode
 //#define ASGRIDROWCELL YTAsGridVideoCellNode
 
 @interface YoutubeAsGridCHTLayoutViewController ()<ASCollectionViewDataSource, ASCollectionViewDelegate, CHTCollectionViewDelegateWaterfallLayout>

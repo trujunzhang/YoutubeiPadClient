@@ -5,8 +5,24 @@
 
 #import "YTAsThirdVideoRowNode.h"
 
+@interface YTAsThirdVideoRowNode () {
+
+}
+@end
 
 @implementation YTAsThirdVideoRowNode {
 
 }
+
+
+- (void)makeRowNode {
+
+}
+
+
+- (void)layout {
+
+}
+
+
 @end

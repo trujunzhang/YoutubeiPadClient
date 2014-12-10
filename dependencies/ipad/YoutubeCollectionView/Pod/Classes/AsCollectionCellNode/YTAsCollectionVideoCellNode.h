@@ -12,4 +12,6 @@
 @interface YTAsCollectionVideoCellNode : ASCellNode
 
 
+- (instancetype)initWithCellNodeOfSize:(CGSize)cellSize withVideo:(id)nodeVideo;
+
 @end
