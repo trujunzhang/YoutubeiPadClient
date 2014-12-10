@@ -5,11 +5,15 @@
 #import "YTAsVideoDetailViewController.h"
 #import "GGTabBarController.h"
 #import "GGLayoutStringTabBar.h"
+#import "CollectionConstant.h"
 
 
 @interface YTVideoDetailViewController ()<YoutubeCollectionNextPageDelegate, GGTabBarControllerDelegate> {
    NSArray * _lastControllerArray;
    YTYouTubeVideoCache * _detailVideo;
+
+
+   YKYouTubeVideo * _youTubeVideo;
 }
 
 @property(strong, nonatomic) IBOutlet UIView * videoPlayViewContainer;
@@ -25,7 +29,7 @@
 @property(nonatomic, strong) UIViewController * firstViewController;
 @property(nonatomic, strong) UIViewController * secondViewController;
 @property(nonatomic, strong) YTCollectionViewController * thirdViewController;
-@property(nonatomic, strong) YKYouTubeVideo * youTubeVideo;
+
 @end
 
 
@@ -190,12 +194,12 @@
 
 - (void)setupPlayer:(UIView *)pView {
    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-   self.youTubeVideo = [[YKYouTubeVideo alloc] initWithVideoId:[YoutubeParser getWatchVideoId:_detailVideo]];
+   _youTubeVideo = [[YKYouTubeVideo alloc] initWithVideoId:[YoutubeParser getWatchVideoId:_detailVideo]];
 
    //Fetch thumbnail
-   [self.youTubeVideo parseWithCompletion:^(NSError * error) {
+   [_youTubeVideo parseWithCompletion:^(NSError * error) {
        //Then play (make sure that you have called parseWithCompletion before calling this method)
-       [self.youTubeVideo playInView:pView withQualityOptions:YKQualityLow];
+       [_youTubeVideo playInView:pView withQualityOptions:YKQualityLow];
    }];
 }
 

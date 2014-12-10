@@ -32,8 +32,6 @@
 
 @interface YoutubeCollectionViewBase : UIViewController
 
-@property(nonatomic, strong) GYoutubeRequestInfo * youtubeRequestInfo;
-
 @property(nonatomic, strong) NSArray * numbersPerLineArray;
 
 
@@ -59,8 +57,10 @@
 - (void)fetchSuggestionListByPageToken;
 
 - (int)getCurrentColumnCount:(UIInterfaceOrientation)orientation;
+
 - (CGSize)cellSize;
 - (UIEdgeInsets)getUIEdgeInsetsForLayout;
+
 @property(nonatomic, strong) NSOperationQueue * nodeConstructionQueue;
 @property(nonatomic, strong) id<YoutubeCollectionNextPageDelegate> nextPageDelegate;
 

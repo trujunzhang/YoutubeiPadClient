@@ -11,9 +11,6 @@
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-#import <YoutubeCollectionView/CollectionConstant.h>
-
-
 @interface YTVideoDetailViewController : UIViewController
 
 - (instancetype)initWithVideo:(id)video;

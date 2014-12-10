@@ -12,16 +12,20 @@
 #import "YTAsyncGridViewVideoCollectionViewCell.h"
 #import "YTGridViewPlaylistCell.h"
 #import "HexColor.h"
+#import "YoutubeCollectionViewBase.h"
 
 
 @interface YoutubeCollectionViewBase () {
    BOOL isFirstRequest;
+
+   GYoutubeRequestInfo * _youtubeRequestInfo;
 }
 
 @property(nonatomic, strong) UIRefreshControl * refreshControl;
 @property(strong, nonatomic) UICollectionView * baseCollectionView;
 
 @property(nonatomic, strong) NSMutableDictionary * cellSizeDictionary;
+
 
 @end
 
@@ -40,10 +44,10 @@
 
 
 - (GYoutubeRequestInfo *)getYoutubeRequestInfo {
-   if (self.youtubeRequestInfo == nil) {
-      self.youtubeRequestInfo = [[GYoutubeRequestInfo alloc] init];
+   if (_youtubeRequestInfo == nil) {
+      _youtubeRequestInfo = [[GYoutubeRequestInfo alloc] init];
    }
-   return self.youtubeRequestInfo;
+   return _youtubeRequestInfo;
 }
 
 
@@ -73,7 +77,7 @@
 
 
 - (void)dealloc {
-   self.youtubeRequestInfo = nil;
+   _youtubeRequestInfo = nil;
 }
 
 
