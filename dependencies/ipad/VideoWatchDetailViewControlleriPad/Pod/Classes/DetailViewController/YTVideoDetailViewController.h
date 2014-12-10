@@ -9,23 +9,14 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-
 #import <MediaPlayer/MediaPlayer.h>
+
 #import <YoutubeCollectionView/CollectionConstant.h>
-#import "YoutubeConstants.h"
-
-@class YKYouTubeVideo;
-
-@class GGTabBarController;
-@class YTAsVideoDetailViewController;
-
 
 
 @interface YTVideoDetailViewController : UIViewController
 
-
-
-- (instancetype)initWithVideo:(YTYouTubeVideoCache *)video;
+- (instancetype)initWithVideo:(id)video;
 
 @end
 

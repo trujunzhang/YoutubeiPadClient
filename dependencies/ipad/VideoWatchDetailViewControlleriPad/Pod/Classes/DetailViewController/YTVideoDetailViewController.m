@@ -35,7 +35,7 @@
 #pragma mark - UIView cycle
 
 
-- (instancetype)initWithVideo:(YTYouTubeVideoCache *)video {
+- (instancetype)initWithVideo:(id)video {
    self = [super init];
    if (self) {
       _detailVideo = video;
