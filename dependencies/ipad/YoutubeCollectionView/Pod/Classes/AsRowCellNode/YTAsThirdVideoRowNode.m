@@ -5,10 +5,12 @@
 
 #import "YTAsThirdVideoRowNode.h"
 
+
 @interface YTAsThirdVideoRowNode () {
 
 }
 @end
+
 
 @implementation YTAsThirdVideoRowNode {
 
@@ -16,7 +18,12 @@
 
 
 - (void)makeRowNode {
+   self.backgroundColor = [UIColor redColor];
+}
 
+
+- (CGSize)calculateSizeThatFits:(CGSize)constrainedSize {
+   return self.cellRect.size;
 }
 
 

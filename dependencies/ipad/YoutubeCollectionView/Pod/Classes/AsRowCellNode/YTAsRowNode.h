@@ -32,4 +32,6 @@ static CGFloat COLLECTION_CELL_THIRD_HEIGHT = 10.0f;
 - (void)makeRowNode;
 
 - (instancetype)initWithCellNodeRect:(CGRect)cellRect withVideo:(YTYouTubeVideoCache *)nodeVideo;
+
++(CGFloat)collectionCellHeight;
 @end

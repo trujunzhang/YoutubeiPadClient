@@ -22,4 +22,10 @@
    return self;
 }
 
+
++ (CGFloat)collectionCellHeight {
+   return COLLECTION_CELL_FIRST_HEIGHT + COLLECTION_CELL_SECOND_HEIGHT + COLLECTION_CELL_THIRD_HEIGHT;
+}
+
+
 @end

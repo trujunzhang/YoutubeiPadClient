@@ -13,6 +13,7 @@
 #import "YTGridViewPlaylistCell.h"
 #import "HexColor.h"
 #import "YoutubeCollectionViewBase.h"
+#import "YTAsRowNode.h"
 
 
 @interface YoutubeCollectionViewBase () {
@@ -419,7 +420,9 @@
 
    CGFloat cellLength = usableSpace / columnCount;
 
-   return CGSizeMake(cellLength, cellLength);
+   CGFloat cellHeight = [YTAsRowNode collectionCellHeight];
+
+   return CGSizeMake(cellLength, cellHeight);
 }
 
 
