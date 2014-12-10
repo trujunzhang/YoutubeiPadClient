@@ -235,16 +235,13 @@
       _lastControllerArray = nil;
    }
    if (_lastControllerArray == nil) {
+
       _lastControllerArray = array;
 
       [self makeTabBarController:self.tabBarViewContainer withControllerArray:array];
       [self.thirdViewController.view setNeedsLayout];
    }
 
-
-
-//   [self.videoDetailController.view setNeedsLayout];
-//   [self.selectedController.view setNeedsLayout];
 }
 
 
