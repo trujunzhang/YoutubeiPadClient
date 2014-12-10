@@ -144,8 +144,6 @@
        self.thirdViewController, ];
    }
 
-   [self.thirdViewController.view setNeedsLayout];
-
    return nil;
 }
 
@@ -237,8 +235,10 @@
       _lastControllerArray = nil;
    }
    if (_lastControllerArray == nil) {
-      [self makeTabBarController:self.tabBarViewContainer withControllerArray:array];
       _lastControllerArray = array;
+
+      [self makeTabBarController:self.tabBarViewContainer withControllerArray:array];
+      [self.thirdViewController.view setNeedsLayout];
    }
 
 

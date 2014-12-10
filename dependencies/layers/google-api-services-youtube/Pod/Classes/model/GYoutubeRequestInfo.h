@@ -31,10 +31,10 @@ typedef NS_ENUM (NSUInteger, YTPlaylistItemsType) {
 
 @property(nonatomic, strong) NSMutableArray * videoList;
 
+- (void)appendNextPageData:(NSArray *)array;
+
 @property(nonatomic) BOOL hasLoadingMore;
 @property(nonatomic) BOOL hasFirstFetch;
-
-@property(nonatomic, copy) NSString * queryType;
 
 @property(nonatomic, strong) NSMutableDictionary * parameters;
 
@@ -47,21 +47,21 @@ typedef NS_ENUM (NSUInteger, YTPlaylistItemsType) {
 
 @property(nonatomic) BOOL isLoading;
 
+- (void)resetInfo;
+
 - (void)resetRequestInfoForSuggestionList:(NSString *)id1;
 - (void)resetRequestInfoForPlayList:(YTPlaylistItemsType)playlistItemsType;
 - (void)resetRequestInfoForActivityListFromChannelWithChannelId:(NSString *)channelId;
 - (void)resetRequestInfoForVideoListFromChannelWithChannelId:(NSString *)channelId;
 - (void)resetRequestInfoForPlayListFromChannelWithChannelId:(NSString *)channelId;
 - (void)resetRequestInfoForSearchWithItemType:(YTSegmentItemType)itemType withQueryTeam:(NSString *)queryTeam;
+
 - (void)putNextPageToken:(NSString *)token;
 - (BOOL)hasNextPage;
 
 + (NSArray *)getChannelPageSegmentTitlesArray;
-- (void)appendNextPageData:(NSArray *)array;
 + (NSString *)getIdentifyByItemType:(YTSegmentItemType)itemType;
-- (void)resetInfo;
 + (YTSegmentItemType)getItemTypeByIndex:(int)index;
 + (NSArray *)getSegmentTitlesArray;
-
 
 @end

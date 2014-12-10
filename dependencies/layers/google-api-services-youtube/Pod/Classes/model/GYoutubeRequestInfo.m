@@ -8,6 +8,12 @@
 
 #import "GYoutubeRequestInfo.h"
 
+@interface GYoutubeRequestInfo(){
+
+}
+@property(nonatomic, copy) NSString * queryType;
+
+@end
 
 @implementation GYoutubeRequestInfo
 
@@ -36,7 +42,7 @@
    self.hasFirstFetch = YES;
 }
 
-
+// "AV2OkzIGykA"
 - (void)resetRequestInfoForSuggestionList:(NSString *)videoId {
    self.itemType = YTSegmentItemVideo;
 
@@ -47,7 +53,7 @@
 
    NSDictionary * parameters = @{
     @"part" : @"id,snippet",
-    @"type" : @"detailVideo",
+    @"type" : @"video",
     @"relatedToVideoId" : videoId,
     @"fields" : @"items(id/videoId),nextPageToken",
    };
@@ -217,7 +223,7 @@
 
 + (NSArray *)getQueryTypeArray {
    NSArray * array = [NSArray arrayWithObjects:
-    @"detailVideo",
+    @"video",
     @"channel",
     @"playlist",
      nil];
