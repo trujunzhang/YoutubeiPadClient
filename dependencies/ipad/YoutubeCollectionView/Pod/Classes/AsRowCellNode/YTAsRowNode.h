@@ -20,8 +20,8 @@
 #import "AsyncDisplayKitStatic.h"
 
 static CGFloat COLLECTION_CELL_FIRST_HEIGHT = 142.0f;
-static CGFloat COLLECTION_CELL_SECOND_HEIGHT = 40.0f;
-static CGFloat COLLECTION_CELL_THIRD_HEIGHT = 10.0f;
+static CGFloat COLLECTION_CELL_SECOND_HEIGHT = 50.0f;
+static CGFloat COLLECTION_CELL_THIRD_HEIGHT = 3.0f;
 
 
 @interface YTAsRowNode : ASDisplayNode

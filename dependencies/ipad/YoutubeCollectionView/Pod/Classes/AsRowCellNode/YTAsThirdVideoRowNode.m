@@ -18,7 +18,7 @@
 
 
 - (void)makeRowNode {
-   self.backgroundColor = [UIColor redColor];
+   self.backgroundColor = [UIColor lightGrayColor];
 }
 
 
