@@ -4,7 +4,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YTAsRowNode.h"
 
 
-@interface YTAsSecondVideoRowNode : NSObject
+@interface YTAsSecondVideoRowNode : YTAsRowNode
+
 @end

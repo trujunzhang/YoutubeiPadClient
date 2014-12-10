@@ -10,7 +10,6 @@
 #import "ASDisplayNode+Subclasses.h"
 
 
-
 @interface YTAsFirstImageRowNode () {
    ASImageNode * _videoCoverThumbnailsNode;
 }
@@ -22,11 +21,15 @@
 }
 
 - (void)makeRowNode {
-   // 1
    _videoCoverThumbnailsNode = [ASCacheNetworkImageNode nodeWithImageUrl:[YoutubeParser getVideoSnippetThumbnails:self.video]];
    _videoCoverThumbnailsNode.backgroundColor = [UIColor clearColor];
    [self addSubnode:_videoCoverThumbnailsNode];
+}
 
+
+- (void)layout {
+   _videoCoverThumbnailsNode.frame = [FrameCalculator frameForChannelThumbnails:self.cellSize
+                                                                nodeFrameHeight:0];
 
 }
 

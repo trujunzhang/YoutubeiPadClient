@@ -4,8 +4,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "YTAsRowNode.h"
 
-@interface YTAsFirstVideoRowNode : YTAsRowNode
+
+#import "YTAsFirstImageRowNode.h"
+
+
+@interface YTAsFirstVideoRowNode : YTAsFirstImageRowNode
+
 
 @end
