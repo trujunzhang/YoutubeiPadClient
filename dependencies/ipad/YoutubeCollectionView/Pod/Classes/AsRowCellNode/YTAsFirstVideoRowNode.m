@@ -23,7 +23,7 @@
 
 
 - (void)makeRowNode {
-   [self makeRowNode];
+   [super makeRowNode];
 
    // 2
    NSString * durationString = [YoutubeParser getVideoDurationForVideoInfo:self.nodeVideo];
@@ -34,6 +34,10 @@
    _durationTextNode.backgroundColor = [UIColor colorWithHexString:@"1F1F21" alpha:0.6];
 
    [self addSubnode:_durationTextNode];
+}
+
+- (CGSize)calculateSizeThatFits:(CGSize)constrainedSize {
+   return self.cellRect.size;
 }
 
 

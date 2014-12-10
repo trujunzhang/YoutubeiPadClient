@@ -23,13 +23,19 @@
 - (void)makeRowNode {
    _videoCoverThumbnailsNode = [ASCacheNetworkImageNode nodeWithImageUrl:[YoutubeParser getVideoSnippetThumbnails:self.nodeVideo]];
    _videoCoverThumbnailsNode.backgroundColor = [UIColor clearColor];
+
    [self addSubnode:_videoCoverThumbnailsNode];
 }
 
 
+- (CGSize)calculateSizeThatFits:(CGSize)constrainedSize {
+   return self.cellRect.size;
+}
+
+
 - (void)layout {
-   _videoCoverThumbnailsNode.frame = [FrameCalculator frameForChannelThumbnails:self.cellRect.size
-                                                                nodeFrameHeight:0];
+   _videoCoverThumbnailsNode.frame = self.cellRect;
+//    [FrameCalculator frameForChannelThumbnails:self.cellRect.size nodeFrameHeight:0];
 
 }
 
