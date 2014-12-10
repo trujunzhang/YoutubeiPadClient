@@ -419,7 +419,7 @@
 
    CGFloat cellLength = usableSpace / columnCount;
 
-   return CGSizeMake(cellLength, cellLength + 12);
+   return CGSizeMake(cellLength, cellLength);
 }
 
 
