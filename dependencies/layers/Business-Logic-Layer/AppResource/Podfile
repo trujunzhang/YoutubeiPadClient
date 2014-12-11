@@ -3,7 +3,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, 7.0
 
 target 'mxAsTubeiPad', :exclusive => true do
-  pod 'Reveal-iOS-SDK'
+  #pod 'Reveal-iOS-SDK'
 
   # ________________open projects___________________
   pod "GGTabBar", :path => "../dependencies/lib/GGTabBar"
@@ -28,6 +28,7 @@ target 'mxAsTubeiPad', :exclusive => true do
   pod "gtm-http-fetcher-local", :path => "../dependencies/lib/google-api-client/gtm-http-fetcher-local"
   pod "gtm-oauth2-local", :path => "../dependencies/lib/google-api-client/gtm-oauth2-local"
 
+  pod "ASImageResize", :path => "../dependencies/lib/tools/ASImageResize"
 
 
   # ________________collect common library___________________

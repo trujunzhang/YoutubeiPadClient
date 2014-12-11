@@ -59,8 +59,5 @@ Pod::Spec.new do |s|
     sub.source_files = 'Pod/Classes/AsyncDisplayKitCatelog/*.{h,m}'
   end
 
-  s.dependency 'ASImageResize'
-
-
 end
 
