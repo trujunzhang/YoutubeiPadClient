@@ -105,6 +105,8 @@ static const int TOP_CHANNEL_SECOND_ROW_HEIGHT = 48;
 - (void)rowFirstForChannelBanner {
    ASImageNode * imageNode = [self getImageNodeForChannelBanner];
 
+   imageNode.contentMode=UIViewContentModeScaleToFill;
+
    _channelBannerThumbnailNode = imageNode;
    [self addSubnode:_channelBannerThumbnailNode];
 
