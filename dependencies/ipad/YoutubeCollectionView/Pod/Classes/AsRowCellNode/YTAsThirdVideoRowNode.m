@@ -4,6 +4,7 @@
 //
 
 #import "YTAsThirdVideoRowNode.h"
+#import "UIColor+iOS8Colors.h"
 
 
 @interface YTAsThirdVideoRowNode () {
@@ -26,7 +27,10 @@
 
    // hairline cell separator
    _divider = [[ASDisplayNode alloc] init];
-   _divider.backgroundColor = [UIColor lightGrayColor];
+
+   _divider.backgroundColor =
+    [UIColor iOS8lightGrayColor];
+//    [UIColor lightGrayColor];
    [self addSubnode:_divider];
 }
 
@@ -55,11 +59,12 @@
 - (void)layout {
    CGFloat titleLeftX = 2.0f;
    CGFloat titleWidth = 180.0f;
-   _channelTitleNode.frame = CGRectMake(titleLeftX, 36, titleWidth, 20);
+   _channelTitleNode.frame = CGRectMake(titleLeftX, 4, titleWidth, 20);
 
    CGFloat pixelHeight = 1.0f / [[UIScreen mainScreen] scale];
    _divider.frame =
-    CGRectMake(0.0f, self.cellRect.size.height - pixelHeight, self.calculatedSize.width, pixelHeight);
+    CGRectMake(0.0f, self.cellRect.size.height - pixelHeight, self.cellRect.size.width, pixelHeight);
+//   CGRectMake(0.0f, 2, self.ce.width, pixelHeight);
 }
 
 
