@@ -15,7 +15,7 @@ target 'mxAsTubeiPad', :exclusive => true do
   pod "YKMediaPlayerKit", :path => "../dependencies/lib/YKMediaPlayerKit"
   pod "XCDYouTubeKit", :path => "../dependencies/lib/XCDYouTubeKit"
   pod "STCollapseTableView", :path => "../dependencies/lib/STCollapseTableView"
-  pod "SWRevealViewController", :path => "../dependencies/lib/SWRevealViewController"
+  pod 'SWRevealViewController', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/SWRevealViewController'
 
   pod 'AFNetworking', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/AFNetworking'
   pod "KRLCollectionViewGridLayout", :path => "../dependencies/lib/KRLCollectionViewGridLayout"
