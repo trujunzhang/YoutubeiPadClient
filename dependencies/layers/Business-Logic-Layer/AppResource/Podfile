@@ -6,7 +6,7 @@ target 'mxAsTubeiPad', :exclusive => true do
   #pod 'Reveal-iOS-SDK'
 
   # ________________Local open projects___________________
-  pod 'pop', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/pop'
+  # pod 'pop', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/pop'
   pod 'Regexer', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/Regexer'
   pod 'MagicalRecord', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/MagicalRecord'
 
@@ -17,7 +17,7 @@ target 'mxAsTubeiPad', :exclusive => true do
   pod "STCollapseTableView", :path => "../dependencies/lib/STCollapseTableView"
   pod "SWRevealViewController", :path => "../dependencies/lib/SWRevealViewController"
 
-  pod "AFNetworking", :path => "../dependencies/lib/AFNetworking"
+  pod 'AFNetworking', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/AFNetworking'
   pod "KRLCollectionViewGridLayout", :path => "../dependencies/lib/KRLCollectionViewGridLayout"
 
   pod 'AsyncDisplayKit', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/AsyncDisplayKit'

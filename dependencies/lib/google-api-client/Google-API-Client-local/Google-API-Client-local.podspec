@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.5'
   s.source_files   = 'Source/*.{h,m}'
 
-  s.dependency    'SBJson'
+  #s.dependency    'SBJson'
   #s.dependency    'GTMHTTPFetcher'
   #s.dependency    'gtm-oauth2'
   
