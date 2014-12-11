@@ -8,7 +8,7 @@ target 'mxAsTubeiPad', :exclusive => true do
   # ________________Local open projects___________________
   pod 'pop', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/pop'
   pod 'Regexer', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/Regexer'
-
+  pod 'MagicalRecord', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/MagicalRecord'
 
   # ________________open projects___________________
   pod "GGTabBar", :path => "../dependencies/lib/GGTabBar"
