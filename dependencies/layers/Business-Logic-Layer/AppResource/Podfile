@@ -5,6 +5,11 @@ platform :ios, 7.0
 target 'mxAsTubeiPad', :exclusive => true do
   #pod 'Reveal-iOS-SDK'
 
+  # ________________Local open projects___________________
+  pod 'pop', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/pop'
+  pod 'Regexer', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/Regexer'
+
+
   # ________________open projects___________________
   pod "GGTabBar", :path => "../dependencies/lib/GGTabBar"
   pod "YKMediaPlayerKit", :path => "../dependencies/lib/YKMediaPlayerKit"
@@ -15,21 +20,18 @@ target 'mxAsTubeiPad', :exclusive => true do
   pod "AFNetworking", :path => "../dependencies/lib/AFNetworking"
   pod "KRLCollectionViewGridLayout", :path => "../dependencies/lib/KRLCollectionViewGridLayout"
 
-  pod "AsyncDisplayKit", :path => "../dependencies/lib/facebook/AsyncDisplayKit"
-  # pod "pop", :path => "../dependencies/lib/facebook/pop"
-  pod 'pop', '~> 1.0.7'
+  pod 'AsyncDisplayKit', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/AsyncDisplayKit'
 
-  pod "ISMemoryCache", :path => "../dependencies/lib/Cache/ISMemoryCache"
-  pod "SDWebImage", :path => "../dependencies/lib/Cache/SDWebImage"
-  pod "EGOCache", :path => "../dependencies/lib/Cache/EGOCache"
+  pod 'ISMemoryCache', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/ISMemoryCache'
+  pod 'SDWebImage', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/SDWebImage'
+  pod 'EGOCache', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/EGOCache'
 
   pod "YouTubeAPI3-Objective-C-wrapper", :path => "../dependencies/lib/google-api-client/YouTubeAPI3-Objective-C-wrapper"
   pod "Google-API-Client-local", :path => "../dependencies/lib/google-api-client/Google-API-Client-local"
   pod "gtm-http-fetcher-local", :path => "../dependencies/lib/google-api-client/gtm-http-fetcher-local"
   pod "gtm-oauth2-local", :path => "../dependencies/lib/google-api-client/gtm-oauth2-local"
 
-  pod "ASImageResize", :path => "../dependencies/lib/tools/ASImageResize"
-
+  pod 'ASImageResize', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/ASImageResize'
 
   # ________________collect common library___________________
   pod "IOS_Collection_Code", :path => "../dependencies/collect/IOS_Collection_Code"
