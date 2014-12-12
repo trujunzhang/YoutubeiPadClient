@@ -19,19 +19,20 @@
 
 #import "AsyncDisplayKitStatic.h"
 
-static CGFloat COLLECTION_CELL_FIRST_HEIGHT = 132.0f;
-static CGFloat COLLECTION_CELL_SECOND_HEIGHT = 40.0f;
-static CGFloat COLLECTION_CELL_THIRD_HEIGHT = 26.0f;
+static CGFloat COLLECTION_CELL_FIRST_HEIGHT = 138.0f;
+static CGFloat COLLECTION_CELL_SECOND_HEIGHT = 36.0f;
+static CGFloat COLLECTION_CELL_THIRD_HEIGHT = 24.0f;
 
 
 @interface YTAsRowNode : ASDisplayNode
 
 @property(nonatomic) CGRect cellRect;
-@property(nonatomic, strong) YTYouTubeVideoCache * nodeVideo;
+
+@property(nonatomic, strong) id nodeInfo;
 
 - (void)makeRowNode;
 
-- (instancetype)initWithCellNodeRect:(CGRect)cellRect withVideo:(YTYouTubeVideoCache *)nodeVideo;
+- (instancetype)initWithCellNodeRect:(CGRect)cellRect withVideo:(id)nodeInfo;
 
-+(CGFloat)collectionCellHeight;
++ (CGFloat)collectionCellHeight;
 @end

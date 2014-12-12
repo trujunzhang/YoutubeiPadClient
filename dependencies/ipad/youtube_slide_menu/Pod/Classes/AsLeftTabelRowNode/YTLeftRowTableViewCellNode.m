@@ -10,16 +10,18 @@
 #import "FrameCalculator.h"
 #import "Foundation.h"
 #import "ASCacheNetworkImageNode.h"
+#import "AsyncDisplayKitStatic.h"
+#import "YTAsChannelThumbnailsImageNode.h"
 
 static CGFloat ROW_TITLE_FONT_SIZE = 16;
 
 
 @interface YTLeftRowTableViewCellNode () {
 
+   ASImageNode * _videoChannelThumbnailsNode;
+   ASTextNode * _channelTitleTextNode;
 }
 
-@property(nonatomic, strong) ASCacheNetworkImageNode * videoChannelThumbnailsNode;
-@property(nonatomic, strong) ASTextNode * channelTitleTextNode;
 
 @end
 
@@ -72,67 +74,46 @@ static CGFloat ROW_TITLE_FONT_SIZE = 16;
 - (void)rowThirdForChannelInfo {
    // 1
    [self showSubscriptionThumbnail];
-   // 2
-   self.channelTitleTextNode = [[ASTextNode alloc] init];
-   self.channelTitleTextNode.attributedString = [NSAttributedString attributedStringForLeftMenuSubscriptionTitleText:self.lineTitle
-                                                                                                            fontSize:ROW_TITLE_FONT_SIZE];
 
-   [self addSubnode:self.channelTitleTextNode];
+   // 2
+   _channelTitleTextNode = [ASTextNode initWithAttributedString:
+    [NSAttributedString attributedStringForLeftMenuSubscriptionTitleText:self.lineTitle fontSize:ROW_TITLE_FONT_SIZE]];
+
+   [self addSubnode:_channelTitleTextNode];
 }
 
 
 - (void)showSubscriptionThumbnail {
    if (self.isRemoteImage) {
-      ASCacheNetworkImageNode * cacheNetworkImageNode = [[ASCacheNetworkImageNode alloc] initForImageCache];
-      [cacheNetworkImageNode startFetchImageWithString:self.lineIconUrl];
-
-      self.videoChannelThumbnailsNode = cacheNetworkImageNode;
+      _videoChannelThumbnailsNode = [YTAsChannelThumbnailsImageNode nodeWithThumbnailUrl:self.lineIconUrl
+                                                                               forCorner:5.0f];
    } else {
-      ASImageNode * localImageNode = [[ASImageNode alloc] init];
-      localImageNode.image = [UIImage imageNamed:self.lineIconUrl];
-
-      self.videoChannelThumbnailsNode = localImageNode;
+      _videoChannelThumbnailsNode = [ASImageNode initWithImageNamed:self.lineIconUrl];
    }
 
-   [self addSubnode:self.videoChannelThumbnailsNode];
+   [self addSubnode:_videoChannelThumbnailsNode];
 }
 
 
 - (void)layoutThirdForChannelInfo {
-   self.videoChannelThumbnailsNode.frame = [FrameCalculator frameForLeftMenuSubscriptionThumbnail:self.nodeCellSize];
+   _videoChannelThumbnailsNode.frame = [FrameCalculator frameForLeftMenuSubscriptionThumbnail:self.nodeCellSize];
 
 
-   self.channelTitleTextNode.frame =
+   _channelTitleTextNode.frame =
     [FrameCalculator frameForLeftMenuSubscriptionTitleText:self.nodeCellSize
-                                             leftNodeFrame:self.videoChannelThumbnailsNode.frame
+                                             leftNodeFrame:_videoChannelThumbnailsNode.frame
                                             withFontHeight:ROW_TITLE_FONT_SIZE];
 
 }
 
 
 - (void)effectThirdForChannelInfo {
-   // 4
-   self.videoChannelThumbnailsNode.layerBacked = true;
-   if (self.isRemoteImage) {
-      self.videoChannelThumbnailsNode.imageModificationBlock = ^UIImage *(UIImage * image) {
-          UIImage * modifiedImage = nil;
-          CGRect rect = (CGRect) { CGPointZero, image.size };
+   // 1
+   _videoChannelThumbnailsNode.layerBacked = true;
 
-          UIGraphicsBeginImageContextWithOptions(image.size, NO, [UIScreen mainScreen].scale);
-
-          [[UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:4.0] addClip];
-          [image drawInRect:rect];
-          modifiedImage = UIGraphicsGetImageFromCurrentImageContext();
-
-          UIGraphicsEndImageContext();
-
-          return modifiedImage;
-      };
-   }
-
-   // 3
-   self.channelTitleTextNode.layerBacked = true;
-   self.channelTitleTextNode.backgroundColor = [UIColor clearColor];
+   // 2
+   _channelTitleTextNode.layerBacked = true;
+   _channelTitleTextNode.backgroundColor = [UIColor clearColor];
 }
 
 

@@ -19,6 +19,16 @@
 
 
 #pragma mark -
+#pragma mark divide on bottom
++ (CGRect)frameForBottomDivide:(CGFloat)containerWidth containerHeight:(CGFloat)containerHeight {
+
+   CGFloat pixelHeight = 1.0f / [[UIScreen mainScreen] scale];
+   return CGRectMake(0.0f, containerHeight - pixelHeight, containerWidth, pixelHeight);
+}
+
+
+
+#pragma mark -
 #pragma mark UICollection Cell
 
 
@@ -119,14 +129,37 @@
 
 
 #pragma mark -
+#pragma mark video detail rows node
+
+
++ (CGRect)frameForDetailRowChannelInfoThumbnail:(CGFloat)containerWidth withHeight:(CGFloat)containerHeight {
+   CGFloat imageWH = 30;
+
+   CGFloat divX = 10;
+   CGFloat divY = (containerHeight - imageWH) / 2;
+
+   return CGRectMake(divX, divY, imageWH, imageWH);
+}
+
+
++ (CGRect)frameForDetailRowChannelInfoTitle:(CGFloat)containerWidth withLeftRect:(CGRect)leftRect {
+   CGFloat divX = leftRect.origin.x + leftRect.size.width + 12;
+   CGFloat divY = 12;
+
+   return CGRectMake(divX, divY, 200.0f, 20);
+}
+
+
+#pragma mark -
 #pragma mark Left menu table cell
 
 
 + (CGRect)frameForLeftMenuSubscriptionThumbnail:(CGSize)containerSize {
    CGFloat divX = 10;
-   CGFloat divY = (containerSize.height - 26) / 2;
+   CGFloat imageWH = 30;
+   CGFloat divY = (containerSize.height - imageWH) / 2;
 
-   return CGRectMake(divX, divY, 26, 26);
+   return CGRectMake(divX, divY, imageWH, imageWH);
 }
 
 
@@ -137,7 +170,7 @@
    CGFloat titleWidth = containerSize.width - divX - 4;
    CGFloat titleHeight = fontHeight;
 
-   return CGRectMake(divX, divY, titleWidth, titleHeight);
+   return CGRectMake(divX, divY, titleWidth, containerSize.height);
 }
 
 

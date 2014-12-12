@@ -25,7 +25,7 @@
 
 
 - (void)makeRowNode {
-   _videoCoverThumbnailsNode = [ASCacheNetworkImageNode nodeWithImageUrl:[YoutubeParser getVideoSnippetThumbnails:self.nodeVideo]];
+   _videoCoverThumbnailsNode = [ASCacheNetworkImageNode nodeWithImageUrl:[YoutubeParser getVideoSnippetThumbnails:self.nodeInfo]];
    _videoCoverThumbnailsNode.backgroundColor = [UIColor clearColor];
    _videoCoverThumbnailsNode.contentMode=UIViewContentModeScaleToFill;
 
@@ -34,7 +34,7 @@
    [self setNodeTappedEvent];
 
    // 2
-   NSString * durationString = [YoutubeParser getVideoDurationForVideoInfo:self.nodeVideo];
+   NSString * durationString = [YoutubeParser getVideoDurationForVideoInfo:self.nodeInfo];
    self.durationLabelWidth = [FrameCalculator calculateWidthForDurationLabel:durationString];
 
    _durationTextNode = [ASTextNode initWithAttributedString:
@@ -72,7 +72,7 @@
 
 - (void)buttonTapped:(id)buttonTapped {
 
-   [[MxTabBarManager sharedTabBarManager] pushWithVideo:self.nodeVideo];
+   [[MxTabBarManager sharedTabBarManager] pushWithVideo:self.nodeInfo];
 
 //      [self.delegate gridViewCellTap:self.detailVideo];// TODO [test] djzhang gridViewCellTap
 }

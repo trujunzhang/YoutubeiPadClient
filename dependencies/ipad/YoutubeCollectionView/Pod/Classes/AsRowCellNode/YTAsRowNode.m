@@ -10,12 +10,12 @@
 
 }
 
-- (instancetype)initWithCellNodeRect:(CGRect)cellRect withVideo:(YTYouTubeVideoCache *)nodeVideo { //242,242
+- (instancetype)initWithCellNodeRect:(CGRect)cellRect withVideo:(id)nodeInfo { //242,242
    if (!(self = [super init]))
       return nil;
 
    self.cellRect = cellRect;
-   self.nodeVideo = nodeVideo;
+   self.nodeInfo = nodeInfo;
 
    [self makeRowNode];
 

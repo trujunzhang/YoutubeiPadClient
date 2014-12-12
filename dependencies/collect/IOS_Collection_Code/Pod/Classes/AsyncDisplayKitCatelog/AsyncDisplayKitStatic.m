@@ -13,11 +13,23 @@
 @implementation ASTextNode (custom)
 
 
-+ (NSAttributedString *)initWithAttributedString:(NSAttributedString *)attributedString {
++ (ASTextNode *)initWithAttributedString:(NSAttributedString *)attributedString {
    ASTextNode * textNode = [[ASTextNode alloc] init];
    textNode.attributedString = attributedString;
 
    return textNode;
+}
+
+@end
+
+@implementation ASImageNode (custom)
+
+
++ (ASImageNode *)initWithImageNamed:(NSString *)name{
+   ASImageNode * imageNode = [[ASImageNode alloc] init];
+   imageNode.image = [UIImage imageNamed:name];
+
+   return imageNode;
 }
 
 @end

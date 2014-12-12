@@ -79,8 +79,8 @@
    [self addSubnode:_infoContainerNode];
 
    // 2.1
-   _channelImageNode = [YTAsChannelThumbnailsImageNode nodeWithChannelId:[YoutubeParser getChannelIdByVideo:self.video]];
-   [_infoContainerNode addSubnode:_channelImageNode];
+//   _channelImageNode = [YTAsChannelThumbnailsImageNode nodeWithChannelId:[YoutubeParser getChannelIdByVideo:self.video]];
+//   [_infoContainerNode addSubnode:_channelImageNode];
 
    // 2.2
    _videoTitleNode = [ASTextNode initWithAttributedString:

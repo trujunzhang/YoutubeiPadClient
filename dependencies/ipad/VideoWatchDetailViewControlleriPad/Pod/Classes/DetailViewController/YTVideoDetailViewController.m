@@ -71,6 +71,22 @@
 }
 
 
+- (void)viewWillAppear:(BOOL)animated {
+   [super viewWillAppear:animated];
+
+
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+   [super viewWillDisappear:animated];
+
+   // Beware, viewWillDisappear: is called when the player view enters full screen on iOS 6+
+   if ([self isMovingFromParentViewController])
+      [_youTubeVideo stop];
+}
+
+
 #pragma mark -
 #pragma mark - setup UIView
 
@@ -104,7 +120,7 @@
 
 - (void)makeTabBarController:(UIView *)parentView withControllerArray:(NSArray *)controllerArray {
    [self cleanupContainer:parentView];
-   // 2
+
    GGTabBar * topTabBar = [[GGLayoutStringTabBar alloc] initWithFrame:CGRectZero
                                                       viewControllers:controllerArray
                                                                 inTop:YES
@@ -117,12 +133,9 @@
 
    CGRect rect = parentView.bounds;
    tabBarController.view.frame = rect;// used
-//   tabBarController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 
    // 3
    self.videoTabBarController = tabBarController;
-
-   // 4
    [parentView addSubview:self.videoTabBarController.view];
 }
 
@@ -145,12 +158,6 @@
    }
 
    return nil;
-}
-
-
-- (void)removeDetailPanel:(UIView *)pView {
-//   [self.videoDetailController.view removeFromSuperview];
-//   [self.detailViewContainer removeFromSuperview];
 }
 
 
@@ -178,15 +185,6 @@
                                                                          options:0
                                                                          metrics:nil
                                                                            views:viewsDictionary]];
-}
-
-
-- (void)addDetailPanel:(UIView *)pView {
-   [self.videoDetailController.view removeConstraints:[self.videoDetailController.view constraints]];
-
-   // 2
-   [pView addSubview:self.videoDetailController.view];
-   self.videoDetailController.view.frame = pView.bounds;
 }
 
 
@@ -219,12 +217,10 @@
 
    if (isPortrait) {// 4
       // 1  UIView contains
-      [self removeDetailPanel:self.detailViewContainer];
       // 2  layout
       [self setupVerticalLayout];
    } else {// 3
       // 1  UIView contains
-//      [self addDetailPanel:self.detailViewContainer];
       [self selectDetailViewControllerInHorizontal:self.videoDetailController];
       // 2 layout
       [self setupHorizontalLayout];
@@ -315,7 +311,6 @@
 
 - (void)ggTabBarController:(GGTabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
    self.selectedController = viewController;
-//   [viewController.view setNeedsLayout];
 }
 
 

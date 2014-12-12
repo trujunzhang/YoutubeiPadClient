@@ -9,6 +9,7 @@
 
 @interface FrameCalculator : NSObject
 
++ (CGRect)frameForBottomDivide:(CGFloat)containerWidth containerHeight:(CGFloat)containerHeight;
 + (CGRect)frameForDescriptionText:(CGRect)containerBounds featureImageFrame:(CGRect)featureImageFrame;
 + (CGRect)frameForDivider:(CGSize)containerSize thirdRowHeight:(CGFloat)thirdRowHeight;
 + (CGRect)frameForChannelThumbnail:(CGRect)containerBounds thirdRowHeight:(CGFloat)thirdRowHeight;
@@ -25,6 +26,10 @@
 + (CGRect)frameForContainer:(CGSize)featureImageSize;
 + (CGSize)sizeThatFits:(CGSize)size withImageSize:(CGSize)imageSize;
 + (CGSize)aspectSizeForWidth:(CGFloat)width originalSize:(CGSize)originalSize;
+
++ (CGRect)frameForDetailRowChannelInfoThumbnail:(CGFloat)containerWidth withHeight:(CGFloat)containerHeight;
++ (CGRect)frameForDetailRowChannelInfoTitle:(CGFloat)containerWidth withLeftRect:(CGRect)leftRect;
+
 + (CGRect)frameForLeftMenuSubscriptionThumbnail:(CGSize)containerSize;
 + (CGRect)frameForLeftMenuSubscriptionTitleText:(CGSize)containerSize leftNodeFrame:(CGRect)leftNodeFrame withFontHeight:(CGFloat)fontHeight;
 

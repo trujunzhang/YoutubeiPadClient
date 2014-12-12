@@ -21,7 +21,7 @@
 
 - (void)makeRowNode {
    _channelTitleNode = [ASTextNode initWithAttributedString:
-    [[NSAttributedString alloc] initWithString:[YoutubeParser getVideoSnippetChannelTitle:self.nodeVideo]
+    [[NSAttributedString alloc] initWithString:[YoutubeParser getVideoSnippetChannelTitle:self.nodeInfo]
                                     attributes:[self textStyleForChannelTitle]]];
    [self addSubnode:_channelTitleNode];
 
@@ -36,7 +36,7 @@
 
 
 - (NSDictionary *)textStyleForChannelTitle {
-   UIFont * font = [UIFont fontWithName:@"HelveticaNeue" size:14.0f];
+   UIFont * font = [UIFont fontWithName:@"HelveticaNeue" size:12.0f];
 
    NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
    style.paragraphSpacing = 0.5 * font.lineHeight;
@@ -59,12 +59,11 @@
 - (void)layout {
    CGFloat titleLeftX = 2.0f;
    CGFloat titleWidth = 180.0f;
-   _channelTitleNode.frame = CGRectMake(titleLeftX, 4, titleWidth, 20);
+   _channelTitleNode.frame = CGRectMake(titleLeftX, self.cellRect.size.height-18, titleWidth, 20);
 
    CGFloat pixelHeight = 1.0f / [[UIScreen mainScreen] scale];
    _divider.frame =
     CGRectMake(0.0f, self.cellRect.size.height - pixelHeight, self.cellRect.size.width, pixelHeight);
-//   CGRectMake(0.0f, 2, self.ce.width, pixelHeight);
 }
 
 

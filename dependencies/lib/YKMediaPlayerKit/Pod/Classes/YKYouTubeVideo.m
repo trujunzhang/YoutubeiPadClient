@@ -155,4 +155,10 @@
 //   [self.player.moviePlayer play];
 }
 
+
+- (void)stop {
+   if (!self.player)
+      [self.player.moviePlayer stop];
+}
+
 @end

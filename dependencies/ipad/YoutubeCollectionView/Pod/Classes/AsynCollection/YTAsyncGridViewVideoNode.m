@@ -234,10 +234,10 @@
 
 
 - (void)showChannelThumbnail:(NSString *)channelId {
-   YTAsChannelThumbnailsImageNode * videoChannelThumbnailsNode = [YTAsChannelThumbnailsImageNode nodeWithChannelId:channelId];
+//   YTAsChannelThumbnailsImageNode * videoChannelThumbnailsNode = [YTAsChannelThumbnailsImageNode nodeWithChannelId:channelId];
 
-   self._channelImageNode = videoChannelThumbnailsNode;
-   [self addSubnode:self._channelImageNode];
+//   self._channelImageNode = videoChannelThumbnailsNode;
+//   [self addSubnode:self._channelImageNode];
 }
 
 

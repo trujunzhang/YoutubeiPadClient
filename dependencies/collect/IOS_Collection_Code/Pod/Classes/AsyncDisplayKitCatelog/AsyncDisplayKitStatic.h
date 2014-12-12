@@ -12,6 +12,14 @@
 
 @interface ASTextNode (custom)
 
-+ (NSAttributedString *)initWithAttributedString:(NSAttributedString *)attributedString;
++ (ASTextNode *)initWithAttributedString:(NSAttributedString *)attributedString;
 
 @end
+
+
+@interface ASImageNode (custom)
+
++ (ASImageNode *)initWithImageNamed:(NSString *)name;
+
+@end
+

@@ -8,12 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "AsyncDisplayKit.h"
-@class YoutubeVideoCache;
-
 
 @interface AsDetailRowChannelInfo : ASCellNode
 
 
-- (instancetype)initWithVideo:(YoutubeVideoCache *)videoCache;
+- (instancetype)initWithVideo:(id)videoCache;
 
 @end
