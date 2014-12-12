@@ -14,6 +14,7 @@
 #import "HexColor.h"
 #import "YoutubeCollectionViewBase.h"
 #import "YTAsRowNode.h"
+#import "ClientUIHelper.h"
 
 
 @interface YoutubeCollectionViewBase () {
@@ -84,7 +85,7 @@
 
 - (void)setUICollectionView:(UICollectionView *)collectionView {
    self.baseCollectionView = collectionView;
-   self.baseCollectionView.backgroundColor = [UIColor colorWithHexString:@"ebebeb"];
+   self.baseCollectionView.backgroundColor = [ClientUIHelper mainUIBackgroundColor];
 
    self.baseCollectionView.showsVerticalScrollIndicator = NO;
    self.baseCollectionView.directionalLockEnabled = YES;
