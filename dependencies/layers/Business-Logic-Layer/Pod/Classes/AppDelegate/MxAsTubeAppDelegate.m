@@ -18,10 +18,10 @@
 #import "GYoutubeHelper.h"
 #import "CacheImageConstant.h"
 #import "MxTabBarManager.h"
+#import "ClientUIHelper.h"
 
 
 @interface MxAsTubeAppDelegate ()<UIApplicationDelegate, UITabBarControllerDelegate, SWRevealViewControllerDelegate> {
-   SubscriptionsViewController * _subscriptionsViewController; // the first right tab bar item
 }
 
 @property(nonatomic, strong) SWRevealViewController * revealController;
@@ -37,7 +37,7 @@
 
    //1
    UITabBarController * tabBarController = (UITabBarController *) self.window.rootViewController;
-   tabBarController.view.backgroundColor = [UIColor whiteColor];
+   tabBarController.view.backgroundColor = [ClientUIHelper mainUIBackgroundColor];
    tabBarController.delegate = self;
    tabBarController.tabBar.tintColor = [UIColor redColor];
    tabBarController.selectedIndex = 0;// default is Subscription View Controller.
@@ -47,7 +47,12 @@
    }
 
    //2. the first right tab bar item
-   _subscriptionsViewController = ((UINavigationController *) tabBarController.viewControllers[0]).viewControllers[0];
+   NSArray * controllers = tabBarController.viewControllers;
+   for (UINavigationController * controller in controllers) {
+      controller.view.backgroundColor = [UIColor clearColor];
+   }
+
+//   _subscriptionsViewController = ((UINavigationController *) tabBarController.viewControllers[0]).viewControllers[0];
 
 //   NSString * debug = @"debug";
 
@@ -120,19 +125,5 @@
    [[LeftRevealHelper sharedLeftRevealHelper] endTabBarToggleWithSelectedIndex:tabBarController.selectedIndex];
 }
 
-
-//#pragma mark -
-//#pragma mark LeftMenuViewBaseDelegate
-//
-//
-//- (void)startToggleLeftMenuWithTitle:(NSString *)title withType:(YTPlaylistItemsType)playlistItemsType {
-//   [_subscriptionsViewController startToggleLeftMenuWithTitle:title withType:playlistItemsType];
-//}
-//
-//
-//- (void)endToggleLeftMenuEventForChannelPageWithChannelId:(NSString *)channelId withTitle:(NSString *)title {
-//   [[LeftRevealHelper sharedLeftRevealHelper] closeLeftMenuAndNoRearOpen];
-//   [_subscriptionsViewController endToggleLeftMenuEventForChannelPageWithChannelId:channelId withTitle:title];
-//}
 
 @end
