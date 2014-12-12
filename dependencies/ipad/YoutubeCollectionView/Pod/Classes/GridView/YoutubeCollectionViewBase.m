@@ -15,6 +15,8 @@
 #import "YoutubeCollectionViewBase.h"
 #import "YTAsRowNode.h"
 #import "ClientUIHelper.h"
+#import "MxTabBarManager.h"
+#import "LocalReponseHelper.h"
 
 
 @interface YoutubeCollectionViewBase () {
@@ -194,7 +196,9 @@
 
        // test
        if (debugCollectionViewToDetail) {
-          [self.navigationController pushViewController:[[YTVideoDetailViewController alloc] initWithVideo:array[0]]
+//          YTYouTubeVideoCache * _detailVideo = array[0];
+          YTYouTubeVideoCache * _detailVideo = [LocalReponseHelper getLocalDetailVideo];
+          [self.navigationController pushViewController:[[YTVideoDetailViewController alloc] initWithVideo:_detailVideo]
                                                animated:YES];
        }
 

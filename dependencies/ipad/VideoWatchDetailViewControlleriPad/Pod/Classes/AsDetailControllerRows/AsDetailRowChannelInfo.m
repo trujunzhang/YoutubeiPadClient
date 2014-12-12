@@ -46,7 +46,8 @@ static CGFloat KDetailRowHeight = 50.0f;
 
    // create a text node
    // generate an attributed string using the custom link attribute specified above
-   NSString * blurb = videoCache.snippet.channelTitle;
+   NSString * blurb = [YoutubeParser getVideoSnippetChannelTitle:self.cardInfo];
+
    NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:blurb];
    [string addAttribute:NSFontAttributeName
                   value:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]

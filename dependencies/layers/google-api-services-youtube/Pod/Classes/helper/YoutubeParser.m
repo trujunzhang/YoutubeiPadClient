@@ -100,6 +100,11 @@
 }
 
 
++ (NSString *)getVideoDescription:(YTYouTubeVideoCache *)video {
+   return video.snippet.descriptionString;
+}
+
+
 + (NSString *)getVideoSnippetChannelTitle:(YTYouTubeVideoCache *)video {
    return video.snippet.channelTitle;
 }

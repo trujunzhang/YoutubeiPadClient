@@ -8,6 +8,7 @@
 
 #import "AsDetailRowVideoInfo.h"
 #import "YoutubeVideoCache.h"
+#import "YoutubeParser.h"
 #import <AsyncDisplayKit/ASDisplayNode+Subclasses.h>
 #import <AsyncDisplayKit/ASHighlightOverlayLayer.h>
 
@@ -41,7 +42,8 @@ static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
    _textNode.linkAttributeNames = @[ kLinkAttributeName ];
 
    // generate an attributed string using the custom link attribute specified above
-   NSString * blurb = videoCache.snippet.descriptionString;
+   NSString * blurb = [YoutubeParser getVideoDescription:videoCache];
+
    NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:blurb];
    [string addAttribute:NSFontAttributeName
                   value:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]
