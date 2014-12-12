@@ -495,7 +495,6 @@ static GYoutubeHelper * instance = nil;
 
    YoutubeResponseBlock thumbnailCompletion = ^(NSArray * array, NSObject * respObject) {
        if (array.count == 0) {
-          errorBlock(nil);
        } else {
           YTYouTubeChannel * channel = array[0];
           NSString * thumbnailUrl = [YoutubeParser getChannelSnippetThumbnail:channel];
