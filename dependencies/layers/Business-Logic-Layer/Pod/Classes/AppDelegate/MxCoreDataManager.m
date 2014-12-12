@@ -4,10 +4,8 @@
 //
 
 #import "MxCoreDataManager.h"
-#import "YoutubeConstants.h"
-#import "MABYT3_Video.h"
-#import "MagicalRecord.h"
-#import "MagicalRecord+Actions.h"
+
+#import "CoreData+MagicalRecord.h"
 
 
 @implementation MxCoreDataManager {
