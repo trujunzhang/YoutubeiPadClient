@@ -20,12 +20,13 @@
 
 #pragma mark -
 #pragma mark divide on bottom
+
+
 + (CGRect)frameForBottomDivide:(CGFloat)containerWidth containerHeight:(CGFloat)containerHeight {
 
    CGFloat pixelHeight = 1.0f / [[UIScreen mainScreen] scale];
    return CGRectMake(0.0f, containerHeight - pixelHeight, containerWidth, pixelHeight);
 }
-
 
 
 #pragma mark -
@@ -99,7 +100,7 @@
 
 + (CGRect)frameForDurationWithCloverSize:(CGSize)cloverSize withDurationWidth:(CGFloat)durationWidthIs {
    CGFloat durationHeight = 18;
-   return CGRectMake(cloverSize.width - durationWidthIs, cloverSize.height - durationHeight - 2, durationWidthIs, durationHeight);
+   return CGRectMake(cloverSize.width - durationWidthIs, cloverSize.height - durationHeight, durationWidthIs, durationHeight);
 }
 
 
