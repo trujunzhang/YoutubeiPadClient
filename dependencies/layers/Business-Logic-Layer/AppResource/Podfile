@@ -2,8 +2,11 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, 7.0
 
+
 target 'mxAsTubeiPad', :exclusive => true do
-  #pod 'Reveal-iOS-SDK'
+
+  pod 'Reveal-iOS-SDK'
+
 
   # ________________Local open projects___________________
   # pod 'pop', :git => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/pop'

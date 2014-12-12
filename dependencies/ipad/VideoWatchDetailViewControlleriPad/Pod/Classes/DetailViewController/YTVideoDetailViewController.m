@@ -12,7 +12,6 @@
    NSArray * _lastControllerArray;
    YTYouTubeVideoCache * _detailVideo;
 
-
    YKYouTubeVideo * _youTubeVideo;
 }
 
