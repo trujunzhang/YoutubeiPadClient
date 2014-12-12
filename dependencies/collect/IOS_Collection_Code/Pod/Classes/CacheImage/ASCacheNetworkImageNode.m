@@ -52,6 +52,7 @@
    self = [super initWithCache:self downloader:self];
 //   self = [super initWithCache:self downloader:[[ASBasicImageDownloader alloc] init]];
    if (self) {
+      self.backgroundColor = [UIColor clearColor];
    }
 
    return self;

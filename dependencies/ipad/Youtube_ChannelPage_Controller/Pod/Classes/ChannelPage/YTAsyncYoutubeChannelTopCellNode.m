@@ -13,9 +13,9 @@
 #import "FrameCalculator.h"
 #import "ASCacheNetworkImageNode.h"
 #import "HexColor.h"
-#import "UIColor+iOS8Colors.h"
 #import "Foundation.h"
 #import "AsCacheMultiplexImageNode.h"
+#import "AsyncDisplayKitStatic.h"
 
 static const int TOP_CHANNEL_SECOND_ROW_HEIGHT = 48;
 
@@ -41,7 +41,7 @@ static const int TOP_CHANNEL_SECOND_ROW_HEIGHT = 48;
 
 @implementation YTAsyncYoutubeChannelTopCellNode
 
-- (instancetype)initWithChannel:(YTYouTubeChannel *)channel {
+- (instancetype)initWithChannel:(id)channel {
    self = [super init];
    if (self) {
       self.pageChannel = channel;
@@ -105,7 +105,7 @@ static const int TOP_CHANNEL_SECOND_ROW_HEIGHT = 48;
 - (void)rowFirstForChannelBanner {
    ASImageNode * imageNode = [self getImageNodeForChannelBanner];
 
-   imageNode.contentMode=UIViewContentModeScaleToFill;
+   imageNode.contentMode = UIViewContentModeScaleToFill;
 
    _channelBannerThumbnailNode = imageNode;
    [self addSubnode:_channelBannerThumbnailNode];
@@ -115,10 +115,9 @@ static const int TOP_CHANNEL_SECOND_ROW_HEIGHT = 48;
 }
 
 
-- (ASImageNode *)getImageNodeForChannelBanner {
+- (ASImageNode *)getImageNodeForChannelBanner1 {
    AsCacheMultiplexImageNode * node =
     [AsCacheMultiplexImageNode nodeWithImageUrlArray:[YoutubeParser getChannelBannerImageUrlArray:self.pageChannel]];
-
 
    node.image = [UIImage imageNamed:@"channel_default_banner.jpg"];
 
@@ -126,7 +125,7 @@ static const int TOP_CHANNEL_SECOND_ROW_HEIGHT = 48;
 }
 
 
-- (ASImageNode *)getImageNodeForChannelBanner123 {
+- (ASImageNode *)getImageNodeForChannelBanner {
    ASCacheNetworkImageNode * node =
     [[ASCacheNetworkImageNode alloc] initWithPlaceHolder:[UIImage imageNamed:@"channel_default_banner.jpg"]];
 
@@ -137,8 +136,7 @@ static const int TOP_CHANNEL_SECOND_ROW_HEIGHT = 48;
 
 
 - (void)showChannelThumbnail:(NSString *)channelThumbnailUrl {
-   ASCacheNetworkImageNode * channelThumbnailsNode = [[ASCacheNetworkImageNode alloc] initForImageCache];
-   [channelThumbnailsNode startFetchImageWithString:channelThumbnailUrl];
+   ASCacheNetworkImageNode * channelThumbnailsNode = [ASCacheNetworkImageNode nodeWithImageUrl:channelThumbnailUrl];
 
    _channelThumbnailsNode = channelThumbnailsNode;
    [self addSubnode:_channelThumbnailsNode];

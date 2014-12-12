@@ -7,16 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "YoutubeConstants.h"
 
 #import "AsyncDisplayKit.h"
 #import "ASControlNode+Subclasses.h"
 #import "ASDisplayNode+Subclasses.h"
-@class ASCacheNetworkImageNode;
-
 
 @interface YTAsyncYoutubeChannelTopCellNode : ASDisplayNode
 
-- (instancetype)initWithChannel:(YTYouTubeChannel *)channel;
+- (instancetype)initWithChannel:(id)channel;
 
 @end

@@ -60,7 +60,6 @@
 - (void)makeUI {
    // 1
    _videoCoverThumbnailsNode = [ASCacheNetworkImageNode nodeWithImageUrl:[YoutubeParser getVideoSnippetThumbnails:self.video]];
-   _videoCoverThumbnailsNode.backgroundColor = [UIColor clearColor];
    [self addSubnode:_videoCoverThumbnailsNode];
 
    // 2

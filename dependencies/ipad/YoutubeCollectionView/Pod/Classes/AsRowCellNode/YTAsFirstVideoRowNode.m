@@ -26,7 +26,6 @@
 
 - (void)makeRowNode {
    _videoCoverThumbnailsNode = [ASCacheNetworkImageNode nodeWithImageUrl:[YoutubeParser getVideoSnippetThumbnails:self.nodeInfo]];
-   _videoCoverThumbnailsNode.backgroundColor = [UIColor clearColor];
    _videoCoverThumbnailsNode.contentMode=UIViewContentModeScaleToFill;
 
    [self addSubnode:_videoCoverThumbnailsNode];
