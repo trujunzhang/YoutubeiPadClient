@@ -19,6 +19,8 @@ static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
 
 @interface AsDetailRowVideoInfo ()<ASTextNodeDelegate> {
    ASTextNode * _textNode;
+
+   CGFloat _tableViewWidth;
 }
 
 @end
@@ -27,9 +29,11 @@ static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
 @implementation AsDetailRowVideoInfo
 
 
-- (instancetype)initWithVideo:(YoutubeVideoCache *)videoCache {
+- (instancetype)initWithVideo:(id)videoCache withTableWidth:(CGFloat)tableViewWidth {
    if (!(self = [super init]))
       return nil;
+
+   _tableViewWidth=tableViewWidth;
 
    self.backgroundColor = [UIColor whiteColor];
 
@@ -69,7 +73,7 @@ static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
    // called on a background thread.  custom nodes must call -measure: on their subnodes in -calculateSizeThatFits:
    CGSize measuredSize = [_textNode measure:CGSizeMake(constrainedSize.width - 2 * kTextPadding, constrainedSize.height - 2 * kTextPadding)];
 
-   return CGSizeMake(constrainedSize.width, measuredSize.height + 2 * kTextPadding);
+   return CGSizeMake(_tableViewWidth, measuredSize.height + 2 * kTextPadding);
 }
 
 

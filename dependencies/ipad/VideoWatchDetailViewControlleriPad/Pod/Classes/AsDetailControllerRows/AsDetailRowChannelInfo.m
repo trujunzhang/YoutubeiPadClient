@@ -23,6 +23,8 @@ static CGFloat KDetailRowHeight = 50.0f;
    ASTextNode * _textNode;
    ASDisplayNode * _divider;
    ASImageNode * _channelImageNode;
+
+   CGFloat _tableViewWidth;
 }
 
 @property(nonatomic, strong) YoutubeVideoCache * cardInfo;
@@ -34,11 +36,12 @@ static CGFloat KDetailRowHeight = 50.0f;
 @implementation AsDetailRowChannelInfo
 
 
-- (instancetype)initWithVideo:(YoutubeVideoCache *)videoCache {
+- (instancetype)initWithVideo:(id)videoCache withTableWidth:(CGFloat)tableViewWidth {
    if (!(self = [super init]))
       return nil;
 
    self.cardInfo = videoCache;
+   _tableViewWidth = tableViewWidth;
 
    _channelImageNode = [YTAsChannelThumbnailsImageNode nodeWithChannelId:[YoutubeParser getChannelIdByVideo:self.cardInfo]
                                                                forCorner:5.0f];
@@ -78,7 +81,7 @@ static CGFloat KDetailRowHeight = 50.0f;
 - (CGSize)calculateSizeThatFits:(CGSize)constrainedSize {
    // called on a background thread.  custom nodes must call -measure: on their subnodes in -calculateSizeThatFits:
 
-   CGSize size = CGSizeMake(constrainedSize.width, KDetailRowHeight);
+   CGSize size = CGSizeMake(_tableViewWidth, KDetailRowHeight);
    return size;
 }
 

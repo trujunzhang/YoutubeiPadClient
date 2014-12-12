@@ -238,6 +238,7 @@
       [self.thirdViewController.view setNeedsLayout];
    }
 
+   [self.videoDetailController updateUI];
 }
 
 

@@ -12,6 +12,6 @@
 @interface AsDetailRowChannelInfo : ASCellNode
 
 
-- (instancetype)initWithVideo:(id)videoCache;
+- (instancetype)initWithVideo:(id)videoCache withTableWidth:(CGFloat)tableViewWidth;
 
 @end

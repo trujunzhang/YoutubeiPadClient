@@ -57,10 +57,12 @@ static const NSInteger kLitterSize = 2;
 }
 
 
+
 - (void)viewWillLayoutSubviews {
 
    CGRect rect = self.view.bounds;
    _tableView.frame = rect;
+   [_tableView setNeedsLayout];
 }
 
 
@@ -72,9 +74,9 @@ static const NSInteger kLitterSize = 2;
    ASCellNode * node;
    // special-case the first row
    if (indexPath.row == 0) {
-      node = [[AsDetailRowChannelInfo alloc] initWithVideo:_video];
+      node = [[AsDetailRowChannelInfo alloc] initWithVideo:_video withTableWidth:self.view.frame.size.width];
    } else if (indexPath.row == 1) {
-      node = [[AsDetailRowVideoInfo alloc] initWithVideo:_video];
+      node = [[AsDetailRowVideoInfo alloc] initWithVideo:_video withTableWidth:self.view.frame.size.width];
    }
 
    return node;
@@ -92,4 +94,8 @@ static const NSInteger kLitterSize = 2;
 }
 
 
+- (void)updateUI {
+//   [_tableView reloadData];
+
+}
 @end
