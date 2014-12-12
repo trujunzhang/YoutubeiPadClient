@@ -50,3 +50,9 @@ target 'mxAsTubeiPad', :exclusive => true do
   pod "YoutubeCollectionView", :path => "../dependencies/ipad/YoutubeCollectionView"
 
 end
+
+target :mxAsTubeiPadTests, :exclusive => true do
+
+  pod 'OCMockito', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/OCMockito'
+
+end
