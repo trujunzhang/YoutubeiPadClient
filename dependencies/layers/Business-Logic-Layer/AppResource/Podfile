@@ -6,7 +6,9 @@ target 'mxAsTubeiPad', :exclusive => true do
   #pod 'Reveal-iOS-SDK'
 
   # ________________Local open projects___________________
-  # pod 'pop', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/pop'
+  # pod 'pop', :git => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/pop'
+  pod 'pop', '~> 1.0.7'
+
   pod 'Regexer', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/Regexer'
   pod 'MagicalRecord', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/MagicalRecord'
 

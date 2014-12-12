@@ -4,5 +4,5 @@
 
 _appcode_alias="/Volumes/macshare/Applications/developer/IDEs/jetbeains/AppCode.app"
 
-rm -rf mxAsTubeiPad&&unzip  mxAsTubeiPad.zip&&cp dependencies/layers/Business-Logic-Layer/AppResource/Podfile mxAsTubeiPad&&cp dependencies/layers/Business-Logic-Layer/AppResource/Main.storyboard mxAsTubeiPad/mxAsTubeiPad/Base.lproj&&cd mxAsTubeiPad&&pod install  --verbose&&open -a $_appcode_alias mxAsTubeiPad.xcworkspace
+rm -rf mxAsTubeiPad&&unzip  mxAsTubeiPad.zip&&cp dependencies/layers/Business-Logic-Layer/AppResource/Podfile mxAsTubeiPad&&cp dependencies/layers/Business-Logic-Layer/AppResource/Main.storyboard mxAsTubeiPad/mxAsTubeiPad/Base.lproj&&cd mxAsTubeiPad&&pod install  --verbose  --no-repo-update&&open -a $_appcode_alias mxAsTubeiPad.xcworkspace
 
