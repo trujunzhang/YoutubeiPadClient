@@ -51,8 +51,11 @@ target 'mxAsTubeiPad', :exclusive => true do
 
 end
 
-target :mxAsTubeiPadTests, :exclusive => true do
+target 'mxAsTubeiPadTests', :exclusive => true do
+
+  # pod 'OCMockito', '~> 1.0'
 
   pod 'OCMockito', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/OCMockito'
+
 
 end

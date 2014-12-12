@@ -37,7 +37,13 @@ Pod::Spec.new do |s|
 
   s.subspec 'AppDelegate' do |sub|
     sub.source_files = 'Pod/Classes/AppDelegate/*.{h,m}'
-  end    
+  end
+
+  # debug mode
+  s.subspec 'AppMockData' do |sub|
+    sub.source_files = 'Pod/Classes/AppMockData/*.{h,m}'
+  end
+
 
 end
 
