@@ -56,7 +56,8 @@
    self.view.backgroundColor = [UIColor clearColor];
 
    [self initViewControllers];
-   [self setupPlayer:self.videoPlayViewContainer];
+
+//   [self setupPlayer:self.videoPlayViewContainer];
 
    self.title = [YoutubeParser getVideoSnippetTitle:_detailVideo];
 

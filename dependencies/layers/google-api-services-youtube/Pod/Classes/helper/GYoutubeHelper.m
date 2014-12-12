@@ -494,10 +494,14 @@ static GYoutubeHelper * instance = nil;
    };
 
    YoutubeResponseBlock thumbnailCompletion = ^(NSArray * array, NSObject * respObject) {
-       YTYouTubeChannel * channel = array[0];
-       NSString * thumbnailUrl = [YoutubeParser getChannelSnippetThumbnail:channel];
-       [YoutubeParser cacheWithKey:channelId withValue:thumbnailUrl];
-       completion(nil, thumbnailUrl);
+       if (array.count == 0) {
+          errorBlock(nil);
+       } else {
+          YTYouTubeChannel * channel = array[0];
+          NSString * thumbnailUrl = [YoutubeParser getChannelSnippetThumbnail:channel];
+          [YoutubeParser cacheWithKey:channelId withValue:thumbnailUrl];
+          completion(nil, thumbnailUrl);
+       }
    };
 
    NSURLSessionDataTask * task =
@@ -505,9 +509,6 @@ static GYoutubeHelper * instance = nil;
                           completion:thumbnailCompletion
                         errorHandler:errorBlock];
 }
-
-
-
 
 
 - (NSString *)getPlayListIdByPlaylists:(GTLYouTubeChannelContentDetailsRelatedPlaylists *)playlists tagType:(NSInteger)tagType {
