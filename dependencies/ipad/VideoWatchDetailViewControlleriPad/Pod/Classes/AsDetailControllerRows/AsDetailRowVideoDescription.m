@@ -10,6 +10,8 @@
 #import "YoutubeVideoCache.h"
 #import "YoutubeParser.h"
 #import "YoutubeVideoDescriptionStringAttribute.h"
+#import "Foundation.h"
+#import "AsyncDisplayKitStatic.h"
 #import <AsyncDisplayKit/ASDisplayNode+Subclasses.h>
 #import <AsyncDisplayKit/ASHighlightOverlayLayer.h>
 
@@ -40,24 +42,23 @@ static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
 
    self.backgroundColor = [UIColor whiteColor];
 
+
+
+   // generate an attributed string using the custom link attribute specified above
+   NSMutableArray * linkAttributeNames = [[NSMutableArray alloc] init];
+
+   NSMutableAttributedString * attributedString =
+    [NSAttributedString attributedStringForDetailRowDescription:[YoutubeParser getVideoDescription:videoCache]
+                                                       fontSize:16.0f];
+
    // create a text node
-   _textNode = [[ASTextNode alloc] init];
+   _textNode = [ASTextNode initWithAttributedString:attributedString withLinkAttributeNames:linkAttributeNames];
 
    // configure the node to support tappable links
    _textNode.delegate = self;
-   _textNode.userInteractionEnabled = YES;
-
-   // generate an attributed string using the custom link attribute specified above
-   NSString * descriptionString = [YoutubeParser getVideoDescription:videoCache];
-   NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:descriptionString];
-
-   [attributedString addAttribute:NSFontAttributeName
-                            value:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]
-                            range:NSMakeRange(0, descriptionString.length)];
 
    NSMutableArray * attributeArray = videoCache.descriptionStringAttributeArray;
 
-   NSMutableArray * linkAttributeNames = [[NSMutableArray alloc] init];
    for (YoutubeVideoDescriptionStringAttribute * stringAttribute in attributeArray) {
 
       [linkAttributeNames addObject:stringAttribute.kLinkAttributeName];
@@ -68,10 +69,6 @@ static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
        NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternDot),
       }                         range:stringAttribute.httpRang];
    }
-
-   _textNode.linkAttributeNames = linkAttributeNames;
-
-   _textNode.attributedString = attributedString;
 
    // add it as a subnode, and we're done
    [self addSubnode:_textNode];

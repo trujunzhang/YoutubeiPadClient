@@ -128,6 +128,19 @@
 #pragma mark AsDetailRowChannelInfo
 
 
++ (NSAttributedString *)attributedStringForDetailRowDescription:(NSString *)text fontSize:(CGFloat)fontSize {
+   UIFont * font = [UIFont fontWithName:@"HelveticaNeue-Light" size:fontSize];
+
+   NSDictionary * titleAttributes =
+    @{ NSFontAttributeName : font,
+     NSForegroundColorAttributeName : [UIColor blackColor],
+     NSParagraphStyleAttributeName : [NSParagraphStyle justifiedParagraphStyleForDescription],
+    };
+
+   return [[NSAttributedString alloc] initWithString:text attributes:titleAttributes];
+}
+
+
 + (NSAttributedString *)attributedStringForDetailRowChannelTitle:(NSString *)text fontSize:(CGFloat)fontSize {
    UIFont * font = [UIFont systemFontOfSize:fontSize];
 
@@ -261,6 +274,17 @@
 
 #pragma mark -
 #pragma mark AsDetailRowChannelInfo
+
+
++ (NSParagraphStyle *)justifiedParagraphStyleForDescription {
+   NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+   style.lineBreakMode = NSLineBreakByTruncatingTail;
+   style.alignment = NSTextAlignmentLeft;
+
+   style.paragraphSpacing = 0.0;
+
+   return style;
+}
 
 
 + (NSParagraphStyle *)justifiedParagraphStyleForDetailRowChannelTitle {

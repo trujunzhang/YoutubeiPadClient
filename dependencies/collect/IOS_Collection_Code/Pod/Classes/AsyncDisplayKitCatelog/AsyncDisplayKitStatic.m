@@ -20,12 +20,24 @@
    return textNode;
 }
 
+
++ (ASTextNode *)initWithAttributedString:(NSAttributedString *)attributedString withLinkAttributeNames:(NSArray *)linkAttributeNames {
+   ASTextNode * textNode = [[ASTextNode alloc] init];
+   textNode.attributedString = attributedString;
+   textNode.linkAttributeNames = linkAttributeNames;
+
+   textNode.userInteractionEnabled = YES;
+
+   return textNode;
+}
+
 @end
+
 
 @implementation ASImageNode (custom)
 
 
-+ (ASImageNode *)initWithImageNamed:(NSString *)name{
++ (ASImageNode *)initWithImageNamed:(NSString *)name {
    ASImageNode * imageNode = [[ASImageNode alloc] init];
    imageNode.image = [UIImage imageNamed:name];
 
