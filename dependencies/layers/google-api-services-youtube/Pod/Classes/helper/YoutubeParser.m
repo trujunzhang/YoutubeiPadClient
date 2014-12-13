@@ -54,8 +54,11 @@
 + (NSString *)getVideoIdsBySearchResult:(NSMutableArray *)searchResultList {
    NSMutableArray * videoIds = [[NSMutableArray alloc] init];
    for (YTYouTubeSearchResult * searchResult in searchResultList) {
-//      [videoIds addObject:searchResult.identifier.videoId];// used
-      [videoIds addObject:@"8ThQcXnW2g4"];// test
+      if (debugCollectionViewToDetail) {
+         [videoIds addObject:@"8ThQcXnW2g4"];// test
+      } else {
+         [videoIds addObject:searchResult.identifier.videoId];// used
+      }
    }
    return [videoIds componentsJoinedByString:@","];
 }
