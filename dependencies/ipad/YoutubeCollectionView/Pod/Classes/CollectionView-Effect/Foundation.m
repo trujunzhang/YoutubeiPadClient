@@ -128,16 +128,24 @@
 #pragma mark AsDetailRowChannelInfo
 
 
-+ (NSAttributedString *)attributedStringForDetailRowDescription:(NSString *)text fontSize:(CGFloat)fontSize {
++ (NSMutableAttributedString *)attributedStringForDetailRowDescription:(NSString *)text fontSize:(CGFloat)fontSize {
    UIFont * font = [UIFont fontWithName:@"HelveticaNeue-Light" size:fontSize];
 
    NSDictionary * titleAttributes =
-    @{ NSFontAttributeName : font,
+    @{
      NSForegroundColorAttributeName : [UIColor blackColor],
      NSParagraphStyleAttributeName : [NSParagraphStyle justifiedParagraphStyleForDescription],
     };
 
-   return [[NSAttributedString alloc] initWithString:text attributes:titleAttributes];
+   NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:text
+                                                                                  attributes:titleAttributes];
+
+   [attributedString addAttribute:NSFontAttributeName
+                            value:font
+                            range:NSMakeRange(0, text.length)];
+
+
+   return attributedString;
 }
 
 
@@ -278,10 +286,9 @@
 
 + (NSParagraphStyle *)justifiedParagraphStyleForDescription {
    NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-   style.lineBreakMode = NSLineBreakByTruncatingTail;
    style.alignment = NSTextAlignmentLeft;
 
-   style.paragraphSpacing = 0.0;
+   style.paragraphSpacing = 2.0;
 
    return style;
 }
