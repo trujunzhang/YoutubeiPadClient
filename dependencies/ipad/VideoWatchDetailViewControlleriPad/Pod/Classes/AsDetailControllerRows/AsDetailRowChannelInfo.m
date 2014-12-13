@@ -20,10 +20,12 @@ static CGFloat KDetailRowHeight = 50.0f;
 
 
 @interface AsDetailRowChannelInfo () {
-   ASTextNode * _textNode;
-   ASDisplayNode * _divider;
    ASImageNode * _channelImageNode;
 
+   ASTextNode * _channelTitleNode;
+   ASTextNode * _publishAtNode;
+
+   ASDisplayNode * _divider;
    CGFloat _tableViewWidth;
 
    int cStep;
@@ -62,10 +64,10 @@ static CGFloat KDetailRowHeight = 50.0f;
                   value:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]
                   range:NSMakeRange(0, blurb.length)];
 
-   _textNode = [ASTextNode initWithAttributedString:string];
+   _channelTitleNode = [ASTextNode initWithAttributedString:string];
 
    // add it as a subnode, and we're done
-   [self addSubnode:_textNode];
+   [self addSubnode:_channelTitleNode];
 
    // hairline cell separator
    _divider = [[ASDisplayNode alloc] init];
@@ -98,7 +100,7 @@ static CGFloat KDetailRowHeight = 50.0f;
                                                                          withHeight:KDetailRowHeight];
 
    // called on the main thread.  we'll use the stashed size from above, instead of blocking on text sizing
-   _textNode.frame = [FrameCalculator frameForDetailRowChannelInfoTitle:self.calculatedSize.width
+   _channelTitleNode.frame = [FrameCalculator frameForDetailRowChannelInfoTitle:self.calculatedSize.width
                                                            withLeftRect:_channelImageNode.frame];
 
    _divider.frame = [FrameCalculator frameForBottomDivide:self.calculatedSize.width containerHeight:KDetailRowHeight];
@@ -122,7 +124,7 @@ static CGFloat KDetailRowHeight = 50.0f;
    ];
 
    cStep++;
-   _textNode.backgroundColor = colorArray[cStep % 3];
+   _channelTitleNode.backgroundColor = colorArray[cStep % 3];
 
 
 }

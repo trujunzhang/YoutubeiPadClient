@@ -35,7 +35,7 @@
 
 - (CGSize)calculateSizeThatFits:(CGSize)constrainedSize {
    // called on a background thread.  custom nodes must call -measure: on their subnodes in -calculateSizeThatFits:
-//   CGSize measuredSize = [_textNode measure:CGSizeMake(constrainedSize.width - 2 * kTextPadding, constrainedSize.height - 2 * kTextPadding)];
+//   CGSize measuredSize = [_channelTitleNode measure:CGSizeMake(constrainedSize.width - 2 * kTextPadding, constrainedSize.height - 2 * kTextPadding)];
 
 //   return CGSizeMake(_tableViewWidth, measuredSize.height + 2 * kTextPadding);
    return CGSizeZero;
@@ -44,8 +44,8 @@
 
 - (void)layout {
    // called on the main thread.  we'll use the stashed size from above, instead of blocking on text sizing
-//   CGSize textNodeSize = _textNode.calculatedSize;
-//   _textNode.frame = CGRectMake(kTextPadding, kTextPadding, self.calculatedSize.width - kTextPadding * 2, textNodeSize.height);
+//   CGSize textNodeSize = _channelTitleNode.calculatedSize;
+//   _channelTitleNode.frame = CGRectMake(kTextPadding, kTextPadding, self.calculatedSize.width - kTextPadding * 2, textNodeSize.height);
 }
 
 @end
