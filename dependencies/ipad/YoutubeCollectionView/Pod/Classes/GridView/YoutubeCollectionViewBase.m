@@ -180,20 +180,21 @@
    [[self getYoutubeRequestInfo] resetRequestInfoForSearchWithItemType:itemType withQueryTeam:text];
 
    // test
-   if (debugCollectionViewToDetail) {
+   if (debugCollectionViewToDetail && debugCollectionViewToDetail_local) {
       YTYouTubeVideoCache * _detailVideo = [LocalReponseHelper getLocalDetailVideo];
       [[MxTabBarManager sharedTabBarManager] pushWithVideo:_detailVideo];
-//      [self.navigationController pushViewController:[[YTVideoDetailViewController alloc] initWithVideo:_detailVideo]
-//                                           animated:YES];
    }
 }
 
 
 - (void)searchByPageToken {
    if (debugCollectionViewToDetail) {
-//      if ([self getYoutubeRequestInfo].videoList.count > 0) {
-      return;
-//      }
+      if (debugCollectionViewToDetail_local) {
+         return;
+      }
+      else if ([self getYoutubeRequestInfo].videoList.count > 0) {
+         return;
+      }
    }
 
    if ([self checkRequest])
@@ -202,6 +203,8 @@
 
    YoutubeResponseBlock completion = ^(NSArray * array, NSObject * respObject) {
        [self updateAfterResponse:array];
+
+
    };
    ErrorResponseBlock error = ^(NSError * error) {
    };

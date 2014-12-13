@@ -82,6 +82,9 @@
 //#define debugCollectionViewToDetail  NO
 #define debugCollectionViewToDetail  YES
 
+#define debugCollectionViewToDetail_local  NO
+//#define debugCollectionViewToDetail_local  YES
+
 
 // module
 
