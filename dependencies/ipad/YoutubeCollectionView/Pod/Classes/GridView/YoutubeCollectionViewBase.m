@@ -204,6 +204,12 @@
    YoutubeResponseBlock completion = ^(NSArray * array, NSObject * respObject) {
        [self updateAfterResponse:array];
 
+       // test
+       if (debugCollectionViewToDetail && !debugCollectionViewToDetail_local) {
+          YTYouTubeVideoCache * video = array[0];
+          [self.navigationController pushViewController:[[YTVideoDetailViewController alloc] initWithVideo:video]
+                                               animated:YES];
+       }
 
    };
    ErrorResponseBlock error = ^(NSError * error) {

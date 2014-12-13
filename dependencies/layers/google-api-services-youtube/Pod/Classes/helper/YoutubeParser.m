@@ -126,10 +126,10 @@
 
    NSMutableString * address = [[NSMutableString alloc] initWithString:videoDescription];
 
-   address = [address stringByReplacingOccurrencesOfString:@"\\n" withString:@" "];
+   address = [address stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
    address = [address stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 
-   NSUInteger i = [@"\\n" length];
+   NSUInteger i = [@"\n" length];
    NSUInteger length = [@" " length];
 
    NSString * pattern = @"[a-zA-z]+://[^\\s]*";
