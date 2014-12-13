@@ -12,6 +12,7 @@
 
 @interface YoutubeVideoCache : MABYT3_Video
 
+@property(nonatomic, strong) NSMutableArray * descriptionStringAttributeArray;
 - (void)parseDescriptionString;
 
 @end

@@ -135,8 +135,9 @@
    NSArray * matches = [address rx_matchesWithPattern:pattern];
 
    int step = 0;
+   NSMutableArray * descriptionStringAttributeArray = [[NSMutableArray alloc] init];
    for (RXMatch * match in matches) {
-      YoutubeVideoDescriptionStringAttribute * youtubeVideoDescriptionStringAttribute;
+      YoutubeVideoDescriptionStringAttribute * youtubeVideoDescriptionStringAttribute = [[YoutubeVideoDescriptionStringAttribute alloc] init];
 
       NSString * httpString = [match text];
       NSRange httpRang = [match range];
@@ -149,14 +150,10 @@
       youtubeVideoDescriptionStringAttribute.httpString = httpString;
       youtubeVideoDescriptionStringAttribute.httpRang = httpRang;
 
-      // 2
-      NSDictionary * attrs = @{
-       kLinkAttributeName : [NSURL URLWithString:httpString],
-       NSForegroundColorAttributeName : [UIColor grayColor],
-       NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternDot),
-      };
-
+      [descriptionStringAttributeArray addObject:youtubeVideoDescriptionStringAttribute];
    }
+
+   videoCache.descriptionStringAttributeArray = descriptionStringAttributeArray;
 }
 
 
