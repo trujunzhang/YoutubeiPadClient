@@ -19,7 +19,8 @@
 
 
 - (void)parseDescriptionString {
-   [YoutubeParser parseDescriptionStringWithRegExp:self];
+   if (self.descriptionStringAttributeArray == nil)
+      [YoutubeParser parseDescriptionStringWithRegExp:self];
 }
 
 @end
