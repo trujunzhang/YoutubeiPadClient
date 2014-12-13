@@ -157,12 +157,12 @@
 
 + (CGRect)frameForDetailRowChannelInfoPublishedAt:(CGFloat)containerWidth withLeftRect:(CGRect)leftRect {
    CGFloat divX = leftRect.origin.x;
-   CGFloat divY = leftRect.origin.y + leftRect.size.height + 4;
+   CGFloat divY = leftRect.origin.y + leftRect.size.height + 2;
 
 //   CGFloat divX = 200.0f;
 //   CGFloat divY = 12;
 
-   return CGRectMake(divX, divY, 200.0f, 14);
+   return CGRectMake(divX, divY, 200.0f, 16);
 }
 
 

@@ -59,7 +59,7 @@ static CGFloat KDetailRowHeight = 50.0f;
    // create a text node
    _channelTitleNode = [ASTextNode initWithAttributedString:
     [NSAttributedString attributedStringForDetailRowChannelTitle:[YoutubeParser getVideoSnippetChannelTitle:self.cardInfo]
-                                                        fontSize:14.0f]];
+                                                        fontSize:15.0f]];
 
 
    // add it as a subnode, and we're done
@@ -69,7 +69,7 @@ static CGFloat KDetailRowHeight = 50.0f;
    // create a text node
    _publishedAtNode = [ASTextNode initWithAttributedString:
     [NSAttributedString attributedStringForDetailRowChannelPublishedAt:[YoutubeParser getVideoSnippetChannelPublishedAt:self.cardInfo]
-                                                              fontSize:11.0f]];
+                                                              fontSize:12.0f]];
 
 
    // add it as a subnode, and we're done

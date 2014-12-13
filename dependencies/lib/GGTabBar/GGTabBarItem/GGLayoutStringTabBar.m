@@ -164,7 +164,7 @@
    titleLabel.tag = tagCounter;
 
    titleLabel.text = title;
-   titleLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
+   titleLabel.font = [UIFont fontWithName:@"Helvetica" size:13];
    titleLabel.textColor = [self getDefaultLabelColor];
    titleLabel.textAlignment = NSTextAlignmentCenter;
 
