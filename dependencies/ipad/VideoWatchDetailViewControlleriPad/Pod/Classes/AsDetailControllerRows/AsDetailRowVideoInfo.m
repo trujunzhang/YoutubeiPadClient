@@ -21,6 +21,7 @@ static CGFloat DetailRowVideoTitleHeight = 50.0f;
 @implementation AsDetailRowVideoInfo {
    ASTextNode * _videoTitleNode;
    ASTextNode * _likeCountNode;
+   ASTextNode * _viewCountNode;
 
    ASDisplayNode * _divider;
 
@@ -38,10 +39,17 @@ static CGFloat DetailRowVideoTitleHeight = 50.0f;
    [self addSubnode:_videoTitleNode];
 
    _likeCountNode = [ASTextNode initWithAttributedString:
-    [NSAttributedString attributedStringForDetailRowVideoLikeCount:[YoutubeParser getVideoSnippetTitle:videoCache]
+    [NSAttributedString attributedStringForDetailRowVideoLikeCount:[YoutubeParser getVideoStatisticsLikeCount:videoCache]
                                                           fontSize:12.0f]];
 
    [self addSubnode:_likeCountNode];
+
+   _viewCountNode = [ASTextNode initWithAttributedString:
+    [NSAttributedString attributedStringForDetailRowVideoViewCount:[YoutubeParser getVideoStatisticsViewCount:videoCache]
+                                                          fontSize:12.0f]];
+   [_viewCountNode.view sizeToFit];
+
+   [self addSubnode:_viewCountNode];
 
 
    return self;
@@ -71,7 +79,10 @@ static CGFloat DetailRowVideoTitleHeight = 50.0f;
                                                             withTitleHeight:DetailRowVideoTitleHeight
                                                              withFontHeight:20];
 
-   _likeCountNode.frame = [FrameCalculator frameForDetailRowVideoInfoLike:_videoTitleNode.frame];
+   _likeCountNode.frame = [FrameCalculator frameForDetailRowVideoInfoLikeCount:_videoTitleNode.frame];
+
+   _viewCountNode.frame = [FrameCalculator frameForDetailRowVideoInfoViewCount:_videoTitleNode.frame
+                                                              withContainWidth:self.calculatedSize.width];
 
 }
 

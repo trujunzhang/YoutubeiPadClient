@@ -107,7 +107,13 @@
 }
 
 
-+ (NSString *)getVideoSnippetLikeCount:(YTYouTubeVideoCache *)video {
++ (NSString *)getVideoStatisticsViewCount:(YTYouTubeVideoCache *)video {
+   NSNumber * number = video.statistics.viewCount;
+   return [NSString stringWithFormat:@"%d views", [number intValue]];
+}
+
+
++ (NSString *)getVideoStatisticsLikeCount:(YTYouTubeVideoCache *)video {
    NSNumber * likeCount = video.statistics.likeCount;
    NSNumber * dislikeCount = video.statistics.dislikeCount;
 

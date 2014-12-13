@@ -31,7 +31,8 @@
 + (CGRect)frameForDetailRowChannelInfoTitle:(CGFloat)containerWidth withLeftRect:(CGRect)leftRect;
 + (CGRect)frameForDetailRowChannelInfoPublishedAt:(CGFloat)containerWidth withLeftRect:(CGRect)leftRect;
 + (CGRect)frameForDetailRowVideoInfoTitle:(CGSize)containerSize withTitleHeight:(CGFloat)titleHeight withFontHeight:(CGFloat)fontHeight;
-+ (CGRect)frameForDetailRowVideoInfoLike:(CGRect)relatedRect;
++ (CGRect)frameForDetailRowVideoInfoLikeCount:(CGRect)relatedRect;
++ (CGRect)frameForDetailRowVideoInfoViewCount:(CGRect)relatedRect withContainWidth:(CGFloat)containWidth;
 
 + (CGRect)frameForLeftMenuSubscriptionThumbnail:(CGSize)containerSize;
 + (CGRect)frameForLeftMenuSubscriptionTitleText:(CGSize)containerSize leftNodeFrame:(CGRect)leftNodeFrame withFontHeight:(CGFloat)fontHeight;

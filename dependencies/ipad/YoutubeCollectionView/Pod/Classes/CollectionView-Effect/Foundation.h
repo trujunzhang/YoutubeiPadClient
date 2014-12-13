@@ -24,6 +24,7 @@
 + (NSAttributedString *)attributedStringForDetailRowChannelTitle:(NSString *)text fontSize:(CGFloat)fontSize;
 + (NSAttributedString *)attributedStringForDetailRowChannelPublishedAt:(NSString *)text fontSize:(CGFloat)fontSize;
 + (NSAttributedString *)attributedStringForDetailRowVideoLikeCount:(NSString *)text fontSize:(CGFloat)fontSize;
++ (NSAttributedString *)attributedStringForDetailRowVideoViewCount:(NSString *)text fontSize:(CGFloat)fontSize;
 
 @end
 
@@ -35,6 +36,7 @@
 + (NSParagraphStyle *)justifiedParagraphStyleForDuration;
 + (NSMutableParagraphStyle *)justifiedParagraphStyleForTitleText:(UIFont *)font;
 + (NSParagraphStyle *)justifiedParagraphStyleForDetailRowChannelTitle;
++ (NSParagraphStyle *)justifiedParagraphStyleForDetailRowVideoViewCount;
 + (NSParagraphStyle *)justifiedParagraphStyleForChannelTitle;
 + (NSParagraphStyle *)justifiedParagraphStyleForPageChannelTitle;
 

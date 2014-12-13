@@ -160,7 +160,20 @@
    NSDictionary * titleAttributes =
     @{ NSFontAttributeName : font,
      NSForegroundColorAttributeName : [UIColor blackColor],
-     NSParagraphStyleAttributeName : [NSParagraphStyle justifiedParagraphStyleForDetailRowChannelTitle],
+     NSParagraphStyleAttributeName : [NSParagraphStyle justifiedParagraphStyleForCommon],
+    };
+
+   return [[NSAttributedString alloc] initWithString:text attributes:titleAttributes];
+}
+
+
++ (NSAttributedString *)attributedStringForDetailRowVideoViewCount:(NSString *)text fontSize:(CGFloat)fontSize {
+   UIFont * font = [UIFont systemFontOfSize:fontSize];
+
+   NSDictionary * titleAttributes =
+    @{ NSFontAttributeName : font,
+     NSForegroundColorAttributeName : [UIColor blackColor],
+     NSParagraphStyleAttributeName : [NSParagraphStyle justifiedParagraphStyleForDetailRowVideoViewCount],
     };
 
    return [[NSAttributedString alloc] initWithString:text attributes:titleAttributes];
@@ -254,6 +267,17 @@
    NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
    style.lineBreakMode = NSLineBreakByTruncatingTail;
    style.alignment = NSTextAlignmentLeft;
+
+   style.paragraphSpacing = 0.0;
+
+   return style;
+}
+
+
++ (NSParagraphStyle *)justifiedParagraphStyleForDetailRowVideoViewCount {
+   NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+   style.lineBreakMode = NSLineBreakByTruncatingTail;
+   style.alignment = NSTextAlignmentRight;
 
    style.paragraphSpacing = 0.0;
 

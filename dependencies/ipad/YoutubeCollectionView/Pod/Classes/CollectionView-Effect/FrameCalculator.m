@@ -170,14 +170,22 @@
    CGFloat divX = 18.0f;
    CGFloat divY = 18;
 
-   return CGRectMake(divX, divY, containerSize.width - divX * 2, containerSize.height - fontHeight * 2);
+   return CGRectMake(divX, divY, containerSize.width - divX * 2, titleHeight);
 }
 
 
-+ (CGRect)frameForDetailRowVideoInfoLike:(CGRect)relatedRect {
++ (CGRect)frameForDetailRowVideoInfoLikeCount:(CGRect)relatedRect {
    CGFloat divY = relatedRect.origin.y + relatedRect.size.height + 4;
 
-   return CGRectMake(14, divY, 100.0, 20);
+   return CGRectMake(relatedRect.origin.x, divY, 200.0, 20);
+}
+
+
++ (CGRect)frameForDetailRowVideoInfoViewCount:(CGRect)relatedRect withContainWidth:(CGFloat)containWidth {
+   CGFloat divY = relatedRect.origin.y + relatedRect.size.height + 4;
+
+   CGFloat textWidth = 200.0;
+   return CGRectMake(containWidth - textWidth, divY, textWidth, 20);
 }
 
 
