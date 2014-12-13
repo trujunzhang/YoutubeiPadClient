@@ -11,6 +11,7 @@
 #import "ISMemoryCache.h"
 #import "RXMatch.h"
 #import "NSString+Regexer.h"
+#import "YoutubeVideoDescriptionStringAttribute.h"
 
 
 @interface YoutubeParser ()
@@ -122,22 +123,40 @@
 + (void)parseDescriptionStringWithRegExp:(YTYouTubeVideoCache *)videoCache {
    NSString * videoDescription = [YoutubeParser getVideoDescription:videoCache];
 
-   NSString * address = [videoDescription copy];
+   NSMutableString * address = [[NSMutableString alloc] initWithString:videoDescription];
 
    address = [address stringByReplacingOccurrencesOfString:@"\\n" withString:@" "];
    address = [address stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 
+   NSUInteger i = [@"\\n" length];
+   NSUInteger length = [@" " length];
+
    NSString * pattern = @"[a-zA-z]+://[^\\s]*";
    NSArray * matches = [address rx_matchesWithPattern:pattern];
 
+   int step = 0;
    for (RXMatch * match in matches) {
-      NSLog(@"Text: %@, Range: [location: %d, length: %d]", [match text],
-       [match range].location,
-       [match range].length);
+      YoutubeVideoDescriptionStringAttribute * youtubeVideoDescriptionStringAttribute;
+
+      NSString * httpString = [match text];
+      NSRange httpRang = [match range];
+      NSLog(@"Text: %@, Range: [location: %d, length: %d]", httpString,
+       httpRang.location, httpRang.length);
+
+      // 1
+      NSString * kLinkAttributeName = [NSString stringWithFormat:@"VideoDetailNodeLinkAttributeName_%02d", step++];
+      youtubeVideoDescriptionStringAttribute.kLinkAttributeName = kLinkAttributeName;
+      youtubeVideoDescriptionStringAttribute.httpString = httpString;
+      youtubeVideoDescriptionStringAttribute.httpRang = httpRang;
+
+      // 2
+      NSDictionary * attrs = @{
+       kLinkAttributeName : [NSURL URLWithString:httpString],
+       NSForegroundColorAttributeName : [UIColor grayColor],
+       NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternDot),
+      };
+
    }
-
-
-
 }
 
 
