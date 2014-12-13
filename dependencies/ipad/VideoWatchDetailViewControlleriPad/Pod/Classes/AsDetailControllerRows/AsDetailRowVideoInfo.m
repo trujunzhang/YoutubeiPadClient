@@ -1,78 +1,25 @@
 //
-//  AsDetailRowVideoInfo.m
-//  YoutubePlayApp
-//
-//  Created by djzhang on 10/14/14.
-//  Copyright (c) 2014 djzhang. All rights reserved.
+// Created by djzhang on 12/13/14.
+// Copyright (c) 2014 djzhang. All rights reserved.
 //
 
 #import "AsDetailRowVideoInfo.h"
-#import "YoutubeVideoCache.h"
+
 #import "YoutubeParser.h"
 #import "YoutubeVideoDescriptionStringAttribute.h"
 #import <AsyncDisplayKit/ASDisplayNode+Subclasses.h>
 #import <AsyncDisplayKit/ASHighlightOverlayLayer.h>
 
 
-static CGFloat kTextPadding = 40.0f;
-static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
-
-
-@interface AsDetailRowVideoInfo ()<ASTextNodeDelegate> {
-   ASTextNode * _textNode;
-
+@implementation AsDetailRowVideoInfo {
    CGFloat _tableViewWidth;
 }
-
-@end
-
-
-@implementation AsDetailRowVideoInfo
-
 
 - (instancetype)initWithVideo:(YTYouTubeVideoCache *)videoCache withTableWidth:(CGFloat)tableViewWidth {
    if (!(self = [super init]))
       return nil;
 
    _tableViewWidth = tableViewWidth;
-
-   self.backgroundColor = [UIColor whiteColor];
-
-   // create a text node
-   _textNode = [[ASTextNode alloc] init];
-
-   // configure the node to support tappable links
-   _textNode.delegate = self;
-   _textNode.userInteractionEnabled = YES;
-
-   // generate an attributed string using the custom link attribute specified above
-   NSString * descriptionString = [YoutubeParser getVideoDescription:videoCache];
-   NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:descriptionString];
-
-   [attributedString addAttribute:NSFontAttributeName
-                            value:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]
-                            range:NSMakeRange(0, descriptionString.length)];
-
-   NSMutableArray * attributeArray = videoCache.descriptionStringAttributeArray;
-
-   NSMutableArray * linkAttributeNames = [[NSMutableArray alloc] init];
-   for (YoutubeVideoDescriptionStringAttribute * stringAttribute in attributeArray) {
-
-      [linkAttributeNames addObject:stringAttribute.kLinkAttributeName];
-
-      [attributedString addAttributes:@{
-       stringAttribute.kLinkAttributeName : [NSURL URLWithString:stringAttribute.httpString],
-       NSForegroundColorAttributeName : [UIColor blueColor],
-       NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternDot),
-      }                         range:stringAttribute.httpRang];
-   }
-
-   _textNode.linkAttributeNames = linkAttributeNames;
-
-   _textNode.attributedString = attributedString;
-
-   // add it as a subnode, and we're done
-   [self addSubnode:_textNode];
 
    return self;
 }
@@ -88,30 +35,17 @@ static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
 
 - (CGSize)calculateSizeThatFits:(CGSize)constrainedSize {
    // called on a background thread.  custom nodes must call -measure: on their subnodes in -calculateSizeThatFits:
-   CGSize measuredSize = [_textNode measure:CGSizeMake(constrainedSize.width - 2 * kTextPadding, constrainedSize.height - 2 * kTextPadding)];
+//   CGSize measuredSize = [_textNode measure:CGSizeMake(constrainedSize.width - 2 * kTextPadding, constrainedSize.height - 2 * kTextPadding)];
 
-   return CGSizeMake(_tableViewWidth, measuredSize.height + 2 * kTextPadding);
+//   return CGSizeMake(_tableViewWidth, measuredSize.height + 2 * kTextPadding);
+   return CGSizeZero;
 }
 
 
 - (void)layout {
    // called on the main thread.  we'll use the stashed size from above, instead of blocking on text sizing
-   CGSize textNodeSize = _textNode.calculatedSize;
-   _textNode.frame = CGRectMake(kTextPadding, kTextPadding, self.calculatedSize.width - kTextPadding * 2, textNodeSize.height);
+//   CGSize textNodeSize = _textNode.calculatedSize;
+//   _textNode.frame = CGRectMake(kTextPadding, kTextPadding, self.calculatedSize.width - kTextPadding * 2, textNodeSize.height);
 }
-
-
-- (BOOL)textNode:(ASTextNode *)richTextNode shouldHighlightLinkAttribute:(NSString *)attribute value:(id)value atPoint:(CGPoint)point {
-   // opt into link highlighting -- tap and hold the link to try it!  must enable highlighting on a layer, see -didLoad
-   return YES;
-}
-
-
-- (void)textNode:(ASTextNode *)richTextNode tappedLinkAttribute:(NSString *)attribute value:(NSURL *)URL atPoint:(CGPoint)point textRange:(NSRange)textRange {
-   // the node tapped a link, open it
-   NSLog(@"URL = %@", URL);
-   [[UIApplication sharedApplication] openURL:URL];
-}
-
 
 @end

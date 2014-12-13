@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "YoutubeConstants.h"
 
-@class AsDetailRowVideoInfo;
+@class AsDetailRowVideoDescription;
 
 
 @interface YTAsVideoDetailViewController : UIViewController

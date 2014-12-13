@@ -8,10 +8,11 @@
 
 #import "YTAsVideoDetailViewController.h"
 
-#import "AsDetailRowVideoInfo.h"
+#import "AsDetailRowVideoDescription.h"
 #import "AsDetailRowChannelInfo.h"
+#import "AsDetailRowVideoInfo.h"
 
-static const NSInteger kLitterSize = 2;
+static const NSInteger kLitterSize = 3;
 
 
 @interface YTAsVideoDetailViewController ()<ASTableViewDataSource, ASTableViewDelegate> {
@@ -72,10 +73,16 @@ static const NSInteger kLitterSize = 2;
 - (ASCellNode *)tableView:(ASTableView *)tableView nodeForRowAtIndexPath:(NSIndexPath *)indexPath {
    ASCellNode * node;
    // special-case the first row
-   if (indexPath.row == 0) {
-      node = [[AsDetailRowChannelInfo alloc] initWithVideo:_video withTableWidth:self.view.frame.size.width];
-   } else if (indexPath.row == 1) {
-      node = [[AsDetailRowVideoInfo alloc] initWithVideo:_video withTableWidth:self.view.frame.size.width];
+   switch (indexPath.row) {
+      case 0:
+         node = [[AsDetailRowChannelInfo alloc] initWithVideo:_video withTableWidth:self.view.frame.size.width];
+         break;
+      case 1:
+         node = [[AsDetailRowVideoInfo alloc] initWithVideo:_video withTableWidth:self.view.frame.size.width];
+         break;
+      case 2:
+         node = [[AsDetailRowVideoDescription alloc] initWithVideo:_video withTableWidth:self.view.frame.size.width];
+         break;
    }
 
    return node;
