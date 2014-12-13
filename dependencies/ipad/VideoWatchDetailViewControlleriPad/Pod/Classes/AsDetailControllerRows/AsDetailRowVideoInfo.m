@@ -13,9 +13,9 @@
 #import <AsyncDisplayKit/ASDisplayNode+Subclasses.h>
 #import <AsyncDisplayKit/ASHighlightOverlayLayer.h>
 
-static CGFloat DetailRowVideoInfoHeight = 150.0f;
+static CGFloat DetailRowVideoInfoHeight = 75.0f;
 
-static CGFloat DetailRowVideoTitleHeight = 50.0f;
+static CGFloat DetailRowVideoTitleHeight = 40.0f;
 
 
 @implementation AsDetailRowVideoInfo {
@@ -34,7 +34,7 @@ static CGFloat DetailRowVideoTitleHeight = 50.0f;
    // create a text node
    _videoTitleNode = [ASTextNode initWithAttributedString:
     [NSAttributedString attributedStringForDetailRowChannelTitle:[YoutubeParser getVideoSnippetTitle:videoCache]
-                                                        fontSize:32.0f]];
+                                                        fontSize:26.0f]];
 
    [self addSubnode:_videoTitleNode];
 
@@ -47,7 +47,7 @@ static CGFloat DetailRowVideoTitleHeight = 50.0f;
    _viewCountNode = [ASTextNode initWithAttributedString:
     [NSAttributedString attributedStringForDetailRowVideoViewCount:[YoutubeParser getVideoStatisticsViewCount:videoCache]
                                                           fontSize:12.0f]];
-   [_viewCountNode.view sizeToFit];
+//   [_viewCountNode.view sizeToFit];
 
    [self addSubnode:_viewCountNode];
 

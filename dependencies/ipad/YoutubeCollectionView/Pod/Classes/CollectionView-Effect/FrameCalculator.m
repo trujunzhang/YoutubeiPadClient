@@ -185,7 +185,7 @@
    CGFloat divY = relatedRect.origin.y + relatedRect.size.height + 4;
 
    CGFloat textWidth = 200.0;
-   return CGRectMake(containWidth - textWidth, divY, textWidth, 20);
+   return CGRectMake(containWidth - textWidth - 18, divY, textWidth, 20);
 }
 
 
