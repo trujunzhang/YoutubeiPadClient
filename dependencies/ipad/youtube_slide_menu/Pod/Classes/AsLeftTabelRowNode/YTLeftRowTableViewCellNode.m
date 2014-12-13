@@ -86,7 +86,7 @@ static CGFloat ROW_TITLE_FONT_SIZE = 16;
 - (void)showSubscriptionThumbnail {
    if (self.isRemoteImage) {
       _videoChannelThumbnailsNode = [YTAsChannelThumbnailsImageNode nodeWithThumbnailUrl:self.lineIconUrl
-                                                                               forCorner:5.0f];
+                                                                               forCorner:4.0f];
    } else {
       _videoChannelThumbnailsNode = [ASImageNode initWithImageNamed:self.lineIconUrl];
    }
