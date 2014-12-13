@@ -19,7 +19,7 @@
 
 
 - (void)parseDescriptionString {
-//   [YoutubeParser parseDescriptionStringWithRegExp:self];
-
+   [YoutubeParser parseDescriptionStringWithRegExp:self];
 }
+
 @end
