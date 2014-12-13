@@ -13,6 +13,8 @@
    YTYouTubeVideoCache * _detailVideo;
 
    YKYouTubeVideo * _youTubeVideo;
+
+   YTAsVideoDetailViewController * _videoDetailController;
 }
 
 @property(strong, nonatomic) IBOutlet UIView * videoPlayViewContainer;
@@ -22,7 +24,7 @@
 
 @property(nonatomic, strong) UIViewController * selectedController;
 
-@property(nonatomic, strong) YTAsVideoDetailViewController * videoDetailController;
+
 @property(nonatomic, strong) GGTabBarController * videoTabBarController;
 
 @property(nonatomic, strong) UIViewController * firstViewController;
@@ -56,7 +58,7 @@
 
    [self initViewControllers];
 
-//   [self setupPlayer:self.videoPlayViewContainer];
+//   [self setupPlayer:self.videoPlayViewContainer];  //used
 
    self.title = [YoutubeParser getVideoSnippetTitle:_detailVideo];
 
@@ -106,7 +108,7 @@
    [self.thirdViewController fetchSuggestionListByVideoId:[YoutubeParser getWatchVideoId:_detailVideo]];
 
    // 2
-   self.videoDetailController = [[YTAsVideoDetailViewController alloc] initWithVideo:_detailVideo];
+   _videoDetailController = [[YTAsVideoDetailViewController alloc] initWithVideo:_detailVideo];
 }
 
 
@@ -124,8 +126,8 @@
    GGTabBar * topTabBar = [[GGLayoutStringTabBar alloc] initWithFrame:CGRectZero
                                                       viewControllers:controllerArray
                                                                 inTop:YES
-                                                        selectedIndex:controllerArray.count - 1
-//                                                        selectedIndex:0
+//                                                        selectedIndex:controllerArray.count - 1
+                                                        selectedIndex:0
                                                           tabBarWidth:0];
 
    GGTabBarController * tabBarController = [[GGTabBarController alloc] initWithTabBarView:topTabBar];
@@ -145,7 +147,7 @@
    BOOL isPortrait = (toInterfaceOrientation == UIInterfaceOrientationPortrait) || (toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
    if (isPortrait) {
       NSArray * array = @[
-       self.videoDetailController,
+       _videoDetailController,
        self.firstViewController,
        self.secondViewController,
        self.thirdViewController, ];
@@ -221,7 +223,7 @@
       [self setupVerticalLayout];
    } else {// 3
       // 1  UIView contains
-      [self selectDetailViewControllerInHorizontal:self.videoDetailController];
+      [self selectDetailViewControllerInHorizontal:_videoDetailController];
       // 2 layout
       [self setupHorizontalLayout];
    }
@@ -238,7 +240,6 @@
       [self.thirdViewController.view setNeedsLayout];
    }
 
-   [self.videoDetailController updateUI];
 }
 
 

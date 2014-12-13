@@ -100,7 +100,7 @@
 
 + (CGRect)frameForDurationWithCloverSize:(CGSize)cloverSize withDurationWidth:(CGFloat)durationWidthIs {
    CGFloat durationHeight = 18;
-   return CGRectMake(cloverSize.width - durationWidthIs + 1, cloverSize.height - durationHeight , durationWidthIs, durationHeight);
+   return CGRectMake(cloverSize.width - durationWidthIs + 1, cloverSize.height - durationHeight, durationWidthIs, durationHeight);
 }
 
 
@@ -139,12 +139,14 @@
    CGFloat divX = 10;
    CGFloat divY = (containerHeight - imageWH) / 2;
 
-   return CGRectMake(divX, divY, imageWH, imageWH);
+//   return CGRectMake(divX, divY, imageWH, imageWH);
+   return CGRectMake(containerWidth - imageWH - 4, divY, imageWH, imageWH);  //test
 }
 
 
 + (CGRect)frameForDetailRowChannelInfoTitle:(CGFloat)containerWidth withLeftRect:(CGRect)leftRect {
-   CGFloat divX = leftRect.origin.x + leftRect.size.width + 12;
+//   CGFloat divX = leftRect.origin.x + leftRect.size.width + 12;
+   CGFloat divX = 12;// test
    CGFloat divY = 12;
 
    return CGRectMake(divX, divY, 200.0f, 20);

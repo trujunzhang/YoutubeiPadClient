@@ -25,6 +25,8 @@ static CGFloat KDetailRowHeight = 50.0f;
    ASImageNode * _channelImageNode;
 
    CGFloat _tableViewWidth;
+
+   int cStep;
 }
 
 @property(nonatomic, strong) YoutubeVideoCache * cardInfo;
@@ -45,6 +47,10 @@ static CGFloat KDetailRowHeight = 50.0f;
 
    _channelImageNode = [YTAsChannelThumbnailsImageNode nodeWithChannelId:[YoutubeParser getChannelIdByVideo:self.cardInfo]
                                                                forCorner:5.0f];
+
+   _channelImageNode.image = [UIImage imageNamed:@"account_default_thumbnail.png"];//test
+   [self setNodeTappedEvent];//test
+
    [self addSubnode:_channelImageNode];
 
    // create a text node
@@ -96,6 +102,29 @@ static CGFloat KDetailRowHeight = 50.0f;
                                                            withLeftRect:_channelImageNode.frame];
 
    _divider.frame = [FrameCalculator frameForBottomDivide:self.calculatedSize.width containerHeight:KDetailRowHeight];
+}
+
+
+- (void)setNodeTappedEvent {
+   // configure the button
+   _channelImageNode.userInteractionEnabled = YES; // opt into touch handling
+   [_channelImageNode addTarget:self
+                         action:@selector(buttonTapped:)
+               forControlEvents:ASControlNodeEventTouchUpInside];
+}
+
+
+- (void)buttonTapped:(id)buttonTapped {
+   NSArray * colorArray = @[
+    [UIColor redColor],
+    [UIColor greenColor],
+    [UIColor blueColor],
+   ];
+
+   cStep++;
+   _textNode.backgroundColor = colorArray[cStep % 3];
+
+
 }
 
 
