@@ -55,7 +55,9 @@
    NSMutableArray * videoIds = [[NSMutableArray alloc] init];
    for (YTYouTubeSearchResult * searchResult in searchResultList) {
       if (debugCollectionViewToDetail) {
-         [videoIds addObject:@"58kDMw779xc"];// test
+         // pXvzypp8mlo
+         // 58kDMw779xc
+         [videoIds addObject:@"pXvzypp8mlo"];// test
       } else {
          [videoIds addObject:searchResult.identifier.videoId];// used
       }
@@ -109,7 +111,12 @@
 
 + (NSString *)getVideoStatisticsViewCount:(YTYouTubeVideoCache *)video {
    NSNumber * number = video.statistics.viewCount;
-   return [NSString stringWithFormat:@"%d views", [number intValue]];
+
+   NSNumberFormatter * formatter = [NSNumberFormatter new];
+   [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+   NSString * newString = [formatter stringFromNumber:[NSNumber numberWithInteger:number]];
+
+   return [NSString stringWithFormat:@"%@ views", newString];
 }
 
 
