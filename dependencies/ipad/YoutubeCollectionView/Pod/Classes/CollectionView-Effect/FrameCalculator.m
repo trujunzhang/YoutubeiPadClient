@@ -134,22 +134,35 @@
 
 
 + (CGRect)frameForDetailRowChannelInfoThumbnail:(CGFloat)containerWidth withHeight:(CGFloat)containerHeight {
-   CGFloat imageWH = 30;
+   CGFloat paddingTop = 10;
 
-   CGFloat divX = 10;
-   CGFloat divY = (containerHeight - imageWH) / 2;
 
-//   return CGRectMake(divX, divY, imageWH, imageWH);
-   return CGRectMake(containerWidth - imageWH - 4, divY, imageWH, imageWH);  //test
+   CGFloat divX = 14;
+   CGFloat divY = paddingTop;
+   CGFloat imageWH = containerHeight - paddingTop * 2;
+
+   return CGRectMake(divX, divY, imageWH, imageWH);
+//   return CGRectMake(containerWidth - imageWH - 4, divY, imageWH, imageWH);  //test
 }
 
 
 + (CGRect)frameForDetailRowChannelInfoTitle:(CGFloat)containerWidth withLeftRect:(CGRect)leftRect {
-//   CGFloat divX = leftRect.origin.x + leftRect.size.width + 12;
-   CGFloat divX = 12;// test
-   CGFloat divY = 12;
+   CGFloat divX = leftRect.origin.x + leftRect.size.width + 14;//used
+//   CGFloat divX = 12;// test
+   CGFloat divY = 8;
 
-   return CGRectMake(divX, divY, 200.0f, 20);
+   return CGRectMake(divX, divY, 200.0f, 16);
+}
+
+
++ (CGRect)frameForDetailRowChannelInfoPublishedAt:(CGFloat)containerWidth withLeftRect:(CGRect)leftRect {
+   CGFloat divX = leftRect.origin.x;
+   CGFloat divY = leftRect.origin.y + leftRect.size.height + 4;
+
+//   CGFloat divX = 200.0f;
+//   CGFloat divY = 12;
+
+   return CGRectMake(divX, divY, 200.0f, 14);
 }
 
 

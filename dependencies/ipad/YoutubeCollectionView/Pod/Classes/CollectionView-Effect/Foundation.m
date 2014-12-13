@@ -124,10 +124,55 @@
 }
 
 
+#pragma mark -
+#pragma mark AsDetailRowChannelInfo
+
+
++ (NSAttributedString *)attributedStringForDetailRowChannelTitle:(NSString *)text fontSize:(CGFloat)fontSize {
+   UIFont * font = [UIFont systemFontOfSize:fontSize];
+
+   NSDictionary * titleAttributes =
+    @{ NSFontAttributeName : font,
+     NSForegroundColorAttributeName : [UIColor blackColor],
+     NSParagraphStyleAttributeName : [NSParagraphStyle justifiedParagraphStyleForDetailRowChannelTitle],
+    };
+
+   return [[NSAttributedString alloc] initWithString:text attributes:titleAttributes];
+}
+
+
++ (NSAttributedString *)attributedStringForDetailRowChannelPublishedAt:(NSString *)text fontSize:(CGFloat)fontSize {
+   UIFont * font = [UIFont systemFontOfSize:fontSize];
+
+   NSDictionary * titleAttributes =
+    @{ NSFontAttributeName : font,
+     NSForegroundColorAttributeName : [UIColor darkGrayColor],
+     NSParagraphStyleAttributeName : [NSParagraphStyle justifiedParagraphStyle],
+    };
+
+   return [[NSAttributedString alloc] initWithString:text attributes:titleAttributes];
+}
+
+
 @end
 
 
 @implementation NSParagraphStyle (custom)
+
+#pragma mark -
+#pragma mark common style
+
+
++ (NSParagraphStyle *)justifiedParagraphStyleForCommon {
+   NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+   style.lineBreakMode = NSLineBreakByTruncatingTail;
+   style.alignment = NSTextAlignmentLeft;
+
+   style.paragraphSpacing = 0.0;
+
+   return style;
+}
+
 
 #pragma mark -
 #pragma mark UICollection Cell
@@ -145,7 +190,6 @@
 + (NSParagraphStyle *)justifiedParagraphStyleForDuration {
    NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
    style.alignment = NSTextAlignmentLeft;
-
 
    return style;
 }
@@ -184,6 +228,21 @@
    style.lineSpacing = 5.0;
    style.headIndent = 0.0f;
    style.tailIndent = 0.0f;
+
+   return style;
+}
+
+
+#pragma mark -
+#pragma mark AsDetailRowChannelInfo
+
+
++ (NSParagraphStyle *)justifiedParagraphStyleForDetailRowChannelTitle {
+   NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+   style.lineBreakMode = NSLineBreakByTruncatingTail;
+   style.alignment = NSTextAlignmentLeft;
+
+   style.paragraphSpacing = 0.0;
 
    return style;
 }

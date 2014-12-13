@@ -7,17 +7,19 @@
 //
 
 #import "GGLayoutStringTabBar.h"
+#import "FrameCalculator.h"
+#import "UIColor+iOS8Colors.h"
 
 
 @interface GGLayoutStringTabBar () {
    UILabel * _selectedButton;
+   UIView * _divider;
    NSInteger _selectedIndex;
    CGFloat _tabBarWidth;
 }
 
 @property(nonatomic, strong) NSMutableArray * buttons;
 @property(nonatomic, strong) NSMutableArray * separators; // Between-buttons separators
-//@property(nonatomic, strong) NSMutableArray * marginSeparators; // Start/End Separators
 
 // Appearance
 @property(nonatomic, assign) CGFloat tabBarHeight;
@@ -36,17 +38,18 @@
    self = [super initWithFrame:frame];
    if (self) {
       self.inTop = inTop;
+
+      self.backgroundColor = [UIColor whiteColor];
+
       _selectedIndex = selectedIndex;
       _buttons = [[NSMutableArray alloc] init];
       _separators = [[NSMutableArray alloc] init];
-//      _marginSeparators = [[NSMutableArray alloc] init];
       _tabBarWidth = tabBarWidth;
 
       self.viewControllers = viewControllers;
-      self.tabBarHeight = 42;
+      self.tabBarHeight = 46;
       self.translatesAutoresizingMaskIntoConstraints = NO;
       [self initSubViewsWithControllers:self.viewControllers];
-
 
       [self addHeightConstraints];
    }
@@ -70,7 +73,7 @@
    _selectedButton = selectedButton;
    _selectedIndex = NSNotFound;
 
-   [self paintDebugViews];
+   //[self paintDebugViews];
 }
 
 
@@ -146,6 +149,10 @@
       [_separators addObject:separator];
    }
 
+   _divider = [[UIView alloc] init];
+   _divider.backgroundColor = [UIColor lightGrayColor];
+   [self addSubview:_divider];
+
 }
 
 
@@ -157,7 +164,7 @@
    titleLabel.tag = tagCounter;
 
    titleLabel.text = title;
-   titleLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
+   titleLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
    titleLabel.textColor = [self getDefaultLabelColor];
    titleLabel.textAlignment = NSTextAlignmentCenter;
 
@@ -186,6 +193,8 @@
    NSUInteger integer = _separators.count;
    NSUInteger count = _buttons.count;
    [self layoutTabBarItems];
+
+   _divider.frame = [FrameCalculator frameForBottomDivide:rect.size.width containerHeight:rect.size.height];
 }
 
 
@@ -269,7 +278,6 @@
 
 - (void)addDebugConstraints {
    [self addConstraints:[self heightConstraintsWithSeparators:_separators]];
-//   [self addConstraints:[self heightConstraintsWithSeparators:_marginSeparators]];
 }
 
 
@@ -309,9 +317,6 @@
       separator.backgroundColor = [UIColor redColor];
    }
 
-//   for (UIView * marginSeparator in _marginSeparators) {
-//      marginSeparator.backgroundColor = [UIColor greenColor];
-//   }
 }
 
 @end

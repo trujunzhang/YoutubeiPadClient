@@ -117,6 +117,11 @@
 }
 
 
++ (NSString *)getVideoSnippetChannelPublishedAt:(YTYouTubeVideoCache *)video {
+   return video.snippet.publishedAt.min_string;
+}
+
+
 + (NSString *)getVideoDurationForVideoInfo:(YTYouTubeVideoCache *)video {
    NSString * durationString = [YoutubeParser parseISO8601Duration:video.contentDetails.duration];
 //   NSLog(@"durationString = %@", durationString);

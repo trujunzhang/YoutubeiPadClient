@@ -46,6 +46,7 @@
 + (NSString *)getVideoSnippetTitle:(YTYouTubeVideoCache *)video;
 + (NSString *)getVideoDescription:(YTYouTubeVideoCache *)video;
 + (NSString *)getVideoSnippetChannelTitle:(YTYouTubeVideoCache *)video;
++ (NSString *)getVideoSnippetChannelPublishedAt:(YTYouTubeVideoCache *)video;
 + (NSString *)getVideoDurationForVideoInfo:(YTYouTubeVideoCache *)video;
 + (void)parseDescriptionStringWithRegExp:(YTYouTubeVideoCache *)videoCache;
 

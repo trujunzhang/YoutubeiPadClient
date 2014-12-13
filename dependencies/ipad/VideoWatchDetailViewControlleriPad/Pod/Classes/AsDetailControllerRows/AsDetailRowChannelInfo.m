@@ -15,6 +15,7 @@
 #import <AsyncDisplayKit/ASHighlightOverlayLayer.h>
 #import "AsyncDisplayKitStatic.h"
 #import "FrameCalculator.h"
+#import "Foundation.h"
 
 static CGFloat KDetailRowHeight = 50.0f;
 
@@ -23,7 +24,7 @@ static CGFloat KDetailRowHeight = 50.0f;
    ASImageNode * _channelImageNode;
 
    ASTextNode * _channelTitleNode;
-   ASTextNode * _publishAtNode;
+   ASTextNode * _publishedAtNode;
 
    ASDisplayNode * _divider;
    CGFloat _tableViewWidth;
@@ -50,24 +51,29 @@ static CGFloat KDetailRowHeight = 50.0f;
    _channelImageNode = [YTAsChannelThumbnailsImageNode nodeWithChannelId:[YoutubeParser getChannelIdByVideo:self.cardInfo]
                                                                forCorner:5.0f];
 
-   _channelImageNode.image = [UIImage imageNamed:@"account_default_thumbnail.png"];//test
-   [self setNodeTappedEvent];//test
+//   _channelImageNode.image = [UIImage imageNamed:@"account_default_thumbnail.png"];//test
+//   [self setNodeTappedEvent];//test
 
    [self addSubnode:_channelImageNode];
 
    // create a text node
-   // generate an attributed string using the custom link attribute specified above
-   NSString * blurb = [YoutubeParser getVideoSnippetChannelTitle:self.cardInfo];
+   _channelTitleNode = [ASTextNode initWithAttributedString:
+    [NSAttributedString attributedStringForDetailRowChannelTitle:[YoutubeParser getVideoSnippetChannelTitle:self.cardInfo]
+                                                        fontSize:14.0f]];
 
-   NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:blurb];
-   [string addAttribute:NSFontAttributeName
-                  value:[UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f]
-                  range:NSMakeRange(0, blurb.length)];
-
-   _channelTitleNode = [ASTextNode initWithAttributedString:string];
 
    // add it as a subnode, and we're done
    [self addSubnode:_channelTitleNode];
+
+
+   // create a text node
+   _publishedAtNode = [ASTextNode initWithAttributedString:
+    [NSAttributedString attributedStringForDetailRowChannelPublishedAt:[YoutubeParser getVideoSnippetChannelPublishedAt:self.cardInfo]
+                                                              fontSize:11.0f]];
+
+
+   // add it as a subnode, and we're done
+   [self addSubnode:_publishedAtNode];
 
    // hairline cell separator
    _divider = [[ASDisplayNode alloc] init];
@@ -99,9 +105,12 @@ static CGFloat KDetailRowHeight = 50.0f;
    _channelImageNode.frame = [FrameCalculator frameForDetailRowChannelInfoThumbnail:self.calculatedSize.width
                                                                          withHeight:KDetailRowHeight];
 
-   // called on the main thread.  we'll use the stashed size from above, instead of blocking on text sizing
    _channelTitleNode.frame = [FrameCalculator frameForDetailRowChannelInfoTitle:self.calculatedSize.width
-                                                           withLeftRect:_channelImageNode.frame];
+                                                                   withLeftRect:_channelImageNode.frame];
+
+   _publishedAtNode.frame = [FrameCalculator frameForDetailRowChannelInfoPublishedAt:self.calculatedSize.width
+                                                                        withLeftRect:_channelTitleNode.frame];
+
 
    _divider.frame = [FrameCalculator frameForBottomDivide:self.calculatedSize.width containerHeight:KDetailRowHeight];
 }

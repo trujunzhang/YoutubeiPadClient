@@ -29,6 +29,7 @@
 
 + (CGRect)frameForDetailRowChannelInfoThumbnail:(CGFloat)containerWidth withHeight:(CGFloat)containerHeight;
 + (CGRect)frameForDetailRowChannelInfoTitle:(CGFloat)containerWidth withLeftRect:(CGRect)leftRect;
++ (CGRect)frameForDetailRowChannelInfoPublishedAt:(CGFloat)containerWidth withLeftRect:(CGRect)leftRect;
 
 + (CGRect)frameForLeftMenuSubscriptionThumbnail:(CGSize)containerSize;
 + (CGRect)frameForLeftMenuSubscriptionTitleText:(CGSize)containerSize leftNodeFrame:(CGRect)leftNodeFrame withFontHeight:(CGFloat)fontHeight;
