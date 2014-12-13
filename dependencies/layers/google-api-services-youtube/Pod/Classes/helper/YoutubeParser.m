@@ -9,6 +9,8 @@
 #import "MABYT3_APIRequest.h"
 #import "YoutubeParser.h"
 #import "ISMemoryCache.h"
+#import "RXMatch.h"
+#import "NSString+Regexer.h"
 
 
 @interface YoutubeParser ()
@@ -114,6 +116,28 @@
    NSString * durationString = [YoutubeParser parseISO8601Duration:video.contentDetails.duration];
 //   NSLog(@"durationString = %@", durationString);
    return [NSString stringWithFormat:@" %@ ", durationString];
+}
+
+
++ (void)parseDescriptionStringWithRegExp:(YTYouTubeVideoCache *)videoCache {
+   NSString * videoDescription = [YoutubeParser getVideoDescription:videoCache];
+
+   NSString * address = [videoDescription copy];
+
+   address = [address stringByReplacingOccurrencesOfString:@"\\n" withString:@" "];
+   address = [address stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+
+   NSString * pattern = @"[a-zA-z]+://[^\\s]*";
+   NSArray * matches = [address rx_matchesWithPattern:pattern];
+
+   for (RXMatch * match in matches) {
+      NSLog(@"Text: %@, Range: [location: %d, length: %d]", [match text],
+       [match range].location,
+       [match range].length);
+   }
+
+
+
 }
 
 

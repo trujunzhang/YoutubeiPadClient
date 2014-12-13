@@ -109,6 +109,7 @@
    [self.thirdViewController fetchSuggestionListByVideoId:[YoutubeParser getWatchVideoId:_detailVideo]];
 
    // 2
+   [_detailVideo parseDescriptionString];
    _videoHorizontalDetailController = [[YTAsVideoDetailViewController alloc] initWithVideo:_detailVideo];
    _videoVerticalDetailController = [[YTAsVideoDetailViewController alloc] initWithVideo:_detailVideo];
 }

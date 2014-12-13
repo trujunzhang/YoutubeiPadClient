@@ -11,8 +11,10 @@
 
 
 @interface YoutubeVideoCache : MABYT3_Video
-@property(nonatomic) BOOL hasImage;
-@property(nonatomic, strong) UIImageView * image;
 
-@property(nonatomic, copy) NSString * channelThumbnailUrl;
+@property(nonatomic, strong) NSMutableArray * linkAttributeNames;
+@property(nonatomic, strong) NSMutableDictionary * attrs;
+
+- (void)parseDescriptionString;
+
 @end
