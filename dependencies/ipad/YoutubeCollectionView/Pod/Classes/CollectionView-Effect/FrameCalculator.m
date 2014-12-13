@@ -166,6 +166,21 @@
 }
 
 
++ (CGRect)frameForDetailRowVideoInfoTitle:(CGSize)containerSize withTitleHeight:(CGFloat)titleHeight withFontHeight:(CGFloat)fontHeight {
+   CGFloat divX = 18.0f;
+   CGFloat divY = 18;
+
+   return CGRectMake(divX, divY, containerSize.width - divX * 2, containerSize.height - fontHeight * 2);
+}
+
+
++ (CGRect)frameForDetailRowVideoInfoLike:(CGRect)relatedRect {
+   CGFloat divY = relatedRect.origin.y + relatedRect.size.height + 4;
+
+   return CGRectMake(14, divY, 100.0, 20);
+}
+
+
 #pragma mark -
 #pragma mark Left menu table cell
 

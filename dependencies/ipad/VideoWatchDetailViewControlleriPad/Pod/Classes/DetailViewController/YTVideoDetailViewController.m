@@ -59,7 +59,7 @@
 
    [self initViewControllers];
 
-   [self setupPlayer:self.videoPlayViewContainer];  //used
+//   [self setupPlayer:self.videoPlayViewContainer];  //used
 
    self.title = [YoutubeParser getVideoSnippetTitle:_detailVideo];
 
@@ -153,13 +153,15 @@
        _videoVerticalDetailController,
        self.firstViewController,
        self.secondViewController,
-       self.thirdViewController, ];
+       self.thirdViewController,
+      ];
       return array;
    } else {
       return @[
        self.firstViewController,
        self.secondViewController,
-       self.thirdViewController, ];
+       self.thirdViewController,
+      ];
    }
 
    return nil;

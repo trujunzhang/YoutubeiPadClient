@@ -44,6 +44,7 @@
 + (NSString *)getWatchVideoId:(YTYouTubeVideoCache *)video;
 + (NSString *)getChannelIdByVideo:(YTYouTubeVideoCache *)video;
 + (NSString *)getVideoSnippetTitle:(YTYouTubeVideoCache *)video;
++ (NSString *)getVideoSnippetLikeCount:(YTYouTubeVideoCache *)video;
 + (NSString *)getVideoDescription:(YTYouTubeVideoCache *)video;
 + (NSString *)getVideoSnippetChannelTitle:(YTYouTubeVideoCache *)video;
 + (NSString *)getVideoSnippetChannelPublishedAt:(YTYouTubeVideoCache *)video;

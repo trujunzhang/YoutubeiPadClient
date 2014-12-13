@@ -55,7 +55,7 @@
    NSMutableArray * videoIds = [[NSMutableArray alloc] init];
    for (YTYouTubeSearchResult * searchResult in searchResultList) {
       if (debugCollectionViewToDetail) {
-         [videoIds addObject:@"8ThQcXnW2g4"];// test
+         [videoIds addObject:@"58kDMw779xc"];// test
       } else {
          [videoIds addObject:searchResult.identifier.videoId];// used
       }
@@ -104,6 +104,14 @@
 
 + (NSString *)getVideoSnippetTitle:(YTYouTubeVideoCache *)video {
    return video.snippet.title;
+}
+
+
++ (NSString *)getVideoSnippetLikeCount:(YTYouTubeVideoCache *)video {
+   NSNumber * likeCount = video.statistics.likeCount;
+   NSNumber * dislikeCount = video.statistics.dislikeCount;
+
+   return [NSString stringWithFormat:@"%d likes, %d dislikes", [likeCount intValue], [dislikeCount intValue]];
 }
 
 

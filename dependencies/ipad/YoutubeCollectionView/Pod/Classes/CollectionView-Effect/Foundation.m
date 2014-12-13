@@ -154,6 +154,19 @@
 }
 
 
++ (NSAttributedString *)attributedStringForDetailRowVideoLikeCount:(NSString *)text fontSize:(CGFloat)fontSize {
+   UIFont * font = [UIFont systemFontOfSize:fontSize];
+
+   NSDictionary * titleAttributes =
+    @{ NSFontAttributeName : font,
+     NSForegroundColorAttributeName : [UIColor blackColor],
+     NSParagraphStyleAttributeName : [NSParagraphStyle justifiedParagraphStyleForDetailRowChannelTitle],
+    };
+
+   return [[NSAttributedString alloc] initWithString:text attributes:titleAttributes];
+}
+
+
 @end
 
 

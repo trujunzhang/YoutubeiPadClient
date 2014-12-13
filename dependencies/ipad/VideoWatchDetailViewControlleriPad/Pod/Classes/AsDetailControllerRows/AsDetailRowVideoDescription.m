@@ -14,7 +14,7 @@
 #import <AsyncDisplayKit/ASHighlightOverlayLayer.h>
 
 
-static CGFloat kTextPadding = 40.0f;
+static CGFloat kTextPadding = 4.0f;
 static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
 
 

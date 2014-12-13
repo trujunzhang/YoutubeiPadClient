@@ -23,7 +23,7 @@
 
 + (NSAttributedString *)attributedStringForDetailRowChannelTitle:(NSString *)text fontSize:(CGFloat)fontSize;
 + (NSAttributedString *)attributedStringForDetailRowChannelPublishedAt:(NSString *)text fontSize:(CGFloat)fontSize;
-
++ (NSAttributedString *)attributedStringForDetailRowVideoLikeCount:(NSString *)text fontSize:(CGFloat)fontSize;
 
 @end
 

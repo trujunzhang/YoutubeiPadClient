@@ -17,7 +17,7 @@
 #import "FrameCalculator.h"
 #import "Foundation.h"
 
-static CGFloat DetailRowChannelInfoHeight = 150.0f;
+static CGFloat DetailRowChannelInfoHeight = 50.0f;
 
 
 @interface AsDetailRowChannelInfo () {

@@ -9,33 +9,39 @@
 #import "YoutubeVideoDescriptionStringAttribute.h"
 #import "Foundation.h"
 #import "AsyncDisplayKitStatic.h"
+#import "FrameCalculator.h"
 #import <AsyncDisplayKit/ASDisplayNode+Subclasses.h>
 #import <AsyncDisplayKit/ASHighlightOverlayLayer.h>
 
-static CGFloat DetailRowVideoInfoHeight = 50.0f;
+static CGFloat DetailRowVideoInfoHeight = 150.0f;
+
+static CGFloat DetailRowVideoTitleHeight = 50.0f;
 
 
 @implementation AsDetailRowVideoInfo {
-   ASTextNode * _channelTitleNode;
-   ASTextNode * _publishedAtNode;
+   ASTextNode * _videoTitleNode;
+   ASTextNode * _likeCountNode;
 
    ASDisplayNode * _divider;
 
-
-   CGFloat _tableViewWidth;
 }
 
 - (instancetype)initWithVideo:(YTYouTubeVideoCache *)videoCache withTableWidth:(CGFloat)tableViewWidth {
    if (!(self = [super init]))
       return nil;
 
-   _tableViewWidth = tableViewWidth;
-
    // create a text node
-   _channelTitleNode = [ASTextNode initWithAttributedString:
+   _videoTitleNode = [ASTextNode initWithAttributedString:
     [NSAttributedString attributedStringForDetailRowChannelTitle:[YoutubeParser getVideoSnippetTitle:videoCache]
-                                                        fontSize:15.0f]];
+                                                        fontSize:32.0f]];
 
+   [self addSubnode:_videoTitleNode];
+
+   _likeCountNode = [ASTextNode initWithAttributedString:
+    [NSAttributedString attributedStringForDetailRowVideoLikeCount:[YoutubeParser getVideoSnippetTitle:videoCache]
+                                                          fontSize:12.0f]];
+
+   [self addSubnode:_likeCountNode];
 
 
    return self;
@@ -52,17 +58,21 @@ static CGFloat DetailRowVideoInfoHeight = 50.0f;
 
 - (CGSize)calculateSizeThatFits:(CGSize)constrainedSize {
    // called on a background thread.  custom nodes must call -measure: on their subnodes in -calculateSizeThatFits:
-//   CGSize measuredSize = [_channelTitleNode measure:CGSizeMake(constrainedSize.width - 2 * kTextPadding, constrainedSize.height - 2 * kTextPadding)];
+//   CGSize measuredSize = [_videoTitleNode measure:CGSizeMake(constrainedSize.width - 2 * kTextPadding, constrainedSize.height - 2 * kTextPadding)];
 
-//   return CGSizeMake(_tableViewWidth, measuredSize.height + 2 * kTextPadding);
-   return CGSizeZero;
+   return CGSizeMake(constrainedSize.width, DetailRowVideoInfoHeight);
 }
 
 
 - (void)layout {
    // called on the main thread.  we'll use the stashed size from above, instead of blocking on text sizing
-//   CGSize textNodeSize = _channelTitleNode.calculatedSize;
-//   _channelTitleNode.frame = CGRectMake(kTextPadding, kTextPadding, self.calculatedSize.width - kTextPadding * 2, textNodeSize.height);
+
+   _videoTitleNode.frame = [FrameCalculator frameForDetailRowVideoInfoTitle:self.calculatedSize
+                                                            withTitleHeight:DetailRowVideoTitleHeight
+                                                             withFontHeight:20];
+
+   _likeCountNode.frame = [FrameCalculator frameForDetailRowVideoInfoLike:_videoTitleNode.frame];
+
 }
 
 @end

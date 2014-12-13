@@ -30,6 +30,8 @@
 + (CGRect)frameForDetailRowChannelInfoThumbnail:(CGFloat)containerWidth withHeight:(CGFloat)containerHeight;
 + (CGRect)frameForDetailRowChannelInfoTitle:(CGFloat)containerWidth withLeftRect:(CGRect)leftRect;
 + (CGRect)frameForDetailRowChannelInfoPublishedAt:(CGFloat)containerWidth withLeftRect:(CGRect)leftRect;
++ (CGRect)frameForDetailRowVideoInfoTitle:(CGSize)containerSize withTitleHeight:(CGFloat)titleHeight withFontHeight:(CGFloat)fontHeight;
++ (CGRect)frameForDetailRowVideoInfoLike:(CGRect)relatedRect;
 
 + (CGRect)frameForLeftMenuSubscriptionThumbnail:(CGSize)containerSize;
 + (CGRect)frameForLeftMenuSubscriptionTitleText:(CGSize)containerSize leftNodeFrame:(CGRect)leftNodeFrame withFontHeight:(CGFloat)fontHeight;
