@@ -61,7 +61,7 @@ static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
       [linkAttributeNames addObject:stringAttribute.kLinkAttributeName];
 
       [attributedString addAttributes:@{
-       kLinkAttributeName : [NSURL URLWithString:stringAttribute.httpString],
+       stringAttribute.kLinkAttributeName : [NSURL URLWithString:stringAttribute.httpString],
        NSForegroundColorAttributeName : [UIColor blueColor],
        NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternDot),
       }                         range:stringAttribute.httpRang];
