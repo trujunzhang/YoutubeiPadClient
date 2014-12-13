@@ -159,7 +159,7 @@
 
    NSDictionary * titleAttributes =
     @{ NSFontAttributeName : font,
-     NSForegroundColorAttributeName : [UIColor blackColor],
+     NSForegroundColorAttributeName : [UIColor darkGrayColor],
      NSParagraphStyleAttributeName : [NSParagraphStyle justifiedParagraphStyleForCommon],
     };
 
@@ -172,7 +172,7 @@
 
    NSDictionary * titleAttributes =
     @{ NSFontAttributeName : font,
-     NSForegroundColorAttributeName : [UIColor blackColor],
+     NSForegroundColorAttributeName : [UIColor darkGrayColor],
      NSParagraphStyleAttributeName : [NSParagraphStyle justifiedParagraphStyleForDetailRowVideoViewCount],
     };
 

@@ -34,7 +34,7 @@ static CGFloat DetailRowVideoTitleHeight = 30.0f;
    // create a text node
    _videoTitleNode = [ASTextNode initWithAttributedString:
     [NSAttributedString attributedStringForDetailRowChannelTitle:[YoutubeParser getVideoSnippetTitle:videoCache]
-                                                        fontSize:20.0f]];
+                                                        fontSize:16.0f]];
 
    [self addSubnode:_videoTitleNode];
 

@@ -55,8 +55,6 @@
    [super viewDidLoad];
 
    // Do any additional setup after loading the view, typically from a nib.
-   self.view.backgroundColor = [UIColor clearColor];
-
    [self initViewControllers];
 
    if (debugCollectionViewToDetail == NO)
@@ -130,8 +128,8 @@
    GGTabBar * topTabBar = [[GGLayoutStringTabBar alloc] initWithFrame:CGRectZero
                                                       viewControllers:controllerArray
                                                                 inTop:YES
-//                                                        selectedIndex:controllerArray.count - 1
-                                                        selectedIndex:0
+                                                        selectedIndex:controllerArray.count - 1
+//                                                        selectedIndex:0
                                                           tabBarWidth:0];
 
    GGTabBarController * tabBarController = [[GGTabBarController alloc] initWithTabBarView:topTabBar];

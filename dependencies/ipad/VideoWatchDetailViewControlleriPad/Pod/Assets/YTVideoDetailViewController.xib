@@ -20,7 +20,7 @@
                 <view contentMode="scaleToFill" id="csz-Ll-CEy" userLabel="videoPlayViewContainer">
                     <rect key="frame" x="0.0" y="0.0" width="160" height="284"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="De8-8a-WzS" userLabel="detailViewContainer">
                     <rect key="frame" x="0.0" y="284" width="160" height="284"/>

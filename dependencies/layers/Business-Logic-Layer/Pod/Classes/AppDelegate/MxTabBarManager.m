@@ -3,6 +3,7 @@
 #import "YTVideoDetailViewController.h"
 #import "LeftMenuViewController.h"
 #import "LeftRevealHelper.h"
+#import "ClientUIHelper.h"
 
 
 @interface MxTabBarManager ()<GYoutubeHelperDelegate> {
@@ -45,7 +46,10 @@
 
 
 - (YTVideoDetailViewController *)makeVideoDetailViewController:(id)video {
-   return [[YTVideoDetailViewController alloc] initWithVideo:video];
+   YTVideoDetailViewController * controller = [[YTVideoDetailViewController alloc] initWithVideo:video];
+   controller.view.backgroundColor = [ClientUIHelper mainUIBackgroundColor];
+
+   return controller;
 }
 
 
@@ -54,7 +58,7 @@
 
    UINavigationController * navigationController = [self currentNavigationController];
 
-   navigationController.viewControllers= nil;
+   navigationController.viewControllers = nil;
    navigationController.viewControllers = controllers;
 }
 
