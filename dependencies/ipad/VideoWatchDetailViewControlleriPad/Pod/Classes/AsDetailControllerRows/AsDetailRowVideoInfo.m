@@ -9,6 +9,7 @@
 #import "AsDetailRowVideoInfo.h"
 #import "YoutubeVideoCache.h"
 #import "YoutubeParser.h"
+#import "YoutubeVideoDescriptionStringAttribute.h"
 #import <AsyncDisplayKit/ASDisplayNode+Subclasses.h>
 #import <AsyncDisplayKit/ASHighlightOverlayLayer.h>
 
@@ -29,11 +30,11 @@ static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
 @implementation AsDetailRowVideoInfo
 
 
-- (instancetype)initWithVideo:(id)videoCache withTableWidth:(CGFloat)tableViewWidth {
+- (instancetype)initWithVideo:(YTYouTubeVideoCache *)videoCache withTableWidth:(CGFloat)tableViewWidth {
    if (!(self = [super init]))
       return nil;
 
-   _tableViewWidth=tableViewWidth;
+   _tableViewWidth = tableViewWidth;
 
    self.backgroundColor = [UIColor whiteColor];
 
@@ -43,16 +44,32 @@ static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
    // configure the node to support tappable links
    _textNode.delegate = self;
    _textNode.userInteractionEnabled = YES;
-   _textNode.linkAttributeNames = @[ kLinkAttributeName ];
 
    // generate an attributed string using the custom link attribute specified above
-   NSString * blurb = [YoutubeParser getVideoDescription:videoCache];
+   NSString * descriptionString = [YoutubeParser getVideoDescription:videoCache];
+   NSMutableAttributedString * attributedString = [[NSMutableAttributedString alloc] initWithString:descriptionString];
 
-   NSMutableAttributedString * string = [[NSMutableAttributedString alloc] initWithString:blurb];
-   [string addAttribute:NSFontAttributeName
-                  value:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]
-                  range:NSMakeRange(0, blurb.length)];
-   _textNode.attributedString = string;
+   [attributedString addAttribute:NSFontAttributeName
+                            value:[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f]
+                            range:NSMakeRange(0, descriptionString.length)];
+
+   NSMutableArray * attributeArray = videoCache.descriptionStringAttributeArray;
+
+   NSMutableArray * linkAttributeNames = [[NSMutableArray alloc] init];
+   for (YoutubeVideoDescriptionStringAttribute * stringAttribute in attributeArray) {
+
+      [linkAttributeNames addObject:stringAttribute.kLinkAttributeName];
+
+      [attributedString addAttributes:@{
+       kLinkAttributeName : [NSURL URLWithString:stringAttribute.httpString],
+       NSForegroundColorAttributeName : [UIColor blueColor],
+       NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternDot),
+      }                         range:stringAttribute.httpRang];
+   }
+
+   _textNode.linkAttributeNames = linkAttributeNames;
+
+   _textNode.attributedString = attributedString;
 
    // add it as a subnode, and we're done
    [self addSubnode:_textNode];
@@ -92,6 +109,7 @@ static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
 
 - (void)textNode:(ASTextNode *)richTextNode tappedLinkAttribute:(NSString *)attribute value:(NSURL *)URL atPoint:(CGPoint)point textRange:(NSRange)textRange {
    // the node tapped a link, open it
+   NSLog(@"URL = %@", URL);
    [[UIApplication sharedApplication] openURL:URL];
 }
 
