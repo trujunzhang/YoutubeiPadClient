@@ -38,8 +38,8 @@ static const NSInteger kLitterSize = 2;
    _tableView = [[ASTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone; // KittenNode has its own separator
    _tableView.showsVerticalScrollIndicator = NO;
-   _tableView.alwaysBounceHorizontal= NO;
-   _tableView.directionalLockEnabled= YES;
+   _tableView.alwaysBounceHorizontal = NO;
+   _tableView.directionalLockEnabled = YES;
 
    _tableView.asyncDataSource = self;
    _tableView.asyncDelegate = self;
@@ -55,7 +55,6 @@ static const NSInteger kLitterSize = 2;
 
    [self.view addSubview:_tableView];
 }
-
 
 
 - (void)viewWillLayoutSubviews {
@@ -94,8 +93,4 @@ static const NSInteger kLitterSize = 2;
 }
 
 
-- (void)updateUI {
-//   [_tableView reloadData];
-
-}
 @end

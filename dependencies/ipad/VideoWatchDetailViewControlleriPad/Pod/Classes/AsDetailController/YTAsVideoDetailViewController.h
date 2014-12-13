@@ -16,6 +16,4 @@
 
 - (instancetype)initWithVideo:(YTYouTubeVideoCache *)video;
 
-
-- (void)updateUI;
 @end
