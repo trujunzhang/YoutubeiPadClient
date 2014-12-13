@@ -59,7 +59,8 @@
 
    [self initViewControllers];
 
-//   [self setupPlayer:self.videoPlayViewContainer];  //used
+   if (debugCollectionViewToDetail == NO)
+      [self setupPlayer:self.videoPlayViewContainer];  //used
 
    self.title = [YoutubeParser getVideoSnippetTitle:_detailVideo];
 
