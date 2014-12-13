@@ -13,9 +13,9 @@
 #import <AsyncDisplayKit/ASDisplayNode+Subclasses.h>
 #import <AsyncDisplayKit/ASHighlightOverlayLayer.h>
 
-static CGFloat DetailRowVideoInfoHeight = 75.0f;
+static CGFloat DetailRowVideoInfoHeight = 80.0f;
 
-static CGFloat DetailRowVideoTitleHeight = 40.0f;
+static CGFloat DetailRowVideoTitleHeight = 30.0f;
 
 
 @implementation AsDetailRowVideoInfo {
@@ -34,7 +34,7 @@ static CGFloat DetailRowVideoTitleHeight = 40.0f;
    // create a text node
    _videoTitleNode = [ASTextNode initWithAttributedString:
     [NSAttributedString attributedStringForDetailRowChannelTitle:[YoutubeParser getVideoSnippetTitle:videoCache]
-                                                        fontSize:26.0f]];
+                                                        fontSize:20.0f]];
 
    [self addSubnode:_videoTitleNode];
 
@@ -47,7 +47,6 @@ static CGFloat DetailRowVideoTitleHeight = 40.0f;
    _viewCountNode = [ASTextNode initWithAttributedString:
     [NSAttributedString attributedStringForDetailRowVideoViewCount:[YoutubeParser getVideoStatisticsViewCount:videoCache]
                                                           fontSize:12.0f]];
-//   [_viewCountNode.view sizeToFit];
 
    [self addSubnode:_viewCountNode];
 
@@ -66,7 +65,7 @@ static CGFloat DetailRowVideoTitleHeight = 40.0f;
 
 - (CGSize)calculateSizeThatFits:(CGSize)constrainedSize {
    // called on a background thread.  custom nodes must call -measure: on their subnodes in -calculateSizeThatFits:
-//   CGSize measuredSize = [_videoTitleNode measure:CGSizeMake(constrainedSize.width - 2 * kTextPadding, constrainedSize.height - 2 * kTextPadding)];
+//   CGSize measuredSize = [_videoTitleNode measure:CGSizeMake(constrainedSize.width - 2 * kTextPaddingHorizontal, constrainedSize.height - 2 * kTextPaddingHorizontal)];
 
    return CGSizeMake(constrainedSize.width, DetailRowVideoInfoHeight);
 }
