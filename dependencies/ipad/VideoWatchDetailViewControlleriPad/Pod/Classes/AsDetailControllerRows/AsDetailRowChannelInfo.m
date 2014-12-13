@@ -17,7 +17,7 @@
 #import "FrameCalculator.h"
 #import "Foundation.h"
 
-static CGFloat KDetailRowHeight = 50.0f;
+static CGFloat DetailRowChannelInfoHeight = 150.0f;
 
 
 @interface AsDetailRowChannelInfo () {
@@ -27,12 +27,9 @@ static CGFloat KDetailRowHeight = 50.0f;
    ASTextNode * _publishedAtNode;
 
    ASDisplayNode * _divider;
-   CGFloat _tableViewWidth;
 
    int cStep;
 }
-
-@property(nonatomic, strong) YoutubeVideoCache * cardInfo;
 
 
 @end
@@ -45,10 +42,7 @@ static CGFloat KDetailRowHeight = 50.0f;
    if (!(self = [super init]))
       return nil;
 
-   self.cardInfo = videoCache;
-   _tableViewWidth = tableViewWidth;
-
-   _channelImageNode = [YTAsChannelThumbnailsImageNode nodeWithChannelId:[YoutubeParser getChannelIdByVideo:self.cardInfo]
+   _channelImageNode = [YTAsChannelThumbnailsImageNode nodeWithChannelId:[YoutubeParser getChannelIdByVideo:videoCache]
                                                                forCorner:5.0f];
 
 //   _channelImageNode.image = [UIImage imageNamed:@"account_default_thumbnail.png"];//test
@@ -58,7 +52,7 @@ static CGFloat KDetailRowHeight = 50.0f;
 
    // create a text node
    _channelTitleNode = [ASTextNode initWithAttributedString:
-    [NSAttributedString attributedStringForDetailRowChannelTitle:[YoutubeParser getVideoSnippetChannelTitle:self.cardInfo]
+    [NSAttributedString attributedStringForDetailRowChannelTitle:[YoutubeParser getVideoSnippetChannelTitle:videoCache]
                                                         fontSize:15.0f]];
 
 
@@ -68,7 +62,7 @@ static CGFloat KDetailRowHeight = 50.0f;
 
    // create a text node
    _publishedAtNode = [ASTextNode initWithAttributedString:
-    [NSAttributedString attributedStringForDetailRowChannelPublishedAt:[YoutubeParser getVideoSnippetChannelPublishedAt:self.cardInfo]
+    [NSAttributedString attributedStringForDetailRowChannelPublishedAt:[YoutubeParser getVideoSnippetChannelPublishedAt:videoCache]
                                                               fontSize:12.0f]];
 
 
@@ -95,7 +89,7 @@ static CGFloat KDetailRowHeight = 50.0f;
 - (CGSize)calculateSizeThatFits:(CGSize)constrainedSize {
    // called on a background thread.  custom nodes must call -measure: on their subnodes in -calculateSizeThatFits:
 
-   CGSize size = CGSizeMake(_tableViewWidth, KDetailRowHeight);
+   CGSize size = CGSizeMake(constrainedSize.width, DetailRowChannelInfoHeight);
    return size;
 }
 
@@ -103,7 +97,7 @@ static CGFloat KDetailRowHeight = 50.0f;
 - (void)layout {
 
    _channelImageNode.frame = [FrameCalculator frameForDetailRowChannelInfoThumbnail:self.calculatedSize.width
-                                                                         withHeight:KDetailRowHeight];
+                                                                         withHeight:DetailRowChannelInfoHeight];
 
    _channelTitleNode.frame = [FrameCalculator frameForDetailRowChannelInfoTitle:self.calculatedSize.width
                                                                    withLeftRect:_channelImageNode.frame];
@@ -112,7 +106,8 @@ static CGFloat KDetailRowHeight = 50.0f;
                                                                         withLeftRect:_channelTitleNode.frame];
 
 
-   _divider.frame = [FrameCalculator frameForBottomDivide:self.calculatedSize.width containerHeight:KDetailRowHeight];
+   _divider.frame = [FrameCalculator frameForBottomDivide:self.calculatedSize.width
+                                          containerHeight:DetailRowChannelInfoHeight];
 }
 
 

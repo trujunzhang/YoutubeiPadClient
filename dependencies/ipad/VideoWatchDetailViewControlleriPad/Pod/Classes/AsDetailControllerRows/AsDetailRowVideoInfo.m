@@ -7,11 +7,21 @@
 
 #import "YoutubeParser.h"
 #import "YoutubeVideoDescriptionStringAttribute.h"
+#import "Foundation.h"
+#import "AsyncDisplayKitStatic.h"
 #import <AsyncDisplayKit/ASDisplayNode+Subclasses.h>
 #import <AsyncDisplayKit/ASHighlightOverlayLayer.h>
 
+static CGFloat DetailRowVideoInfoHeight = 50.0f;
+
 
 @implementation AsDetailRowVideoInfo {
+   ASTextNode * _channelTitleNode;
+   ASTextNode * _publishedAtNode;
+
+   ASDisplayNode * _divider;
+
+
    CGFloat _tableViewWidth;
 }
 
@@ -20,6 +30,13 @@
       return nil;
 
    _tableViewWidth = tableViewWidth;
+
+   // create a text node
+   _channelTitleNode = [ASTextNode initWithAttributedString:
+    [NSAttributedString attributedStringForDetailRowChannelTitle:[YoutubeParser getVideoSnippetTitle:videoCache]
+                                                        fontSize:15.0f]];
+
+
 
    return self;
 }
