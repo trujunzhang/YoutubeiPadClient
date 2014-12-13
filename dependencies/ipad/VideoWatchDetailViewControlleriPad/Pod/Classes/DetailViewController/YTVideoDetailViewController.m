@@ -14,7 +14,8 @@
 
    YKYouTubeVideo * _youTubeVideo;
 
-   YTAsVideoDetailViewController * _videoDetailController;
+   YTAsVideoDetailViewController * _videoHorizontalDetailController;
+   YTAsVideoDetailViewController * _videoVerticalDetailController;
 }
 
 @property(strong, nonatomic) IBOutlet UIView * videoPlayViewContainer;
@@ -108,7 +109,8 @@
    [self.thirdViewController fetchSuggestionListByVideoId:[YoutubeParser getWatchVideoId:_detailVideo]];
 
    // 2
-   _videoDetailController = [[YTAsVideoDetailViewController alloc] initWithVideo:_detailVideo];
+   _videoHorizontalDetailController = [[YTAsVideoDetailViewController alloc] initWithVideo:_detailVideo];
+   _videoVerticalDetailController = [[YTAsVideoDetailViewController alloc] initWithVideo:_detailVideo];
 }
 
 
@@ -147,7 +149,7 @@
    BOOL isPortrait = (toInterfaceOrientation == UIInterfaceOrientationPortrait) || (toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown);
    if (isPortrait) {
       NSArray * array = @[
-       _videoDetailController,
+       _videoVerticalDetailController,
        self.firstViewController,
        self.secondViewController,
        self.thirdViewController, ];
@@ -223,7 +225,7 @@
       [self setupVerticalLayout];
    } else {// 3
       // 1  UIView contains
-      [self selectDetailViewControllerInHorizontal:_videoDetailController];
+      [self selectDetailViewControllerInHorizontal:_videoHorizontalDetailController];
       // 2 layout
       [self setupHorizontalLayout];
    }
