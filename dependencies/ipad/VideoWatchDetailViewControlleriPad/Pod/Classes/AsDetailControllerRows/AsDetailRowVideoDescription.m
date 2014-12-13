@@ -63,11 +63,12 @@ static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
 
       [linkAttributeNames addObject:stringAttribute.kLinkAttributeName];
 
+      NSRange range = stringAttribute.httpRang;
       [attributedString addAttributes:@{
        stringAttribute.kLinkAttributeName : [NSURL URLWithString:stringAttribute.httpString],
        NSForegroundColorAttributeName : [UIColor blueColor],
        NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle | NSUnderlinePatternDot),
-      }                         range:stringAttribute.httpRang];
+      }                         range:range];
    }
 
    // add it as a subnode, and we're done
