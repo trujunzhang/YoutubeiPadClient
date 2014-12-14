@@ -23,6 +23,7 @@
 
 + (NSString *)getChannelBrandingSettingsTitle:(YTYouTubeChannel *)channel;
 + (NSString *)getChannelStatisticsSubscriberCount:(YTYouTubeChannel *)channel;
+
 // Channel for author
 + (NSString *)getAuthChannelSnippetThumbnailUrl:(YTYouTubeAuthorChannel *)channel;
 + (NSString *)getAuthChannelTitle:(YTYouTubeAuthorChannel *)channel;

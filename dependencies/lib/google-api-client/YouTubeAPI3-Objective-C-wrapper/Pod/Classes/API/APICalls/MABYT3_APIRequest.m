@@ -13,6 +13,153 @@
 #import "YoutubeParser.h"
 
 
+@implementation MABYT3_YoutubeRequest
+
+- (NSMutableDictionary *)commonDictionary:(NSMutableDictionary *)parameters maxResultsString:(NSString *)maxResultsString {
+   NSMutableDictionary * dictionary = [parameters mutableCopy];
+   [dictionary setObject:apiKey forKey:@"key"];
+   if (maxResultsString)
+      [dictionary setObject:maxResultsString forKey:@"maxResults"];
+   return dictionary;
+}
+
+
+@end
+
+
+@implementation MABYT3_VideoGoogleRequest
+
+//https://www.youtube.com/api/timedtext?sparams=caps%2Cv%2Cexpire&caps=&hl=en_US&v=XraeBDMm2PM&type=track&lang=es&name=Spanish+%28es%29&kind=&fmt=1&key=AIzaSyD3P0pZd-yJY67sjcL9dQ_mp2Yagrihf9E
++ (MABYT3_VideoGoogleRequest *)sharedInstance {
+   static MABYT3_VideoGoogleRequest * _sharedClient = nil;
+   static dispatch_once_t onceToken;
+   dispatch_once(&onceToken, ^{
+       NSURL * baseURL = [NSURL URLWithString:@"https://www.youtube.com/"];
+
+       NSURLSessionConfiguration * config = [NSURLSessionConfiguration defaultSessionConfiguration];
+       [config setHTTPAdditionalHeaders:@{ @"User-Agent" : @"APIs-Google" }];
+
+       NSURLCache * cache = [[NSURLCache alloc] initWithMemoryCapacity:10 * 1024 * 1024
+                                                          diskCapacity:50 * 1024 * 1024
+                                                              diskPath:nil];
+
+       [config setURLCache:cache];
+
+       _sharedClient = [[MABYT3_VideoGoogleRequest alloc] initWithBaseURL:baseURL
+                                                     sessionConfiguration:config];
+       _sharedClient.responseSerializer = [AFXMLParserResponseSerializer serializer];
+
+   });
+
+   return _sharedClient;
+}
+
+
+//http://video.google.com/timedtext?type=list&v=P3hY1eagq88
+- (NSURLSessionDataTask *)fetchCaptainTracks:(NSString *)videoId completion:(MABYoutubeResponseBlock)completion {
+   NSMutableDictionary * dictionary = @{
+    @"type" : @"list",
+    @"v" : videoId
+   };
+
+   NSURLSessionDataTask * task = [self GET:@"/timedtext"
+                                parameters:dictionary
+                                   success:^(NSURLSessionDataTask * task, id responseObject) {
+                                       NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *) task.response;
+
+                                       if (httpResponse.statusCode == 200) {
+                                          NSString * newStr = [[NSString alloc] initWithData:responseObject
+                                                                                    encoding:NSUTF8StringEncoding];
+
+                                          NSString * debug = @"debug";
+
+//                                          YoutubeResponseInfo * responseInfo = [self parseVideoListWithData:responseObject];
+//                                          dispatch_async(dispatch_get_main_queue(), ^{
+//                                              completion(responseInfo, nil);
+//                                          });
+                                       } else {
+                                          NSError * error = [YoutubeParser getError:responseObject
+                                                                           httpresp:httpResponse];
+                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                              completion(nil, error);
+                                          });
+                                       }
+
+                                   } failure:^(NSURLSessionDataTask * task, NSError * error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(nil, error);
+        });
+    }];
+
+   return task;
+}
+
+
+@end
+
+
+@implementation MABYT3_CaptainRequest
+
+//https://www.youtube.com/api/timedtext?sparams=caps%2Cv%2Cexpire&caps=&hl=en_US&v=XraeBDMm2PM&type=track&lang=es&name=Spanish+%28es%29&kind=&fmt=1&key=AIzaSyD3P0pZd-yJY67sjcL9dQ_mp2Yagrihf9E
++ (MABYT3_CaptainRequest *)sharedInstance {
+   static MABYT3_CaptainRequest * _sharedClient = nil;
+   static dispatch_once_t onceToken;
+   dispatch_once(&onceToken, ^{
+       NSURL * baseURL = [NSURL URLWithString:@"https://www.youtube.com/"];
+
+       NSURLSessionConfiguration * config = [NSURLSessionConfiguration defaultSessionConfiguration];
+       [config setHTTPAdditionalHeaders:@{ @"User-Agent" : @"APIs-Google" }];
+
+       NSURLCache * cache = [[NSURLCache alloc] initWithMemoryCapacity:10 * 1024 * 1024
+                                                          diskCapacity:50 * 1024 * 1024
+                                                              diskPath:nil];
+
+       [config setURLCache:cache];
+
+       _sharedClient = [[MABYT3_CaptainRequest alloc] initWithBaseURL:baseURL
+                                                 sessionConfiguration:config];
+       _sharedClient.responseSerializer = [AFXMLParserResponseSerializer serializer];
+
+   });
+
+   return _sharedClient;
+}
+
+
+- (NSURLSessionDataTask *)fetchCaptainTracks:(NSMutableDictionary *)parameters completion:(MABYoutubeResponseBlock)completion {
+   NSMutableDictionary * dictionary = [self commonDictionary:parameters maxResultsString:nil];
+
+   NSURLSessionDataTask * task = [self GET:@"/api/timedtext"
+                                parameters:dictionary
+                                   success:^(NSURLSessionDataTask * task, id responseObject) {
+                                       NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *) task.response;
+
+                                       if (httpResponse.statusCode == 200) {
+//                                          YoutubeResponseInfo * responseInfo = [self parseVideoListWithData:responseObject];
+//                                          dispatch_async(dispatch_get_main_queue(), ^{
+//                                              completion(responseInfo, nil);
+//                                          });
+                                       } else {
+                                          NSError * error = [YoutubeParser getError:responseObject
+                                                                           httpresp:httpResponse];
+                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                              completion(nil, error);
+                                          });
+                                       }
+
+                                   } failure:^(NSURLSessionDataTask * task, NSError * error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(nil, error);
+        });
+    }];
+
+   return task;
+}
+
+
+@end
+
+
 @implementation MABYT3_AutoCompleteRequest
 
 + (MABYT3_AutoCompleteRequest *)sharedInstance {
@@ -1603,15 +1750,6 @@
       pageToken = [dict objectForKey:@"nextPageToken"];
    }
    return pageToken;
-}
-
-
-- (NSMutableDictionary *)commonDictionary:(NSMutableDictionary *)parameters maxResultsString:(NSString *)maxResultsString {
-   NSMutableDictionary * dictionary = [parameters mutableCopy];
-   [dictionary setObject:apiKey forKey:@"key"];
-   if (maxResultsString)
-      [dictionary setObject:maxResultsString forKey:@"maxResults"];
-   return dictionary;
 }
 
 

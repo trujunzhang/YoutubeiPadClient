@@ -229,6 +229,8 @@ static GYoutubeHelper * instance = nil;
 - (void)getAuthUserInfo {
    self.youtubeAuthUser = [[GYoutubeAuthUser alloc] init];
 
+   [self fetchCaptionForVideoWithVideoId];
+
    if (hasShowLeftMenu)
       [self getUserInfo];// used
 }
@@ -615,7 +617,6 @@ static GYoutubeHelper * instance = nil;
 
 - (void)cancelAutoCompleteSuggestionTask {
    [[MABYT3_AutoCompleteRequest sharedInstance] cancelAllTask];
-
 }
 
 
@@ -637,6 +638,27 @@ static GYoutubeHelper * instance = nil;
                          NSLog(@"ERROR: %@", error);
                       }
                   }];
+}
+
+
+#pragma mark -
+#pragma mark fetch video captions
+
+
+- (void)fetchCaptionForVideoWithVideoId {
+
+   NSString * videoId = @"boBex_v3_eA";
+
+   NSURLSessionDataTask * task =
+    [[MABYT3_VideoGoogleRequest sharedInstance]
+     fetchCaptainTracks:videoId
+             completion:^(YoutubeResponseInfo * responseInfo, NSError * error) {
+                 if (responseInfo) {
+
+                 } else {
+                    NSLog(@"ERROR: %@", error);
+                 }
+             }];
 }
 
 

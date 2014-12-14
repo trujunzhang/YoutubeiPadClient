@@ -29,15 +29,43 @@ static NSString * kKeychainItemName = @"mxyoutube";
 static NSUInteger search_maxResults = 20;
 
 
-@interface MABYT3_AutoCompleteRequest : AFHTTPSessionManager
+@interface MABYT3_YoutubeRequest : AFHTTPSessionManager
+
+- (NSMutableDictionary *)commonDictionary:(NSMutableDictionary *)parameters maxResultsString:(NSString *)maxResultsString;
+
+@end
+
+
+@interface MABYT3_VideoGoogleRequest : MABYT3_YoutubeRequest
+
+@property(nonatomic, strong) NSURLSessionDataTask * lastTask;
++ (MABYT3_VideoGoogleRequest *)sharedInstance;
+
+- (NSURLSessionDataTask *)fetchCaptainTracks:(NSString *)videoId completion:(MABYoutubeResponseBlock)completion;
+
+@end
+
+
+@interface MABYT3_CaptainRequest : MABYT3_YoutubeRequest
+
+@property(nonatomic, strong) NSURLSessionDataTask * lastTask;
++ (MABYT3_CaptainRequest *)sharedInstance;
+- (NSURLSessionDataTask *)fetchCaptainTracks:(NSMutableDictionary *)parameters completion:(MABYoutubeResponseBlock)completion;
+
+@end
+
+
+@interface MABYT3_AutoCompleteRequest : MABYT3_YoutubeRequest
+
 @property(nonatomic, strong) NSURLSessionDataTask * lastTask;
 + (MABYT3_AutoCompleteRequest *)sharedInstance;
 - (NSURLSessionDataTask *)autoCompleteSuggestions:(NSMutableDictionary *)parameters completion:(MABYoutubeResponseBlock)completion;
 - (void)cancelAllTask;
+
 @end
 
 
-@interface MABYT3_APIRequest : AFHTTPSessionManager
+@interface MABYT3_APIRequest : MABYT3_YoutubeRequest
 + (MABYT3_APIRequest *)sharedInstance;
 
 
