@@ -29,7 +29,8 @@
    SDWebImageManager * manager = [SDWebImageManager sharedManager];
 
    id<SDWebImageOperation> imageOperation = [manager downloadImageWithURL:url
-                                                                  options:SDWebImageLowPriority|SDWebImageCacheMemoryOnly
+    //    options:SDWebImageLowPriority
+                                                                  options:0
                                                                  progress:nil
                                                                 completed:^(UIImage * image, NSError * error, SDImageCacheType cacheType, BOOL finished, NSURL * imageURL) {
                                                                     completionBlock(image);
@@ -67,6 +68,11 @@
 
 + (void)removeAllCacheDiskObjects {
    [[SDImageCache sharedImageCache] cleanDisk];
+}
+
+
++ (void)removeAllCacheMemoryObjects {
+   [[SDImageCache sharedImageCache] clearMemory];
 }
 
 
