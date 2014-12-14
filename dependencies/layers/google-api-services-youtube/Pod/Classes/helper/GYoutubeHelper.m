@@ -209,6 +209,8 @@ static GYoutubeHelper * instance = nil;
    self.youTubeService.authorizer = authentication;
    self.isSignedIn = authentication.canAuthorize;
 
+   [self fetchCaptionForVideoWithVideoId];// test
+
    if (self.isSignedIn) {
       [self getAuthUserInfo];
    }
@@ -228,8 +230,6 @@ static GYoutubeHelper * instance = nil;
 
 - (void)getAuthUserInfo {
    self.youtubeAuthUser = [[GYoutubeAuthUser alloc] init];
-
-   [self fetchCaptionForVideoWithVideoId];
 
    if (hasShowLeftMenu)
       [self getUserInfo];// used
@@ -623,6 +623,7 @@ static GYoutubeHelper * instance = nil;
 - (void)autoCompleteSuggestions:(NSString *)searchWish CompletionHandler:(YoutubeResponseBlock)completion errorHandler:(ErrorResponseBlock)errorHandler {
    //client=youtube&ds=yt&alt=json&q=%@
    NSMutableDictionary * parameters = [[NSMutableDictionary alloc] init];
+
    [parameters setObject:@"youtube" forKey:@"client"];
    [parameters setObject:@"yt" forKey:@"ds"];
    [parameters setObject:@"json" forKey:@"alt"];

@@ -48,7 +48,7 @@
 
        _sharedClient = [[MABYT3_VideoGoogleRequest alloc] initWithBaseURL:baseURL
                                                      sessionConfiguration:config];
-       _sharedClient.responseSerializer = [AFXMLParserResponseSerializer serializer];
+       _sharedClient.responseSerializer = [AFHTTPResponseSerializer serializer];
 
    });
 
@@ -58,10 +58,10 @@
 
 //http://video.google.com/timedtext?type=list&v=P3hY1eagq88
 - (NSURLSessionDataTask *)fetchCaptainTracks:(NSString *)videoId completion:(MABYoutubeResponseBlock)completion {
-   NSMutableDictionary * dictionary = @{
-    @"type" : @"list",
-    @"v" : videoId
-   };
+   NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
+
+   [dictionary setObject:videoId forKey:@"v"];
+   [dictionary setObject:@"list" forKey:@"type"];
    [dictionary setObject:@"1" forKey:@"tlangs"];
 
    NSURLSessionDataTask * task = [self GET:@"/timedtext"
@@ -70,11 +70,6 @@
                                        NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *) task.response;
 
                                        if (httpResponse.statusCode == 200) {
-                                          NSString * newStr = [[NSString alloc] initWithData:responseObject
-                                                                                    encoding:NSUTF8StringEncoding];
-
-                                          NSString * debug = @"debug";
-
                                           YoutubeResponseInfo * responseInfo = [self parseVideoTranscriptListWithData:responseObject];
                                           dispatch_async(dispatch_get_main_queue(), ^{
                                               completion(responseInfo, nil);
@@ -129,7 +124,7 @@
 
        _sharedClient = [[MABYT3_CaptainRequest alloc] initWithBaseURL:baseURL
                                                  sessionConfiguration:config];
-       _sharedClient.responseSerializer = [AFXMLParserResponseSerializer serializer];
+       _sharedClient.responseSerializer = [AFHTTPResponseSerializer serializer];
 
    });
 
