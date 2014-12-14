@@ -30,7 +30,7 @@
 
    self = [super init];
    if (self) {
-      _kind = @"youtube#channel";
+      _kind = @"youtube#transcript_list";
       _identifier = @"";
 
       _trackList = [[NSMutableArray alloc] init];
@@ -40,8 +40,16 @@
       }
 
       if ([dict objectForKey:@"track"]) {
-         MABYT3_Track * track = [[MABYT3_Track alloc] initFromDictionary:[dict objectForKey:@"track"]];
+         MABYT3_Track * track = [[MABYT3_Track alloc] initFromDictionary:[dict objectForKey:@"track"]
+                                                                withKind:@"track"];
          [_trackList addObject:track];
+      }
+      if ([dict objectForKey:@"target"]) {
+         NSDictionary * targetsDict = [dict objectForKey:@"target"];
+         for (NSDictionary * targetDict in targetsDict) {
+            MABYT3_Track * track = [[MABYT3_Track alloc] initFromDictionary:targetDict withKind:@"target"];
+            [_trackList addObject:track];
+         }
       }
 
    }

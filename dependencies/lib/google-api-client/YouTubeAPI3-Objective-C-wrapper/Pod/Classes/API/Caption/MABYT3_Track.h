@@ -27,5 +27,5 @@
 @property(nonatomic) BOOL lang_default;
 @property(strong, nonatomic) NSString * cantran;
 
-- (id)initFromDictionary:(NSDictionary *)dict;
+- (id)initFromDictionary:(NSDictionary *)dict withKind:(NSString *)kind;
 @end

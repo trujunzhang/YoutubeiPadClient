@@ -25,11 +25,11 @@
 }
 
 
-- (id)initFromDictionary:(NSDictionary *)dict {
+- (id)initFromDictionary:(NSDictionary *)dict withKind:(NSString *)kind {
 
    self = [super init];
    if (self) {
-      _kind = @"youtube#channel";
+      _kind = [NSString stringWithFormat:@"youtube#%@", kind];
       _identifier = @"";
       _name = @"";
       _lang_default = NO;
