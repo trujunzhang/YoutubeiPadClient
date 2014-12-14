@@ -11,6 +11,7 @@
 #import "GYoutubeRequestInfo.h"
 #import "YoutubeResponseInfo.h"
 #import "YoutubeParser.h"
+#import "SHXMLParser.h"
 
 
 @implementation MABYT3_YoutubeRequest
@@ -29,12 +30,12 @@
 
 @implementation MABYT3_VideoGoogleRequest
 
-//https://www.youtube.com/api/timedtext?sparams=caps%2Cv%2Cexpire&caps=&hl=en_US&v=XraeBDMm2PM&type=track&lang=es&name=Spanish+%28es%29&kind=&fmt=1&key=AIzaSyD3P0pZd-yJY67sjcL9dQ_mp2Yagrihf9E
+//http://video.google.com/timedtext?type=list&tlangs=1&v=boBex_v3_eA
 + (MABYT3_VideoGoogleRequest *)sharedInstance {
    static MABYT3_VideoGoogleRequest * _sharedClient = nil;
    static dispatch_once_t onceToken;
    dispatch_once(&onceToken, ^{
-       NSURL * baseURL = [NSURL URLWithString:@"https://www.youtube.com/"];
+       NSURL * baseURL = [NSURL URLWithString:@"http://video.google.com/"];
 
        NSURLSessionConfiguration * config = [NSURLSessionConfiguration defaultSessionConfiguration];
        [config setHTTPAdditionalHeaders:@{ @"User-Agent" : @"APIs-Google" }];
@@ -61,6 +62,7 @@
     @"type" : @"list",
     @"v" : videoId
    };
+   [dictionary setObject:@"1" forKey:@"tlangs"];
 
    NSURLSessionDataTask * task = [self GET:@"/timedtext"
                                 parameters:dictionary
@@ -73,10 +75,10 @@
 
                                           NSString * debug = @"debug";
 
-//                                          YoutubeResponseInfo * responseInfo = [self parseVideoListWithData:responseObject];
-//                                          dispatch_async(dispatch_get_main_queue(), ^{
-//                                              completion(responseInfo, nil);
-//                                          });
+                                          YoutubeResponseInfo * responseInfo = [self parseVideoTranscriptListWithData:responseObject];
+                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                              completion(responseInfo, nil);
+                                          });
                                        } else {
                                           NSError * error = [YoutubeParser getError:responseObject
                                                                            httpresp:httpResponse];
@@ -94,6 +96,15 @@
    return task;
 }
 
+
+- (YoutubeResponseInfo *)parseVideoTranscriptListWithData:(NSData *)data {
+   SHXMLParser * parser = [[SHXMLParser alloc] init];
+   NSDictionary * dict = [parser parseData:data];
+
+   MABYT3_TranscriptList * transcriptList = [[MABYT3_TranscriptList alloc] initFromDictionary:dict];
+
+   return [YoutubeResponseInfo infoWithArray:transcriptList.trackList pageToken:nil];
+}
 
 @end
 

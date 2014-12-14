@@ -66,6 +66,8 @@
 
 // other
 #import "YoutubeVideoCache.h"
+#import "MABYT3_TranscriptList.h"
+#import "MABYT3_Track.h"
 
 #endif
 

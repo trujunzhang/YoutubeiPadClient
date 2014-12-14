@@ -13,4 +13,5 @@
 
 @property(nonatomic, strong) NSMutableArray * trackList;
 
+- (id)initFromDictionary:(NSDictionary *)dict;
 @end
