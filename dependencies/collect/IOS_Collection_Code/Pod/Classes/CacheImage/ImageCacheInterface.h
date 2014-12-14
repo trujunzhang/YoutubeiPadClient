@@ -18,7 +18,7 @@
 + (void)CacheWithImageView:(UIImageView *)view withUrl:(NSString *)url withPlaceholder:(UIImage *)placeHolder;
 + (void)CacheWithImageView:(UIImageView *)view withUrl:(NSString *)url withPlaceholder:(UIImage *)placeHolder size:(CGSize)size;
 
-+ (void)removeAllObjects;
++ (void)removeAllCacheDiskObjects;
 
 +(void)cancelDowning:(id)operation;
 

@@ -36,7 +36,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
    [DebugUtils listAppHomeInfo];
 
-   [YTCacheImplement removeAllObjects];
+   [YTCacheImplement removeAllCacheDiskObjects];
 
    //1
    UITabBarController * tabBarController = (UITabBarController *) self.window.rootViewController;

@@ -65,7 +65,7 @@
 }
 
 
-+ (void)removeAllObjects {
++ (void)removeAllCacheDiskObjects {
    [[SDImageCache sharedImageCache] cleanDisk];
 }
 
