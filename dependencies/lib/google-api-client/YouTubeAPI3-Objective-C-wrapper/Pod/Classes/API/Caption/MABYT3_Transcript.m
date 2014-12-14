@@ -4,6 +4,7 @@
 //
 
 #import "MABYT3_Transcript.h"
+#import "MABYT3_TranscriptText.h"
 
 
 @implementation MABYT3_Transcript {
@@ -17,7 +18,6 @@
    if (self) {
       _kind = @"youtube#transcript";
       _identifier = @"";
-
    }
    return self;
 }
@@ -30,18 +30,11 @@
       _kind = @"youtube#transcript";
       _identifier = @"";
 
-//<text ="0.11" dur="1.34">Today I want to answer one of your questions</text>      
-      if ([dict objectForKey:@"id"]) {
-         _identifier = [dict objectForKey:@"id"];
+      NSDictionary * targetsDict = [dict objectForKey:@"target"];
+      for (NSDictionary * targetDict in targetsDict) {
+         MABYT3_TranscriptText * track = [[MABYT3_TranscriptText alloc] initFromDictionary:targetDict];
+         [_textList addObject:track];
       }
-
-      if ([dict objectForKey:@"start"]) {
-         _start = [dict objectForKey:@"start"];
-      }
-      if ([dict objectForKey:@"dur"]) {
-         _dur = [dict objectForKey:@"dur"];
-      }
-
 
    }
    return self;
