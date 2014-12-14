@@ -23,14 +23,15 @@
 }
 
 
+//<text ="0.11" dur="1.34">Today I want to answer one of your questions</text>
 - (id)initFromDictionary:(NSDictionary *)dict {
 
    self = [super init];
    if (self) {
       _kind = @"youtube#transcriptText";
       _identifier = @"";
+      _textValue = @"";
 
-//<text ="0.11" dur="1.34">Today I want to answer one of your questions</text>
       if ([dict objectForKey:@"id"]) {
          _identifier = [dict objectForKey:@"id"];
       }
@@ -40,6 +41,10 @@
       }
       if ([dict objectForKey:@"dur"]) {
          _dur = [dict objectForKey:@"dur"];
+      }
+
+      if ([dict objectForKey:@"leafContent"]) {
+         _textValue = [dict objectForKey:@"leafContent"];
       }
 
 

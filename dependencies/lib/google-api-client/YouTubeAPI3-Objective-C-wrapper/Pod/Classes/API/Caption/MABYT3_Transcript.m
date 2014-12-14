@@ -18,6 +18,8 @@
    if (self) {
       _kind = @"youtube#transcript";
       _identifier = @"";
+
+      _textList = [[NSMutableArray alloc] init];
    }
    return self;
 }
@@ -30,7 +32,9 @@
       _kind = @"youtube#transcript";
       _identifier = @"";
 
-      NSDictionary * targetsDict = [dict objectForKey:@"target"];
+      _textList = [[NSMutableArray alloc] init];
+
+      NSDictionary * targetsDict = [dict objectForKey:@"text"];
       for (NSDictionary * targetDict in targetsDict) {
          MABYT3_TranscriptText * track = [[MABYT3_TranscriptText alloc] initFromDictionary:targetDict];
          [_textList addObject:track];
