@@ -96,7 +96,11 @@
    SHXMLParser * parser = [[SHXMLParser alloc] init];
    NSDictionary * dict = [parser parseData:data];
 
-   MABYT3_TranscriptList * transcriptList = [[MABYT3_TranscriptList alloc] initFromDictionary:dict];
+   MABYT3_TranscriptList * transcriptList = [[MABYT3_TranscriptList alloc] init];
+   if ([dict objectForKey:@"transcript_list"]) {
+      transcriptList = [[MABYT3_TranscriptList alloc] initFromDictionary:dict[@"transcript_list"]];
+   }
+
 
    return [YoutubeResponseInfo infoWithArray:transcriptList.trackList pageToken:nil];
 }

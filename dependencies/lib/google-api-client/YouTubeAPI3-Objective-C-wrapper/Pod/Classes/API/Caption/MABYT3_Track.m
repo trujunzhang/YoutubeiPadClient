@@ -42,8 +42,8 @@
       if ([dict objectForKey:@"name"]) {
          _name = [dict objectForKey:@"name"];
       }
-      if ([dict objectForKey:@"lang_original"]) {
-         _lang_original = [dict objectForKey:@"lang_original"];
+      if ([dict objectForKey:@"lang_code"]) {
+         _lang_code = [dict objectForKey:@"lang_code"];
       }
       if ([dict objectForKey:@"lang_original"]) {
          _lang_original = [dict objectForKey:@"lang_original"];

@@ -18,6 +18,9 @@
    if (self) {
       _kind = @"youtube#transcript_list";
       _identifier = @"";
+
+      _trackList = [[NSMutableArray alloc] init];
+
    }
    return self;
 }
@@ -37,7 +40,7 @@
       }
 
       if ([dict objectForKey:@"track"]) {
-         MABYT3_Track * track = [[MABYT3_Track alloc] initFromDictionary:[dict objectForKey:@"snippet"]];
+         MABYT3_Track * track = [[MABYT3_Track alloc] initFromDictionary:[dict objectForKey:@"track"]];
          [_trackList addObject:track];
       }
 
