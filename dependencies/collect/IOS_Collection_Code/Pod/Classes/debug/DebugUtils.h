@@ -15,4 +15,5 @@
 
 + (void)printCGRect:(CGRect)cellRect;
 + (void)printCGSize:(CGSize)cellSize;
++ (void)listAppHomeInfo;
 @end

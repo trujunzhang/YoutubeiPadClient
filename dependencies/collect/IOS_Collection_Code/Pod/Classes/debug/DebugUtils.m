@@ -34,4 +34,13 @@
    NSLog(@"Pretty printed size: %@", NSStringFromCGSize(cellSize));
 }
 
+
++ (void)listAppHomeInfo {
+#if TARGET_IPHONE_SIMULATOR
+    NSLog(@"Documents Directory: %@", [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
+    NSArray* cachePathArray = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString* cachePath = [cachePathArray lastObject];
+    NSLog(@"Cache Directory: %@", cachePath);
+#endif
+}
 @end

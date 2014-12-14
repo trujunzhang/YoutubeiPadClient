@@ -41,13 +41,15 @@
    return @{ NSFontAttributeName : font, NSParagraphStyleAttributeName : style };
 }
 
+
 - (CGSize)calculateSizeThatFits:(CGSize)constrainedSize {
    return self.cellRect.size;
 }
 
 
 - (void)layout {
-   _videoTitleNode.frame = CGRectMake(0, 8, self.cellRect.size.width, 36);
+   CGFloat titleLeftX = 2.0f;
+   _videoTitleNode.frame = CGRectMake(titleLeftX, 8, self.cellRect.size.width - titleLeftX * 2, 36);
 }
 
 

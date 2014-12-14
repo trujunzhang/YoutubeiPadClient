@@ -288,7 +288,7 @@
    NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
    style.alignment = NSTextAlignmentLeft;
 
-   style.paragraphSpacing = 2.0;
+   style.paragraphSpacing = 1.0;
 
    return style;
 }

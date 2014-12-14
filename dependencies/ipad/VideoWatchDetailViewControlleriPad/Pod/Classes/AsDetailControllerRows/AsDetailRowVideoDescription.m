@@ -17,7 +17,7 @@
 
 
 static CGFloat kTextPaddingHorizontal = 18.0f;
-static CGFloat kTextPaddingVertical = 8.0f;
+static CGFloat kTextPaddingVertical = 10.0f;
 
 static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
 
@@ -41,8 +41,6 @@ static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
    _tableViewWidth = tableViewWidth;
 
    self.backgroundColor = [UIColor whiteColor];
-
-
 
    // generate an attributed string using the custom link attribute specified above
    NSMutableArray * linkAttributeNames = [[NSMutableArray alloc] init];
@@ -88,9 +86,10 @@ static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
 
 - (CGSize)calculateSizeThatFits:(CGSize)constrainedSize {
    // called on a background thread.  custom nodes must call -measure: on their subnodes in -calculateSizeThatFits:
-   CGSize measuredSize = [_textNode measure:CGSizeMake(constrainedSize.width - 2 * kTextPaddingHorizontal, constrainedSize.height - kTextPaddingVertical * 2)];
+   CGSize measuredSize =
+    [_textNode measure:CGSizeMake(constrainedSize.width - 2 * kTextPaddingHorizontal, constrainedSize.height)];
 
-   return CGSizeMake(_tableViewWidth, measuredSize.height);
+   return CGSizeMake(_tableViewWidth, measuredSize.height+kTextPaddingVertical*2);
 }
 
 
@@ -98,7 +97,8 @@ static NSString * kLinkAttributeName = @"PlaceKittenNodeLinkAttributeName";
    // called on the main thread.  we'll use the stashed size from above, instead of blocking on text sizing
    CGSize textNodeSize = _textNode.calculatedSize;
 
-   _textNode.frame = CGRectMake(kTextPaddingHorizontal, 0, self.calculatedSize.width - kTextPaddingHorizontal * 2, textNodeSize.height - kTextPaddingVertical * 2);
+   _textNode.frame =
+    CGRectMake(kTextPaddingHorizontal, 0, self.calculatedSize.width - kTextPaddingHorizontal * 2, textNodeSize.height);
 
 }
 

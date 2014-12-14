@@ -57,7 +57,8 @@
       if (debugCollectionViewToDetail) {
          // pXvzypp8mlo
          // 58kDMw779xc
-         [videoIds addObject:@"pXvzypp8mlo"];// test
+         // pXvzypp8mlo
+         [videoIds addObject:@"82urkb3mJaQ"];// test
       } else {
          [videoIds addObject:searchResult.identifier.videoId];// used
       }

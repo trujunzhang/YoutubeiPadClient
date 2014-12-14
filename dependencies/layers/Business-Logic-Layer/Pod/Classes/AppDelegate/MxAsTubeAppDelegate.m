@@ -19,6 +19,7 @@
 #import "CacheImageConstant.h"
 #import "MxTabBarManager.h"
 #import "ClientUIHelper.h"
+#import "DebugUtils.h"
 
 
 @interface MxAsTubeAppDelegate ()<UIApplicationDelegate, UITabBarControllerDelegate, SWRevealViewControllerDelegate> {
@@ -33,6 +34,8 @@
 @implementation MxAsTubeAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+   [DebugUtils listAppHomeInfo];
+
    [YTCacheImplement removeAllObjects];
 
    //1
