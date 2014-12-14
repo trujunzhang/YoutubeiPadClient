@@ -209,7 +209,8 @@ static GYoutubeHelper * instance = nil;
    self.youTubeService.authorizer = authentication;
    self.isSignedIn = authentication.canAuthorize;
 
-   [self fetchCaptionForVideoWithVideoId];// test
+//   [self fetchCaptionForVideoWithVideoId];// test
+   [self fetchTranscriptForVideoWithVideoId];//test
 
    if (self.isSignedIn) {
       [self getAuthUserInfo];
@@ -670,15 +671,15 @@ static GYoutubeHelper * instance = nil;
 
    NSURLSessionDataTask * task =
     [[MABYT3_VideoGoogleRequest sharedInstance]
-     fetchCaptainTracks:videoId
-             completion:^(YoutubeResponseInfo * responseInfo, NSError * error) {
-                 if (responseInfo) {
+     fetchVideoTranscript:videoId
+               completion:^(YoutubeResponseInfo * responseInfo, NSError * error) {
+                   if (responseInfo) {
 
 
-                 } else {
-                    NSLog(@"ERROR: %@", error);
-                 }
-             }];
+                   } else {
+                      NSLog(@"ERROR: %@", error);
+                   }
+               }];
 }
 
 
