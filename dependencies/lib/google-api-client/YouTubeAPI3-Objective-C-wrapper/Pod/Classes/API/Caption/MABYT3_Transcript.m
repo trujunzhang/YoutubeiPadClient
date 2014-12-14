@@ -9,4 +9,42 @@
 @implementation MABYT3_Transcript {
 
 }
+
+
+- (id)init {
+
+   self = [super init];
+   if (self) {
+      _kind = @"youtube#transcript";
+      _identifier = @"";
+
+   }
+   return self;
+}
+
+
+- (id)initFromDictionary:(NSDictionary *)dict {
+
+   self = [super init];
+   if (self) {
+      _kind = @"youtube#transcript";
+      _identifier = @"";
+
+//<text ="0.11" dur="1.34">Today I want to answer one of your questions</text>      
+      if ([dict objectForKey:@"id"]) {
+         _identifier = [dict objectForKey:@"id"];
+      }
+
+      if ([dict objectForKey:@"start"]) {
+         _start = [dict objectForKey:@"start"];
+      }
+      if ([dict objectForKey:@"dur"]) {
+         _dur = [dict objectForKey:@"dur"];
+      }
+
+
+   }
+   return self;
+}
+
 @end

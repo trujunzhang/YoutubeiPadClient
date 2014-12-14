@@ -656,6 +656,25 @@ static GYoutubeHelper * instance = nil;
              completion:^(YoutubeResponseInfo * responseInfo, NSError * error) {
                  if (responseInfo) {
 
+
+                 } else {
+                    NSLog(@"ERROR: %@", error);
+                 }
+             }];
+}
+
+
+- (void)fetchTranscriptForVideoWithVideoId {
+
+   NSString * videoId = @"boBex_v3_eA";
+
+   NSURLSessionDataTask * task =
+    [[MABYT3_VideoGoogleRequest sharedInstance]
+     fetchCaptainTracks:videoId
+             completion:^(YoutubeResponseInfo * responseInfo, NSError * error) {
+                 if (responseInfo) {
+
+
                  } else {
                     NSLog(@"ERROR: %@", error);
                  }

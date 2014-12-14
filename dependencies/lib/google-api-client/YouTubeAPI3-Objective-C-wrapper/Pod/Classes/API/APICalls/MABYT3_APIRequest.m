@@ -30,7 +30,7 @@
 
 @implementation MABYT3_VideoGoogleRequest
 
-//http://video.google.com/timedtext?type=list&tlangs=1&v=boBex_v3_eA
+
 + (MABYT3_VideoGoogleRequest *)sharedInstance {
    static MABYT3_VideoGoogleRequest * _sharedClient = nil;
    static dispatch_once_t onceToken;
@@ -56,7 +56,7 @@
 }
 
 
-//http://video.google.com/timedtext?type=list&v=P3hY1eagq88
+//http://video.google.com/timedtext?type=list&tlangs=1&v=boBex_v3_eA
 - (NSURLSessionDataTask *)fetchCaptainTracks:(NSString *)videoId completion:(MABYoutubeResponseBlock)completion {
    NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
 
@@ -92,6 +92,47 @@
 }
 
 
+//http://video.google.com/timedtext?type=track&v=boBex_v3_eA&name=&lang=en
+- (NSURLSessionDataTask *)fetchVideoTranscript:(NSString *)videoId completion:(MABYoutubeResponseBlock)completion {
+   NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
+
+   [dictionary setObject:videoId forKey:@"v"];
+   [dictionary setObject:@"track" forKey:@"type"];
+   [dictionary setObject:@"" forKey:@"name"];
+   [dictionary setObject:@"en" forKey:@"lang"];
+
+   NSURLSessionDataTask * task = [self GET:@"/timedtext"
+                                parameters:dictionary
+                                   success:^(NSURLSessionDataTask * task, id responseObject) {
+                                       NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *) task.response;
+
+                                       if (httpResponse.statusCode == 200) {
+                                          YoutubeResponseInfo * responseInfo = [self parseVideoTranscriptWithData:responseObject];
+                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                              completion(responseInfo, nil);
+                                          });
+                                       } else {
+                                          NSError * error = [YoutubeParser getError:responseObject
+                                                                           httpresp:httpResponse];
+                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                              completion(nil, error);
+                                          });
+                                       }
+
+                                   } failure:^(NSURLSessionDataTask * task, NSError * error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(nil, error);
+        });
+    }];
+
+   return task;
+}
+
+
+#pragma mark -
+#pragma mark
+
+
 - (YoutubeResponseInfo *)parseVideoTranscriptListWithData:(NSData *)data {
    SHXMLParser * parser = [[SHXMLParser alloc] init];
    NSDictionary * dict = [parser parseData:data];
@@ -103,6 +144,20 @@
 
 
    return [YoutubeResponseInfo infoWithArray:transcriptList.trackList pageToken:nil];
+}
+
+
+- (YoutubeResponseInfo *)parseVideoTranscriptWithData:(NSData *)data {
+   SHXMLParser * parser = [[SHXMLParser alloc] init];
+   NSDictionary * dict = [parser parseData:data];
+
+   MABYT3_Transcript * transcriptList = [[MABYT3_Transcript alloc] init];
+   if ([dict objectForKey:@"transcript"]) {
+      transcriptList = [[MABYT3_Transcript alloc] initFromDictionary:dict[@"transcript"]];
+   }
+
+
+   return [YoutubeResponseInfo infoWithArray:transcriptList.textList pageToken:nil];
 }
 
 @end
