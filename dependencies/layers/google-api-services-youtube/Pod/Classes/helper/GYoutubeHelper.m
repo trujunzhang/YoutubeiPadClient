@@ -210,7 +210,8 @@ static GYoutubeHelper * instance = nil;
    self.isSignedIn = authentication.canAuthorize;
 
 //   [self fetchCaptionForVideoWithVideoId];// test
-   [self fetchTranscriptForVideoWithVideoId];//test
+//   [self fetchTranscriptForVideoWithVideoId];//test
+   [self fetchVideoInfoMetadataWithVideoId];//test
 
    if (self.isSignedIn) {
       [self getAuthUserInfo];
@@ -681,6 +682,29 @@ static GYoutubeHelper * instance = nil;
                       NSLog(@"ERROR: %@", error);
                    }
                }];
+}
+
+
+#pragma mark -
+#pragma mark
+
+
+- (void)fetchVideoInfoMetadataWithVideoId {
+
+   NSString * videoId = @"boBex_v3_eA";
+
+   NSURLSessionDataTask * task =
+    [[MABYT3_GetVideoInfoRequest sharedInstance]
+     fetchVideoInfoMetadata:videoId
+                 completion:^(YoutubeResponseInfo * responseInfo, NSError * error) {
+                     if (responseInfo) {
+                        NSMutableDictionary * dictionary = responseInfo.videoDictionary;
+
+                        NSString * debug = @"debug";
+                     } else {
+                        NSLog(@"ERROR: %@", error);
+                     }
+                 }];
 }
 
 

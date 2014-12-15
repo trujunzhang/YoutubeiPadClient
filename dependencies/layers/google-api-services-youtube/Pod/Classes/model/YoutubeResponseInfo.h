@@ -11,6 +11,9 @@
 
 @interface YoutubeResponseInfo : NSObject
 
+// video metadata
+@property(nonatomic, strong) NSMutableDictionary * videoDictionary;
+
 // subtitle
 @property(nonatomic, strong) NSString * subtitleString;
 
@@ -20,6 +23,9 @@
 
 - (instancetype)initWithArray:(NSMutableArray *)array pageToken:(NSString *)pageToken;
 - (instancetype)initWithSubtitleString:(NSString *)subtitleString;
+- (instancetype)initWithVideoDictionary:(NSMutableDictionary *)videoDictionary;
++ (instancetype)infoWithVideoDictionary:(NSMutableDictionary *)videoDictionary;
+
 + (instancetype)infoWithSubtitleString:(NSString *)subtitleString;
 
 + (instancetype)infoWithArray:(NSMutableArray *)array pageToken:(NSString *)pageToken;

@@ -13,6 +13,7 @@
 #import "YoutubeParser.h"
 #import "XMLDictionary.h"
 #import "MABYT3_ConvertTranscriptToSrt.h"
+#import "HCYoutubeParser.h"
 
 
 @implementation MABYT3_YoutubeRequest
@@ -165,11 +166,11 @@
 @end
 
 
-@implementation MABYT3_CaptainRequest
+@implementation MABYT3_GetVideoInfoRequest
 
-//https://www.youtube.com/api/timedtext?sparams=caps%2Cv%2Cexpire&caps=&hl=en_US&v=XraeBDMm2PM&type=track&lang=es&name=Spanish+%28es%29&kind=&fmt=1&key=AIzaSyD3P0pZd-yJY67sjcL9dQ_mp2Yagrihf9E
-+ (MABYT3_CaptainRequest *)sharedInstance {
-   static MABYT3_CaptainRequest * _sharedClient = nil;
+//https://www.youtube.com/get_video_info?hl=en&video_id=MVt32qoyhi0&eurl=&el=embedded&gl=US&ps=default
++ (MABYT3_GetVideoInfoRequest *)sharedInstance {
+   static MABYT3_GetVideoInfoRequest * _sharedClient = nil;
    static dispatch_once_t onceToken;
    dispatch_once(&onceToken, ^{
        NSURL * baseURL = [NSURL URLWithString:@"https://www.youtube.com/"];
@@ -183,8 +184,8 @@
 
        [config setURLCache:cache];
 
-       _sharedClient = [[MABYT3_CaptainRequest alloc] initWithBaseURL:baseURL
-                                                 sessionConfiguration:config];
+       _sharedClient = [[MABYT3_GetVideoInfoRequest alloc] initWithBaseURL:baseURL
+                                                      sessionConfiguration:config];
        _sharedClient.responseSerializer = [AFHTTPResponseSerializer serializer];
 
    });
@@ -193,19 +194,23 @@
 }
 
 
-- (NSURLSessionDataTask *)fetchCaptainTracks:(NSMutableDictionary *)parameters completion:(MABYoutubeResponseBlock)completion {
-   NSMutableDictionary * dictionary = [self commonDictionary:parameters maxResultsString:nil];
+//https://www.youtube.com/get_video_info?hl=en&video_id=MVt32qoyhi0&eurl=&el=embedded&gl=US&ps=default
+//http://www.youtube.com/get_video_info?video_id=82urkb3mJaQ
+- (NSURLSessionDataTask *)fetchVideoInfoMetadata:(NSString *)videoId completion:(MABYoutubeResponseBlock)completion {
+   NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
 
-   NSURLSessionDataTask * task = [self GET:@"/api/timedtext"
+   [dictionary setObject:videoId forKey:@"video_id"];
+
+   NSURLSessionDataTask * task = [self GET:@"/get_video_info"
                                 parameters:dictionary
                                    success:^(NSURLSessionDataTask * task, id responseObject) {
                                        NSHTTPURLResponse * httpResponse = (NSHTTPURLResponse *) task.response;
 
                                        if (httpResponse.statusCode == 200) {
-//                                          YoutubeResponseInfo * responseInfo = [self parseVideoListWithData:responseObject];
-//                                          dispatch_async(dispatch_get_main_queue(), ^{
-//                                              completion(responseInfo, nil);
-//                                          });
+                                          YoutubeResponseInfo * responseInfo = [self parseVideoInfoMetadataWithData:responseObject];
+                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                              completion(responseInfo, nil);
+                                          });
                                        } else {
                                           NSError * error = [YoutubeParser getError:responseObject
                                                                            httpresp:httpResponse];
@@ -221,6 +226,47 @@
     }];
 
    return task;
+}
+
+
+#pragma mark -
+#pragma mark
+
+
+- (YoutubeResponseInfo *)parseVideoInfoMetadataWithData:(NSData *)data {
+   NSString * responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+
+   NSMutableDictionary * parts = [responseString dictionaryFromQueryStringComponents];
+
+   NSMutableDictionary * videoDictionary = [NSMutableDictionary dictionary];
+
+   if (parts) {
+
+      NSString * fmtStreamMapString = [[parts objectForKey:@"url_encoded_fmt_stream_map"] objectAtIndex:0];
+      NSArray * fmtStreamMapArray = [fmtStreamMapString componentsSeparatedByString:@","];
+
+      for (NSString * videoEncodedString in fmtStreamMapArray) {
+         NSMutableDictionary * videoComponents = [videoEncodedString dictionaryFromQueryStringComponents];
+         NSString * type = [[[videoComponents objectForKey:@"type"] objectAtIndex:0] stringByDecodingURLFormat];
+         NSString * signature = nil;
+         if ([videoComponents objectForKey:@"sig"]) {
+            signature = [[videoComponents objectForKey:@"sig"] objectAtIndex:0];
+         }
+
+         if ([type rangeOfString:@"mp4"].length > 0) {
+            NSString * url = [[[videoComponents objectForKey:@"url"] objectAtIndex:0] stringByDecodingURLFormat];
+            url = [NSString stringWithFormat:@"%@&signature=%@", url, signature];
+
+            NSString * quality = [[[videoComponents objectForKey:@"quality"] objectAtIndex:0] stringByDecodingURLFormat];
+
+            NSLog(@"Found detailVideo for quality: %@", quality);
+            [videoDictionary setObject:url forKey:quality];
+         }
+      }
+   }
+
+
+   return [YoutubeResponseInfo infoWithVideoDictionary:videoDictionary];
 }
 
 

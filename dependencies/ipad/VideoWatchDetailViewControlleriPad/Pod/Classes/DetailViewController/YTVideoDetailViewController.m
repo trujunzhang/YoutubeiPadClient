@@ -57,8 +57,8 @@
    // Do any additional setup after loading the view, typically from a nib.
    [self initViewControllers];
 
-   if (debugCollectionViewToDetail == NO)
-      [self setupPlayer:self.videoPlayViewContainer];  //used
+//   if (debugCollectionViewToDetail == NO)
+   [self setupPlayer:self.videoPlayViewContainer];  //used
 
    self.title = [YoutubeParser getVideoSnippetTitle:_detailVideo];
 
@@ -198,7 +198,6 @@
    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
    _youTubeVideo = [[YKYouTubeVideo alloc] initWithVideoId:[YoutubeParser getWatchVideoId:_detailVideo]];
 
-   //Fetch thumbnail
    [_youTubeVideo parseWithCompletion:^(NSError * error) {
        //Then play (make sure that you have called parseWithCompletion before calling this method)
        [_youTubeVideo playInView:pView withQualityOptions:YKQualityLow];

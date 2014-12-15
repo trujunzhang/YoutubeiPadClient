@@ -47,11 +47,10 @@ static NSUInteger search_maxResults = 20;
 @end
 
 
-@interface MABYT3_CaptainRequest : MABYT3_YoutubeRequest
+@interface MABYT3_GetVideoInfoRequest : MABYT3_YoutubeRequest
 
-@property(nonatomic, strong) NSURLSessionDataTask * lastTask;
-+ (MABYT3_CaptainRequest *)sharedInstance;
-- (NSURLSessionDataTask *)fetchCaptainTracks:(NSMutableDictionary *)parameters completion:(MABYoutubeResponseBlock)completion;
++ (MABYT3_GetVideoInfoRequest *)sharedInstance;
+- (NSURLSessionDataTask *)fetchVideoInfoMetadata:(NSString *)videoId completion:(MABYoutubeResponseBlock)completion;
 
 @end
 
