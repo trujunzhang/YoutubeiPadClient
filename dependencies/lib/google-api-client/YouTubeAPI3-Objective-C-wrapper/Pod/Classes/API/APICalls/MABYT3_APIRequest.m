@@ -151,10 +151,9 @@
    XMLDictionaryParser * parser = [[XMLDictionaryParser alloc] init];
    NSDictionary * dict = [parser dictionaryWithData:data];
 
-   if ([dict objectForKey:@"transcript"]) {
-      NSDictionary * transcriptionDict = [dict objectForKey:@"transcript"];
-      if ([transcriptionDict objectForKey:@"text"]) {
-         NSArray * subDics = [transcriptionDict objectForKey:@"text"];
+   if (dict) {
+      if ([dict objectForKey:@"text"]) {
+         NSArray * subDics = [dict objectForKey:@"text"];
          return [YoutubeResponseInfo infoWithArray:subDics pageToken:nil];
       }
    }
