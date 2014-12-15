@@ -12,7 +12,7 @@
 }
 
 
-- (NSString *)convertToSrt:(NSMutableArray *)subDics {
++ (NSString *)convertToSrt:(NSMutableArray *)subDics {
    NSString * subtitle = [[NSString alloc] init];
 
    NSMutableArray * subItems = [NSMutableArray arrayWithCapacity:[subDics count]];
@@ -29,8 +29,9 @@
 
    for (NSUInteger i = 0; i < [subItems count]; ++i) {
       SYSubtitleItem * subItem = subItems[i];
-      NSString * subString = [subItem srtStringWithItemNumber:i];
-      [subtitle addString:[subString dataUsingEncoding:NSUTF8StringEncoding]];
+      NSString * subString = [subItem srtStringWithItemNumber:i + 1];
+
+      subtitle = [subtitle addString:subString];
    }
 
    return subtitle;

@@ -12,6 +12,7 @@
 #import "YoutubeResponseInfo.h"
 #import "YoutubeParser.h"
 #import "XMLDictionary.h"
+#import "MABYT3_ConvertTranscriptToSrt.h"
 
 
 @implementation MABYT3_YoutubeRequest
@@ -151,14 +152,13 @@
    XMLDictionaryParser * parser = [[XMLDictionaryParser alloc] init];
    NSDictionary * dict = [parser dictionaryWithData:data];
 
-   if (dict) {
-      if ([dict objectForKey:@"text"]) {
-         NSArray * subDics = [dict objectForKey:@"text"];
-         return [YoutubeResponseInfo infoWithArray:subDics pageToken:nil];
-      }
+   NSString * convertToSrt = nil;
+
+   if (dict && [dict objectForKey:@"text"]) {
+      convertToSrt = [MABYT3_ConvertTranscriptToSrt convertToSrt:[dict objectForKey:@"text"]];
    }
 
-   return [[YoutubeResponseInfo alloc] init];
+   return [YoutubeResponseInfo infoWithSubtitleString:convertToSrt];
 }
 
 

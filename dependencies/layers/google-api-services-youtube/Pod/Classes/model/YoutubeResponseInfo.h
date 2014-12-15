@@ -8,11 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface YoutubeResponseInfo : NSObject
 
+// subtitle
+@property(nonatomic, strong) NSString * subtitleString;
+
+// list
 @property(nonatomic, strong) NSMutableArray * array;
 @property(nonatomic, copy) NSString * pageToken;
+
 - (instancetype)initWithArray:(NSMutableArray *)array pageToken:(NSString *)pageToken;
+- (instancetype)initWithSubtitleString:(NSString *)subtitleString;
++ (instancetype)infoWithSubtitleString:(NSString *)subtitleString;
+
 + (instancetype)infoWithArray:(NSMutableArray *)array pageToken:(NSString *)pageToken;
 
 @end

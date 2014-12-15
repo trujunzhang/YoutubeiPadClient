@@ -674,10 +674,9 @@ static GYoutubeHelper * instance = nil;
      fetchVideoTranscript:videoId
                completion:^(YoutubeResponseInfo * responseInfo, NSError * error) {
                    if (responseInfo) {
-                      NSMutableArray * array = responseInfo.array;
+                      NSString * subtitleString = responseInfo.subtitleString;
 
                       NSString * debug = @"debug";
-
                    } else {
                       NSLog(@"ERROR: %@", error);
                    }

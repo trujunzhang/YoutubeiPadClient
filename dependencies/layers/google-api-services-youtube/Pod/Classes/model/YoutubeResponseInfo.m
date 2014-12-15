@@ -22,6 +22,21 @@
 }
 
 
+- (instancetype)initWithSubtitleString:(NSString *)subtitleString {
+   self = [super init];
+   if (self) {
+      self.subtitleString = subtitleString;
+   }
+
+   return self;
+}
+
+
++ (instancetype)infoWithSubtitleString:(NSString *)subtitleString {
+   return [[self alloc] initWithSubtitleString:subtitleString];
+}
+
+
 - (instancetype)initWithArray:(NSMutableArray *)array pageToken:(NSString *)pageToken {
    self = [super init];
    if (self) {
