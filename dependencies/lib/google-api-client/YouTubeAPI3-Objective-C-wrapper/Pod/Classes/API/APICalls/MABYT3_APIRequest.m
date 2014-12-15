@@ -11,7 +11,7 @@
 #import "GYoutubeRequestInfo.h"
 #import "YoutubeResponseInfo.h"
 #import "YoutubeParser.h"
-#import "SHXMLParser.h"
+#import "XMLDictionary.h"
 
 
 @implementation MABYT3_YoutubeRequest
@@ -134,12 +134,12 @@
 
 
 - (YoutubeResponseInfo *)parseVideoTranscriptListWithData:(NSData *)data {
-   SHXMLParser * parser = [[SHXMLParser alloc] init];
-   NSDictionary * dict = [parser parseData:data];
+   XMLDictionaryParser * parser = [[XMLDictionaryParser alloc] init];
+   NSDictionary * dict = [parser dictionaryWithData:data];
 
    MABYT3_TranscriptList * transcriptList = [[MABYT3_TranscriptList alloc] init];
-   if ([dict objectForKey:@"transcript_list"]) {
-      transcriptList = [[MABYT3_TranscriptList alloc] initFromDictionary:dict[@"transcript_list"]];
+   if (dict) {
+      transcriptList = [[MABYT3_TranscriptList alloc] initFromDictionary:dict];
    }
 
 
@@ -148,17 +148,20 @@
 
 
 - (YoutubeResponseInfo *)parseVideoTranscriptWithData:(NSData *)data {
-   SHXMLParser * parser = [[SHXMLParser alloc] init];
-   NSDictionary * dict = [parser parseData:data];
+   XMLDictionaryParser * parser = [[XMLDictionaryParser alloc] init];
+   NSDictionary * dict = [parser dictionaryWithData:data];
 
-   MABYT3_Transcript * transcriptList = [[MABYT3_Transcript alloc] init];
    if ([dict objectForKey:@"transcript"]) {
-      transcriptList = [[MABYT3_Transcript alloc] initFromDictionary:dict[@"transcript"]];
+      NSDictionary * transcriptionDict = [dict objectForKey:@"transcript"];
+      if ([transcriptionDict objectForKey:@"text"]) {
+         NSArray * subDics = [transcriptionDict objectForKey:@"text"];
+         return [YoutubeResponseInfo infoWithArray:subDics pageToken:nil];
+      }
    }
 
-
-   return [YoutubeResponseInfo infoWithArray:transcriptList.textList pageToken:nil];
+   return [[YoutubeResponseInfo alloc] init];
 }
+
 
 @end
 

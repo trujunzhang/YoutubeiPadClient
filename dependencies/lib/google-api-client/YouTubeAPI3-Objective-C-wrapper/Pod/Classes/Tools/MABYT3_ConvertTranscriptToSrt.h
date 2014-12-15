@@ -8,4 +8,5 @@
 
 @interface MABYT3_ConvertTranscriptToSrt : NSObject
 
+- (NSString *)convertToSrt:(NSMutableArray *)subDics;
 @end

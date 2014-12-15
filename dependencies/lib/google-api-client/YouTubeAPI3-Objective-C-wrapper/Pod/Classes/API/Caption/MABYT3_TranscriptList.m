@@ -35,8 +35,8 @@
 
       _trackList = [[NSMutableArray alloc] init];
 
-      if ([dict objectForKey:@"docid"]) {
-         _identifier = [dict objectForKey:@"docid"];
+      if ([dict objectForKey:@"_docid"]) {
+         _identifier = [dict objectForKey:@"_docid"];
       }
 
       if ([dict objectForKey:@"track"]) {

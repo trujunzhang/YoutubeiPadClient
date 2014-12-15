@@ -35,27 +35,27 @@
       _lang_default = NO;
       _cantran = NO;
 
-      if ([dict objectForKey:@"id"]) {
-         _identifier = [dict objectForKey:@"id"];
+      if ([dict objectForKey:@"_id"]) {
+         _identifier = [dict objectForKey:@"_id"];
       }
 
-      if ([dict objectForKey:@"name"]) {
-         _name = [dict objectForKey:@"name"];
+      if ([dict objectForKey:@"_name"]) {
+         _name = [dict objectForKey:@"_name"];
       }
-      if ([dict objectForKey:@"lang_code"]) {
-         _lang_code = [dict objectForKey:@"lang_code"];
+      if ([dict objectForKey:@"_lang_code"]) {
+         _lang_code = [dict objectForKey:@"_lang_code"];
       }
-      if ([dict objectForKey:@"lang_original"]) {
-         _lang_original = [dict objectForKey:@"lang_original"];
+      if ([dict objectForKey:@"_lang_original"]) {
+         _lang_original = [dict objectForKey:@"_lang_original"];
       }
-      if ([dict objectForKey:@"lang_translated"]) {
-         _lang_translated = [dict objectForKey:@"lang_translated"];
+      if ([dict objectForKey:@"_lang_translated"]) {
+         _lang_translated = [dict objectForKey:@"_lang_translated"];
       }
-      if ([dict objectForKey:@"lang_default"]) {
-         _lang_default = [dict objectForKey:@"lang_default"];
+      if ([dict objectForKey:@"_lang_default"]) {
+         _lang_default = [dict objectForKey:@"_lang_default"];
       }
-      if ([dict objectForKey:@"cantran"]) {
-         _cantran = [dict objectForKey:@"cantran"];
+      if ([dict objectForKey:@"_cantran"]) {
+         _cantran = [dict objectForKey:@"_cantran"];
       }
 
    }

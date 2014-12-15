@@ -38,7 +38,7 @@ target 'mxAsTubeiPad', :exclusive => true do
 
   pod 'ASImageResize', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/ASImageResize'
 
-  pod 'SHXMLParser', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/SHXMLParser'
+  pod 'XMLDictionary', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/XMLDictionary'
 
   # ________________collect common library___________________
   pod "IOS_Collection_Code", :path => "../dependencies/collect/IOS_Collection_Code"

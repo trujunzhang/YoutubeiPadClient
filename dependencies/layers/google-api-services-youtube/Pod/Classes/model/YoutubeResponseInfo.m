@@ -11,6 +11,17 @@
 
 @implementation YoutubeResponseInfo
 
+- (instancetype)init {
+   self = [super init];
+   if (self) {
+      self.array = nil;
+      self.pageToken = nil;
+   }
+
+   return self;
+}
+
+
 - (instancetype)initWithArray:(NSMutableArray *)array pageToken:(NSString *)pageToken {
    self = [super init];
    if (self) {

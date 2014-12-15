@@ -59,5 +59,10 @@ Pod::Spec.new do |s|
     sub.source_files = 'Pod/Classes/AsyncDisplayKitCatelog/*.{h,m}'
   end
 
+  s.subspec 'uikit-Category' do |sub|
+    sub.source_files = 'Pod/Classes/uikit-Category/*.{h,m}'
+  end
+
+
 end
 

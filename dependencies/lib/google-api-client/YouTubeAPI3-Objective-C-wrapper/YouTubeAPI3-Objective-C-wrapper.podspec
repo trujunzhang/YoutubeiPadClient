@@ -24,4 +24,10 @@ Pod::Spec.new do |s|
     sub.source_files = 'Pod/Classes/Tools/*.{h,m}'
   end
 
+  s.subspec 'TranscriptToSRT' do |sub|
+    sub.source_files = 'Pod/Classes/TranscriptToSRT/*.{h,m}','Pod/Classes/TranscriptToSRT/MWFeedParser/*.{h,m}'
+  end
+
+
+
 end
