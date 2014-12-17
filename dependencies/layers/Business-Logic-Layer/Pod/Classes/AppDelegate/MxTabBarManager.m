@@ -79,13 +79,12 @@
 #pragma mark GYoutubeHelperDelegate
 
 
-- (void)FetchYoutubeSubscriptionListCompletion:(GYoutubeAuthUser *)user {
-   [user getTableRows];
-   [_leftViewController insertSubscriptionRowsAfterFetching:user];
+- (void)callbackAfterFetchingAuthorSubscriptionListCompletion:(NSArray *)subscriptionList {
+   [_leftViewController insertSubscriptionRowsAfterFetching:subscriptionList];
 }
 
 
-- (void)FetchYoutubeChannelCompletion:(YoutubeAuthInfo *)info {
+- (void)callbackUpdateYoutubeChannelCompletion:(YoutubeAuthInfo *)info {
    [_leftViewController refreshChannelInfo:info];
 }
 

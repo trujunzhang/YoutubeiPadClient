@@ -249,7 +249,7 @@ static GYoutubeHelper * instance = nil;
                     withThumbmailUrl:[YoutubeParser getAuthChannelSnippetThumbnailUrl:channel]
        ];
        self.youtubeAuthUser.channel = channel;
-       [self.delegate FetchYoutubeChannelCompletion:info];
+       [self.delegate callbackUpdateYoutubeChannelCompletion:info];
 
        // 2
        if (debugLeftMenuTapSubscription) {
@@ -299,8 +299,7 @@ static GYoutubeHelper * instance = nil;
 
 - (void)fetchAuthSubscriptionsList {
    YoutubeResponseBlock completion = ^(NSArray * array, NSObject * respObject) {
-       self.youtubeAuthUser.subscriptions = array;
-       [self.delegate FetchYoutubeSubscriptionListCompletion:self.youtubeAuthUser];
+       [self callbackAfterFetchingAuthorSubscriptionList:array];
    };
    ErrorResponseBlock error = ^(NSError * error) {
        NSString * debug = @"debug";
@@ -326,10 +325,14 @@ static GYoutubeHelper * instance = nil;
 }
 
 
+- (void)callbackAfterFetchingAuthorSubscriptionList:(NSArray *)array {
+   [self.delegate callbackAfterFetchingAuthorSubscriptionListCompletion:[self.youtubeAuthUser getTableRows:array]];
+}
+
+
 - (void)getUserSubscriptions:(id<GYoutubeHelperDelegate>)delegate {
    YoutubeResponseBlock completion = ^(NSArray * array, NSObject * respObject) {
-       self.youtubeAuthUser.subscriptions = array;
-       [delegate FetchYoutubeSubscriptionListCompletion:self.youtubeAuthUser];
+       [self callbackAfterFetchingAuthorSubscriptionList:array];
    };
    ErrorResponseBlock error = ^(NSError * error) {
        NSString * debug = @"debug";

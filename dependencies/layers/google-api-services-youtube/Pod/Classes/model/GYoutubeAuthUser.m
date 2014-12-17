@@ -18,16 +18,15 @@
    self = [super init];
    if (self) {
       self.channel = [[YTYouTubeAuthorChannel alloc] init];
-      self.subscriptions = [[NSArray alloc] init];
    }
 
    return self;
 }
 
 
-- (NSArray *)getTableRows {
+- (NSArray *)getTableRows:(NSArray *)subscriptionsList {
    NSMutableArray * rows = [[NSMutableArray alloc] init];
-   for (YTYouTubeSubscription * subscription in self.subscriptions) {
+   for (YTYouTubeSubscription * subscription in subscriptionsList) {
       NSString * title = [YoutubeParser getSubscriptionSnippetTitle:subscription];
       NSString * thumbnailsUrl = [YoutubeParser getSubscriptionSnippetThumbnailUrl:subscription];
       NSString * channelId = [YoutubeParser getChannelIdBySubscription:subscription];

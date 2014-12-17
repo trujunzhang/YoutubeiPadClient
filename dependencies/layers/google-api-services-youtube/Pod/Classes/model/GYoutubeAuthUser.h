@@ -7,17 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <google-api-services-youtube/YoutubeConstants.h>
 
 
 @interface GYoutubeAuthUser : NSObject {
 
 }
 
-@property(nonatomic, strong) YTYouTubeAuthorChannel * channel;
+@property(nonatomic, strong) id channel;
 
-@property(nonatomic, strong) NSArray * subscriptions;
-
-- (NSArray *)getTableRows;
+- (NSArray *)getTableRows:(NSArray *)subscriptionsList;
 
 @end

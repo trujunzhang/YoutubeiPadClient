@@ -189,7 +189,7 @@ static const int TABLE_WIDTH = 258;
 }
 
 
-- (void)insertSubscriptionRowsAfterFetching:(GYoutubeAuthUser *)user {
+- (void)insertSubscriptionRowsAfterFetching:(NSArray *)subscriptionList {
    [self makeDefaultTableSections];
    [self setupSlideTableViewWithAuthInfo:nil];
 

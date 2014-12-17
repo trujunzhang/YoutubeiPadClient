@@ -25,8 +25,8 @@ typedef void (^ErrorResponseBlock)(NSError * error);
 
 @optional
 
-- (void)FetchYoutubeSubscriptionListCompletion:(GYoutubeAuthUser *)user;
-- (void)FetchYoutubeChannelCompletion:(YoutubeAuthInfo *)info;
+- (void)callbackAfterFetchingAuthorSubscriptionListCompletion:(NSArray *)subscriptionList;
+- (void)callbackUpdateYoutubeChannelCompletion:(YoutubeAuthInfo *)info;
 
 @end
 

@@ -39,7 +39,7 @@
 
 
 - (void)defaultRefreshForSubscriptionList;
-- (void)insertSubscriptionRowsAfterFetching:(GYoutubeAuthUser *)user;
+- (void)insertSubscriptionRowsAfterFetching:(NSArray *)subscriptionList;
 - (void)refreshChannelInfo:(YoutubeAuthInfo *)info;
 - (void)setupTableViewExclusiveState;
 
