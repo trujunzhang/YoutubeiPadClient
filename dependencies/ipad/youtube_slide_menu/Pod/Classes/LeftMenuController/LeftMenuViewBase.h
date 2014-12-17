@@ -13,6 +13,9 @@
 @class YoutubeAuthInfo;
 @class LeftMenuItemTree;
 
+//static CGFloat ROW_HEIGHT = 42;
+static CGFloat ROW_HEIGHT = 42;
+
 
 @protocol LeftMenuViewBaseDelegate<NSObject>
 @optional
@@ -34,5 +37,9 @@
 - (void)defaultRefreshForSubscriptionList;
 - (void)insertSubscriptionRowsAfterFetching:(NSArray *)subscriptionList;
 - (void)refreshChannelInfo:(YoutubeAuthInfo *)info;
+
+- (void)leftMenuReloadTable;
+
+- (void)leftMenuUpdateSubscriptionSection:(NSArray *)subscriptionList;
 
 @end

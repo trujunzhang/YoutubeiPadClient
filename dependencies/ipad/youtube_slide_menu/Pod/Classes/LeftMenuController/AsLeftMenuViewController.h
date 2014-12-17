@@ -1,5 +1,5 @@
 //
-//  LeftMenuViewController.h
+//  AsLeftMenuViewController.h
 //  STCollapseTableViewDemo
 //
 //  Created by Thomas Dupont on 09/08/13.
@@ -10,8 +10,7 @@
 
 #import "LeftMenuViewBase.h"
 
-@interface LeftMenuViewController : LeftMenuViewBase
+@interface AsLeftMenuViewController : LeftMenuViewBase
 
 
-@property(nonatomic, strong) NSOperationQueue * nodeConstructionQueue;
 @end

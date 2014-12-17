@@ -20,7 +20,7 @@ static const int TABLE_WIDTH = 258;
 
 
 @interface LeftMenuViewBase ()<UserInfoViewSigningOutDelegate, UIAlertViewDelegate>
-@property(nonatomic, strong) ASTableView * baseTableView;
+@property(nonatomic, strong) UITableView * baseTableView;
 @property(nonatomic, strong) ASImageNode * imageNode;
 
 @end
@@ -177,12 +177,15 @@ static const int TABLE_WIDTH = 258;
 - (void)defaultRefreshForSubscriptionList {
    [self setupSlideTableViewWithAuthInfo:nil];
    [self makeDefaultTableSections];
+
+   [self leftMenuReloadTable];
 }
 
 
 - (void)removeWhenSignOut {
    [self setupSlideTableViewWithAuthInfo:nil];
 
+   [self leftMenuReloadTable];
 }
 
 
@@ -190,13 +193,9 @@ static const int TABLE_WIDTH = 258;
    if ([[GYoutubeHelper getInstance] isSignedIn] == NO)
       return;
 
-
    [LeftMenuItemTree reloadSubscriptionItemTree:subscriptionList inSectionArray:self.tableSectionArray];
-   [self.baseTableView reloadSections:[NSIndexSet indexSetWithIndex:1]
-                     withRowAnimation:YES];
 
-   // 2
-//   [self.baseTableView reloadData];
+   [self leftMenuUpdateSubscriptionSection:subscriptionList];
 
    // test
 //   if (debugLeftMenuTapSubscription) {
