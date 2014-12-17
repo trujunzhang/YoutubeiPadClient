@@ -7,6 +7,7 @@ target 'mxAsTubeiPad', :exclusive => true do
 
   pod 'Reveal-iOS-SDK'
   pod 'pop', '~> 1.0.7'
+  pod 'NSLogger', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/NSLogger'
 
 
   pod 'Regexer', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/Regexer'
