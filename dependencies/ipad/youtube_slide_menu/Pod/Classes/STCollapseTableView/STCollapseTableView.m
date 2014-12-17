@@ -82,7 +82,7 @@
    if (newDataSource != self.collapseDataSource) {
       self.collapseDataSource = newDataSource;
       [self.sectionsStates removeAllObjects];
-      [super setDataSource:self.collapseDataSource ? self : nil];
+      self.asyncDataSource = self.collapseDataSource ? self : nil;
    }
 }
 
@@ -90,7 +90,7 @@
 - (void)setDelegate:(id<ASTableViewDelegate>)newDelegate {
    if (newDelegate != self.collapseDelegate) {
       self.collapseDelegate = newDelegate;
-      [super setDelegate:self.collapseDelegate ? self : nil];
+      self.asyncDelegate = self.collapseDelegate ? self : nil;
    }
 }
 
@@ -163,7 +163,7 @@
          [self insertRowsAtIndexPaths:indexPathsToInsert withRowAnimation:UITableViewRowAnimationFade];
       }
       else {
-         [self reloadData];
+//         [self reloadData];
       }
    }
 }

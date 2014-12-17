@@ -19,7 +19,7 @@
 static const int TABLE_WIDTH = 258;
 
 
-@interface LeftMenuViewBase ()<UITableViewDataSource, UITableViewDelegate, UserInfoViewSigningOutDelegate, UIAlertViewDelegate>
+@interface LeftMenuViewBase ()<UserInfoViewSigningOutDelegate, UIAlertViewDelegate>
 @property(nonatomic, strong) UITableView * baseTableView;
 @property(nonatomic, strong) ASImageNode * imageNode;
 
@@ -210,20 +210,20 @@ static const int TABLE_WIDTH = 258;
    [self setupSlideTableViewWithAuthInfo:nil];
 
    // 2
-   [self.baseTableView reloadData];
+//   [self.baseTableView reloadData];
 
    //3
-   [self setupTableViewExclusiveState];
+//   [self setupTableViewExclusiveState];
 
    // test
-   if (debugLeftMenuTapSubscription) {
-      if (self.authUser.subscriptions.count > subscriptionIndex) {
-         YTYouTubeSubscription * subscription = self.authUser.subscriptions[subscriptionIndex];
-         NSString * title = [YoutubeParser getSubscriptionSnippetTitle:subscription];
-         [self.delegate endToggleLeftMenuEventForChannelPageWithChannelId:[YoutubeParser getChannelIdBySubscription:subscription]
-                                                                withTitle:title];
-      }
-   }
+//   if (debugLeftMenuTapSubscription) {
+//      if (self.authUser.subscriptions.count > subscriptionIndex) {
+//         YTYouTubeSubscription * subscription = self.authUser.subscriptions[subscriptionIndex];
+//         NSString * title = [YoutubeParser getSubscriptionSnippetTitle:subscription];
+//         [self.delegate endToggleLeftMenuEventForChannelPageWithChannelId:[YoutubeParser getChannelIdBySubscription:subscription]
+//                                                                withTitle:title];
+//      }
+//   }
 }
 
 

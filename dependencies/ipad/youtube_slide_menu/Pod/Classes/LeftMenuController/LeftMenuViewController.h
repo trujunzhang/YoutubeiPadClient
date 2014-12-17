@@ -15,7 +15,5 @@
 
 @interface LeftMenuViewController : LeftMenuViewBase
 
-@property(nonatomic, strong) NSOperationQueue * nodeConstructionQueue;
-
 
 @end
