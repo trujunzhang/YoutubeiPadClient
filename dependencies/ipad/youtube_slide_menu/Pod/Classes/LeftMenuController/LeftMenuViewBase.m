@@ -177,14 +177,11 @@ static const int TABLE_WIDTH = 258;
 - (void)defaultRefreshForSubscriptionList {
    [self setupSlideTableViewWithAuthInfo:nil];
    [self makeDefaultTableSections];
-
-   [self.baseTableView reloadData];
 }
 
 
 - (void)removeWhenSignOut {
    [self setupSlideTableViewWithAuthInfo:nil];
-
 
 }
 
@@ -192,6 +189,11 @@ static const int TABLE_WIDTH = 258;
 - (void)insertSubscriptionRowsAfterFetching:(NSArray *)subscriptionList {
    if ([[GYoutubeHelper getInstance] isSignedIn] == NO)
       return;
+
+
+   [LeftMenuItemTree reloadSubscriptionItemTree:subscriptionList inSectionArray:self.tableSectionArray];
+   [self.baseTableView reloadSections:[NSIndexSet indexSetWithIndex:1]
+                     withRowAnimation:YES];
 
    // 2
 //   [self.baseTableView reloadData];

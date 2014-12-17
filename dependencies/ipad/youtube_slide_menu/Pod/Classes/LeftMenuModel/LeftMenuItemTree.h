@@ -42,4 +42,5 @@ typedef NS_ENUM (NSUInteger, LeftMenuItemTreeType) {
 + (NSString *)getChannelIdUrlInRow:(NSArray *)array;
 + (YTPlaylistItemsType)getTypeInRow:(NSArray *)array;
 
++ (void)reloadSubscriptionItemTree:(NSArray *)subscriptionList inSectionArray:(NSArray *)sectionArray;
 @end

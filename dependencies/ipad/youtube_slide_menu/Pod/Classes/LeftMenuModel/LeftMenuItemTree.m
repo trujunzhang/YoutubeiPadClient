@@ -124,14 +124,23 @@
    return array[1];
 }
 
+
 + (NSString *)getChannelIdUrlInRow:(NSArray *)array {
    return array[1];
 }
-
 
 
 + (YTPlaylistItemsType)getTypeInRow:(NSArray *)array {
    return [array[2] intValue];
 }
 
+
++ (void)reloadSubscriptionItemTree:(NSArray *)subscriptionList inSectionArray:(NSArray *)sectionArray {
+   for (LeftMenuItemTree * itemTree in sectionArray) {
+      if (itemTree.itemType == LMenuTreeSubscriptions) {
+         itemTree.rowsArray = subscriptionList;
+      }
+   }
+
+}
 @end
