@@ -89,9 +89,7 @@ static CGFloat ROW_HEIGHT = 142;
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-   LeftMenuTableHeaderView * header = [self.headers objectAtIndex:section];
-
-   return header;
+   return [self.headers objectAtIndex:section];
 }
 
 

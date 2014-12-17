@@ -28,19 +28,11 @@
 @property(nonatomic, strong) NSMutableArray * headers;
 
 - (void)setCurrentTableView:(UITableView *)tableView;
-- (void)setupSlideTableViewWithAuthInfo:(YoutubeAuthInfo *)user;
-- (void)makeDefaultTableSections;
-- (UIView *)getUserHeaderView:(YoutubeAuthInfo *)user;
-
-- (void)bind:(UITableViewCell *)cell atSection:(NSInteger)section atRow:(NSInteger)row;
-
 
 @property(nonatomic, strong) id<LeftMenuViewBaseDelegate> delegate;
-
 
 - (void)defaultRefreshForSubscriptionList;
 - (void)insertSubscriptionRowsAfterFetching:(NSArray *)subscriptionList;
 - (void)refreshChannelInfo:(YoutubeAuthInfo *)info;
-- (void)setupTableViewExclusiveState;
 
 @end
