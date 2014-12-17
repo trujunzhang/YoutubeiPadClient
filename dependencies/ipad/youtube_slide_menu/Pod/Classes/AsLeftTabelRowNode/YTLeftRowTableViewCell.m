@@ -65,10 +65,14 @@
           return;
        }
        {
-          YTLeftRowTableViewCellNode * containerNode = [[YTLeftRowTableViewCellNode alloc] initWithNodeCellSize:self.featureImageSizeOptional
-                                                                                                      lineTitle:lineTitle
-                                                                                                    lineIconUrl:lineIconUrl
-                                                                                                  isRemoteImage:isRemoteImage];
+
+          YTLeftRowTableViewCellNode * containerNode =
+           [[YTLeftRowTableViewCellNode alloc]
+            initWithNodeCellSize:self.featureImageSizeOptional
+                       lineTitle:lineTitle
+                     lineIconUrl:lineIconUrl
+                   isRemoteImage:isRemoteImage];
+
           if (nodeConstructionOperation.cancelled)
              return;
 

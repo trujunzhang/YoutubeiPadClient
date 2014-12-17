@@ -36,5 +36,9 @@ Pod::Spec.new do |s|
     sub.source_files = 'Pod/Classes/STCollapseTableView/*.{h,m}'
   end
 
+  s.subspec 'AsTableCellNode' do |sub|
+    sub.source_files = 'Pod/Classes/AsTableCellNode/*.{h,m}'
+  end
+
 end
 

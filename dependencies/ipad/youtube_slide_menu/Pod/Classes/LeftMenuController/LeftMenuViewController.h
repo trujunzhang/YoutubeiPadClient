@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 #import "LeftMenuViewBase.h"
+
 @class STCollapseTableView;
-@class GYoutubeAuthUser;
 
 
 @interface LeftMenuViewController : LeftMenuViewBase

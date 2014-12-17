@@ -22,7 +22,7 @@ static NSString * const leftmenuIdentifier = @"LeftMenuViewIdentifier";
 static CGFloat ROW_HEIGHT = 42;
 
 
-@interface LeftMenuViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface LeftMenuViewController ()<ASTableViewDataSource, ASTableViewDelegate>
 @property(nonatomic, strong) STCollapseTableView * tableView;
 @end
 
