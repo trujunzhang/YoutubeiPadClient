@@ -31,19 +31,10 @@ static CGFloat ROW_HEIGHT = 142;
 @implementation LeftMenuViewController
 
 
-//- (void)setupTableViewExclusiveState {
-//   [self.tableView setExclusiveSections:NO];
-//   for (int i = 0; i < [self.tableSectionArray count]; i++) {
-//      [self.tableView openSection:i animated:NO];
-//   }
-//}
-
-
 - (instancetype)init {
    if (!(self = [super init]))
       return nil;
 
-   // 1
    self.tableView = [[ASTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; // KittenNode has its own separator
    self.tableView.asyncDataSource = self;
@@ -136,9 +127,7 @@ static CGFloat ROW_HEIGHT = 142;
 
 
 - (void)viewDidLoad {
-
    [self setCurrentTableView:self.tableView];
-
    [self defaultRefreshForSubscriptionList];
 
    [super viewDidLoad];

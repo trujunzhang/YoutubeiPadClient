@@ -33,7 +33,6 @@ static const int TABLE_WIDTH = 258;
    [super viewDidLoad];
 
    [self setupBackground];
-   self.placeholderImage = [self imageWithColor:[UIColor clearColor]];
 
    NSAssert(self.baseTableView, @"not found uitableview instance!");
 
@@ -214,9 +213,6 @@ static const int TABLE_WIDTH = 258;
    // 2
    [self.baseTableView reloadData];
 
-   //3
-//   [self setupTableViewExclusiveState];
-
    // test
 //   if (debugLeftMenuTapSubscription) {
 //      if (self.authUser.subscriptions.count > subscriptionIndex) {
@@ -231,23 +227,6 @@ static const int TABLE_WIDTH = 258;
 
 - (void)refreshChannelInfo:(YoutubeAuthInfo *)info {
    [self setupSlideTableViewWithAuthInfo:info];
-}
-
-
-#pragma mark -
-#pragma mark cell
-
-
-- (UIImage *)imageWithColor:(UIColor *)color {
-   CGRect rect = CGRectMake(0, 0, 32, 32);
-   // Create a 1 by 1 pixel context
-   UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
-   [color setFill];
-   UIRectFill(rect);   // Fill it with your color
-   UIImage * image = UIGraphicsGetImageFromCurrentImageContext();
-   UIGraphicsEndImageContext();
-
-   return image;
 }
 
 
