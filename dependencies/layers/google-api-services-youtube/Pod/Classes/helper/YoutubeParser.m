@@ -255,6 +255,11 @@
 }
 
 
++ (GTLYouTubeChannelContentDetailsRelatedPlaylists *)getAuthChannelRelatedPlaylists:(YTYouTubeAuthorChannel *)channel {
+   return channel.contentDetails.relatedPlaylists;
+}
+
+
 + (NSError *)getError:(NSData *)data httpresp:(NSHTTPURLResponse *)httpresp {
    NSError * error;
    NSError * e = nil;

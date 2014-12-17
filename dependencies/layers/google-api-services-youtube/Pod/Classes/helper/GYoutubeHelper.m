@@ -561,7 +561,8 @@ static GYoutubeHelper * instance = nil;
 
 - (void)fetchPlaylistItemsListWithRequestInfo:(GYoutubeRequestInfo *)info completion:(YoutubeResponseBlock)completion errorHandler:(ErrorResponseBlock)errorBlock {
 
-   [self fetchPlaylistItemsListWithPlaylists:self.youtubeAuthUser.channel.contentDetails.relatedPlaylists
+   [self fetchPlaylistItemsListWithPlaylists:
+     [YoutubeParser getAuthChannelRelatedPlaylists:self.youtubeAuthUser.channel]
                                  requestInfo:info
                            CompletionHandler:completion
                                 errorHandler:errorBlock

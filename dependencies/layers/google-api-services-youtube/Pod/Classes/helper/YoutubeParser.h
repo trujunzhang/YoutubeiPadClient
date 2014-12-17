@@ -19,6 +19,7 @@
 + (NSString *)timeFormatConvertToSecondsWithInteger:(NSUInteger)timeSecs;
 + (NSString *)timeFormatConvertToSeconds:(NSString *)timeSecs;
 
++ (GTLYouTubeChannelContentDetailsRelatedPlaylists *)getAuthChannelRelatedPlaylists:(YTYouTubeAuthorChannel *)channel;
 + (NSError *)getError:(NSData *)data httpresp:(NSHTTPURLResponse *)httpresp;
 
 + (NSString *)getChannelBrandingSettingsTitle:(YTYouTubeChannel *)channel;
