@@ -67,7 +67,7 @@ int step = 0;
       [indexPaths addObject:indexPath];
    }
 
-   [self.collectionView appendNodesWithIndexPaths:indexPaths];
+//   [self.collectionView appendNodesWithIndexPaths:indexPaths];
 }
 
 

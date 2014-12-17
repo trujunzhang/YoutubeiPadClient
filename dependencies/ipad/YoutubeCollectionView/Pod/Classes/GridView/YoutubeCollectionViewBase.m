@@ -87,7 +87,7 @@
 
 - (void)setUICollectionView:(UICollectionView *)collectionView {
    self.baseCollectionView = collectionView;
-   self.baseCollectionView.backgroundColor = [ClientUIHelper mainUIBackgroundColor];
+//   self.baseCollectionView.backgroundColor = [ClientUIHelper mainUIBackgroundColor];
 
    self.baseCollectionView.showsVerticalScrollIndicator = NO;
    self.baseCollectionView.directionalLockEnabled = YES;

@@ -51,7 +51,7 @@
       [indexPaths addObject:indexPath];
    }
 
-   [self.collectionView appendNodesWithIndexPaths:indexPaths];
+//   [self.collectionView appendNodesWithIndexPaths:indexPaths];
 }
 
 
