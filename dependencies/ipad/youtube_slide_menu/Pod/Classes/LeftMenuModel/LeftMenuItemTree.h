@@ -27,5 +27,12 @@ typedef NS_ENUM (NSUInteger, LeftMenuItemTreeType) {
 
 
 - (instancetype)initWithTitle:(NSString *)string itemType:(LeftMenuItemTreeType)type rowsArray:(NSArray *)array hideTitle:(BOOL)title remoteImage:(BOOL)image;
+
++ (instancetype)getCategoriesMenuItemTree;
+
++ (instancetype)getSignInMenuItemTree;
++ (instancetype)getEmptySubscriptionsMenuItemTree;
 + (NSArray *)cellIdentifierArray;
++ (NSArray *)defaultCategories;
++ (NSArray *)signUserCategories;
 @end

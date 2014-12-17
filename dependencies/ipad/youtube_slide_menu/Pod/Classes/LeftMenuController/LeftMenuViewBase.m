@@ -79,38 +79,20 @@ static const int TABLE_WIDTH = 258;
 }
 
 
-- (void)setupViewController:(NSArray *)subscriptionsArray {
-   LeftMenuItemTree * defaultMenuItemTree =
-    [[LeftMenuItemTree alloc] initWithTitle:@"  Categories"
-                                   itemType:LMenuTreeCategories
-                                  rowsArray:[self defaultCategories]
-                                  hideTitle:NO
-                                remoteImage:NO];
+- (void)makeDefaultTableSections {
+   // 1  make section array
+   LeftMenuItemTree * categoriesMenuItemTree = [LeftMenuItemTree getCategoriesMenuItemTree];
 
-
-   self.tableSectionArray = @[ defaultMenuItemTree ];
+   self.tableSectionArray = @[ categoriesMenuItemTree ];
 
    if ([[GYoutubeHelper getInstance] isSignedIn]) {
-      LeftMenuItemTree * signUserMenuItemTree =
-       [[LeftMenuItemTree alloc] initWithTitle:@"  "
-                                      itemType:LMenuTreeUser
-                                     rowsArray:[self signUserCategories]
-                                     hideTitle:YES
-                                   remoteImage:NO];
-
-      LeftMenuItemTree * subscriptionsMenuItemTree =
-       [[LeftMenuItemTree alloc] initWithTitle:@"  Subscriptions"
-                                      itemType:LMenuTreeSubscriptions
-                                     rowsArray:subscriptionsArray
-                                     hideTitle:NO
-                                   remoteImage:YES];
-
-      self.tableSectionArray = @[ signUserMenuItemTree, subscriptionsMenuItemTree, defaultMenuItemTree ];// used
+      LeftMenuItemTree * signUserMenuItemTree = [LeftMenuItemTree getSignInMenuItemTree];
+      LeftMenuItemTree * subscriptionsMenuItemTree = [LeftMenuItemTree getEmptySubscriptionsMenuItemTree];
+      self.tableSectionArray = @[ signUserMenuItemTree, subscriptionsMenuItemTree, categoriesMenuItemTree ];// used
    }
 
-
+   // 2 section header titles
    self.headers = [[NSMutableArray alloc] init];
-
    for (int i = 0; i < [self.tableSectionArray count]; i++) {
       LeftMenuItemTree * menuItemTree = self.tableSectionArray[i];
 
@@ -200,14 +182,15 @@ static const int TABLE_WIDTH = 258;
 
 
 - (void)defaultRefreshForSubscriptionList {
-   [self refreshChannelSubscriptionList:[[GYoutubeAuthUser alloc] init]];
+   [self makeDefaultTableSections];
+   [self setupSlideTableViewWithAuthInfo:nil];
+
+   [self.baseTableView reloadData];
 }
 
 
-- (void)refreshChannelSubscriptionList:(GYoutubeAuthUser *)user {
-   self.authUser = user;
-   // 1
-   [self setupViewController:[user getTableRows]];
+- (void)insertSubscriptionRowsAfterFetching:(GYoutubeAuthUser *)user {
+   [self makeDefaultTableSections];
    [self setupSlideTableViewWithAuthInfo:nil];
 
    // 2
@@ -227,51 +210,6 @@ static const int TABLE_WIDTH = 258;
 
 - (void)refreshChannelInfo:(YoutubeAuthInfo *)info {
    [self setupSlideTableViewWithAuthInfo:info];
-}
-
-
-#pragma mark -
-#pragma mark View methods
-
-
-- (NSArray *)defaultCategories {
-   NSArray * array = @[
-    @[ @"Autos & Vehicles", @"Autos", [[NSNumber alloc] initWithInt:kUploadsTag] ],
-    @[ @"Comedy", @"Comedy", [[NSNumber alloc] initWithInt:kUploadsTag] ],
-    @[ @"Education", @"Education", [[NSNumber alloc] initWithInt:kUploadsTag] ],
-    @[ @"Entertainment", @"Entertainment", [[NSNumber alloc] initWithInt:kUploadsTag] ],
-    @[ @"File & Animation", @"Film", [[NSNumber alloc] initWithInt:kUploadsTag] ],
-    @[ @"Gaming", @"Games", [[NSNumber alloc] initWithInt:kUploadsTag] ],
-    @[ @"Howto & Style", @"Howto", [[NSNumber alloc] initWithInt:kUploadsTag] ],
-    @[ @"Music", @"Music", [[NSNumber alloc] initWithInt:kUploadsTag] ],
-    @[ @"News & Politics", @"News", [[NSNumber alloc] initWithInt:kUploadsTag] ],
-    @[ @"Nonprofits & Activism", @"Nonprofit", [[NSNumber alloc] initWithInt:kUploadsTag] ],
-    @[ @"People & Blogs", @"People", [[NSNumber alloc] initWithInt:kUploadsTag] ],
-    @[ @"Pets & Animals", @"Animals", [[NSNumber alloc] initWithInt:kUploadsTag] ],
-    @[ @"Science & Technology", @"Tech", [[NSNumber alloc] initWithInt:kUploadsTag] ],
-    @[ @"Sports", @"Sports", [[NSNumber alloc] initWithInt:kUploadsTag] ],
-    @[ @"Travel & Events", @"Travel", [[NSNumber alloc] initWithInt:kUploadsTag] ],
-   ];
-
-   return array;
-}
-
-
-- (NSArray *)signUserCategories {
-   NSArray * array = @[
-    @[ @"Subscriptions", @"subscriptions",
-     [[NSNumber alloc] initWithInt:kUploadsTag] ],
-    @[ @"What to Watch", @"recommended",
-     [[NSNumber alloc] initWithInt:kWatchHistoryTag] ],
-    @[ @"Favorite", @"favorites",
-     [[NSNumber alloc] initWithInt:kFavoritesTag] ],
-    @[ @"Watch Later", @"watch_later",
-     [[NSNumber alloc] initWithInt:kWatchLaterTag] ],
-    @[ @"Playlists", @"playlists",
-     [[NSNumber alloc] initWithInt:kUploadsTag] ],
-   ];
-
-   return array;
 }
 
 

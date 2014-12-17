@@ -23,26 +23,23 @@
 
 @interface LeftMenuViewBase : UIViewController
 
-@property(nonatomic, strong) GYoutubeAuthUser * authUser;
 @property(nonatomic, strong) NSArray * tableSectionArray;
 
 @property(nonatomic, strong) NSMutableArray * headers;
 
 - (void)setCurrentTableView:(UITableView *)tableView;
 - (void)setupSlideTableViewWithAuthInfo:(YoutubeAuthInfo *)user;
-- (void)setupViewController:(NSArray *)subscriptionsArray;
+- (void)makeDefaultTableSections;
 - (UIView *)getUserHeaderView:(YoutubeAuthInfo *)user;
 
 - (void)bind:(UITableViewCell *)cell atSection:(NSInteger)section atRow:(NSInteger)row;
 
-- (NSArray *)defaultCategories;
-- (NSArray *)signUserCategories;
 
 @property(nonatomic, strong) id<LeftMenuViewBaseDelegate> delegate;
 
 
 - (void)defaultRefreshForSubscriptionList;
-- (void)refreshChannelSubscriptionList:(GYoutubeAuthUser *)user;
+- (void)insertSubscriptionRowsAfterFetching:(GYoutubeAuthUser *)user;
 - (void)refreshChannelInfo:(YoutubeAuthInfo *)info;
 - (void)setupTableViewExclusiveState;
 

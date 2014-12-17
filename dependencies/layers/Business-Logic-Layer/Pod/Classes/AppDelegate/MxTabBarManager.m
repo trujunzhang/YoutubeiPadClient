@@ -4,6 +4,7 @@
 #import "LeftMenuViewController.h"
 #import "LeftRevealHelper.h"
 #import "ClientUIHelper.h"
+#import "GYoutubeAuthUser.h"
 
 
 @interface MxTabBarManager ()<GYoutubeHelperDelegate> {
@@ -79,7 +80,8 @@
 
 
 - (void)FetchYoutubeSubscriptionListCompletion:(GYoutubeAuthUser *)user {
-   [_leftViewController refreshChannelSubscriptionList:user];
+   [user getTableRows];
+   [_leftViewController insertSubscriptionRowsAfterFetching:user];
 }
 
 
