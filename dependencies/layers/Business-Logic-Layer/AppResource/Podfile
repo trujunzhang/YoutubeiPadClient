@@ -17,7 +17,7 @@ target 'mxAsTubeiPad', :exclusive => true do
   pod "GGTabBar", :path => "../dependencies/lib/GGTabBar"
   pod "YKMediaPlayerKit", :path => "../dependencies/lib/YKMediaPlayerKit"
   #pod "MPMoviePlayerController-Subtitles", :path => "../dependencies/lib/MPMoviePlayerController-Subtitles"
-  pod "STCollapseTableView", :path => "../dependencies/lib/STCollapseTableView"
+  # pod "STCollapseTableView", :path => "../dependencies/lib/STCollapseTableView"
   pod 'SWRevealViewController', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/SWRevealViewController'
 
   pod 'AFNetworking', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/AFNetworking'

@@ -32,5 +32,9 @@ Pod::Spec.new do |s|
     sub.source_files = 'Pod/Classes/TableHeader/*.{h,m}'
   end
 
+  s.subspec 'STCollapseTableView' do |sub|
+    sub.source_files = 'Pod/Classes/STCollapseTableView/*.{h,m}'
+  end
+
 end
 
