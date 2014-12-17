@@ -18,7 +18,8 @@
 #import "YoutubeParser.h"
 #import "YTAsLeftTableCellNode.h"
 
-static CGFloat ROW_HEIGHT = 142;
+//static CGFloat ROW_HEIGHT = 42;
+static CGFloat ROW_HEIGHT = 42;
 
 
 @interface LeftMenuViewController ()<ASTableViewDataSource, ASTableViewDelegate>
@@ -134,6 +135,8 @@ static CGFloat ROW_HEIGHT = 142;
 
 
 - (void)viewWillLayoutSubviews {
+   [super viewWillLayoutSubviews];
+
    _tableView.frame = self.view.bounds;
 }
 

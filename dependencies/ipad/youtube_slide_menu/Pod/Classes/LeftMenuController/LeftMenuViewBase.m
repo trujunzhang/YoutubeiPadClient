@@ -20,7 +20,7 @@ static const int TABLE_WIDTH = 258;
 
 
 @interface LeftMenuViewBase ()<UserInfoViewSigningOutDelegate, UIAlertViewDelegate>
-@property(nonatomic, strong) UITableView * baseTableView;
+@property(nonatomic, strong) ASTableView * baseTableView;
 @property(nonatomic, strong) ASImageNode * imageNode;
 
 @end
@@ -32,19 +32,17 @@ static const int TABLE_WIDTH = 258;
 - (void)viewDidLoad {
    [super viewDidLoad];
 
-   [self setupBackground];
-
    NSAssert(self.baseTableView, @"not found uitableview instance!");
+
+   _imageNode = [[ASImageNode alloc] init];
+   _imageNode.image = [UIImage imageNamed:@"mt_side_menu_bg"];
+
+   _imageNode.frame = self.view.frame;// used
+   _imageNode.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+
 
    [self.view addSubview:_imageNode.view];
    [self.view addSubview:self.baseTableView];
-}
-
-
-- (void)setupBackground {
-   _imageNode = [[ASImageNode alloc] init];
-   _imageNode.backgroundColor = [UIColor lightGrayColor];
-   _imageNode.image = [UIImage imageNamed:@"mt_side_menu_bg"];
 }
 
 
@@ -60,10 +58,7 @@ static const int TABLE_WIDTH = 258;
 
 
 - (void)viewWillLayoutSubviews {
-   CGRect rect = self.view.bounds;
-   rect.size.width = TABLE_WIDTH;
-   self.baseTableView.frame = rect;
-   _imageNode.frame = rect;
+
 }
 
 
@@ -88,7 +83,8 @@ static const int TABLE_WIDTH = 258;
    if ([[GYoutubeHelper getInstance] isSignedIn]) {
       LeftMenuItemTree * signUserMenuItemTree = [LeftMenuItemTree getSignInMenuItemTree];
       LeftMenuItemTree * subscriptionsMenuItemTree = [LeftMenuItemTree getEmptySubscriptionsMenuItemTree];
-      self.tableSectionArray = @[ signUserMenuItemTree, subscriptionsMenuItemTree, categoriesMenuItemTree ];// used
+
+      self.tableSectionArray = @[ signUserMenuItemTree, subscriptionsMenuItemTree, categoriesMenuItemTree ];
    }
 
    // 2 section header titles
@@ -113,16 +109,15 @@ static const int TABLE_WIDTH = 258;
 - (UIView *)getUserHeaderView:(YoutubeAuthInfo *)user {
 
    UIView * headerView = nil;
+
    if ([[GYoutubeHelper getInstance] isSignedIn]) {
-      UserInfoView * userInfoView = [[[NSBundle mainBundle] loadNibNamed:@"UserInfoView"
-                                                                   owner:nil
+      UserInfoView * userInfoView = [[[NSBundle mainBundle] loadNibNamed:@"UserInfoView" owner:nil
                                                                  options:nil] lastObject];
       userInfoView.delegate = self;
       headerView = [userInfoView bind:user];
    } else {
       headerView = [[[NSBundle mainBundle] loadNibNamed:@"UserLoginView" owner:nil options:nil] lastObject];
 
-      //The setup code (in viewDidLoad in your view controller)
       UITapGestureRecognizer * singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                          action:@selector(handleSingleTap:)];
       [headerView addGestureRecognizer:singleFingerTap];
@@ -182,14 +177,24 @@ static const int TABLE_WIDTH = 258;
 
 
 - (void)defaultRefreshForSubscriptionList {
-   [self makeDefaultTableSections];
    [self setupSlideTableViewWithAuthInfo:nil];
+   [self makeDefaultTableSections];
 
    [self.baseTableView reloadData];
 }
 
 
+- (void)removeWhenSignOut {
+   [self setupSlideTableViewWithAuthInfo:nil];
+
+
+}
+
+
 - (void)insertSubscriptionRowsAfterFetching:(NSArray *)subscriptionList {
+   if ([[GYoutubeHelper getInstance] isSignedIn] == NO)
+      return;
+
    // 2
 //   [self.baseTableView reloadData];
 
@@ -234,7 +239,7 @@ otherButtonTitles:@"Ok", nil];
    }
    else if (buttonIndex == 1) {
       [[GYoutubeHelper getInstance] signingOut];
-      [self defaultRefreshForSubscriptionList];
+      [self removeWhenSignOut];
    }
 }
 

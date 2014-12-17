@@ -280,16 +280,16 @@ static GYoutubeHelper * instance = nil;
       return;
 
    // 1
-   [[[YoutubeAuthDataStore alloc] init] resetAuthUserChannel];
+//   [[[YoutubeAuthDataStore alloc] init] resetAuthUserChannel];
 
    // 2
    self.youtubeAuthUser = nil;
    self.isSignedIn = NO;
-   [GTMOAuth2ViewControllerTouch removeAuthFromKeychainForName:kKeychainItemName];
-   [GTMOAuth2ViewControllerTouch revokeTokenForGoogleAuthentication:self.youTubeService.authorizer];
+//   [GTMOAuth2ViewControllerTouch removeAuthFromKeychainForName:kKeychainItemName];
+//   [GTMOAuth2ViewControllerTouch revokeTokenForGoogleAuthentication:self.youTubeService.authorizer];
 
    // 3
-   [YoutubeAuthDataStore resetAuthToken];
+//   [YoutubeAuthDataStore resetAuthToken];
 }
 
 
