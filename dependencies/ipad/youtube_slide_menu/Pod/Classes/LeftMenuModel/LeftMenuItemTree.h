@@ -33,7 +33,7 @@ typedef NS_ENUM (NSUInteger, LeftMenuItemTreeType) {
 
 + (instancetype)getSignInMenuItemTree;
 + (instancetype)getEmptySubscriptionsMenuItemTree;
-+ (NSArray *)cellIdentifierArray;
++ (NSArray *)getSignOutMenuItemTreeArray;+ (NSArray *)getSignInMenuItemTreeArray;+ (NSArray *)cellIdentifierArray;
 + (NSArray *)defaultCategories;
 + (NSArray *)signUserCategories;
 

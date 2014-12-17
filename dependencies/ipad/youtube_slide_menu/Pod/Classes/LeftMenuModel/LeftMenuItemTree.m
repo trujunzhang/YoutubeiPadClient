@@ -61,6 +61,26 @@
 }
 
 
++ (NSArray *)getSignOutMenuItemTreeArray {
+   return @[
+    [LeftMenuItemTree getCategoriesMenuItemTree]
+   ];
+}
+
+
++ (NSArray *)getSignInMenuItemTreeArray {
+   return @[
+    [LeftMenuItemTree getSignInMenuItemTree],
+    [LeftMenuItemTree getEmptySubscriptionsMenuItemTree],
+    [LeftMenuItemTree getCategoriesMenuItemTree]
+   ];
+}
+
+
+#pragma mark
+#pragma mark
+
+
 + (NSArray *)cellIdentifierArray {
    return @[
     @"CategoriesCellIdentifier",

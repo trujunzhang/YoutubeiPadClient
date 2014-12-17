@@ -74,15 +74,10 @@ static const int TABLE_WIDTH = 258;
 
 - (void)makeDefaultTableSections { // initialize once
    // 1  make section array
-   LeftMenuItemTree * categoriesMenuItemTree = [LeftMenuItemTree getCategoriesMenuItemTree];
-
-   self.tableSectionArray = @[ categoriesMenuItemTree ];
-
    if ([[GYoutubeHelper getInstance] isSignedIn]) {
-      LeftMenuItemTree * signUserMenuItemTree = [LeftMenuItemTree getSignInMenuItemTree];
-      LeftMenuItemTree * subscriptionsMenuItemTree = [LeftMenuItemTree getEmptySubscriptionsMenuItemTree];
-
-      self.tableSectionArray = @[ signUserMenuItemTree, subscriptionsMenuItemTree, categoriesMenuItemTree ];
+      self.tableSectionArray = [LeftMenuItemTree getSignInMenuItemTreeArray];
+   } else {
+      self.tableSectionArray = [LeftMenuItemTree getSignOutMenuItemTreeArray];
    }
 
    // 2 section header titles
@@ -184,6 +179,7 @@ static const int TABLE_WIDTH = 258;
 
 - (void)removeWhenSignOut {
    [self setupSlideTableViewWithAuthInfo:nil];
+   [self makeDefaultTableSections];
 
    [self leftMenuReloadTable];
 }
