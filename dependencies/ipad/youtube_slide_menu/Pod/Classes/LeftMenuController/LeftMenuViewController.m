@@ -160,11 +160,15 @@ nodeConstructionQueue:self.nodeConstructionQueue];
 
 - (void)leftMenuReloadTable {
    [self.tableView reloadData];
+
+   [self setupTableViewExclusiveState];
 }
 
 
 - (void)leftMenuUpdateSubscriptionSection:(NSArray *)subscriptionList {
    [self.tableView reloadData];
+
+   [self setupTableViewExclusiveState];
 }
 
 @end

@@ -147,8 +147,8 @@
 
 
 - (void)leftMenuUpdateSubscriptionSection:(NSArray *)subscriptionList {
-   [self.baseTableView reloadSections:[NSIndexSet indexSetWithIndex:1]
-                     withRowAnimation:YES];
+   [_tableView reloadSections:[NSIndexSet indexSetWithIndex:1]
+             withRowAnimation:YES];
 }
 
 
