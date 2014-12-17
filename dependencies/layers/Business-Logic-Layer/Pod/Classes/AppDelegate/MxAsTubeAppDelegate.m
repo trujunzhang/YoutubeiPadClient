@@ -40,6 +40,9 @@
 
    UIViewController * controller = [[LeftMenuViewController alloc] init];
 
+   [[MxTabBarManager sharedTabBarManager] registerTabBarController:nil
+                                            withLeftViewController:controller];
+
    controller.view.backgroundColor = [UIColor redColor];
 
    self.window.rootViewController = controller;

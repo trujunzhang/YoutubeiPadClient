@@ -98,14 +98,15 @@ static const int TABLE_WIDTH = 258;
                                      rowsArray:[self signUserCategories]
                                      hideTitle:YES
                                    remoteImage:NO];
+
       LeftMenuItemTree * subscriptionsMenuItemTree =
        [[LeftMenuItemTree alloc] initWithTitle:@"  Subscriptions"
                                       itemType:LMenuTreeSubscriptions
                                      rowsArray:subscriptionsArray
                                      hideTitle:NO
                                    remoteImage:YES];
-      self.tableSectionArray = @[ signUserMenuItemTree, subscriptionsMenuItemTree, defaultMenuItemTree ];
-//      self.tableSectionArray = @[ subscriptionsMenuItemTree, defaultMenuItemTree ];
+
+      self.tableSectionArray = @[ signUserMenuItemTree, subscriptionsMenuItemTree, defaultMenuItemTree ];// used
    }
 
 
@@ -211,7 +212,7 @@ static const int TABLE_WIDTH = 258;
    [self setupSlideTableViewWithAuthInfo:nil];
 
    // 2
-//   [self.baseTableView reloadData];
+   [self.baseTableView reloadData];
 
    //3
 //   [self setupTableViewExclusiveState];

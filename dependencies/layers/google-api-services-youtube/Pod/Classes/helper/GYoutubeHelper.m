@@ -211,7 +211,7 @@ static GYoutubeHelper * instance = nil;
 
 //   [self fetchCaptionForVideoWithVideoId];// test
 //   [self fetchTranscriptForVideoWithVideoId];//test
-   [self fetchVideoInfoMetadataWithVideoId];//test
+//   [self fetchVideoInfoMetadataWithVideoId];//test
 
    if (self.isSignedIn) {
       [self getAuthUserInfo];
@@ -233,8 +233,8 @@ static GYoutubeHelper * instance = nil;
 - (void)getAuthUserInfo {
    self.youtubeAuthUser = [[GYoutubeAuthUser alloc] init];
 
-//   if (hasShowLeftMenu)
-//      [self getUserInfo];// used
+   if (hasShowLeftMenu)
+      [self getUserInfo];// used
 }
 
 
