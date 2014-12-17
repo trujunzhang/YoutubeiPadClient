@@ -34,6 +34,23 @@
 @implementation MxAsTubeAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+   // Override point for customization after application launch.
+   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+   // Override point for customization after application launch.
+
+   UIViewController * controller = [[LeftMenuViewController alloc] init];
+
+   controller.view.backgroundColor = [UIColor redColor];
+
+   self.window.rootViewController = controller;
+
+   [self.window makeKeyAndVisible];
+
+   return YES;
+}
+
+
+- (BOOL)application123:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
    [DebugUtils listAppHomeInfo];
 
    [YTCacheImplement removeAllCacheDiskObjects];

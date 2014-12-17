@@ -36,7 +36,7 @@
 
 
 - (void)setLeftMenuControllerDelegate:(id)delegate {
-   _leftViewController.delegate = delegate;
+//   _leftViewController.delegate = delegate;
 }
 
 
@@ -79,12 +79,12 @@
 
 
 - (void)FetchYoutubeSubscriptionListCompletion:(GYoutubeAuthUser *)user {
-   [_leftViewController refreshChannelSubscriptionList:user];
+//   [_leftViewController refreshChannelSubscriptionList:user];
 }
 
 
 - (void)FetchYoutubeChannelCompletion:(YoutubeAuthInfo *)info {
-   [_leftViewController refreshChannelInfo:info];
+//   [_leftViewController refreshChannelInfo:info];
 }
 
 @end

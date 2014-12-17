@@ -10,9 +10,6 @@
 
 #import "LeftMenuViewBase.h"
 
-@class STCollapseTableView;
-
-
 @interface LeftMenuViewController : LeftMenuViewBase
 
 

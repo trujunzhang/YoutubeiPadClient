@@ -90,6 +90,7 @@ static const int TABLE_WIDTH = 258;
 
 
    self.tableSectionArray = @[ defaultMenuItemTree ];
+
    if ([[GYoutubeHelper getInstance] isSignedIn]) {
       LeftMenuItemTree * signUserMenuItemTree =
        [[LeftMenuItemTree alloc] initWithTitle:@"  "

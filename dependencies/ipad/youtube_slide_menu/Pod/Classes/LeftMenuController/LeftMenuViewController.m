@@ -22,34 +22,35 @@ static CGFloat ROW_HEIGHT = 42;
 
 
 @interface LeftMenuViewController ()<ASTableViewDataSource, ASTableViewDelegate>
-@property(nonatomic, strong) STCollapseTableView * tableView;
+@property(nonatomic, strong) ASTableView * tableView;
+
+
 @end
 
 
 @implementation LeftMenuViewController
 
 
-- (void)setupTableViewExclusiveState {
-   [self.tableView setExclusiveSections:NO];
-   for (int i = 0; i < [self.tableSectionArray count]; i++) {
-      [self.tableView openSection:i animated:NO];
-   }
-}
+//- (void)setupTableViewExclusiveState {
+//   [self.tableView setExclusiveSections:NO];
+//   for (int i = 0; i < [self.tableSectionArray count]; i++) {
+//      [self.tableView openSection:i animated:NO];
+//   }
+//}
 
 
-- (void)viewDidLoad {
+- (instancetype)init {
+   if (!(self = [super init]))
+      return nil;
+
    // 1
-   self.tableView = [[STCollapseTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+   self.tableView = [[ASTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; // KittenNode has its own separator
-   self.tableView.dataSource = self;
-   self.tableView.delegate = self;
+   self.tableView.asyncDataSource = self;
+   self.tableView.asyncDelegate = self;
 
-   [self setCurrentTableView:self.tableView];
 
-   // 2
-   [self defaultRefreshForSubscriptionList];
-
-   [super viewDidLoad];
+   return self;
 }
 
 
@@ -107,27 +108,45 @@ static CGFloat ROW_HEIGHT = 42;
 #pragma mark UITableViewDelegate
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-   NSInteger section = indexPath.section;
-   NSInteger row = indexPath.row;
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//   NSInteger section = indexPath.section;
+//   NSInteger row = indexPath.row;
+//
+//   LeftMenuItemTree * menuItemTree = self.tableSectionArray[section];
+//   NSArray * line = menuItemTree.rowsArray[row];
+//
+//   LeftMenuItemTreeType itemType = menuItemTree.itemType;
+//   switch (itemType) {
+//      case LMenuTreeUser:
+//         [self.delegate startToggleLeftMenuWithTitle:line[0] withType:[(line[2]) intValue]];
+//         break;
+//      case LMenuTreeSubscriptions: {
+//         [self.delegate endToggleLeftMenuEventForChannelPageWithChannelId:
+//           [YoutubeParser getChannelIdBySubscription:self.authUser.subscriptions[indexPath.row]]
+//                                                                withTitle:line[0]];
+//      }
+//         break;
+//      case LMenuTreeCategories: {
+//      }
+//   }
+//}
 
-   LeftMenuItemTree * menuItemTree = self.tableSectionArray[section];
-   NSArray * line = menuItemTree.rowsArray[row];
+#pragma mark -
+#pragma mark
 
-   LeftMenuItemTreeType itemType = menuItemTree.itemType;
-   switch (itemType) {
-      case LMenuTreeUser:
-         [self.delegate startToggleLeftMenuWithTitle:line[0] withType:[(line[2]) intValue]];
-         break;
-      case LMenuTreeSubscriptions: {
-         [self.delegate endToggleLeftMenuEventForChannelPageWithChannelId:
-           [YoutubeParser getChannelIdBySubscription:self.authUser.subscriptions[indexPath.row]]
-                                                                withTitle:line[0]];
-      }
-         break;
-      case LMenuTreeCategories: {
-      }
-   }
+
+- (void)viewDidLoad {
+
+   [self setCurrentTableView:self.tableView];
+
+   [self defaultRefreshForSubscriptionList];
+
+   [super viewDidLoad];
+}
+
+
+- (void)viewWillLayoutSubviews {
+   _tableView.frame = self.view.bounds;
 }
 
 
