@@ -79,7 +79,7 @@ static const int TABLE_WIDTH = 258;
 }
 
 
-- (void)makeDefaultTableSections {
+- (void)makeDefaultTableSections { // initialize once
    // 1  make section array
    LeftMenuItemTree * categoriesMenuItemTree = [LeftMenuItemTree getCategoriesMenuItemTree];
 
@@ -190,21 +190,17 @@ static const int TABLE_WIDTH = 258;
 
 
 - (void)insertSubscriptionRowsAfterFetching:(NSArray *)subscriptionList {
-   [self makeDefaultTableSections];
-   [self setupSlideTableViewWithAuthInfo:nil];
-
    // 2
-   [self.baseTableView reloadData];
+//   [self.baseTableView reloadData];
 
    // test
-   if (debugLeftMenuTapSubscription) {
-      if (subscriptionList.count > subscriptionIndex) {
-         NSArray * subscription = subscriptionList[subscriptionIndex];
-         NSString * title = [YoutubeParser getSubscriptionSnippetTitle:subscription];
-         [self.delegate endToggleLeftMenuEventForChannelPageWithChannelId:[YoutubeParser getChannelIdBySubscription:subscription]
-                                                                withTitle:title];
-      }
-   }
+//   if (debugLeftMenuTapSubscription) {
+//      if (subscriptionList.count > subscriptionIndex) {
+//         [self.delegate endToggleLeftMenuEventForChannelPageWithChannelId:[LeftMenuItemTree getChannelIdUrlInRow:subscriptionList[subscriptionIndex]]
+//                                                                withTitle:[LeftMenuItemTree getTitleInRow:subscriptionList[subscriptionIndex]]];
+//      }
+//   }
+
 }
 
 

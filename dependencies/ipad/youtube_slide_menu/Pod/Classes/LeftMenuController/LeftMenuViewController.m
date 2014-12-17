@@ -112,7 +112,7 @@ static CGFloat ROW_HEIGHT = 142;
 //         break;
 //      case LMenuTreeSubscriptions: {
 //         [self.delegate endToggleLeftMenuEventForChannelPageWithChannelId:[LeftMenuItemTree getChannelIdUrlInRow:line]
-//                                                                withTitle:[LeftMenuItemTree getTitleInRow:line];
+//                                                                withTitle:[LeftMenuItemTree getTitleInRow:line]];
 //      }
 //         break;
 //      case LMenuTreeCategories: {
