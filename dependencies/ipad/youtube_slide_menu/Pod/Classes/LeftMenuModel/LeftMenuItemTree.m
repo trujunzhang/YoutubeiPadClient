@@ -115,4 +115,23 @@
 }
 
 
++ (NSString *)getTitleInRow:(NSArray *)array {
+   return array[0];
+}
+
+
++ (NSString *)getThumbnailUrlInRow:(NSArray *)array {
+   return array[1];
+}
+
++ (NSString *)getChannelIdUrlInRow:(NSArray *)array {
+   return array[1];
+}
+
+
+
++ (YTPlaylistItemsType)getTypeInRow:(NSArray *)array {
+   return [array[2] intValue];
+}
+
 @end

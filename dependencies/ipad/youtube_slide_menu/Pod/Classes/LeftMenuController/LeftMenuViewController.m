@@ -63,8 +63,8 @@ static CGFloat ROW_HEIGHT = 142;
    YTAsLeftTableCellNode * node =
     [[YTAsLeftTableCellNode alloc]
      initWithNodeCellSize:CGSizeMake(250, ROW_HEIGHT)
-                lineTitle:line[0]
-              lineIconUrl:line[1]
+                lineTitle:[LeftMenuItemTree getTitleInRow:line]
+              lineIconUrl:[LeftMenuItemTree getThumbnailUrlInRow:line]
             isRemoteImage:menuItemTree.isRemoteImage];
 
    return node;
@@ -107,18 +107,19 @@ static CGFloat ROW_HEIGHT = 142;
 //   LeftMenuItemTreeType itemType = menuItemTree.itemType;
 //   switch (itemType) {
 //      case LMenuTreeUser:
-//         [self.delegate startToggleLeftMenuWithTitle:line[0] withType:[(line[2]) intValue]];
+//         [self.delegate startToggleLeftMenuWithTitle:[LeftMenuItemTree getTitleInRow:line]
+//                                            withType:[LeftMenuItemTree getTypeInRow:line]];
 //         break;
 //      case LMenuTreeSubscriptions: {
-//         [self.delegate endToggleLeftMenuEventForChannelPageWithChannelId:
-//           [YoutubeParser getChannelIdBySubscription:self.authUser.subscriptions[indexPath.row]]
-//                                                                withTitle:line[0]];
+//         [self.delegate endToggleLeftMenuEventForChannelPageWithChannelId:[LeftMenuItemTree getChannelIdUrlInRow:line]
+//                                                                withTitle:[LeftMenuItemTree getTitleInRow:line];
 //      }
 //         break;
 //      case LMenuTreeCategories: {
 //      }
 //   }
 //}
+
 
 #pragma mark -
 #pragma mark

@@ -197,14 +197,14 @@ static const int TABLE_WIDTH = 258;
    [self.baseTableView reloadData];
 
    // test
-//   if (debugLeftMenuTapSubscription) {
-//      if (self.authUser.subscriptions.count > subscriptionIndex) {
-//         YTYouTubeSubscription * subscription = self.authUser.subscriptions[subscriptionIndex];
-//         NSString * title = [YoutubeParser getSubscriptionSnippetTitle:subscription];
-//         [self.delegate endToggleLeftMenuEventForChannelPageWithChannelId:[YoutubeParser getChannelIdBySubscription:subscription]
-//                                                                withTitle:title];
-//      }
-//   }
+   if (debugLeftMenuTapSubscription) {
+      if (subscriptionList.count > subscriptionIndex) {
+         NSArray * subscription = subscriptionList[subscriptionIndex];
+         NSString * title = [YoutubeParser getSubscriptionSnippetTitle:subscription];
+         [self.delegate endToggleLeftMenuEventForChannelPageWithChannelId:[YoutubeParser getChannelIdBySubscription:subscription]
+                                                                withTitle:title];
+      }
+   }
 }
 
 

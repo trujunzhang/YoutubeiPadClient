@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <google-api-services-youtube/GYoutubeRequestInfo.h>
 
 typedef NS_ENUM (NSUInteger, LeftMenuItemTreeType) {
    // Playlist pop-up menu item tags.
@@ -35,4 +36,10 @@ typedef NS_ENUM (NSUInteger, LeftMenuItemTreeType) {
 + (NSArray *)cellIdentifierArray;
 + (NSArray *)defaultCategories;
 + (NSArray *)signUserCategories;
+
++ (NSString *)getTitleInRow:(NSArray *)array;
++ (NSString *)getThumbnailUrlInRow:(NSArray *)array;
++ (NSString *)getChannelIdUrlInRow:(NSArray *)array;
++ (YTPlaylistItemsType)getTypeInRow:(NSArray *)array;
+
 @end
