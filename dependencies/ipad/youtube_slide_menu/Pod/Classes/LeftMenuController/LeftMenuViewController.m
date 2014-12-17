@@ -16,8 +16,7 @@
 #import "LeftMenuTableHeaderView.h"
 #import "YTLeftRowTableViewCell.h"
 #import "YoutubeParser.h"
-
-static NSString * const leftmenuIdentifier = @"LeftMenuViewIdentifier";
+#import "YTAsLeftTableCellNode.h"
 
 static CGFloat ROW_HEIGHT = 42;
 
@@ -41,12 +40,9 @@ static CGFloat ROW_HEIGHT = 42;
 - (void)viewDidLoad {
    // 1
    self.tableView = [[STCollapseTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-
+   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; // KittenNode has its own separator
    self.tableView.dataSource = self;
    self.tableView.delegate = self;
-
-
-   [self.tableView registerClass:[YTLeftRowTableViewCell class] forCellReuseIdentifier:leftmenuIdentifier];
 
    [self setCurrentTableView:self.tableView];
 
@@ -66,35 +62,27 @@ static CGFloat ROW_HEIGHT = 42;
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-   YTLeftRowTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:leftmenuIdentifier];
-   if (cell == nil) {
-      cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:leftmenuIdentifier];
-   }
+- (ASCellNode *)tableView:(ASTableView *)tableView nodeForRowAtIndexPath:(NSIndexPath *)indexPath {
 
    LeftMenuItemTree * menuItemTree = self.tableSectionArray[indexPath.section];
    NSArray * line = menuItemTree.rowsArray[indexPath.row];
 
-   [cell   bind:line[0]
-withLineIconUrl:line[1]
-  isRemoteImage:menuItemTree.isRemoteImage
-             cellSize:CGSizeMake(250, ROW_HEIGHT)
-nodeConstructionQueue:self.nodeConstructionQueue];
 
-   cell.backgroundColor = [UIColor clearColor];
+   YTAsLeftTableCellNode * node =
+    [[YTAsLeftTableCellNode alloc]
+     initWithNodeCellSize:CGSizeMake(250, ROW_HEIGHT)
+                lineTitle:line[0]
+              lineIconUrl:line[1]
+            isRemoteImage:menuItemTree.isRemoteImage];
 
-   return cell;
+   return node;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
    LeftMenuItemTree * menuItemTree = self.tableSectionArray[section];
+
    return menuItemTree.rowsArray.count;
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-   return ROW_HEIGHT;
 }
 
 
