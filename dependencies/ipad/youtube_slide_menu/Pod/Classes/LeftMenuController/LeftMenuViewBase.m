@@ -13,10 +13,6 @@
 #import "LeftMenuItemTree.h"
 #import "LeftMenuTableHeaderView.h"
 #import "YoutubeAuthDataStore.h"
-#import "GYoutubeAuthUser.h"
-#import "YoutubeParser.h"
-
-static const int TABLE_WIDTH = 258;
 
 
 @interface LeftMenuViewBase ()<UserInfoViewSigningOutDelegate, UIAlertViewDelegate>
@@ -179,9 +175,9 @@ static const int TABLE_WIDTH = 258;
 
 - (void)removeWhenSignOut {
    [self setupSlideTableViewWithAuthInfo:nil];
-   [self makeDefaultTableSections];
+//   [self makeDefaultTableSections];
 
-   [self leftMenuReloadTable];
+   [self leftMenuSignOutTable];
 }
 
 

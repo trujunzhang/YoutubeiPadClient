@@ -21,7 +21,7 @@ typedef NS_ENUM (NSUInteger, LeftMenuItemTreeType) {
 
 @property(nonatomic, copy) NSString * title;
 @property(nonatomic, assign) LeftMenuItemTreeType itemType;
-@property(nonatomic, strong) NSArray * rowsArray;
+@property(nonatomic, strong) NSMutableArray * rowsArray;
 @property(nonatomic) BOOL hideTitle;
 @property(nonatomic) BOOL isRemoteImage;
 @property(nonatomic, copy) NSString * cellIdentifier;
@@ -33,7 +33,9 @@ typedef NS_ENUM (NSUInteger, LeftMenuItemTreeType) {
 
 + (instancetype)getSignInMenuItemTree;
 + (instancetype)getEmptySubscriptionsMenuItemTree;
-+ (NSArray *)getSignOutMenuItemTreeArray;+ (NSArray *)getSignInMenuItemTreeArray;+ (NSArray *)cellIdentifierArray;
++ (NSArray *)getSignOutMenuItemTreeArray;
++ (NSArray *)getSignInMenuItemTreeArray;
++ (NSArray *)cellIdentifierArray;
 + (NSArray *)defaultCategories;
 + (NSArray *)signUserCategories;
 

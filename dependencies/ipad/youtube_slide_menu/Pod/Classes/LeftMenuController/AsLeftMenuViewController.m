@@ -9,13 +9,7 @@
 
 #import "AsLeftMenuViewController.h"
 
-#import "LeftMenuViewBase.h"
-#import "STCollapseTableView.h"
-#import "GYoutubeAuthUser.h"
 #import "LeftMenuItemTree.h"
-#import "LeftMenuTableHeaderView.h"
-#import "YTLeftRowTableViewCell.h"
-#import "YoutubeParser.h"
 #import "YTAsLeftTableCellNode.h"
 
 
@@ -143,12 +137,36 @@
 
 - (void)leftMenuReloadTable {
 
+
+}
+
+
+- (void)leftMenuSignOutTable {
+//   [_tableView deleteSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:YES];
+
+   NSArray * indexPaths = @[
+    [NSIndexPath indexPathForItem:0 inSection:1],
+   ];
+
+//
+//   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+//       [_tableView deleteRowsAtIndexPaths:indexPaths
+//                         withRowAnimation:YES];
+//       // self.view isn't a node, so we can only use it on the main thread
+//       dispatch_sync(dispatch_get_main_queue(), ^{
+////           LeftMenuItemTree * itemTree = self.tableSectionArray[1];
+////           NSMutableArray * rowsArray = itemTree.rowsArray;
+////           [rowsArray removeObjectAtIndex:0];
+//       });
+//   });
+
+
 }
 
 
 - (void)leftMenuUpdateSubscriptionSection:(NSArray *)subscriptionList {
-   [_tableView reloadSections:[NSIndexSet indexSetWithIndex:1]
-             withRowAnimation:YES];
+//   [_tableView reloadSections:[NSIndexSet indexSetWithIndex:1]
+//             withRowAnimation:YES];
 }
 
 

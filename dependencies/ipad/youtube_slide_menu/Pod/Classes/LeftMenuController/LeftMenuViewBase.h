@@ -15,6 +15,7 @@
 
 //static CGFloat ROW_HEIGHT = 42;
 static CGFloat ROW_HEIGHT = 42;
+static const int TABLE_WIDTH = 258;
 
 
 @protocol LeftMenuViewBaseDelegate<NSObject>
@@ -39,6 +40,7 @@ static CGFloat ROW_HEIGHT = 42;
 - (void)refreshChannelInfo:(YoutubeAuthInfo *)info;
 
 - (void)leftMenuReloadTable;
+- (void)leftMenuSignOutTable;
 
 - (void)leftMenuUpdateSubscriptionSection:(NSArray *)subscriptionList;
 

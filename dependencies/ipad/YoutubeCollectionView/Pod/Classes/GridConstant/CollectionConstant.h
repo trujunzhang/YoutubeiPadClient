@@ -15,7 +15,7 @@
 //#define YTCollectionViewController YoutubeGridCHTLayoutViewController
 #define YTCollectionViewController YoutubeAsGridCHTLayoutViewController
 
-//#define YTLeftMenuViewController LeftMenuViewController
-#define YTLeftMenuViewController AsLeftMenuViewController
+#define YTLeftMenuViewController LeftMenuViewController
+//#define YTLeftMenuViewController AsLeftMenuViewController
 
 

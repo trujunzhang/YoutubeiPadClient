@@ -10,7 +10,7 @@
 #import "GYoutubeRequestInfo.h"
 
 
-@interface LeftMenuItemTree ()<UITableViewDataSource, UITableViewDelegate>
+@interface LeftMenuItemTree ()
 
 @end
 
@@ -18,7 +18,7 @@
 @implementation LeftMenuItemTree
 
 
-- (instancetype)initWithTitle:(NSString *)title itemType:(LeftMenuItemTreeType)type rowsArray:(NSArray *)rowsArray hideTitle:(BOOL)hideTitle remoteImage:(BOOL)remoteImage {
+- (instancetype)initWithTitle:(NSString *)title itemType:(LeftMenuItemTreeType)type rowsArray:(NSMutableArray *)rowsArray hideTitle:(BOOL)hideTitle remoteImage:(BOOL)remoteImage {
    self = [super init];
    if (self) {
       self.title = title;
@@ -43,10 +43,10 @@
 
 
 + (instancetype)getSignInMenuItemTree {
-   return [[self alloc] initWithTitle:@"  "
+   return [[self alloc] initWithTitle:@" 123 "
                              itemType:LMenuTreeUser
                             rowsArray:[LeftMenuItemTree signUserCategories]
-                            hideTitle:YES
+                            hideTitle:NO
                           remoteImage:NO];
 }
 
@@ -54,25 +54,27 @@
 + (instancetype)getEmptySubscriptionsMenuItemTree {
    return [[self alloc] initWithTitle:@"  Subscriptions"
                              itemType:LMenuTreeSubscriptions
-                            rowsArray:[[NSArray alloc] init]
+                            rowsArray:[[NSMutableArray alloc] init]
                             hideTitle:NO
                           remoteImage:YES];
 
 }
 
 
-+ (NSArray *)getSignOutMenuItemTreeArray {
++ (NSMutableArray *)getSignOutMenuItemTreeArray {
    return @[
     [LeftMenuItemTree getCategoriesMenuItemTree]
    ];
 }
 
 
-+ (NSArray *)getSignInMenuItemTreeArray {
++ (NSMutableArray *)getSignInMenuItemTreeArray {
    return @[
+    [LeftMenuItemTree getCategoriesMenuItemTree],
     [LeftMenuItemTree getSignInMenuItemTree],
-    [LeftMenuItemTree getEmptySubscriptionsMenuItemTree],
-    [LeftMenuItemTree getCategoriesMenuItemTree]
+
+//    [LeftMenuItemTree getEmptySubscriptionsMenuItemTree],
+
    ];
 }
 
@@ -81,7 +83,7 @@
 #pragma mark
 
 
-+ (NSArray *)cellIdentifierArray {
++ (NSMutableArray *)cellIdentifierArray {
    return @[
     @"CategoriesCellIdentifier",
     @"SignUserCellIdentifier",
@@ -94,7 +96,7 @@
 #pragma mark View methods
 
 
-+ (NSArray *)defaultCategories {
++ (NSMutableArray *)defaultCategories {
    NSArray * array = @[
     @[ @"Autos & Vehicles", @"Autos", [[NSNumber alloc] initWithInt:kUploadsTag] ],
     @[ @"Comedy", @"Comedy", [[NSNumber alloc] initWithInt:kUploadsTag] ],
@@ -113,11 +115,11 @@
     @[ @"Travel & Events", @"Travel", [[NSNumber alloc] initWithInt:kUploadsTag] ],
    ];
 
-   return array;
+   return [array mutableCopy];
 }
 
 
-+ (NSArray *)signUserCategories {
++ (NSMutableArray *)signUserCategories {
    NSArray * array = @[
     @[ @"Subscriptions", @"subscriptions",
      [[NSNumber alloc] initWithInt:kUploadsTag] ],
@@ -131,31 +133,31 @@
      [[NSNumber alloc] initWithInt:kUploadsTag] ],
    ];
 
-   return array;
+   return [array mutableCopy];
 }
 
 
-+ (NSString *)getTitleInRow:(NSArray *)array {
++ (NSString *)getTitleInRow:(NSMutableArray *)array {
    return array[0];
 }
 
 
-+ (NSString *)getThumbnailUrlInRow:(NSArray *)array {
++ (NSString *)getThumbnailUrlInRow:(NSMutableArray *)array {
    return array[1];
 }
 
 
-+ (NSString *)getChannelIdUrlInRow:(NSArray *)array {
++ (NSString *)getChannelIdUrlInRow:(NSMutableArray *)array {
    return array[1];
 }
 
 
-+ (YTPlaylistItemsType)getTypeInRow:(NSArray *)array {
++ (YTPlaylistItemsType)getTypeInRow:(NSMutableArray *)array {
    return [array[2] intValue];
 }
 
 
-+ (void)reloadSubscriptionItemTree:(NSArray *)subscriptionList inSectionArray:(NSArray *)sectionArray {
++ (void)reloadSubscriptionItemTree:(NSMutableArray *)subscriptionList inSectionArray:(NSMutableArray *)sectionArray {
    for (LeftMenuItemTree * itemTree in sectionArray) {
       if (itemTree.itemType == LMenuTreeSubscriptions) {
          itemTree.rowsArray = subscriptionList;

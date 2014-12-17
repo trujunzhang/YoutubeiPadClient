@@ -165,6 +165,13 @@ nodeConstructionQueue:self.nodeConstructionQueue];
 }
 
 
+- (void)leftMenuSignOutTable {
+   [self.tableView reloadData];
+
+   [self setupTableViewExclusiveState];
+}
+
+
 - (void)leftMenuUpdateSubscriptionSection:(NSArray *)subscriptionList {
    [self.tableView reloadData];
 
