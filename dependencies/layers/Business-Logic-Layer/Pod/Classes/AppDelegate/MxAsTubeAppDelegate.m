@@ -10,7 +10,6 @@
 
 #import <SWRevealViewController/SWRevealViewController.h>
 
-#import "LeftMenuViewController.h"
 #import "SubscriptionsViewController.h"
 #import "GYoutubeAuthUser.h"
 #import "YoutubeAuthInfo.h"
@@ -20,6 +19,7 @@
 #import "MxTabBarManager.h"
 #import "ClientUIHelper.h"
 #import "DebugUtils.h"
+#import "CollectionConstant.h"
 
 
 @interface MxAsTubeAppDelegate ()<UIApplicationDelegate, UITabBarControllerDelegate, SWRevealViewControllerDelegate> {
@@ -38,7 +38,7 @@
    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
    // Override point for customization after application launch.
 
-   UIViewController * controller = [[LeftMenuViewController alloc] init];
+   UIViewController * controller = [[YTLeftMenuViewController alloc] init];
 
    [[MxTabBarManager sharedTabBarManager] registerTabBarController:nil
                                             withLeftViewController:controller];
@@ -80,7 +80,7 @@
 //   NSString * debug = @"debug";
 
    //3
-   LeftMenuViewController * leftViewController = [[LeftMenuViewController alloc] init];
+   YTLeftMenuViewController * leftViewController = [[YTLeftMenuViewController alloc] init];
 //   leftViewController.delegate = self;
 
    //6
