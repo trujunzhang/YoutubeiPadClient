@@ -5,7 +5,7 @@
 
 #import "MxCoreDataManager.h"
 
-#import "CoreData+MagicalRecord.h"
+//#import "CoreData+MagicalRecord.h"
 
 
 @implementation MxCoreDataManager {
@@ -21,15 +21,15 @@
        bgTask = UIBackgroundTaskInvalid;
    }];
 
-   [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
-
-       // Do your work to be saved here
-
-
-   } completion:^(BOOL success, NSError *error) {
-       [application endBackgroundTask:bgTask];
-       bgTask = UIBackgroundTaskInvalid;
-   }];
+//   [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+//
+//       // Do your work to be saved here
+//
+//
+//   } completion:^(BOOL success, NSError *error) {
+//       [application endBackgroundTask:bgTask];
+//       bgTask = UIBackgroundTaskInvalid;
+//   }];
 
 }
 

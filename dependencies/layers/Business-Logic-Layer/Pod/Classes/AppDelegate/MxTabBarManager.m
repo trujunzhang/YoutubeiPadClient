@@ -37,7 +37,7 @@
 
 
 - (void)setLeftMenuControllerDelegate:(id)delegate {
-//   _leftViewController.delegate = delegate;
+   _leftViewController.delegate = delegate;
 }
 
 

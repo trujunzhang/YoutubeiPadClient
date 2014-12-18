@@ -5,31 +5,32 @@ platform :ios, 7.0
 
 target 'mxAsTubeiPad', :exclusive => true do
 
-  pod 'AsyncDisplayKit', :git => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/AsyncDisplayKit', :commit => 'b653f75'
-
+  pod 'AsyncDisplayKit', :git => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/AsyncDisplayKit', :commit => '5cb261b'
 
   pod 'Reveal-iOS-SDK'
   pod 'pop', '~> 1.0.7'
-  pod 'NSLogger', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/NSLogger'
 
+  #pod 'NSLogger', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/NSLogger'
 
   pod 'Regexer', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/Regexer'
-  pod 'MagicalRecord', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/MagicalRecord'
+
+  #pod 'MagicalRecord', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/MagicalRecord'
 
   # ________________open projects___________________
   pod "GGTabBar", :path => "../dependencies/lib/GGTabBar"
   pod "YKMediaPlayerKit", :path => "../dependencies/lib/YKMediaPlayerKit"
   #pod "MPMoviePlayerController-Subtitles", :path => "../dependencies/lib/MPMoviePlayerController-Subtitles"
-  # pod "STCollapseTableView", :path => "../dependencies/lib/STCollapseTableView"
   pod 'SWRevealViewController', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/SWRevealViewController'
 
   pod 'AFNetworking', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/AFNetworking'
   pod "KRLCollectionViewGridLayout", :path => "../dependencies/lib/KRLCollectionViewGridLayout"
 
-
-
   pod 'ISMemoryCache', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/ISMemoryCache'
-  pod 'SDWebImage', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/SDWebImage'
+
+  pod 'SDWebImage', '~> 100.7.1'
+  #pod 'SDWebImage', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/SDWebImage'
+
+
   pod 'EGOCache', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/EGOCache'
 
   pod "YouTubeAPI3-Objective-C-wrapper", :path => "../dependencies/lib/google-api-client/YouTubeAPI3-Objective-C-wrapper"
@@ -63,8 +64,8 @@ target 'mxAsTubeiPadTests', :exclusive => true do
 
   # pod 'OCMockito', '~> 1.0'
 
-  pod 'OCHamcrest', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/OCHamcrest'
-  pod 'OCMockito', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/OCMockito'
+  #pod 'OCHamcrest', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/OCHamcrest'
+  #pod 'OCMockito', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/OCMockito'
 
 
 end
