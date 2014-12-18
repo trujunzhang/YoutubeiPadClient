@@ -43,10 +43,10 @@
 
 
 + (instancetype)getSignInMenuItemTree {
-   return [[self alloc] initWithTitle:@" 123 "
+   return [[self alloc] initWithTitle:@"  "
                              itemType:LMenuTreeUser
                             rowsArray:[LeftMenuItemTree signUserCategories]
-                            hideTitle:NO
+                            hideTitle:YES
                           remoteImage:NO];
 }
 
@@ -70,11 +70,9 @@
 
 + (NSMutableArray *)getSignInMenuItemTreeArray {
    return @[
-    [LeftMenuItemTree getCategoriesMenuItemTree],
     [LeftMenuItemTree getSignInMenuItemTree],
-
-//    [LeftMenuItemTree getEmptySubscriptionsMenuItemTree],
-
+    [LeftMenuItemTree getEmptySubscriptionsMenuItemTree],
+    [LeftMenuItemTree getCategoriesMenuItemTree],
    ];
 }
 

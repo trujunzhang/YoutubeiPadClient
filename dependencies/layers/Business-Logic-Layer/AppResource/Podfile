@@ -5,6 +5,9 @@ platform :ios, 7.0
 
 target 'mxAsTubeiPad', :exclusive => true do
 
+  pod 'AsyncDisplayKit', :git => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/AsyncDisplayKit', :commit => 'b653f75'
+
+
   pod 'Reveal-iOS-SDK'
   pod 'pop', '~> 1.0.7'
   pod 'NSLogger', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/NSLogger'
@@ -23,7 +26,7 @@ target 'mxAsTubeiPad', :exclusive => true do
   pod 'AFNetworking', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/AFNetworking'
   pod "KRLCollectionViewGridLayout", :path => "../dependencies/lib/KRLCollectionViewGridLayout"
 
-  pod 'AsyncDisplayKit', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/AsyncDisplayKit'
+
 
   pod 'ISMemoryCache', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/ISMemoryCache'
   pod 'SDWebImage', :path => '/Volumes/Home/Developing/wanghaogithub720/cocoapods/Cocoapods_Libraries/SDWebImage'

@@ -79,11 +79,11 @@
 
 #define SUBSCRIPTION_LIST_MAX 2
 #define subscriptionIndex  0
-//#define debugLeftMenuTapSubscription NO
-#define debugLeftMenuTapSubscription YES
+#define debugLeftMenuTapSubscription NO
+//#define debugLeftMenuTapSubscription YES
 
-//#define debugCollectionViewToDetail  NO
-#define debugCollectionViewToDetail  YES
+#define debugCollectionViewToDetail  NO
+//#define debugCollectionViewToDetail  YES
 
 #define debugCollectionViewToDetail_local  NO
 //#define debugCollectionViewToDetail_local  YES

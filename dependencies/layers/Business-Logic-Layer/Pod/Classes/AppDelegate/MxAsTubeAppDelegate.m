@@ -11,10 +11,7 @@
 #import <SWRevealViewController/SWRevealViewController.h>
 
 #import "SubscriptionsViewController.h"
-#import "GYoutubeAuthUser.h"
-#import "YoutubeAuthInfo.h"
 #import "LeftRevealHelper.h"
-#import "GYoutubeHelper.h"
 #import "CacheImageConstant.h"
 #import "MxTabBarManager.h"
 #import "ClientUIHelper.h"
@@ -33,27 +30,27 @@
 
 @implementation MxAsTubeAppDelegate
 
+//- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+//   // Override point for customization after application launch.
+//   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//   // Override point for customization after application launch.
+//
+//   UIViewController * controller = [[YTLeftMenuViewController alloc] init];
+//
+//   [[MxTabBarManager sharedTabBarManager] registerTabBarController:nil
+//                                            withLeftViewController:controller];
+//
+//   controller.view.backgroundColor = [UIColor redColor];
+//
+//   self.window.rootViewController = controller;
+//
+//   [self.window makeKeyAndVisible];
+//
+//   return YES;
+//}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-   // Override point for customization after application launch.
-   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-   // Override point for customization after application launch.
-
-   UIViewController * controller = [[YTLeftMenuViewController alloc] init];
-
-   [[MxTabBarManager sharedTabBarManager] registerTabBarController:nil
-                                            withLeftViewController:controller];
-
-   controller.view.backgroundColor = [UIColor redColor];
-
-   self.window.rootViewController = controller;
-
-   [self.window makeKeyAndVisible];
-
-   return YES;
-}
-
-
-- (BOOL)application123:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
    [DebugUtils listAppHomeInfo];
 
    [YTCacheImplement removeAllCacheDiskObjects];
@@ -81,7 +78,6 @@
 
    //3
    YTLeftMenuViewController * leftViewController = [[YTLeftMenuViewController alloc] init];
-//   leftViewController.delegate = self;
 
    //6
    self.revealController = [[SWRevealViewController alloc] initWithRearViewController:leftViewController

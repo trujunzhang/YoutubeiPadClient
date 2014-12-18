@@ -4,12 +4,12 @@
 #import "LeftMenuViewController.h"
 #import "LeftRevealHelper.h"
 #import "ClientUIHelper.h"
-#import "GYoutubeAuthUser.h"
+#import "CollectionConstant.h"
 
 
 @interface MxTabBarManager ()<GYoutubeHelperDelegate> {
    UITabBarController * _tabBarController;
-   LeftMenuViewController * _leftViewController; // left
+   YTLeftMenuViewController * _leftViewController; // left
 }
 
 
@@ -30,7 +30,7 @@
 }
 
 
-- (void)registerTabBarController:(UITabBarController *)tabBarController withLeftViewController:(LeftMenuViewController *)leftViewController {
+- (void)registerTabBarController:(UITabBarController *)tabBarController withLeftViewController:(id)leftViewController {
    _tabBarController = tabBarController;
    _leftViewController = leftViewController;
 }
