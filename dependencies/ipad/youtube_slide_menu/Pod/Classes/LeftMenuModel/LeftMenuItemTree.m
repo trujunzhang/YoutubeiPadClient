@@ -146,7 +146,7 @@
 
 
 + (NSString *)getChannelIdUrlInRow:(NSMutableArray *)array {
-   return array[1];
+   return array[2];
 }
 
 

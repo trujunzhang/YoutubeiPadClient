@@ -30,8 +30,7 @@
 @implementation YoutubeAsGridCHTLayoutViewController
 
 - (void)viewDidLoad {
-   [self.view addSubview:[self getCollectionView]];
-
+   [self makeCollectionView];
    [self setUICollectionView:self.collectionView];
 
    [self.collectionView reloadData];
@@ -65,7 +64,7 @@
 #pragma mark
 
 
-- (UICollectionView *)getCollectionView {
+- (void)makeCollectionView {
    if (!self.collectionView) {
       self.layout = [[CHTCollectionViewWaterfallLayout alloc] init];
 
@@ -74,7 +73,6 @@
       self.layout.minimumColumnSpacing = LAYOUT_MINIMUMCOLUMNSPACING;
       self.layout.minimumInteritemSpacing = 10;
       self.layout.delegate = self;
-
 
       self.collectionView = [[ASCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.layout];
       self.collectionView.asyncDataSource = self;
@@ -85,7 +83,6 @@
                      withReuseIdentifier:FOOTER_IDENTIFIER];
 
    }
-   return self.collectionView;
 }
 
 

@@ -24,7 +24,7 @@ int step = 0;
 @implementation YoutubeGridLayoutViewController
 
 - (void)viewDidLoad {
-   [self.view addSubview:[self getCollectionView]];
+   [self makeCollectionView];
    [self setUICollectionView:self.collectionView];
 
    [super viewDidLoad];
@@ -80,7 +80,7 @@ int step = 0;
 #pragma mark
 
 
-- (UICollectionView *)getCollectionView {
+- (void)makeCollectionView {
    if (!self.collectionView) {
       self.layout = [[KRLCollectionViewGridLayout alloc] init];
       self.layout.aspectRatio = 1;
@@ -96,7 +96,6 @@ int step = 0;
       self.collectionView.asyncDataSource = self;
       self.collectionView.asyncDelegate = self;
    }
-   return self.collectionView;
 }
 
 

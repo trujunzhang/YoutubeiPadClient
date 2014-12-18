@@ -25,15 +25,14 @@
 @implementation YoutubeGridCHTLayoutViewController
 
 - (void)viewDidLoad {
-
-   [self.view addSubview:[self getCollectionView]];
-
+   [self makeCollectionView];
    [self setUICollectionView:self.collectionView];
+
    [super viewDidLoad];
 }
 
 
-- (UICollectionView *)getCollectionView {
+- (void)makeCollectionView {
    if (!self.collectionView) {
       self.layout = [[CHTCollectionViewWaterfallLayout alloc] init];
 
@@ -57,7 +56,6 @@
               forSupplementaryViewOfKind:CHTCollectionElementKindSectionFooter
                      withReuseIdentifier:FOOTER_IDENTIFIER];
    }
-   return self.collectionView;
 }
 
 

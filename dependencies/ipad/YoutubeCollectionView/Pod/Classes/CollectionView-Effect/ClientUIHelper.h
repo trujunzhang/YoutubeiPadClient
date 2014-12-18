@@ -9,4 +9,5 @@
 @interface ClientUIHelper : NSObject
 
 + (UIColor *)mainUIBackgroundColor;
++ (UIView *)mainUIBackgroundView:(CGRect)containRect;
 @end
